@@ -27,9 +27,17 @@ public class CameraPositions : MonoBehaviour {
         targetPos = CameraOut;
         targetSize = OrthoOut;
     }
-	
-	// Update is called once per frame
-	void Update ()
+
+    private void Update()
+    {
+        if (!useDynamic)
+        {
+            MoveCamera();
+        }
+    }
+
+    // Update is called once per frame
+    public void MoveCamera ()
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
@@ -51,12 +59,12 @@ public class CameraPositions : MonoBehaviour {
 
         if (useDynamic)
         {
-            this.transform.position = Vector3.Lerp(transform.position, Dynamic, Time.deltaTime * speed);
+            this.transform.position = Vector3.MoveTowards(transform.position, Dynamic, Time.deltaTime * speed);
             this.GetComponent<Camera>().orthographicSize = Mathf.Lerp(this.GetComponent<Camera>().orthographicSize, DynamicOrtho, Time.deltaTime * speed);
         }
         else
         {
-            this.transform.position = Vector3.Lerp(transform.position, targetPos, Time.deltaTime * speed);
+            this.transform.position = Vector3.MoveTowards(transform.position, targetPos, Time.deltaTime * speed);
             this.GetComponent<Camera>().orthographicSize = Mathf.Lerp(this.GetComponent<Camera>().orthographicSize, targetSize, Time.deltaTime * speed);
         }
 
