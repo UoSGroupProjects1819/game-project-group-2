@@ -816,7 +816,7 @@ MonoBehaviour:
   speed: 25
   turnPower: 10
   turnSpeed: 20
-  returnToZeroDegrees: 0
+  returnToZeroDegrees: 1
 --- !u!1001 &1970679531
 Prefab:
   m_ObjectHideFlags: 0

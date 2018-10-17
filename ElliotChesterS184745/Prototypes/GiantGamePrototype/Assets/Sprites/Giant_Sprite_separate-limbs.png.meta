@@ -2,13 +2,13 @@ fileFormatVersion: 2
 guid: 104597ee554995a438215e011ea62c44
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Giant_Sprite_separate-limbs_0
-    21300002: Giant_Sprite_separate-limbs_1
-    21300004: Giant_Sprite_separate-limbs_2
-    21300006: Giant_Sprite_separate-limbs_3
+    21300000: GiantBody
+    21300002: GiantLeg
+    21300004: GiantLeftArm
+    21300006: GiantRightArm
     21300008: Giant_Sprite_separate-limbs_4
-    21300010: Giant_Sprite_separate-limbs_5
-    21300012: Giant_Sprite_separate-limbs_6
+    21300010: GiantEye
+    21300012: GiantMouth
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -52,7 +52,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 600
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -124,7 +124,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Giant_Sprite_separate-limbs_0
+      name: GiantBody
       rect:
         serializedVersion: 2
         x: 181
@@ -132,7 +132,7 @@ TextureImporter:
         width: 363
         height: 647
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -144,7 +144,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Giant_Sprite_separate-limbs_1
+      name: GiantLeg
       rect:
         serializedVersion: 2
         x: 644
@@ -152,7 +152,7 @@ TextureImporter:
         width: 74
         height: 261
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -164,7 +164,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Giant_Sprite_separate-limbs_2
+      name: GiantLeftArm
       rect:
         serializedVersion: 2
         x: 637
@@ -172,7 +172,7 @@ TextureImporter:
         width: 104
         height: 246
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -184,7 +184,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Giant_Sprite_separate-limbs_3
+      name: GiantRightArm
       rect:
         serializedVersion: 2
         x: 782
@@ -192,7 +192,7 @@ TextureImporter:
         width: 71
         height: 251
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -204,27 +204,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Giant_Sprite_separate-limbs_4
-      rect:
-        serializedVersion: 2
-        x: 783
-        y: 645
-        width: 70
-        height: 252
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f338d22ae114742469af8247b732b9c3
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Giant_Sprite_separate-limbs_5
+      name: GiantEye
       rect:
         serializedVersion: 2
         x: 1079
@@ -232,7 +212,7 @@ TextureImporter:
         width: 31
         height: 30
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -244,7 +224,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Giant_Sprite_separate-limbs_6
+      name: GiantMouth
       rect:
         serializedVersion: 2
         x: 1138
@@ -252,7 +232,7 @@ TextureImporter:
         width: 57
         height: 15
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
