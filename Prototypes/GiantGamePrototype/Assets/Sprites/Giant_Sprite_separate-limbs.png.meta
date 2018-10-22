@@ -1,14 +1,13 @@
 fileFormatVersion: 2
-guid: 104597ee554995a438215e011ea62c44
+guid: 166ac334f0a7aa64e8a3e82aa7ff9a3d
 TextureImporter:
   fileIDToRecycleName:
     21300000: GiantBody
     21300002: GiantLeg
-    21300004: GiantLeftArm
-    21300006: GiantRightArm
-    21300008: Giant_Sprite_separate-limbs_4
-    21300010: GiantEye
-    21300012: GiantMouth
+    21300004: Giant Eye
+    21300006: Giant Mouth
+    21300008: Giant Left Arm
+    21300010: Giant Right Arm
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -52,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 600
+  spritePixelsToUnits: 500
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -127,18 +126,18 @@ TextureImporter:
       name: GiantBody
       rect:
         serializedVersion: 2
-        x: 181
-        y: 338
-        width: 363
-        height: 647
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 182
+        y: 341
+        width: 362
+        height: 644
+      alignment: 9
+      pivot: {x: 0.49173766, y: 0.31654823}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3d6158f9ed9103d4299f3688de27b870
+      spriteID: d05488189694bcf40a9db9e3449c198a
       vertices: []
       indices: 
       edges: []
@@ -147,10 +146,30 @@ TextureImporter:
       name: GiantLeg
       rect:
         serializedVersion: 2
-        x: 644
-        y: 641
-        width: 74
-        height: 261
+        x: 648
+        y: 646
+        width: 69
+        height: 249
+      alignment: 9
+      pivot: {x: 0.30493695, y: 0.87837434}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e90587028024bf445b2f1b57d04391d6
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Giant Eye
+      rect:
+        serializedVersion: 2
+        x: 1079
+        y: 795
+        width: 30
+        height: 29
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -158,87 +177,67 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5deffa81d37812949be230a5d4dd72a1
+      spriteID: 9ce06d8a3ff8bcb41b39e7913116d2ac
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GiantLeftArm
+      name: Giant Mouth
+      rect:
+        serializedVersion: 2
+        x: 1139
+        y: 692
+        width: 55
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a919f0bfd0d8bcc4ebb3385d001c3d84
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Giant Left Arm
       rect:
         serializedVersion: 2
         x: 637
         y: 328
         width: 104
-        height: 246
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        height: 245
+      alignment: 9
+      pivot: {x: 0.28430587, y: 0.7929917}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 05e538e045a51d54b87c251c9d1ff3b1
+      spriteID: 0c400e90e75c09d4e8de72c93e6697f4
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GiantRightArm
+      name: Giant Right Arm
       rect:
         serializedVersion: 2
-        x: 782
-        y: 322
-        width: 71
-        height: 251
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 783
+        y: 323
+        width: 69
+        height: 249
+      alignment: 9
+      pivot: {x: 0.28326416, y: 0.8843803}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a037bccceb7aff0408eaecc6ac124610
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: GiantEye
-      rect:
-        serializedVersion: 2
-        x: 1079
-        y: 794
-        width: 31
-        height: 30
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3559092185231494d805c8e290843222
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: GiantMouth
-      rect:
-        serializedVersion: 2
-        x: 1138
-        y: 693
-        width: 57
-        height: 15
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c9ddea8d62dc74e4b82e4bcb2d49c64b
+      spriteID: 69867efe65a69fa4f98bb967fe805b37
       vertices: []
       indices: 
       edges: []
@@ -246,7 +245,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 8b983426a9839ba448353199076d0d2f
+    spriteID: 89757c5fd9702d54b8d56af007116029
     vertices: []
     indices: 
     edges: []

@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WalkToPoint : MonoBehaviour {
+public class WalkToPoint : MonoBehaviour
+{
 
     Vector2 targetPoint;
     public float speed;
@@ -11,25 +12,26 @@ public class WalkToPoint : MonoBehaviour {
 
     Rigidbody2D RB;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start()
+    {
         targetPoint = this.transform.position;
         RB = this.GetComponent<Rigidbody2D>();
-	}
-	
-	// Update is called once per frame
-	void LateUpdate ()
+    }
+
+    // Update is called once per frame
+    void LateUpdate()
     {
-		if(targetPoint != (Vector2)this.transform.position && targetPoint != null)
+        if (targetPoint != (Vector2)this.transform.position && targetPoint != null)
         {
-            
-            if (targetPoint.x > this.transform.position.x)
+
+            if (targetPoint.x > this.transform.position.x && targetPoint.x - this.transform.position.x > 0.1f)
             {
                 RB.velocity = new Vector2(speed, 0);
                 transform.localScale = new Vector2(1, 1);
             }
             else
-            if (targetPoint.x < this.transform.position.x)
+            if (targetPoint.x < this.transform.position.x && targetPoint.x - this.transform.position.x < -0.1f)
             {
                 RB.velocity = new Vector2(-speed, 0);
                 transform.localScale = new Vector2(-1, 1);
@@ -40,7 +42,7 @@ public class WalkToPoint : MonoBehaviour {
             }
 
             float distanceToTarget = targetPoint.x - this.transform.position.x;
-            if(distanceToTarget < 0)
+            if (distanceToTarget < 0)
             {
                 distanceToTarget = -distanceToTarget;
             }
@@ -93,7 +95,7 @@ public class WalkToPoint : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag == "Interactable" && collision.gameObject == target)
+        if (collision.tag == "Interactable" && collision.gameObject == target)
         {
             targetPoint = this.transform.position;
         }

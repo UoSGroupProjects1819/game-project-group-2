@@ -8,18 +8,8 @@ public class GiantScript : MonoBehaviour {
     public GameObject currentHolding;
     bool holding = false;
 
-	// Use this for initialization
-	void Start ()
-    {
-		
-	}
+    public Animator anim;
 
-    private void Update()
-    {
-        
-    }
-
-    // Update is called once per frame
     void LateUpdate ()
     {
         if (holding)
@@ -33,6 +23,8 @@ public class GiantScript : MonoBehaviour {
                 currentHolding = null;
             }
         }
+
+        anim.SetFloat("Speed", this.GetComponent<Rigidbody2D>().velocity.magnitude);
     }
 
     public void SetCurrentHolding(GameObject newHolding)
@@ -41,4 +33,5 @@ public class GiantScript : MonoBehaviour {
         currentHolding = Instantiate(newHolding, seedHolder.position, seedHolder.rotation);
         holding = true;
     }
+
 }
