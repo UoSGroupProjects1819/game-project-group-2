@@ -10,6 +10,8 @@ public class GiantScript : MonoBehaviour {
 
     public Animator anim;
 
+    public GameObject holdingButton;
+
     void LateUpdate ()
     {
         if (holding)
@@ -17,11 +19,17 @@ public class GiantScript : MonoBehaviour {
             currentHolding.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
             currentHolding.transform.position = seedHolder.position;
             currentHolding.transform.eulerAngles = seedHolder.eulerAngles;
+
+            holdingButton.SetActive(true);
+
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                holding = false;
-                currentHolding = null;
+                DropHeldItem();
             }
+        }
+        else
+        {
+            holdingButton.SetActive(false);
         }
 
         anim.SetFloat("Speed", this.GetComponent<Rigidbody2D>().velocity.magnitude);
@@ -32,6 +40,12 @@ public class GiantScript : MonoBehaviour {
         Destroy(currentHolding);
         currentHolding = Instantiate(newHolding, seedHolder.position, seedHolder.rotation);
         holding = true;
+    }
+
+    public void DropHeldItem()
+    {
+        holding = false;
+        currentHolding = null;
     }
 
 }

@@ -2,9 +2,9 @@ fileFormatVersion: 2
 guid: b348e090b9ed5284b9ca0e08ad1fece8
 TextureImporter:
   fileIDToRecycleName:
-    21300000: egg_Prototype_sprites_0
-    21300002: egg_Prototype_sprites_1
-    21300004: egg_Prototype_sprites_2
+    21300000: WhiteEgg
+    21300002: GreyEgg
+    21300004: BlueEgg
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -120,7 +120,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: egg_Prototype_sprites_0
+      name: WhiteEgg
       rect:
         serializedVersion: 2
         x: 1
@@ -140,7 +140,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: egg_Prototype_sprites_1
+      name: GreyEgg
       rect:
         serializedVersion: 2
         x: 264
@@ -160,7 +160,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: egg_Prototype_sprites_2
+      name: BlueEgg
       rect:
         serializedVersion: 2
         x: 518

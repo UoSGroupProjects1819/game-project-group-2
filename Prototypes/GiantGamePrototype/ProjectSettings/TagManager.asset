@@ -10,6 +10,8 @@ TagManager:
   - Creature
   - wall
   - Tree
+  - Inventory
+  - HUD
   layers:
   - Default
   - TransparentFX

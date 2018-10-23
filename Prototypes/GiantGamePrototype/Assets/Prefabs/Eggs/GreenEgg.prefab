@@ -160,7 +160,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69aa8c25962cf324da80e5f71486e3c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  creatureToSpawn: {fileID: 1736884755885802, guid: 178f8e2999b8faf42a71640b9c37c6f1,
+  creatureToSpawn: {fileID: 1020344389139656, guid: 38349a049a17358418fdbafc389409e7,
     type: 2}
   spawnDelay: 3
   IS: {fileID: 0}

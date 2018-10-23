@@ -18,10 +18,16 @@ public class IngredientButton : MonoBehaviour {
         thisIngredient = newIngredient;
         childImage.sprite = thisIngredient.sprite;
         childAmtCounter.text = "x" + thisIngredient.amt;
+
+        if(thisIngredient.amt <= 0)
+        {
+            this.GetComponent<Button>().interactable = false;
+        }
     }
 
     public void CraftingClick()
     {
         IS.SetCraftingIngredient(thisIngredient);
     }
+
 }

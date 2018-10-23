@@ -17,10 +17,30 @@ public class InventoryEggButton : MonoBehaviour {
         thisEgg = newEgg;
         childImage.sprite = thisEgg.sprite;
         childAmtCounter.text = "x" + thisEgg.amt;
+        IS = newIS;
+        if (thisEgg.amt <= 0)
+        {
+            this.GetComponent<Button>().interactable = false;
+        }
     }
 
     public void CraftingClick()
     {
         IS.SetCraftingObject(thisEgg);
+    }
+
+    public void SpawnEgg()
+    {
+        GameObject Giant = GameObject.FindGameObjectWithTag("Giant");
+
+        if (Giant.GetComponent<GiantScript>().currentHolding == null)
+        {
+            Giant.GetComponent<GiantScript>().SetCurrentHolding(thisEgg.objectToSpawn);
+            thisEgg.amt -= 1;
+            IS.RemoveEgg(thisEgg);
+            IS.UpdateEggUI(this.transform.parent.gameObject);
+            IS.gameObject.SetActive(false);
+            IS.HUD.SetActive(true);
+        }
     }
 }

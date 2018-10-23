@@ -17,10 +17,32 @@ public class InventorySeedButton : MonoBehaviour {
         thisSeed = newSeed;
         childImage.sprite = thisSeed.sprite;
         childAmtCounter.text = "x" + thisSeed.amt;
+
+        IS = newIS;
+
+        if (thisSeed.amt <= 0)
+        {
+            this.GetComponent<Button>().interactable = false;
+        }
     }
 
     public void CraftingClick()
     {
         IS.SetCraftingObject(thisSeed);
+    }
+
+    public void SpawnSeed()
+    {
+        GameObject Giant = GameObject.FindGameObjectWithTag("Giant");
+        if (Giant.GetComponent<GiantScript>().currentHolding == null)
+        {
+            Giant.GetComponent<GiantScript>().SetCurrentHolding(thisSeed.objectToSpawn);
+            thisSeed.amt -= 1;
+
+            IS.RemoveSeed(thisSeed);
+            IS.UpdateSeedUI(this.transform.parent.gameObject);
+            IS.gameObject.SetActive(false);
+            IS.HUD.SetActive(true);
+        }
     }
 }
