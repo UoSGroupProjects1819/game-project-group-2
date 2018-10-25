@@ -39,8 +39,8 @@ public class InventoryEggButton : MonoBehaviour {
             thisEgg.amt -= 1;
             IS.RemoveEgg(thisEgg);
             IS.UpdateEggUI(this.transform.parent.gameObject);
-            IS.gameObject.SetActive(false);
-            IS.HUD.SetActive(true);
+            IS.inventoryPanel.SetActive(false);
+            IS.HUDPanel.SetActive(true);
         }
     }
 }

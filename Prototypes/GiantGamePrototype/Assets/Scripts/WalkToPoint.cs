@@ -8,9 +8,9 @@ public class WalkToPoint : MonoBehaviour
     Vector2 targetPoint;
     public float speed;
 
-    GameObject target;
-
     Rigidbody2D RB;
+
+    public GameObject HUD;
 
     // Use this for initialization
     void Start()
@@ -22,7 +22,7 @@ public class WalkToPoint : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
-        if (targetPoint != (Vector2)this.transform.position && targetPoint != null)
+        if (targetPoint != (Vector2)this.transform.position)
         {
 
             if (targetPoint.x > this.transform.position.x && targetPoint.x - this.transform.position.x > 0.1f)
@@ -63,11 +63,13 @@ public class WalkToPoint : MonoBehaviour
             //Camera.main.GetComponent<CameraPositions>().useDynamic = false;
         }
 
-        MoveToPoint();
+        GetPoint();
     }
 
-    public void MoveToPoint()
+    public void GetPoint()
     {
+        if (!HUD.activeSelf){ return; }
+
         Touch[] Touches = Input.touches;
 
         Vector2 touchPos = Vector2.zero;
@@ -93,11 +95,11 @@ public class WalkToPoint : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    /*private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Interactable" && collision.gameObject == target)
         {
             targetPoint = this.transform.position;
         }
-    }
+    }*/
 }

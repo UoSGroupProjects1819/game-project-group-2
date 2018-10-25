@@ -18,8 +18,7 @@ public class EggScript : MonoBehaviour {
             spawnDelay -= Time.deltaTime;
             if(spawnDelay <= 0)
             {
-                GameObject newCreature = Instantiate(creatureToSpawn, this.transform.position, Quaternion.identity);
-                IS.AddCreature(newCreature);
+                Instantiate(creatureToSpawn, this.transform.position, Quaternion.identity);
                 Destroy(this.gameObject);
             }
         }

@@ -41,8 +41,8 @@ public class InventorySeedButton : MonoBehaviour {
 
             IS.RemoveSeed(thisSeed);
             IS.UpdateSeedUI(this.transform.parent.gameObject);
-            IS.gameObject.SetActive(false);
-            IS.HUD.SetActive(true);
+            IS.inventoryPanel.SetActive(false);
+            IS.HUDPanel.SetActive(true);
         }
     }
 }

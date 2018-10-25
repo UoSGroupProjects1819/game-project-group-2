@@ -33,7 +33,17 @@ public class InventoryScript : MonoBehaviour {
         public Seed seedToMake;
     }
 
-    public GameObject HUD;
+    [System.Serializable]
+    public struct Fruit
+    {
+        public string name;
+        public Sprite sprite;
+        public int amt;
+    }
+
+    public GameObject HUDPanel;
+    public GameObject inventoryPanel;
+    public GameObject fruitPanel;
 
     [SerializeField]
     public List<Egg> eggsInInventory;
@@ -46,13 +56,23 @@ public class InventoryScript : MonoBehaviour {
     [Space(10)]
 
     [SerializeField]
-    public List<Ingredient> IngredientsInInventory;
+    public List<Ingredient> ingredientsInInventory;
+
+    [Space(10)]
+
+    [SerializeField]
+    public List<Fruit> fruitInInventory;
 
     [Space(20)]
 
     public GameObject inventroryEggButton;
     public GameObject inventrorySeedButton;
     public GameObject ingredientButton;
+    public GameObject fruitButton;
+
+    public GameObject EggUI;
+    public GameObject SeedUI;
+    public GameObject FruitUI;
 
     public void UpdateEggUI(GameObject eggButtonPanel)
     {
@@ -83,7 +103,6 @@ public class InventoryScript : MonoBehaviour {
 
         Seed seed = seedsInInventory[0];
         buttons[1].GetComponent<InventorySeedButton>().SetUpButton(this, seed);
-
     }
 
     public void UpdateSeedUI(GameObject seedButtonPanel)
@@ -107,12 +126,27 @@ public class InventoryScript : MonoBehaviour {
             Destroy(item.gameObject);
         }
 
-        foreach (Ingredient ingredient in IngredientsInInventory)
+        foreach (Ingredient ingredient in ingredientsInInventory)
         {
             GameObject newButton = Instantiate(ingredientButton, ingredientButtonPanel.transform);
             newButton.GetComponent<IngredientButton>().SetUpButton(this, ingredient);
         }
     }
+
+    public void UpdateFruitUI(GameObject fruitButtonPanel, CreatureScript creature)
+    {
+        foreach (Transform item in fruitButtonPanel.transform)
+        {
+            Destroy(item.gameObject);
+        }
+
+        foreach (Fruit fruit in fruitInInventory)
+        {
+            GameObject newButton = Instantiate(fruitButton, fruitButtonPanel.transform);
+            newButton.GetComponent<FruitButton>().SetUpButton(this, fruit, creature);
+        }
+    }
+
 
     public CraftingObject craftingObject;
     public CraftingIngredient craftingIngredient;
@@ -120,16 +154,16 @@ public class InventoryScript : MonoBehaviour {
 
     public void UpdateIngredient(Ingredient ingredient)
     {
-        for (int i = 0; i < IngredientsInInventory.Count; i++)
+        for (int i = 0; i < ingredientsInInventory.Count; i++)
         {
             Ingredient ingredientToEdit = new Ingredient();
-            if (IngredientsInInventory[i].name == ingredient.name)
+            if (ingredientsInInventory[i].name == ingredient.name)
             {
-                ingredientToEdit = IngredientsInInventory[i];
+                ingredientToEdit = ingredientsInInventory[i];
 
                 ingredientToEdit.amt -= 1;
-                IngredientsInInventory.RemoveAt(i);
-                IngredientsInInventory.Insert(i, ingredientToEdit);
+                ingredientsInInventory.RemoveAt(i);
+                ingredientsInInventory.Insert(i, ingredientToEdit);
                 break;
             }
         }
@@ -179,6 +213,28 @@ public class InventoryScript : MonoBehaviour {
         }
     }
 
+    public void AddFruit(Fruit fruit)
+    {
+        bool newFruit = true;
+        for (int i = 0; i < fruitInInventory.Count; i++)
+        {
+            if (fruitInInventory[i].name == fruit.name)
+            {
+                newFruit = false;
+                Fruit fruitToEdit = fruitInInventory[i];
+                fruitToEdit.amt += 1;
+                fruitInInventory[i] = fruitToEdit;
+                Debug.Log("Added");
+                break;
+            }
+        }
+
+        if (newFruit)
+        {
+            fruitInInventory.Add(fruit);
+        }
+    }
+
     public void RemoveSeed(Seed seed)
     {
         for (int i = 0; i < seedsInInventory.Count; i++)
@@ -213,19 +269,35 @@ public class InventoryScript : MonoBehaviour {
         }
     }
 
+    public void RemoveFruit(Fruit fruit)
+    {
+        for (int i = 0; i < fruitInInventory.Count; i++)
+        {
+            Fruit fruitToEdit = new Fruit();
+            if (fruitInInventory[i].name == fruit.name)
+            {
+                fruitToEdit = fruitInInventory[i];
+
+                fruitToEdit.amt -= 1;
+                fruitInInventory.RemoveAt(i);
+                fruitInInventory.Insert(i, fruitToEdit);
+                break;
+            }
+        }
+    }
+
     public void RemoveIngredient(Ingredient ingredient)
     {
-        for (int i = 0; i < IngredientsInInventory.Count; i++)
+        for (int i = 0; i < ingredientsInInventory.Count; i++)
         {
             Ingredient ingredientToEdit = new Ingredient();
-            if (IngredientsInInventory[i].name == ingredient.name)
+            if (ingredientsInInventory[i].name == ingredient.name)
             {
-                Debug.Log("done ingredient");
-                ingredientToEdit = IngredientsInInventory[i];
+                ingredientToEdit = ingredientsInInventory[i];
 
                 ingredientToEdit.amt -= 1;
-                IngredientsInInventory.RemoveAt(i);
-                IngredientsInInventory.Insert(i, ingredientToEdit);
+                ingredientsInInventory.RemoveAt(i);
+                ingredientsInInventory.Insert(i, ingredientToEdit);
                 break;
             }
         }
@@ -253,5 +325,4 @@ public class InventoryScript : MonoBehaviour {
         craftingIngredient.SetSprite();
         craftingOutcome.GetOutcome();
     }
-
 }

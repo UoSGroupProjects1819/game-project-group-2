@@ -61,16 +61,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\CraftingIngredient.cs" />
-    <Compile Include="Assets\CraftingObject.cs" />
-    <Compile Include="Assets\CraftingOutcome.cs" />
-    <Compile Include="Assets\InteractionGlowScript.cs" />
     <Compile Include="Assets\Scripts\CameraPositions.cs" />
+    <Compile Include="Assets\Scripts\CraftingIngredient.cs" />
+    <Compile Include="Assets\Scripts\CraftingObject.cs" />
+    <Compile Include="Assets\Scripts\CraftingOutcome.cs" />
     <Compile Include="Assets\Scripts\CreatureScript.cs" />
     <Compile Include="Assets\Scripts\DayNightCycle.cs" />
     <Compile Include="Assets\Scripts\EggScript.cs" />
+    <Compile Include="Assets\Scripts\FruitButton.cs" />
     <Compile Include="Assets\Scripts\GiantScript.cs" />
     <Compile Include="Assets\Scripts\IngredientButton.cs" />
+    <Compile Include="Assets\Scripts\InteractionGlowScript.cs" />
+    <Compile Include="Assets\Scripts\InventoryButtonObject.cs" />
     <Compile Include="Assets\Scripts\InventoryEggButton.cs" />
     <Compile Include="Assets\Scripts\InventoryScript.cs" />
     <Compile Include="Assets\Scripts\InventorySeedButton.cs" />
@@ -80,7 +82,7 @@
     <Compile Include="Assets\Scripts\SeedScript.cs" />
     <Compile Include="Assets\Scripts\TreeScript.cs" />
     <Compile Include="Assets\Scripts\WalkToPoint.cs" />
-    <Compile Include="Assets\WorldSelector.cs" />
+    <Compile Include="Assets\Scripts\WorldSelector.cs" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Properties.cginc" />

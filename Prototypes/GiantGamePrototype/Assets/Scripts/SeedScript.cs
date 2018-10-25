@@ -19,8 +19,7 @@ public class SeedScript : MonoBehaviour {
             spawnDelay -= Time.deltaTime;
             if (spawnDelay <= 0)
             {
-                GameObject newTree = Instantiate(treeToSpawn, this.transform.position, Quaternion.identity);
-                IS.AddPlant(newTree);
+                Instantiate(treeToSpawn, this.transform.position, Quaternion.identity);
                 Destroy(this.gameObject);
             }
         }
