@@ -5,6 +5,10 @@ using UnityEngine.UI;
 
 public class CreatureScript : MonoBehaviour {
 
+    Rigidbody2D RB;
+    InventoryScript IS;
+    StatManager SM;
+
     Vector2 targetPoint;
 
     public float maxWaitTime;
@@ -17,10 +21,14 @@ public class CreatureScript : MonoBehaviour {
     public string hatedFruit;
 
     public float speed;
+    public float speedMultiplier = 1;
+
+    public Transform starPanel;
+    public GameObject star;
 
     public GameObject gift;
 
-    Rigidbody2D RB;
+    public SpriteRenderer face;
 
     [Space(10)]
     [Header("Happiness")]
@@ -33,7 +41,10 @@ public class CreatureScript : MonoBehaviour {
     {
         public string name;
         public Sprite sprite;
+        public Sprite faceSprite;
+        public float speedMultiplier;
         public float amt;
+        public bool canBreed;
     }
 
     public List<HappinessLevel> happinessLevels;
@@ -41,37 +52,57 @@ public class CreatureScript : MonoBehaviour {
 
     [Space(10)]
     [Header("Stats")]
+    int Stars = 1;
     public int Intelligence = 0;
     public int Agility = 0;
     public int Strength = 0;
     public int Style = 0;
     public int Stamina = 0;
 
-    [Space (10)]
-
-    public Text IntelligenceText;
-    public Text AgilityText;
-    public Text StrengthText;
-    public Text StyleText;
-    public Text StaminaText;
-
-    [Space(10)]
-
-    public Image IntelligenceImage;
-    public Image AgilityImage;
-    public Image StrengthImage;
-    public Image StyleImage;
-    public Image StaminaImage;
+    Image IntelligenceImage;
+    Image AgilityImage;
+    Image StrengthImage;
+    Image StyleImage;
+    Image StaminaImage;
 
 
-    InventoryScript IS;
 
     void Start ()
     {
         //SortHappniessLevels();
         IS = GameObject.FindGameObjectWithTag("Inventory").GetComponent<InventoryScript>();
         RB = this.GetComponent<Rigidbody2D>();
+        SM = GameObject.FindGameObjectWithTag("StatManager").GetComponent<StatManager>();
+
+        IntelligenceImage = SM.IntelligenceImage;
+        AgilityImage = SM.AgilityImage;
+        StrengthImage = SM.StrengthImage;
+        StyleImage = SM.StyleImage;
+        StaminaImage = SM.StaminaImage;
+        starPanel = SM.StarPanel;
+
+        Intelligence = GetRandomStat(IntelligenceImage);
+        Agility = GetRandomStat(AgilityImage);
+        Strength = GetRandomStat(StrengthImage);
+        Style = GetRandomStat(StyleImage);
+        Stamina = GetRandomStat(StaminaImage);
+
+        for (int i = 0; i < Stars; i++)
+        {
+            Instantiate(star, starPanel);
+        }
+
         targetPoint = new Vector2(Random.Range(this.transform.position.x - maxWalkDistance, this.transform.position.x + maxWalkDistance), this.transform.position.y);
+
+    }
+
+    void TestStatUpdate()
+    {
+        Intelligence = GetRandomStat(IntelligenceImage);
+        Agility = GetRandomStat(AgilityImage);
+        Strength = GetRandomStat(StrengthImage);
+        Style = GetRandomStat(StyleImage);
+        Stamina = GetRandomStat(StaminaImage);
     }
 
     void Update ()
@@ -80,6 +111,37 @@ public class CreatureScript : MonoBehaviour {
         GetTouch();
         Movement();
         happinessText.rectTransform.localScale = new Vector3(this.transform.localScale.x, 1);
+        if (Input.GetKeyDown(KeyCode.A)) { TestStatUpdate(); }
+    }
+
+    int GetRandomStat(Image imageToSet)
+    {
+        int maxChance = 0;
+        foreach (var rank in SM.Ranks)
+        {
+            maxChance += rank.chance;
+        }
+
+        int randomInt = Random.Range(0, maxChance);
+        int i = 0;
+
+        int lowerRank = 0;
+        StatManager.StatRank chosenRank = new StatManager.StatRank();
+        foreach (var rank in SM.Ranks)
+        {
+            i += rank.chance;
+            if(i > randomInt)
+            {
+                chosenRank = rank;
+                break;
+            }
+            else
+            {
+                lowerRank = rank.amt;
+            }
+        }
+        imageToSet.sprite = chosenRank.sprite;
+        return Random.Range(lowerRank, chosenRank.amt);
     }
 
     void UpdateSaturation()
@@ -108,13 +170,13 @@ public class CreatureScript : MonoBehaviour {
             //Debug.Log(this.transform.name + " is moving to " + targetPoint);
             if (targetPoint.x > this.transform.position.x)
             {
-                RB.velocity = new Vector2(speed, 0);
+                RB.velocity = new Vector2(speed * speedMultiplier, 0);
                 transform.localScale = new Vector2(1, 1);
             }
             else
             if (targetPoint.x < this.transform.position.x)
             {
-                RB.velocity = new Vector2(-speed, 0);
+                RB.velocity = new Vector2(-speed * speedMultiplier, 0);
                 transform.localScale = new Vector2(-1, 1);
             }
             else
@@ -167,6 +229,9 @@ public class CreatureScript : MonoBehaviour {
         }
         currentHappinessLevel = highestLevel;
 
+        SM.breedNote.SetActive(currentHappinessLevel.canBreed);
+        face.sprite = currentHappinessLevel.faceSprite;
+        speedMultiplier = currentHappinessLevel.speedMultiplier;
         happinessText.text = currentHappinessLevel.name;
     }
 

@@ -12,6 +12,7 @@ TagManager:
   - Tree
   - Inventory
   - HUD
+  - StatManager
   layers:
   - Default
   - TransparentFX

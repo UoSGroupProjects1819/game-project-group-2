@@ -2,13 +2,13 @@ fileFormatVersion: 2
 guid: 4be3976804ab73a4bbd91b06e61a22e6
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Affinity_Ranking_Star_0
-    21300002: Affinity_Ranking_Star_1
-    21300004: Affinity_Ranking_Star_2
-    21300006: Affinity_Ranking_Star_3
-    21300008: Affinity_Ranking_Star_4
-    21300010: Affinity_Ranking_Star_5
-    21300012: Affinity_Ranking_Star_6
+    21300000: Rank A
+    21300002: Rank B
+    21300004: Rank C
+    21300006: Rank D
+    21300008: Rank E
+    21300010: Rank F
+    21300012: Star
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -124,7 +124,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Affinity_Ranking_Star_0
+      name: Rank A
       rect:
         serializedVersion: 2
         x: 5
@@ -132,7 +132,7 @@ TextureImporter:
         width: 80
         height: 100
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -144,7 +144,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Affinity_Ranking_Star_1
+      name: Rank B
       rect:
         serializedVersion: 2
         x: 87
@@ -152,7 +152,7 @@ TextureImporter:
         width: 80
         height: 100
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -164,7 +164,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Affinity_Ranking_Star_2
+      name: Rank C
       rect:
         serializedVersion: 2
         x: 167
@@ -172,7 +172,7 @@ TextureImporter:
         width: 80
         height: 100
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -184,7 +184,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Affinity_Ranking_Star_3
+      name: Rank D
       rect:
         serializedVersion: 2
         x: 253
@@ -192,7 +192,7 @@ TextureImporter:
         width: 80
         height: 100
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -204,7 +204,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Affinity_Ranking_Star_4
+      name: Rank E
       rect:
         serializedVersion: 2
         x: 328
@@ -212,7 +212,7 @@ TextureImporter:
         width: 80
         height: 100
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -224,7 +224,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Affinity_Ranking_Star_5
+      name: Rank F
       rect:
         serializedVersion: 2
         x: 0
@@ -232,7 +232,7 @@ TextureImporter:
         width: 80
         height: 100
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -244,7 +244,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Affinity_Ranking_Star_6
+      name: Star
       rect:
         serializedVersion: 2
         x: 100
@@ -252,7 +252,7 @@ TextureImporter:
         width: 106
         height: 105
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
