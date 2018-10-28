@@ -22,11 +22,10 @@ public class CreatureScript : MonoBehaviour {
 
     Rigidbody2D RB;
 
-    public Text happinessText;
-
-    //bool giftGiven = false;
-
+    [Space(10)]
+    [Header("Happiness")]
     public float happiness = 50;
+    public Text happinessText;
     public float happinessLossSpeed;
 
     [System.Serializable]
@@ -37,8 +36,33 @@ public class CreatureScript : MonoBehaviour {
         public float amt;
     }
 
-    public HappinessLevel currentHappinessLevel;
     public List<HappinessLevel> happinessLevels;
+    public HappinessLevel currentHappinessLevel;
+
+    [Space(10)]
+    [Header("Stats")]
+    public int Intelligence = 0;
+    public int Agility = 0;
+    public int Strength = 0;
+    public int Style = 0;
+    public int Stamina = 0;
+
+    [Space (10)]
+
+    public Text IntelligenceText;
+    public Text AgilityText;
+    public Text StrengthText;
+    public Text StyleText;
+    public Text StaminaText;
+
+    [Space(10)]
+
+    public Image IntelligenceImage;
+    public Image AgilityImage;
+    public Image StrengthImage;
+    public Image StyleImage;
+    public Image StaminaImage;
+
 
     InventoryScript IS;
 
@@ -55,6 +79,7 @@ public class CreatureScript : MonoBehaviour {
         ReduceHappiness();
         GetTouch();
         Movement();
+        happinessText.rectTransform.localScale = new Vector3(this.transform.localScale.x, 1);
     }
 
     void UpdateSaturation()
@@ -143,7 +168,6 @@ public class CreatureScript : MonoBehaviour {
         currentHappinessLevel = highestLevel;
 
         happinessText.text = currentHappinessLevel.name;
-        happinessText.rectTransform.localScale = new Vector3(this.transform.localScale.x, 1);
     }
 
     public void GetTouch()

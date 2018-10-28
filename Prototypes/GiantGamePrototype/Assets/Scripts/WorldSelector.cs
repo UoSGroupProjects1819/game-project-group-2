@@ -6,13 +6,8 @@ public class WorldSelector : MonoBehaviour {
 
     public GameObject[] islands;
 
-	// Use this for initialization
-	void Start ()
-    {
-		
-	}
-	
-	// Update is called once per frame
+    public GameObject SelectedIsland;
+
 	void Update ()
     {
         if (Input.GetKeyDown(KeyCode.Q))
