@@ -68,11 +68,9 @@ public class InventoryScript : MonoBehaviour {
     public GameObject inventroryEggButton;
     public GameObject inventrorySeedButton;
     public GameObject ingredientButton;
-    public GameObject fruitButton;
 
     public GameObject EggUI;
     public GameObject SeedUI;
-    public GameObject FruitUI;
 
     public void UpdateEggUI(GameObject eggButtonPanel)
     {
@@ -132,21 +130,6 @@ public class InventoryScript : MonoBehaviour {
             newButton.GetComponent<IngredientButton>().SetUpButton(this, ingredient);
         }
     }
-
-    public void UpdateFruitUI(GameObject fruitButtonPanel, CreatureScript creature)
-    {
-        foreach (Transform item in fruitButtonPanel.transform)
-        {
-            Destroy(item.gameObject);
-        }
-
-        foreach (Fruit fruit in fruitInInventory)
-        {
-            GameObject newButton = Instantiate(fruitButton, fruitButtonPanel.transform);
-            newButton.GetComponent<FruitButton>().SetUpButton(this, fruit, creature);
-        }
-    }
-
 
     public CraftingObject craftingObject;
     public CraftingIngredient craftingIngredient;

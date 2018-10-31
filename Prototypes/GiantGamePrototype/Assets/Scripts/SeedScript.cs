@@ -8,9 +8,14 @@ public class SeedScript : MonoBehaviour {
 
     public float spawnDelay;
 
-    public IslandScript IS;
+    public WorldSelector WS;
 
     bool readyToSpawn;
+
+    private void Start()
+    {
+        WS = GameObject.FindGameObjectWithTag("World").GetComponent<WorldSelector>();
+    }
 
     void Update()
     {
@@ -19,7 +24,7 @@ public class SeedScript : MonoBehaviour {
             spawnDelay -= Time.deltaTime;
             if (spawnDelay <= 0)
             {
-                Instantiate(treeToSpawn, this.transform.position, Quaternion.identity);
+                Instantiate(treeToSpawn, this.transform.position, Quaternion.identity, WS.SelectedIsland.transform);
                 Destroy(this.gameObject);
             }
         }
@@ -30,7 +35,6 @@ public class SeedScript : MonoBehaviour {
         if (collision.gameObject.tag == "Ground")
         {
             readyToSpawn = true;
-            IS = collision.gameObject.GetComponentInParent<IslandScript>();
         }
     }
 }

@@ -13,6 +13,9 @@ TagManager:
   - Inventory
   - HUD
   - StatManager
+  - fruit
+  - TappableArea
+  - World
   layers:
   - Default
   - TransparentFX
@@ -29,8 +32,8 @@ TagManager:
   - Seed
   - Tree
   - Ingredient
-  - 
-  - 
+  - Fruit
+  - CollideWithFloor
   - 
   - 
   - 

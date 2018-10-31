@@ -23,18 +23,16 @@ public class CreatureScript : MonoBehaviour {
     public float speed;
     public float speedMultiplier = 1;
 
-    public Transform starPanel;
+    Transform starPanel;
     public GameObject star;
-
-    public GameObject gift;
 
     public SpriteRenderer face;
 
     [Space(10)]
     [Header("Happiness")]
     public float happiness = 50;
-    public Text happinessText;
     public float happinessLossSpeed;
+    Image happinessImage;
 
     [System.Serializable]
     public struct HappinessLevel
@@ -43,21 +41,30 @@ public class CreatureScript : MonoBehaviour {
         public Sprite sprite;
         public Sprite faceSprite;
         public float speedMultiplier;
-        public float amt;
+        public int amt;
         public bool canBreed;
     }
 
+    [System.Serializable]
+    public struct Stat
+    {
+        public int amt;
+        public int level;
+        public StatManager.StatRank rank;
+        public int upgradePoints;
+    }
+
     public List<HappinessLevel> happinessLevels;
-    public HappinessLevel currentHappinessLevel;
+    HappinessLevel currentHappinessLevel;
 
     [Space(10)]
     [Header("Stats")]
+    public Stat Intelligence;
+    public Stat Agility;
+    public Stat Strength;
+    public Stat Style;
+    public Stat Stamina;
     int Stars = 1;
-    public int Intelligence = 0;
-    public int Agility = 0;
-    public int Strength = 0;
-    public int Style = 0;
-    public int Stamina = 0;
 
     Image IntelligenceImage;
     Image AgilityImage;
@@ -80,12 +87,14 @@ public class CreatureScript : MonoBehaviour {
         StyleImage = SM.StyleImage;
         StaminaImage = SM.StaminaImage;
         starPanel = SM.StarPanel;
+        happinessImage = SM.happinessImage;
 
         Intelligence = GetRandomStat(IntelligenceImage);
         Agility = GetRandomStat(AgilityImage);
         Strength = GetRandomStat(StrengthImage);
         Style = GetRandomStat(StyleImage);
         Stamina = GetRandomStat(StaminaImage);
+        UpdateStatUI();
 
         for (int i = 0; i < Stars; i++)
         {
@@ -93,7 +102,6 @@ public class CreatureScript : MonoBehaviour {
         }
 
         targetPoint = new Vector2(Random.Range(this.transform.position.x - maxWalkDistance, this.transform.position.x + maxWalkDistance), this.transform.position.y);
-
     }
 
     void TestStatUpdate()
@@ -110,12 +118,19 @@ public class CreatureScript : MonoBehaviour {
         ReduceHappiness();
         GetTouch();
         Movement();
-        happinessText.rectTransform.localScale = new Vector3(this.transform.localScale.x, 1);
+
+        if (SM.statsPanel.activeSelf && SM.targetCreature == this.gameObject)
+        {
+            Camera.main.gameObject.GetComponent<CameraPositions>().DynamicOrtho = 0.25f;
+            Camera.main.gameObject.GetComponent<CameraPositions>().Dynamic = this.transform.position + new Vector3(0.2f, 0, -10);
+        }
+
         if (Input.GetKeyDown(KeyCode.A)) { TestStatUpdate(); }
     }
 
-    int GetRandomStat(Image imageToSet)
+    Stat GetRandomStat(Image imageToSet)
     {
+        Stat newStat = new Stat();
         int maxChance = 0;
         foreach (var rank in SM.Ranks)
         {
@@ -125,7 +140,6 @@ public class CreatureScript : MonoBehaviour {
         int randomInt = Random.Range(0, maxChance);
         int i = 0;
 
-        int lowerRank = 0;
         StatManager.StatRank chosenRank = new StatManager.StatRank();
         foreach (var rank in SM.Ranks)
         {
@@ -135,13 +149,23 @@ public class CreatureScript : MonoBehaviour {
                 chosenRank = rank;
                 break;
             }
-            else
-            {
-                lowerRank = rank.amt;
-            }
         }
         imageToSet.sprite = chosenRank.sprite;
-        return Random.Range(lowerRank, chosenRank.amt);
+
+        newStat.amt = chosenRank.amt;
+        newStat.level = 1;
+        newStat.rank = chosenRank;
+        newStat.upgradePoints = 0;
+
+        return newStat;
+    }
+
+    int UpgradeStat()
+    {
+
+
+
+        return 0;
     }
 
     void UpdateSaturation()
@@ -200,7 +224,7 @@ public class CreatureScript : MonoBehaviour {
         }
     }
 
-    public void IncreaseHappiness(float amt, string fruit)
+    public void IncreaseHappiness(float amt, string fruit, string statToIncrease)
     {
         if(fruit == hatedFruit) { return; }
 
@@ -213,8 +237,139 @@ public class CreatureScript : MonoBehaviour {
 
         if(happiness > 100) { happiness = 100; }
 
+        switch (statToIncrease)
+        {
+            case "Intelligence":
+                Intelligence.upgradePoints++;
+                if(Intelligence.upgradePoints > 2)
+                {
+                    Intelligence.upgradePoints = 0;
+                    Intelligence.level++;
+                }
+                break;
+
+            case "Agility":
+                Agility.upgradePoints++;
+                if (Agility.upgradePoints > 2)
+                {
+                    Agility.upgradePoints = 0;
+                    Agility.level++;
+                }
+                break;
+
+            case "Strength":
+                Strength.upgradePoints++;
+                if (Strength.upgradePoints > 2)
+                {
+                    Strength.upgradePoints = 0;
+                    Strength.level++;
+                }
+                break;
+
+            case "Style":
+                Style.upgradePoints++;
+                if (Style.upgradePoints > 2)
+                {
+                    Style.upgradePoints = 0;
+                    Style.level++;
+                }
+                break;
+
+            case "Stamina":
+                Stamina.upgradePoints++;
+                if (Stamina.upgradePoints > 2)
+                {
+                    Stamina.upgradePoints = 0;
+                    Stamina.level++;
+                }
+                break;
+
+            default:
+                break;
+        }
+
+        UpdateStatUI();
         SetHappinessLevel();
         UpdateSaturation();
+    }
+
+    private void UpdateStatUI()
+    {
+        int i = 1;
+        foreach (Transform item in SM.intelligenceUpgradeMeter)
+        {
+            if (Intelligence.upgradePoints >= i)
+            {
+                item.GetComponent<Image>().color = Color.red;
+            }
+            else
+            {
+                item.GetComponent<Image>().color = Color.white;
+            }
+            i++;
+        }
+        SM.intelligenceLevel.text = "Lvl " + Intelligence.level;
+
+        i = 1;
+        foreach (Transform item in SM.agilityUpgradeMeter)
+        {
+            if (Agility.upgradePoints >= i)
+            {
+                item.GetComponent<Image>().color = Color.red;
+            }
+            else
+            {
+                item.GetComponent<Image>().color = Color.white;
+            }
+            i++;
+        }
+        SM.agilityLevel.text = "Lvl " + Agility.level;
+
+        i = 1;
+        foreach (Transform item in SM.strengthUpgradeMeter)
+        {
+            if (Strength.upgradePoints >= i)
+            {
+                item.GetComponent<Image>().color = Color.red;
+            }
+            else
+            {
+                item.GetComponent<Image>().color = Color.white;
+            }
+            i++;
+        }
+        SM.strengthLevel.text = "Lvl " + Strength.level;
+
+        i = 1;
+        foreach (Transform item in SM.styleUpgradeMeter)
+        {
+            if (Style.upgradePoints >= i)
+            {
+                item.GetComponent<Image>().color = Color.red;
+            }
+            else
+            {
+                item.GetComponent<Image>().color = Color.white;
+            }
+            i++;
+        }
+        SM.styleLevel.text = "Lvl " + Style.level;
+
+        i = 1;
+        foreach (Transform item in SM.staminaUpgradeMeter)
+        {
+            if (Stamina.upgradePoints >= i)
+            {
+                item.GetComponent<Image>().color = Color.red;
+            }
+            else
+            {
+                item.GetComponent<Image>().color = Color.white;
+            }
+            i++;
+        }
+        SM.staminaLevel.text = "Lvl " + Stamina.level;
+
     }
 
     void SetHappinessLevel()
@@ -229,10 +384,10 @@ public class CreatureScript : MonoBehaviour {
         }
         currentHappinessLevel = highestLevel;
 
+        happinessImage.sprite = currentHappinessLevel.sprite;
         SM.breedNote.SetActive(currentHappinessLevel.canBreed);
         face.sprite = currentHappinessLevel.faceSprite;
         speedMultiplier = currentHappinessLevel.speedMultiplier;
-        happinessText.text = currentHappinessLevel.name;
     }
 
     public void GetTouch()
@@ -258,35 +413,14 @@ public class CreatureScript : MonoBehaviour {
 
         RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(touchPos), Vector2.zero);
 
-        if (hit && hit.transform.tag == "Creature")
+        if (hit && hit.transform == this.transform)
         {
-            IS.fruitPanel.SetActive(true);
-            IS.HUDPanel.SetActive(false);
-            IS.UpdateFruitUI(IS.FruitUI, this);
+            SM.statsPanel.SetActive(!SM.statsPanel.activeSelf);
+            UpdateStatUI();
+            Camera.main.gameObject.GetComponent<CameraPositions>().useDynamic = SM.statsPanel.activeSelf;
+            SM.targetCreature = this.gameObject;
         }
     }
-
-    /*void SortHappniessLevels()
-    {
-        List<HappinessLevel> unsortedLevels = happinessLevels;
-        List<HappinessLevel> sortedLevels = new List<HappinessLevel>();
-        HappinessLevel lowest = new HappinessLevel();
-        for (int i = 0; i < happinessLevels.Count; i++)
-        {
-            foreach (var item in unsortedLevels)
-            {
-                    Debug.Log(lowest.name);
-                if (lowest.name == null || lowest.amt > item.amt)
-                {
-                    lowest = item;
-                }
-            }
-            sortedLevels.Add(lowest);
-            unsortedLevels.Remove(lowest);
-        }
-
-        happinessLevels = sortedLevels;
-    }*/
 
     private void OnCollisionEnter2D(Collision2D collision)
     {

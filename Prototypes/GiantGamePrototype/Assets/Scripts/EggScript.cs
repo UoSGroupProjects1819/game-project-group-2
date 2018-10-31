@@ -8,17 +8,22 @@ public class EggScript : MonoBehaviour {
 
     public float spawnDelay;
 
-    public IslandScript IS;
+    public WorldSelector WS;
 
     bool readyToSpawn;
 
-	void Update () {
+    private void Start()
+    {
+        WS = GameObject.FindGameObjectWithTag("World").GetComponent<WorldSelector>();
+    }
+
+    void Update () {
         if (readyToSpawn)
         {
             spawnDelay -= Time.deltaTime;
             if(spawnDelay <= 0)
             {
-                Instantiate(creatureToSpawn, this.transform.position, Quaternion.identity);
+                Instantiate(creatureToSpawn, this.transform.position, Quaternion.identity, WS.SelectedIsland.transform);
                 Destroy(this.gameObject);
             }
         }
@@ -29,7 +34,6 @@ public class EggScript : MonoBehaviour {
         if (collision.gameObject.tag == "Ground")
         {
             readyToSpawn = true;
-            IS = collision.gameObject.GetComponentInParent<IslandScript>();
         }
     }
 }

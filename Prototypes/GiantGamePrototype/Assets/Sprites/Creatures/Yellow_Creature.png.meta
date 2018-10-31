@@ -1,7 +1,10 @@
 fileFormatVersion: 2
 guid: e8fcc90beb4d0974f980991ec149c77c
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: Yellow Body
+    21300002: Yellow Face
+    21300004: Yellow Horns
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -115,11 +118,71 @@ TextureImporter:
     androidETC2FallbackOverride: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Yellow Body
+      rect:
+        serializedVersion: 2
+        x: 1336
+        y: 334
+        width: 308
+        height: 319
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4799463919345f548bc07832e4502721
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yellow Face
+      rect:
+        serializedVersion: 2
+        x: 1204
+        y: 836
+        width: 171
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db2044fbd631e3243b1ec49b0f6d7f41
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yellow Horns
+      rect:
+        serializedVersion: 2
+        x: 1513
+        y: 816
+        width: 240
+        height: 123
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e9e8f7ebe3d4d7848ad077a0e3921c79
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 719da99fb81475148915b17b67c3254d
     vertices: []
     indices: 
     edges: []

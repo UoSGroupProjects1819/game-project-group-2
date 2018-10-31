@@ -30,10 +30,7 @@ public class CameraPositions : MonoBehaviour {
 
     private void Update()
     {
-        if (!useDynamic)
-        {
-            MoveCamera();
-        }
+        MoveCamera();
     }
 
     // Update is called once per frame

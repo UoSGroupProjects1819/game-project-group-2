@@ -1,7 +1,10 @@
 fileFormatVersion: 2
 guid: 967052f4d048b7640b34e5794974e91d
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: Blue Body
+    21300002: Blue Face
+    21300004: Blue Horns
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -115,11 +118,71 @@ TextureImporter:
     androidETC2FallbackOverride: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Blue Body
+      rect:
+        serializedVersion: 2
+        x: 1336
+        y: 334
+        width: 309
+        height: 319
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf95b7607fa0da94c8a43c94989a79b4
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blue Face
+      rect:
+        serializedVersion: 2
+        x: 1205
+        y: 837
+        width: 170
+        height: 154
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e444d5155baaafd4fbd9c277450fe2eb
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blue Horns
+      rect:
+        serializedVersion: 2
+        x: 1513
+        y: 816
+        width: 240
+        height: 123
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a418b335ab04a2f48a1fc9019da27034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 892c219de73b39240ad96d1af8da9533
     vertices: []
     indices: 
     edges: []

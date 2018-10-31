@@ -35,6 +35,8 @@ public class WorldSelector : MonoBehaviour {
             item.SetActive(false);
         }
 
+        SelectedIsland = islands[id];
+        
         islands[id].SetActive(true);
     }
 }
