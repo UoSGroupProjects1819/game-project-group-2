@@ -6,11 +6,11 @@ using UnityEngine.UI;
 public class CraftingIngredient : MonoBehaviour {
 
 
-    public InventoryScript.Ingredient ingredient;
+    public IngredientInInventory ingredient;
 
 
     public void SetSprite()
     {
-        this.GetComponent<Image>().sprite = ingredient.sprite;
+        this.GetComponent<Image>().sprite = InventoryScript.Instance.FindIngredient(ingredient.name).sprite;
     }
 }

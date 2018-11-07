@@ -45,4 +45,19 @@ public class StatManager : MonoBehaviour {
     public Text styleLevel;
     public Text staminaLevel;
 
+    public StatRank FindRank(string rankLetter)
+    {
+        foreach (var rank in Ranks)
+        {
+            if(rank.name == rankLetter)
+            {
+                return rank;
+            }
+        }
+
+        Debug.Log("Couldn't Find Rank");
+
+        return new StatRank();
+    } 
+
 }

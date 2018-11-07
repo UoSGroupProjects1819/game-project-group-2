@@ -52,7 +52,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1532342973861800}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.9909527, y: 0.4143359, z: 0}
+  m_LocalPosition: {x: 1.3683922, y: 0.506068, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4292787309740090}
@@ -104,7 +104,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.000002026558, y: -0.0666322}
+  m_Offset: {x: 0.000002026558, y: 0.1553562}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -115,7 +115,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.32063186, y: 0.3191602}
+  m_Size: {x: 0.32063186, y: 0.30844778}
   m_EdgeRadius: 0
 --- !u!114 &114665770400740054
 MonoBehaviour:
@@ -131,7 +131,7 @@ MonoBehaviour:
   treeToSpawn: {fileID: 1162589537759388, guid: 7a529a06042bd1a45ab3710731586880,
     type: 2}
   spawnDelay: 3
-  IS: {fileID: 0}
+  WS: {fileID: 0}
 --- !u!212 &212931518911313110
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -172,7 +172,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.5, y: 1.5}
+  m_Size: {x: 0.5, y: 0.5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

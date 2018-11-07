@@ -11,6 +11,51 @@ Prefab:
   m_SourcePrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1577774115809660}
   m_IsPrefabAsset: 1
+--- !u!1 &1038520632694162
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4515578381224904}
+  m_Layer: 13
+  m_Name: FruitSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1245171435991738
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4591774711372534}
+  m_Layer: 13
+  m_Name: FruitSpawn (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1449193800385874
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4051534334250972}
+  m_Layer: 13
+  m_Name: FruitSpawn (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1577774115809660
 GameObject:
   m_ObjectHideFlags: 0
@@ -45,6 +90,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!4 &4051534334250972
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1449193800385874}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.279, y: 0.673, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4334604195511032}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4140226924743014
 Transform:
   m_ObjectHideFlags: 1
@@ -52,7 +110,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1880905189240140}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.007, y: 0.648, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4334604195511032}
@@ -65,12 +123,41 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1577774115809660}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.0654485, y: 0.34882337, z: 0.3960065}
+  m_LocalPosition: {x: 3.9541101, y: 0.32895964, z: 0.3960065}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4140226924743014}
+  - {fileID: 4515578381224904}
+  - {fileID: 4051534334250972}
+  - {fileID: 4591774711372534}
   m_Father: {fileID: 0}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4515578381224904
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1038520632694162}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.09100008, y: 0.49510443, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4334604195511032}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4591774711372534
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1245171435991738}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.027, y: 0.862, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4334604195511032}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &50505903057451610
 Rigidbody2D:
@@ -128,7 +215,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a93f93e64d6e4d4a897960ce4ac76ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  treeType: Purple
+  treeType: Teal Tree
+  spawnDelay: 10
+  treeSprites:
+  - {fileID: 21300024, guid: c8537f81f13ad34499b37e9ee5864eee, type: 3}
+  - {fileID: 21300014, guid: c8537f81f13ad34499b37e9ee5864eee, type: 3}
+  - {fileID: 21300004, guid: c8537f81f13ad34499b37e9ee5864eee, type: 3}
+  fruitToSpawn: {fileID: 1534438510011978, guid: 61290f267850d124091295f4d74995ce,
+    type: 2}
+  fruitSpawns:
+  - {fileID: 1038520632694162}
+  - {fileID: 1449193800385874}
+  - {fileID: 1245171435991738}
+  timeToGrow: 3
+  growTimer: 0
+  currentFruit: {fileID: 0}
+  thisLayer:
+    serializedVersion: 2
+    m_Bits: 8192
+  loadedFromSave: 0
 --- !u!212 &212501745727758246
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -163,13 +268,13 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 8
-  m_Sprite: {fileID: 21300002, guid: 2f8528dee33d7fa47a0bb0cbd3caaf85, type: 3}
+  m_SortingOrder: 4
+  m_Sprite: {fileID: 21300004, guid: c8537f81f13ad34499b37e9ee5864eee, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 5, y: 4}
+  m_Size: {x: 1.3333334, y: 1.3333334}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

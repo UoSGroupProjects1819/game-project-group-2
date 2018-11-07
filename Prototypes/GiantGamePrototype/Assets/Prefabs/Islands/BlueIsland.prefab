@@ -69,7 +69,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4686949667731000}
   - component: {fileID: 61030926484215034}
-  - component: {fileID: 114892711951199630}
+  - component: {fileID: 114575499355206396}
   m_Layer: 0
   m_Name: BlueIsland
   m_TagString: Untagged
@@ -385,6 +385,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 120
+--- !u!114 &114575499355206396
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1334400045678040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcc1a7baad9f856418c55734db89fc82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  islandID: 0
+  currentIslandPopulation: 0
+  maxIslandPopulation: 5
 --- !u!114 &114577445932605252
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -405,19 +419,6 @@ MonoBehaviour:
   cameraMaxRight: 3
   maxBound: -0.3
   minBound: 0.3
---- !u!114 &114892711951199630
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1334400045678040}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 77d56aeec38f0504d864f84210329cd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PlantsOnIsland: []
-  CreaturesOnIsland: []
 --- !u!212 &212429609603617302
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -454,7 +455,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 48138f36d7cb98046aaccc86f1b40df2, type: 3}
-  m_Color: {r: 0.23113209, g: 0.48339635, b: 1, a: 1}
+  m_Color: {r: 0.2971698, g: 0.5266653, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -500,7 +501,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: f9d0a73ed4bf9b5498937fce1e07705e, type: 3}
-  m_Color: {r: 0, g: 0.5247078, b: 1, a: 1}
+  m_Color: {r: 0.15566039, g: 0.59935266, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

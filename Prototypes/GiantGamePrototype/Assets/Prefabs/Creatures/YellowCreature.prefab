@@ -84,7 +84,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1020344389139656}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.4983854, y: 0.47022098, z: -0.029296875}
+  m_LocalPosition: {x: -2.3007028, y: 0.5390873, z: -0.029296875}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4229627853911974}
@@ -164,7 +164,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0008942485, y: -0.010023594}
+  m_Offset: {x: -0.0008942485, y: 0.00021892786}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -175,7 +175,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.30862486, y: 0.31006753}
+  m_Size: {x: 0.30862486, y: 0.2895825}
   m_EdgeRadius: 0
 --- !u!114 &114712874878137124
 MonoBehaviour:
@@ -188,22 +188,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9be3f2742deb1a940bf842af8586edaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  name: Yellow
+  type: Yellow Creature
   maxWaitTime: 2
   minWaitTime: 4
   maxWalkDistance: 1
   preferedFruit: Pear
   hatedFruit: Egg Plant
   speed: 0.5
-  speedMultiplier: 0
-  starPanel: {fileID: 0}
+  speedMultiplier: 1
+  targetFruit: {fileID: 0}
   star: {fileID: 1921820288615234, guid: 5c2f9dc26825e5b438ff0e64d4ee5a31, type: 2}
-  gift: {fileID: 1419133573812782, guid: fdde723b47681c94388cd7ecc4b79694, type: 2}
   face: {fileID: 212009323840516628, guid: f1aff7752e2cb074882e3896ee80921c, type: 2}
   happiness: 100
-  happinessText: {fileID: 114000796191100670, guid: f1aff7752e2cb074882e3896ee80921c,
-    type: 2}
-  happinessLossSpeed: 20
-  happinessImage: {fileID: 0}
+  happinessLossSpeed: 5
   happinessLevels:
   - name: Sad
     sprite: {fileID: 21300008, guid: e0676e5a9f064644cae84cf681d3f463, type: 3}
@@ -234,13 +232,6 @@ MonoBehaviour:
     faceSprite: {fileID: 21300002, guid: b995c35f63ab6634c96671e6342444be, type: 3}
     speedMultiplier: 1
     amt: 40
-    canBreed: 0
-  currentHappinessLevel:
-    name: 
-    sprite: {fileID: 0}
-    faceSprite: {fileID: 0}
-    speedMultiplier: 0
-    amt: 0
     canBreed: 0
   Intelligence:
     amt: 0
@@ -297,6 +288,7 @@ MonoBehaviour:
       maxAmtPerLevel: 0
       chance: 0
     upgradePoints: 0
+  Stars: 1
 --- !u!212 &212183549563668554
 SpriteRenderer:
   m_ObjectHideFlags: 1

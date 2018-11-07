@@ -16,6 +16,8 @@ TagManager:
   - fruit
   - TappableArea
   - World
+  - Meteor
+  - Gift
   layers:
   - Default
   - TransparentFX
@@ -34,9 +36,9 @@ TagManager:
   - Ingredient
   - Fruit
   - CollideWithFloor
-  - 
-  - 
-  - 
+  - TappableArea
+  - Gifts
+  - Meteor
   - 
   - 
   - 

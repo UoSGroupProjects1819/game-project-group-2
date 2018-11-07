@@ -16,22 +16,22 @@ public class CraftingOutcome : MonoBehaviour {
 
         if (craftingObject.thisObjectType == CraftingObject.ObjectType.egg)
         {
-            this.GetComponent<Image>().sprite = craftingIngredient.ingredient.eggToMake.sprite;
+            this.GetComponent<Image>().sprite = IS.FindEgg(IS.FindIngredient(craftingIngredient.ingredient.name).eggToMake).sprite;
         }
 
         if (craftingObject.thisObjectType == CraftingObject.ObjectType.seed)
         {
-            this.GetComponent<Image>().sprite = craftingIngredient.ingredient.seedToMake.sprite;
+            this.GetComponent<Image>().sprite = IS.FindSeed(IS.FindIngredient(craftingIngredient.ingredient.name).seedToMake).sprite;
         }
     }
 
     void ResetCraftingTable()
     {
-        craftingIngredient.ingredient = new InventoryScript.Ingredient();
+        craftingIngredient.ingredient = new IngredientInInventory();
         craftingIngredient.SetSprite();
 
-        craftingObject.seed = new InventoryScript.Seed();
-        craftingObject.egg = new InventoryScript.Egg();
+        craftingObject.seed = new SeedInInventory();
+        craftingObject.egg = new EggInInventory();
         craftingObject.thisObjectType = CraftingObject.ObjectType.egg;
         craftingObject.SetSprite();
 
@@ -43,14 +43,14 @@ public class CraftingOutcome : MonoBehaviour {
     {
         if(craftingObject.thisObjectType == CraftingObject.ObjectType.egg)
         {
-            IS.AddEgg(craftingIngredient.ingredient.eggToMake);
-            IS.RemoveEgg(IS.eggsInInventory[0]);
+            IS.AddEgg(IS.FindIngredient(craftingIngredient.ingredient.name).eggToMake);
+            IS.RemoveEgg(IS.inventory.eggs[0]);
         }
 
         if (craftingObject.thisObjectType == CraftingObject.ObjectType.seed)
         {
-            IS.AddSeed(craftingIngredient.ingredient.seedToMake);
-            IS.RemoveSeed(IS.seedsInInventory[0]);
+            IS.AddSeed(IS.FindIngredient(craftingIngredient.ingredient.name).seedToMake);
+            IS.RemoveSeed(IS.inventory.seeds[0]);
         }
 
         IS.RemoveIngredient(craftingIngredient.ingredient);

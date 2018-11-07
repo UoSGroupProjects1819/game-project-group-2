@@ -8,15 +8,16 @@ public class IngredientButton : MonoBehaviour {
     public Image childImage;
     public Text childAmtCounter;
 
-    InventoryScript.Ingredient thisIngredient;
+    IngredientInInventory thisIngredient;
 
     InventoryScript IS;
 
-    public void SetUpButton(InventoryScript newIS, InventoryScript.Ingredient newIngredient)
+    public void SetUpButton(IngredientInInventory newIngredient)
     {
-        IS = newIS;
+        IS = InventoryScript.Instance;
+        Debug.Log(IS.name);
         thisIngredient = newIngredient;
-        childImage.sprite = thisIngredient.sprite;
+        childImage.sprite = IS.FindIngredient(thisIngredient.name).sprite;
         childAmtCounter.text = "x" + thisIngredient.amt;
 
         if(thisIngredient.amt <= 0)
@@ -29,5 +30,4 @@ public class IngredientButton : MonoBehaviour {
     {
         IS.SetCraftingIngredient(thisIngredient);
     }
-
 }

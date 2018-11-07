@@ -10,14 +10,19 @@ public class InventoryEggButton : MonoBehaviour {
 
     public InventoryScript IS;
 
-    public InventoryScript.Egg thisEgg;
+    public EggInInventory thisEgg;
 
-    public void SetUpButton(InventoryScript newIS, InventoryScript.Egg newEgg)
+    void Start()
     {
+        
+    }
+
+    public void SetUpButton(EggInInventory newEgg)
+    {
+        IS = InventoryScript.Instance;
         thisEgg = newEgg;
-        childImage.sprite = thisEgg.sprite;
+        childImage.sprite = IS.FindEgg(thisEgg.name).sprite;
         childAmtCounter.text = "x" + thisEgg.amt;
-        IS = newIS;
         if (thisEgg.amt <= 0)
         {
             this.GetComponent<Button>().interactable = false;
@@ -32,11 +37,13 @@ public class InventoryEggButton : MonoBehaviour {
     public void SpawnEgg()
     {
         GameObject Giant = GameObject.FindGameObjectWithTag("Giant");
+        IslandScript island = WorldSelector.Instance.SelectedIsland.GetComponent<IslandScript>();
+
+        if (island.currentIslandPopulation >= island.maxIslandPopulation) { return; }
 
         if (Giant.GetComponent<GiantScript>().currentHolding == null)
         {
-            Giant.GetComponent<GiantScript>().SetCurrentHolding(thisEgg.objectToSpawn);
-            thisEgg.amt -= 1;
+            Giant.GetComponent<GiantScript>().SetCurrentHolding(IS.FindEgg(thisEgg.name).objectToSpawn);
             IS.RemoveEgg(thisEgg);
             IS.UpdateEggUI(this.transform.parent.gameObject);
             IS.inventoryPanel.SetActive(false);

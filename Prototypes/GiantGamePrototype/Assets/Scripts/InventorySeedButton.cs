@@ -8,17 +8,22 @@ public class InventorySeedButton : MonoBehaviour {
     public Image childImage;
     public Text childAmtCounter;
 
-    public InventoryScript IS;
+    InventoryScript IS;
 
-    public InventoryScript.Seed thisSeed;
+    public SeedInInventory thisSeed;
 
-    public void SetUpButton(InventoryScript newIS, InventoryScript.Seed newSeed)
+    private void Start()
     {
-        thisSeed = newSeed;
-        childImage.sprite = thisSeed.sprite;
-        childAmtCounter.text = "x" + thisSeed.amt;
 
-        IS = newIS;
+    }
+
+    public void SetUpButton(SeedInInventory newSeed)
+    {
+        IS = InventoryScript.Instance;
+
+        thisSeed = newSeed;
+        childImage.sprite = IS.FindSeed(thisSeed.name).sprite;
+        childAmtCounter.text = "x" + thisSeed.amt;
 
         if (thisSeed.amt <= 0)
         {
@@ -36,8 +41,7 @@ public class InventorySeedButton : MonoBehaviour {
         GameObject Giant = GameObject.FindGameObjectWithTag("Giant");
         if (Giant.GetComponent<GiantScript>().currentHolding == null)
         {
-            Giant.GetComponent<GiantScript>().SetCurrentHolding(thisSeed.objectToSpawn);
-            thisSeed.amt -= 1;
+            Giant.GetComponent<GiantScript>().SetCurrentHolding(IS.FindSeed(thisSeed.name).objectToSpawn);
 
             IS.RemoveSeed(thisSeed);
             IS.UpdateSeedUI(this.transform.parent.gameObject);

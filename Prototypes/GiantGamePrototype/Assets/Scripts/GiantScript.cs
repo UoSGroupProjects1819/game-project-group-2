@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class GiantScript : MonoBehaviour {
 
+    public static GiantScript Instance;
+
     public Transform seedHolder;
     public GameObject currentHolding;
     bool holding = false;
@@ -18,15 +20,25 @@ public class GiantScript : MonoBehaviour {
     Rigidbody2D RB;
     StatManager SM;
     InventoryScript IS;
+    WorldSelector WS;
 
     public GameObject HUD;
+
+    public LayerMask GiantLayer;
+    public LayerMask WorldLayer;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     private void Start()
     {
         targetPoint = this.transform.position;
         RB = this.GetComponent<Rigidbody2D>();
         SM = GameObject.FindGameObjectWithTag("StatManager").GetComponent<StatManager>();
-        IS = GameObject.FindGameObjectWithTag("Inventory").GetComponent<InventoryScript>();
+        IS = InventoryScript.Instance;
+        WS = GameObject.FindGameObjectWithTag("World").GetComponent<WorldSelector>();
     }
 
     void LateUpdate ()
@@ -50,8 +62,6 @@ public class GiantScript : MonoBehaviour {
         }
 
         Move();
-
-        GetTouch();
 
         anim.SetFloat("Speed", this.GetComponent<Rigidbody2D>().velocity.magnitude);
     }
@@ -91,46 +101,29 @@ public class GiantScript : MonoBehaviour {
         }
     }
 
-    public void GetTouch()
+    public void GiantTapped()
     {
-        if (!HUD.activeSelf || SM.statsPanel.activeSelf) { return; }
+        if (IS.inventoryPanel.activeSelf) { return; }
 
-        Touch[] Touches = Input.touches;
+        IS.inventoryPanel.SetActive(true);
+        IS.HUDPanel.SetActive(false);
+        IS.UpdateEggUI(IS.EggUI);
+        IS.UpdateSeedUI(IS.SeedUI);
+        targetPoint = this.transform.position;
+    }
 
-        Vector2 touchPos = Vector2.zero;
-        if (Input.GetKeyDown(KeyCode.Mouse0))
-        {
-            touchPos = Input.mousePosition;
-        }
-        else
-        if (Touches.Length > 0)
-        {
-            touchPos = Touches[0].position;
-        }
-        else
-        {
-            return;
-        }
+    public void WorldTapped(Vector2 tapPos)
+    {
+        if (IS.inventoryPanel.activeSelf) { return; }
 
-        RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(touchPos), Vector2.zero);
-
-        if (hit && hit.transform.tag == "TappableArea")
-        {
-            targetPoint = hit.point;
-        }
-        if (hit && hit.transform.tag == "Giant")
-        {
-            IS.inventoryPanel.SetActive(true);
-            IS.HUDPanel.SetActive(false);
-            IS.UpdateEggUI(IS.EggUI);
-            IS.UpdateSeedUI(IS.SeedUI);
-        }
+        targetPoint = tapPos;
+        
     }
 
     public void SetCurrentHolding(GameObject newHolding)
     {
         Destroy(currentHolding);
-        currentHolding = Instantiate(newHolding, seedHolder.position, seedHolder.rotation);
+        currentHolding = Instantiate(newHolding, seedHolder.position, seedHolder.rotation, WS.SelectedIsland.transform);
         holding = true;
     }
 

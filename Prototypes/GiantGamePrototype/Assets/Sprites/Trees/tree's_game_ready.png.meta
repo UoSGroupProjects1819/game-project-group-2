@@ -1,0 +1,327 @@
+fileFormatVersion: 2
+guid: c8537f81f13ad34499b37e9ee5864eee
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: GreenTree3
+    21300002: BlueTree3
+    21300004: TealTree3
+    21300006: tree's_game_ready_3
+    21300008: tree's_game_ready_4
+    21300010: GreenTree2
+    21300012: BlueTree2
+    21300014: TealTree2
+    21300016: tree's_game_ready_8
+    21300018: tree's_game_ready_9
+    21300020: GreenTree1
+    21300022: BlueTree1
+    21300024: TealTree1
+    21300026: tree's_game_ready_13
+    21300028: tree's_game_ready_14
+  externalObjects: {}
+  serializedVersion: 7
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: -1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 300
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 2
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: GreenTree3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1202.6667
+        width: 600
+        height: 601.3333
+      alignment: 9
+      pivot: {x: 0.5047772, y: 0.1711013}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 38e9aef8c63620d4fb12849044e4043f
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BlueTree3
+      rect:
+        serializedVersion: 2
+        x: 597
+        y: 1203
+        width: 600
+        height: 601
+      alignment: 9
+      pivot: {x: 0.38230714, y: 0.19450757}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f47e06d2b200085428c7218026c45ee1
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TealTree3
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 1202.6667
+        width: 600
+        height: 601.3333
+      alignment: 9
+      pivot: {x: 0.48476908, y: 0.18224293}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 975a66cb6ee65674a93cbdab35be983d
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GreenTree2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 601.6667
+        width: 600
+        height: 601.3333
+      alignment: 9
+      pivot: {x: 0.49441642, y: 0.31196758}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec011ad7a3545d04eb8d488c892bcc5b
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BlueTree2
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 601.6667
+        width: 600
+        height: 601.3333
+      alignment: 9
+      pivot: {x: 0.3548235, y: 0.33146718}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e8cd1b63dddabf4dadc1b255dde26f5
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TealTree2
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 605
+        width: 600
+        height: 601
+      alignment: 9
+      pivot: {x: 0.45253867, y: 0.27993244}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b6cd4c3ef2e157e4c98d7bdabb5534e7
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GreenTree1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0.666687
+        width: 600
+        height: 601.3333
+      alignment: 9
+      pivot: {x: 0.49022862, y: 0.42478693}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 945b46b04ddf26a4e967affc896379d7
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BlueTree1
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 0.666687
+        width: 600
+        height: 601.3333
+      alignment: 9
+      pivot: {x: 0.45393443, y: 0.41085863}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30bda9f7a8b07f64c9fd98f25dcede63
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TealTree1
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 0.666687
+        width: 600
+        height: 601.3333
+      alignment: 9
+      pivot: {x: 0.4878475, y: 0.42429766}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad951ae7103f7184a9a955322a023161
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: ae81dc29a0d70ac4d99ba1bb3d7dabb0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

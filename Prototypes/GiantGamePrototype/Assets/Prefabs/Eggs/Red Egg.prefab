@@ -162,8 +162,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   creatureToSpawn: {fileID: 1729181058423880, guid: f1aff7752e2cb074882e3896ee80921c,
     type: 2}
-  spawnDelay: 3
-  IS: {fileID: 0}
+  spawnDelay: 10
+  WS: {fileID: 0}
+  eggSprites:
+  - {fileID: 21300004, guid: 3cdd026ca22db114d966ce82bbf36bfa, type: 3}
 --- !u!212 &212931518911313110
 SpriteRenderer:
   m_ObjectHideFlags: 1

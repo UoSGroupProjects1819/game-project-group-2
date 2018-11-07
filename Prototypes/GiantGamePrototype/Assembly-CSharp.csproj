@@ -61,10 +61,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\GiftScript.cs" />
     <Compile Include="Assets\Scripts\CameraPositions.cs" />
     <Compile Include="Assets\Scripts\CraftingIngredient.cs" />
     <Compile Include="Assets\Scripts\CraftingObject.cs" />
     <Compile Include="Assets\Scripts\CraftingOutcome.cs" />
+    <Compile Include="Assets\Scripts\CreatureManager.cs" />
     <Compile Include="Assets\Scripts\CreatureScript.cs" />
     <Compile Include="Assets\Scripts\DayNightCycle.cs" />
     <Compile Include="Assets\Scripts\EggScript.cs" />
@@ -76,10 +78,14 @@
     <Compile Include="Assets\Scripts\InventoryEggButton.cs" />
     <Compile Include="Assets\Scripts\InventoryScript.cs" />
     <Compile Include="Assets\Scripts\InventorySeedButton.cs" />
+    <Compile Include="Assets\Scripts\IslandScript.cs" />
     <Compile Include="Assets\Scripts\menuScript.cs" />
+    <Compile Include="Assets\Scripts\Meteor.cs" />
     <Compile Include="Assets\Scripts\parralax.cs" />
     <Compile Include="Assets\Scripts\SeedScript.cs" />
     <Compile Include="Assets\Scripts\StatManager.cs" />
+    <Compile Include="Assets\Scripts\TouchController.cs" />
+    <Compile Include="Assets\Scripts\TreeManager.cs" />
     <Compile Include="Assets\Scripts\TreeScript.cs" />
     <Compile Include="Assets\Scripts\WorldSelector.cs" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />

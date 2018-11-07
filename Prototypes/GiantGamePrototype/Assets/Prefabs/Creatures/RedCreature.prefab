@@ -89,7 +89,6 @@ GameObject:
   - component: {fileID: 50814302836009296}
   - component: {fileID: 61885094311477134}
   - component: {fileID: 114182423635798148}
-  - component: {fileID: 61886577625412044}
   m_Layer: 9
   m_Name: RedCreature
   m_TagString: Creature
@@ -214,31 +213,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.3190146, y: 0.36700094}
   m_EdgeRadius: 0
---- !u!61 &61886577625412044
-BoxCollider2D:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1729181058423880}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
 --- !u!114 &114000796191100670
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -304,17 +278,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9be3f2742deb1a940bf842af8586edaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  name: 'Red '
+  type: Red Creature
   maxWaitTime: 2
   minWaitTime: 4
   maxWalkDistance: 1
   preferedFruit: Apple
   hatedFruit: Pear
   speed: 0.5
-  speedMultiplier: 0
+  speedMultiplier: 1
+  targetFruit: {fileID: 0}
   star: {fileID: 1921820288615234, guid: 5c2f9dc26825e5b438ff0e64d4ee5a31, type: 2}
   face: {fileID: 212009323840516628}
   happiness: 100
-  happinessLossSpeed: 20
+  happinessLossSpeed: 5
   happinessLevels:
   - name: Sad
     sprite: {fileID: 21300008, guid: e0676e5a9f064644cae84cf681d3f463, type: 3}
@@ -401,6 +378,7 @@ MonoBehaviour:
       maxAmtPerLevel: 0
       chance: 0
     upgradePoints: 0
+  Stars: 1
 --- !u!114 &114556119952347776
 MonoBehaviour:
   m_ObjectHideFlags: 1

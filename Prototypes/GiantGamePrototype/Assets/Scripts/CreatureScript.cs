@@ -1,13 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class CreatureScript : MonoBehaviour {
 
+    #region Variables
+
+    public string name;
+    public string type;
+
     Rigidbody2D RB;
     InventoryScript IS;
     StatManager SM;
+    CreatureManager CM;
 
     Vector2 targetPoint;
 
@@ -22,6 +29,8 @@ public class CreatureScript : MonoBehaviour {
 
     public float speed;
     public float speedMultiplier = 1;
+
+    public GameObject targetFruit;
 
     Transform starPanel;
     public GameObject star;
@@ -54,6 +63,7 @@ public class CreatureScript : MonoBehaviour {
         public int upgradePoints;
     }
 
+
     public List<HappinessLevel> happinessLevels;
     HappinessLevel currentHappinessLevel;
 
@@ -64,7 +74,7 @@ public class CreatureScript : MonoBehaviour {
     public Stat Strength;
     public Stat Style;
     public Stat Stamina;
-    int Stars = 1;
+    public int Stars = 1;
 
     Image IntelligenceImage;
     Image AgilityImage;
@@ -72,14 +82,18 @@ public class CreatureScript : MonoBehaviour {
     Image StyleImage;
     Image StaminaImage;
 
+    bool generateStats = true;
 
+    #endregion
 
     void Start ()
     {
         //SortHappniessLevels();
-        IS = GameObject.FindGameObjectWithTag("Inventory").GetComponent<InventoryScript>();
+        IS = InventoryScript.Instance;
         RB = this.GetComponent<Rigidbody2D>();
         SM = GameObject.FindGameObjectWithTag("StatManager").GetComponent<StatManager>();
+        CM = CreatureManager.Instance;
+
 
         IntelligenceImage = SM.IntelligenceImage;
         AgilityImage = SM.AgilityImage;
@@ -89,11 +103,21 @@ public class CreatureScript : MonoBehaviour {
         starPanel = SM.StarPanel;
         happinessImage = SM.happinessImage;
 
-        Intelligence = GetRandomStat(IntelligenceImage);
-        Agility = GetRandomStat(AgilityImage);
-        Strength = GetRandomStat(StrengthImage);
-        Style = GetRandomStat(StyleImage);
-        Stamina = GetRandomStat(StaminaImage);
+        this.GetComponentInParent<IslandScript>().currentIslandPopulation++;
+
+        if (generateStats)
+        { 
+            CM.creaturesInWorld.Add(this.gameObject);
+            Intelligence = GetRandomStat(IntelligenceImage);
+            Agility = GetRandomStat(AgilityImage);
+            Strength = GetRandomStat(StrengthImage);
+            Style = GetRandomStat(StyleImage);
+            Stamina = GetRandomStat(StaminaImage);
+            CreatureManager.Instance.SaveCreatures();
+        }
+
+        SetHappinessLevel();
+        UpdateSaturation();
         UpdateStatUI();
 
         for (int i = 0; i < Stars; i++)
@@ -101,7 +125,42 @@ public class CreatureScript : MonoBehaviour {
             Instantiate(star, starPanel);
         }
 
+
         targetPoint = new Vector2(Random.Range(this.transform.position.x - maxWalkDistance, this.transform.position.x + maxWalkDistance), this.transform.position.y);
+    }
+
+    public void SetUpCreature(string newName, float newHappiness, int newStars, SavedIntelligence intelligence, SavedAgility agility, SavedStrength strength, SavedStyle style, SavedStamina stamina)
+    {
+        generateStats = false;
+        SM = GameObject.FindGameObjectWithTag("StatManager").GetComponent<StatManager>();
+
+        name = newName;
+        happiness = newHappiness;
+        Stars = newStars;
+        Intelligence.amt = intelligence.score;
+        Intelligence.level = intelligence.level;
+        Intelligence.rank = SM.FindRank(intelligence.rank);
+        Intelligence.upgradePoints = intelligence.upgradePoints;
+
+        Agility.amt = agility.score;
+        Agility.level = agility.level;
+        Agility.rank = SM.FindRank(agility.rank);
+        Agility.upgradePoints = agility.upgradePoints;
+
+        Strength.amt = strength.score;
+        Strength.level = strength.level;
+        Strength.rank = SM.FindRank(strength.rank);
+        Strength.upgradePoints = strength.upgradePoints;
+
+        Style.amt = style.score;
+        Style.level = style.level;
+        Style.rank = SM.FindRank(style.rank);
+        Style.upgradePoints = style.upgradePoints;
+
+        Stamina.amt = stamina.score;
+        Stamina.level = stamina.level;
+        Stamina.rank = SM.FindRank(stamina.rank);
+        Stamina.upgradePoints = stamina.upgradePoints;
     }
 
     void TestStatUpdate()
@@ -116,7 +175,6 @@ public class CreatureScript : MonoBehaviour {
     void Update ()
     {
         ReduceHappiness();
-        GetTouch();
         Movement();
 
         if (SM.statsPanel.activeSelf && SM.targetCreature == this.gameObject)
@@ -183,14 +241,21 @@ public class CreatureScript : MonoBehaviour {
 
     void Movement()
     {
+        if(targetFruit != null)
+        {
+            targetPoint = targetFruit.transform.position;
+            waitTime = 0;
+        }
+
         if (waitTime > 0)
         {
             waitTime -= Time.deltaTime;
             return;
         }
 
-        if (targetPoint != (Vector2)this.transform.position)
+        if ((Vector2)this.transform.position != targetPoint)
         {
+            Debug.Log("TryingToMove");
             //Debug.Log(this.transform.name + " is moving to " + targetPoint);
             if (targetPoint.x > this.transform.position.x)
             {
@@ -214,7 +279,7 @@ public class CreatureScript : MonoBehaviour {
                 distanceToTarget = -distanceToTarget;
             }
 
-            if (distanceToTarget < 0.01f)
+            if (distanceToTarget < 0.05f)
             {
                 this.transform.position = new Vector2(targetPoint.x, this.transform.position.y);
                 RB.velocity = Vector2.zero;
@@ -295,6 +360,8 @@ public class CreatureScript : MonoBehaviour {
 
     private void UpdateStatUI()
     {
+        if(SM.targetCreature == null || SM.targetCreature != this.gameObject) { return; }
+
         int i = 1;
         foreach (Transform item in SM.intelligenceUpgradeMeter)
         {
@@ -370,6 +437,15 @@ public class CreatureScript : MonoBehaviour {
         }
         SM.staminaLevel.text = "Lvl " + Stamina.level;
 
+        foreach (Transform item in starPanel)
+        {
+            Destroy(item.gameObject);
+        }
+
+        for (i = 0; i < Stars; i++)
+        {
+            Instantiate(star, starPanel);
+        }
     }
 
     void SetHappinessLevel()
@@ -390,36 +466,14 @@ public class CreatureScript : MonoBehaviour {
         speedMultiplier = currentHappinessLevel.speedMultiplier;
     }
 
-    public void GetTouch()
+    public void Touched()
     {
         if (IS.inventoryPanel.activeSelf) { return; }
 
-        Touch[] Touches = Input.touches;
-
-        Vector2 touchPos = Vector2.zero;
-        if (Input.GetKeyDown(KeyCode.Mouse0))
-        {
-            touchPos = Input.mousePosition;
-        }
-        else
-        if (Touches.Length > 0)
-        {
-            touchPos = Touches[0].position;
-        }
-        else
-        {
-            return;
-        }
-
-        RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(touchPos), Vector2.zero);
-
-        if (hit && hit.transform == this.transform)
-        {
-            SM.statsPanel.SetActive(!SM.statsPanel.activeSelf);
-            UpdateStatUI();
-            Camera.main.gameObject.GetComponent<CameraPositions>().useDynamic = SM.statsPanel.activeSelf;
-            SM.targetCreature = this.gameObject;
-        }
+        SM.statsPanel.SetActive(!SM.statsPanel.activeSelf);
+        Camera.main.gameObject.GetComponent<CameraPositions>().LockCamera = SM.statsPanel.activeSelf;
+        SM.targetCreature = this.gameObject;
+        UpdateStatUI();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

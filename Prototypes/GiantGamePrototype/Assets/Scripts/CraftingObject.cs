@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class CraftingObject : MonoBehaviour {
 
-    public InventoryScript.Seed seed;
-    public InventoryScript.Egg egg;
+    public SeedInInventory seed;
+    public EggInInventory egg;
 
     public enum ObjectType
     {
@@ -20,12 +20,12 @@ public class CraftingObject : MonoBehaviour {
     {
         if (thisObjectType == ObjectType.egg)
         {
-            this.GetComponent<Image>().sprite = egg.sprite;
+            this.GetComponent<Image>().sprite = InventoryScript.Instance.FindEgg(egg.name).sprite;
         }
         else
         if (thisObjectType == ObjectType.seed)
         {
-            this.GetComponent<Image>().sprite = seed.sprite;
+            this.GetComponent<Image>().sprite = InventoryScript.Instance.FindSeed(seed.name).sprite;
         }
 
         

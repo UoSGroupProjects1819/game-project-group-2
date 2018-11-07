@@ -4,11 +4,22 @@ using UnityEngine;
 
 public class WorldSelector : MonoBehaviour {
 
+    public static WorldSelector Instance;
+
     public GameObject[] islands;
 
     public GameObject SelectedIsland;
 
-	void Update ()
+    private void Awake()
+    {
+        Instance = this;
+        for (int i = 0; i < islands.Length; i++)
+        {
+            islands[i].GetComponent<IslandScript>().islandID = i;
+        }
+    }
+
+    void Update ()
     {
         if (Input.GetKeyDown(KeyCode.Q))
         {

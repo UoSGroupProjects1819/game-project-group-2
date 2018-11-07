@@ -4,66 +4,112 @@ using UnityEngine;
 
 public class CameraPositions : MonoBehaviour {
 
+    Camera thisCamera;
+
     public float speed;
-
-    public Vector3 CameraOut;
-    public float OrthoOut;
-
-    public Vector3 CameraInLeft;
-    public float OrthoInLeft;
-
-    public Vector3 CameraInRight;
-    public float OrthoInRight;
-
-    public bool useDynamic;
+    [Space(10)]
+    public bool LockCamera;
     public Vector3 Dynamic;
     public float DynamicOrtho;
-
     Vector3 targetPos;
     float targetSize;
 
+    Vector3 lastFreeCameraPosition;
+    float lastFreeCameraOrtho;
+
+    [Space(10)]
+    public float zoomSpeed;
+    public float minCameraOrtho;
+    public float maxCameraOrtho;
+    //public float zoomPanAmt;
+
+    [Space(5)]
+    public float panSpeed;
+    public Vector2 minPanBound;
+    public Vector2 maxPanBound;
+
+    bool touchedSinceLock;
+
+    TouchController TC;
+
     // Use this for initialization
-    void Start () {
-        targetPos = CameraOut;
-        targetSize = OrthoOut;
+    void Start ()
+    {
+        thisCamera = this.GetComponent<Camera>();
+        lastFreeCameraOrtho = thisCamera.orthographicSize;
+        lastFreeCameraPosition = this.transform.position;
+        TC = TouchController.Instance;
     }
 
-    private void Update()
+    private void LateUpdate()
     {
-        MoveCamera();
-    }
-
-    // Update is called once per frame
-    public void MoveCamera ()
-    {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        if (LockCamera)
         {
-            targetPos = CameraOut;
-            targetSize = OrthoOut;
-        }
-
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            targetPos = CameraInLeft;
-            targetSize = OrthoInLeft;
-        }
-
-        if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            targetPos = CameraInRight;
-            targetSize = OrthoInRight;
-        }
-
-        if (useDynamic)
-        {
-            this.transform.position = Vector3.MoveTowards(transform.position, Dynamic, Time.deltaTime * speed);
-            this.GetComponent<Camera>().orthographicSize = Mathf.Lerp(this.GetComponent<Camera>().orthographicSize, DynamicOrtho, Time.deltaTime * speed);
+            ControlledMoveCamera();
         }
         else
         {
-            this.transform.position = Vector3.MoveTowards(transform.position, targetPos, Time.deltaTime * speed);
-            this.GetComponent<Camera>().orthographicSize = Mathf.Lerp(this.GetComponent<Camera>().orthographicSize, targetSize, Time.deltaTime * speed);
+            if (!touchedSinceLock)
+            {
+                ResetCameraPosition();
+            }
         }
+    }
 
+    public void ScreenPinch(Vector2 dragAmt, float pinchAmt)
+    {
+        if (InventoryScript.Instance.inventoryPanel.activeSelf) { return; }
+
+        if (TC.touchesLastFrame == 2)
+        {
+            float zoomAmt = pinchAmt / thisCamera.fieldOfView;
+
+            thisCamera.orthographicSize += zoomAmt * (1 / zoomSpeed);
+
+            thisCamera.orthographicSize = Mathf.Clamp(thisCamera.orthographicSize, minCameraOrtho, maxCameraOrtho);
+            this.transform.position += new Vector3(dragAmt.x, dragAmt.y, 0) * panSpeed * thisCamera.orthographicSize;
+            this.transform.position = new Vector3(Mathf.Clamp(this.transform.position.x, minPanBound.x, maxPanBound.x), Mathf.Clamp(this.transform.position.y, minPanBound.y, maxPanBound.y), this.transform.position.z);
+        }
+        else
+        {
+            touchedSinceLock = true;
+            Vector2 touch0, touch1;
+            touch0 = Input.GetTouch(0).position;
+            touch1 = Input.GetTouch(1).position;
+        }
+    }
+
+    public void ScreenDrag(Vector2 touchPos)
+    {
+        if (LockCamera) { return; }
+
+        if (InventoryScript.Instance.inventoryPanel.activeSelf) { return; }
+
+        if (TC.touchesLastFrame == 1)
+        {
+            Vector2 panAmt = TC.lastSingleTouchPoint - touchPos;
+
+            this.transform.position += new Vector3(panAmt.x, panAmt.y, 0) * panSpeed * thisCamera.orthographicSize;
+            this.transform.position = new Vector3(Mathf.Clamp(this.transform.position.x, minPanBound.x, maxPanBound.x), Mathf.Clamp(this.transform.position.y, minPanBound.y, maxPanBound.y), this.transform.position.z);
+
+            TC.lastSingleTouchPoint = touchPos;
+
+            touchedSinceLock = true;
+            lastFreeCameraOrtho = thisCamera.orthographicSize;
+            lastFreeCameraPosition = this.transform.position;
+        }
+    }
+
+    public void ResetCameraPosition()
+    {
+        this.transform.position = Vector3.MoveTowards(transform.position, lastFreeCameraPosition, Time.deltaTime * speed);
+        thisCamera.orthographicSize = Mathf.Lerp(thisCamera.orthographicSize, lastFreeCameraOrtho, Time.deltaTime * speed);
+    }
+
+    public void ControlledMoveCamera ()
+    {
+        this.transform.position = Vector3.MoveTowards(transform.position, Dynamic, Time.deltaTime * speed * 2.5f);
+        thisCamera.orthographicSize = Mathf.Lerp(thisCamera.orthographicSize, DynamicOrtho, Time.deltaTime * speed);
+        touchedSinceLock = false;
     }
 }
