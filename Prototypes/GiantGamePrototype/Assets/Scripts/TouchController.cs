@@ -16,6 +16,8 @@ public class TouchController : MonoBehaviour {
     public Vector2 lastDoubleTouchPoint;
     public float lastPinchDistance;
 
+    Vector2 startTouchPos = new Vector2(0, 0);
+
     private void Awake()
     {
         Instance = this;
@@ -41,8 +43,6 @@ public class TouchController : MonoBehaviour {
         
         if (Touches.Length == 1)
         {
-            Vector2 startTouchPos = new Vector2 (0,0);
-
             //Debug.Log(Touches[0].phase.ToString());
 
             if (canTap == true)
@@ -53,7 +53,8 @@ public class TouchController : MonoBehaviour {
                 }
                 else if(Touches[0].phase == TouchPhase.Moved)
                 {
-                    if (Vector2.Distance(Touches[0].position, startTouchPos) > 100)
+                    //Debug.Log("Start touch Pos: " + startTouchPos + "New Touch Pos:" + Touches[0].position + Vector2.Distance(Touches[0].position, startTouchPos));
+                    if (Vector2.Distance(startTouchPos, Touches[0].position) > (Screen.height / 50))
                     {
                         canTap = false;
                     }
@@ -104,12 +105,12 @@ public class TouchController : MonoBehaviour {
     {
         Debug.Log("Pinching");
 
-        Camera.main.GetComponent<CameraPositions>().ScreenPinch(dragAmt, pinchAmt);
+        Camera.main.GetComponent<CameraControl>().ScreenPinch(dragAmt, pinchAmt);
     }
 
     void TouchDrag(Vector2 touchPos)
     {
-        Camera.main.GetComponent<CameraPositions>().ScreenDrag(touchPos);
+        Camera.main.GetComponent<CameraControl>().ScreenDrag(touchPos);
     }
 
     void SingleTap(Vector2 touchPos)
@@ -147,6 +148,11 @@ public class TouchController : MonoBehaviour {
         if (hit.transform.tag == "Gift")
         {
             hit.transform.GetComponent<GiftScript>().Touched();
+        }
+        else
+        if (hit.transform.tag == "PlantPot")
+        {
+            GiantScript.Instance.GoToPot(hit.transform.gameObject);
         }
         else
         {

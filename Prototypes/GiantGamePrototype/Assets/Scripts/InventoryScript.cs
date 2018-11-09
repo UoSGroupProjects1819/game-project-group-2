@@ -129,7 +129,7 @@ public class InventoryScript : MonoBehaviour
     private void Start()
     {
         LoadInventory();
-        StartCoroutine(AutoSaveInventory());
+        //StartCoroutine(AutoSaveInventory());
 
         if(PlayerPrefs.GetInt("FirstOpen") == 0)
         {
@@ -547,12 +547,50 @@ public class InventoryScript : MonoBehaviour
         SaveInventory();
     }
 
+    public void RemoveSeed(string seedName)
+    {
+        for (int i = 0; i < inventory.seeds.Count; i++)
+        {
+            SeedInInventory seedToEdit = new SeedInInventory();
+            if (inventory.seeds[i].name == seedName)
+            {
+                seedToEdit = inventory.seeds[i];
+
+                seedToEdit.amt -= 1;
+                inventory.seeds.RemoveAt(i);
+                inventory.seeds.Insert(i, seedToEdit);
+                break;
+            }
+        }
+
+        SaveInventory();
+    }
+
     public void RemoveEgg(EggInInventory egg)
     {
         for (int i = 0; i < inventory.eggs.Count; i++)
         {
             EggInInventory eggToEdit = new EggInInventory();
             if (inventory.eggs[i].name == egg.name)
+            {
+                eggToEdit = inventory.eggs[i];
+
+                eggToEdit.amt -= 1;
+                inventory.eggs.RemoveAt(i);
+                inventory.eggs.Insert(i, eggToEdit);
+                break;
+            }
+        }
+
+        SaveInventory();
+    }
+
+    public void RemoveEgg(string eggName)
+    {
+        for (int i = 0; i < inventory.eggs.Count; i++)
+        {
+            EggInInventory eggToEdit = new EggInInventory();
+            if (inventory.eggs[i].name == eggName)
             {
                 eggToEdit = inventory.eggs[i];
 

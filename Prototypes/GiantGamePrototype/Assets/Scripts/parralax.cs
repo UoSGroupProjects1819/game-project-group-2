@@ -19,6 +19,7 @@ public class parralax : MonoBehaviour
     public float cameraMaxLeft;
     public float cameraMaxRight;
 
+    public Transform parentIsland;
 
     public float maxBound;
     public float minBound;
@@ -41,9 +42,11 @@ public class parralax : MonoBehaviour
 
         this.transform.localScale = new Vector3(newSize, newSize, 1);
 
+        float offset = parentIsland.position.x;
+
         float newBound = Mathf.MoveTowards(minBound, maxBound, (minBound - maxBound) * orthoPercent);
 
-        float CameraX = mainCamera.transform.position.x;
+        float CameraX = mainCamera.transform.position.x - offset;
 
         float cameraPercent;
 
@@ -57,10 +60,10 @@ public class parralax : MonoBehaviour
             cameraPercent = CameraX / cameraMaxRight;
         }
 
-        Vector3 newPos = this.transform.position;
+        Vector3 newPos = this.transform.localPosition;
 
         newPos.x = newBound * cameraPercent;
 
-        this.transform.position = newPos;
+        this.transform.localPosition = newPos;
     }
 }

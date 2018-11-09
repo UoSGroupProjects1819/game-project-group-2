@@ -2,10 +2,10 @@ fileFormatVersion: 2
 guid: d1770403d6789064fb955a2689c9ce31
 TextureImporter:
   fileIDToRecycleName:
-    21300000: PurpleEggHatching1
-    21300002: PurpleEggHatching2
-    21300004: PurpleEggHatching3
-    21300006: PurpleEggHatching4
+    21300000: Egg Purple Hatching 1
+    21300002: Egg Purple Hatching 2
+    21300004: Egg Purple Hatching 3
+    21300006: Egg Purple Hatching 4
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -121,7 +121,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: PurpleEggHatching1
+      name: Egg Purple Hatching 1
       rect:
         serializedVersion: 2
         x: 0
@@ -129,7 +129,7 @@ TextureImporter:
         width: 804
         height: 804
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -141,7 +141,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PurpleEggHatching2
+      name: Egg Purple Hatching 2
       rect:
         serializedVersion: 2
         x: 804
@@ -149,7 +149,7 @@ TextureImporter:
         width: 804
         height: 804
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -161,7 +161,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PurpleEggHatching3
+      name: Egg Purple Hatching 3
       rect:
         serializedVersion: 2
         x: 0
@@ -169,7 +169,7 @@ TextureImporter:
         width: 804
         height: 804
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -181,7 +181,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PurpleEggHatching4
+      name: Egg Purple Hatching 4
       rect:
         serializedVersion: 2
         x: 804
@@ -189,7 +189,7 @@ TextureImporter:
         width: 804
         height: 804
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

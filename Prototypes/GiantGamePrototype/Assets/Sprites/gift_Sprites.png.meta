@@ -2,12 +2,12 @@ fileFormatVersion: 2
 guid: b13b19fdd5bd0a7429ce58a5a83dd1f4
 TextureImporter:
   fileIDToRecycleName:
-    21300000: PurpleGift
-    21300002: RedGift
-    21300004: Orange Gift
-    21300006: Yellow Gift
-    21300008: Blue Gift
-    21300010: Green Gift
+    21300000: Gift Purple
+    21300002: Gift Red
+    21300004: Gift Orange
+    21300006: Gift Yellow
+    21300008: Gift Blue
+    21300010: Gift Green
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -123,7 +123,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: PurpleGift
+      name: Gift Purple
       rect:
         serializedVersion: 2
         x: 628
@@ -143,7 +143,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RedGift
+      name: Gift Red
       rect:
         serializedVersion: 2
         x: 957
@@ -163,7 +163,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Orange Gift
+      name: Gift Orange
       rect:
         serializedVersion: 2
         x: 644
@@ -183,7 +183,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Yellow Gift
+      name: Gift Yellow
       rect:
         serializedVersion: 2
         x: 971
@@ -203,7 +203,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Blue Gift
+      name: Gift Blue
       rect:
         serializedVersion: 2
         x: 644
@@ -223,7 +223,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Green Gift
+      name: Gift Green
       rect:
         serializedVersion: 2
         x: 972

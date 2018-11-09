@@ -2,9 +2,9 @@ fileFormatVersion: 2
 guid: e8fcc90beb4d0974f980991ec149c77c
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Yellow Body
-    21300002: Yellow Face
-    21300004: Yellow Horns
+    21300000: Creature Yellow Body
+    21300002: Creature Yellow Face
+    21300004: Creature Yellow Horns
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -120,7 +120,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Yellow Body
+      name: Creature Yellow Body
       rect:
         serializedVersion: 2
         x: 1336
@@ -128,7 +128,7 @@ TextureImporter:
         width: 308
         height: 319
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -140,7 +140,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Yellow Face
+      name: Creature Yellow Face
       rect:
         serializedVersion: 2
         x: 1204
@@ -148,7 +148,7 @@ TextureImporter:
         width: 171
         height: 155
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -160,7 +160,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Yellow Horns
+      name: Creature Yellow Horns
       rect:
         serializedVersion: 2
         x: 1513
@@ -168,7 +168,7 @@ TextureImporter:
         width: 240
         height: 123
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

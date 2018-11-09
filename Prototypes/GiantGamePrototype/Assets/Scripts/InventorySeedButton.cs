@@ -39,14 +39,22 @@ public class InventorySeedButton : MonoBehaviour {
     public void SpawnSeed()
     {
         GameObject Giant = GameObject.FindGameObjectWithTag("Giant");
-        if (Giant.GetComponent<GiantScript>().currentHolding == null)
-        {
-            Giant.GetComponent<GiantScript>().SetCurrentHolding(IS.FindSeed(thisSeed.name).objectToSpawn);
 
-            IS.RemoveSeed(thisSeed);
-            IS.UpdateSeedUI(this.transform.parent.gameObject);
-            IS.inventoryPanel.SetActive(false);
-            IS.HUDPanel.SetActive(true);
+        if (Giant.GetComponent<GiantScript>().currentHolding != null)
+        {
+            Destroy(Giant.GetComponent<GiantScript>().currentHolding);
+            Giant.GetComponent<GiantScript>().currentHolding = null;
         }
+
+        IslandScript island = WorldSelector.Instance.SelectedIsland.GetComponent<IslandScript>();
+        if (island.currentTreePopulation >= island.maxTreePopulation) { return; }
+
+        Giant.GetComponent<GiantScript>().SetCurrentHolding(IS.FindSeed(thisSeed.name).objectToSpawn, this.thisSeed.name);
+        
+        //IS.RemoveSeed(thisSeed);
+        //IS.UpdateSeedUI(this.transform.parent.gameObject);
+        IS.inventoryPanel.SetActive(false);
+        IS.HUDPanel.SetActive(true);
+        
     }
 }

@@ -35,6 +35,8 @@ public class TreeScript : MonoBehaviour {
         if (!loadedFromSave)
         {
             TreeManager.Instance.TreesInWorld.Add(this.gameObject);
+            this.GetComponent<Animator>().SetTrigger("Grow");
+            TreeManager.Instance.SaveTrees();
         }
         else
         {
@@ -91,7 +93,7 @@ public class TreeScript : MonoBehaviour {
     {
         GameObject closestCreature = null;
         float closestCreatureDistance = 0;
-        foreach (Transform item in this.transform.parent)
+        foreach (Transform item in this.transform.parent.parent)
         {
             if (item.tag == "Creature")
             {
@@ -110,9 +112,9 @@ public class TreeScript : MonoBehaviour {
         if(closestCreature != null)
         {
             closestCreature.GetComponent<CreatureScript>().targetFruit = currentFruit;
+            currentFruit.GetComponent<Rigidbody2D>().gravityScale = 1;
+            currentFruit.GetComponent<CircleCollider2D>().enabled = true;
         }
-        currentFruit.GetComponent<Rigidbody2D>().gravityScale = 1;
-        currentFruit.GetComponent<CircleCollider2D>().enabled = true;
     }
 
     void GrowFruit()

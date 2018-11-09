@@ -2,11 +2,11 @@ fileFormatVersion: 2
 guid: 39882138c2ca8294783a350108d96fbd
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Apple
-    21300002: Pear
-    21300004: Orange
-    21300006: EggPlant
-    21300008: Coconut
+    21300000: Fruit Apple
+    21300002: Fruit Pear
+    21300004: Fruit Orange
+    21300006: Fruit EggPlant
+    21300008: Fruit Coconut
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -122,7 +122,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Apple
+      name: Fruit Apple
       rect:
         serializedVersion: 2
         x: 47
@@ -142,7 +142,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Pear
+      name: Fruit Pear
       rect:
         serializedVersion: 2
         x: 240
@@ -162,7 +162,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Orange
+      name: Fruit Orange
       rect:
         serializedVersion: 2
         x: 406
@@ -182,7 +182,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: EggPlant
+      name: Fruit EggPlant
       rect:
         serializedVersion: 2
         x: 551
@@ -202,7 +202,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Coconut
+      name: Fruit Coconut
       rect:
         serializedVersion: 2
         x: 787

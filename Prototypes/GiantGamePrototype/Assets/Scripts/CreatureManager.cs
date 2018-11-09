@@ -127,7 +127,7 @@ public class CreatureManager : MonoBehaviour {
     void Start ()
     {
         LoadCreatures();
-        StartCoroutine(AutoSaveCreatures());
+        //StartCoroutine(AutoSaveCreatures());
 	}
 
     void Update () {
@@ -163,8 +163,14 @@ public class CreatureManager : MonoBehaviour {
 
             for (int i = 0; i < jsonCreatures.names.Length; i++)
             {
-                GameObject newCreature = Instantiate(FindCreature(jsonCreatures.types[i]), new Vector3(Random.Range(spawnBounds.x, spawnBounds.y), 0.5f, 0), Quaternion.identity, WorldSelector.Instance.islands[jsonCreatures.worldIds[i]].transform);
+                GameObject newCreature = Instantiate(
+                    FindCreature(jsonCreatures.types[i]), 
+                    new Vector3(Random.Range(spawnBounds.x, spawnBounds.y), 0.5f, 0) + WorldSelector.Instance.islands[jsonCreatures.worldIds[i]].transform.position, 
+                    Quaternion.identity, WorldSelector.Instance.islands[jsonCreatures.worldIds[i]].transform
+                );
+
                 creaturesInWorld.Add(newCreature);
+                WorldSelector.Instance.islands[jsonCreatures.worldIds[i]].GetComponent<IslandScript>().currentCreaturePopulation++;
                 SavedIntelligence intelligence = new SavedIntelligence()
                 {
                     rank = jsonCreatures.intelligenceRank[i],

@@ -37,17 +37,21 @@ public class InventoryEggButton : MonoBehaviour {
     public void SpawnEgg()
     {
         GameObject Giant = GameObject.FindGameObjectWithTag("Giant");
+    
         IslandScript island = WorldSelector.Instance.SelectedIsland.GetComponent<IslandScript>();
+        if (island.currentCreaturePopulation >= island.maxCreaturePopulation) { return; }
+        Debug.Log("SpawningEgg");
 
-        if (island.currentIslandPopulation >= island.maxIslandPopulation) { return; }
-
-        if (Giant.GetComponent<GiantScript>().currentHolding == null)
+        if (Giant.GetComponent<GiantScript>().currentHolding != null)
         {
-            Giant.GetComponent<GiantScript>().SetCurrentHolding(IS.FindEgg(thisEgg.name).objectToSpawn);
-            IS.RemoveEgg(thisEgg);
-            IS.UpdateEggUI(this.transform.parent.gameObject);
-            IS.inventoryPanel.SetActive(false);
-            IS.HUDPanel.SetActive(true);
+            Destroy(Giant.GetComponent<GiantScript>().currentHolding);
+            Giant.GetComponent<GiantScript>().currentHolding = null;
         }
+
+        Giant.GetComponent<GiantScript>().SetCurrentHolding(IS.FindEgg(thisEgg.name).objectToSpawn, thisEgg.name);
+        //IS.RemoveEgg(thisEgg);
+        //IS.UpdateEggUI(this.transform.parent.gameObject);
+        IS.inventoryPanel.SetActive(false);
+        IS.HUDPanel.SetActive(true);
     }
 }

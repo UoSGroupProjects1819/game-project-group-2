@@ -103,8 +103,6 @@ public class CreatureScript : MonoBehaviour {
         starPanel = SM.StarPanel;
         happinessImage = SM.happinessImage;
 
-        this.GetComponentInParent<IslandScript>().currentIslandPopulation++;
-
         if (generateStats)
         { 
             CM.creaturesInWorld.Add(this.gameObject);
@@ -179,8 +177,8 @@ public class CreatureScript : MonoBehaviour {
 
         if (SM.statsPanel.activeSelf && SM.targetCreature == this.gameObject)
         {
-            Camera.main.gameObject.GetComponent<CameraPositions>().DynamicOrtho = 0.25f;
-            Camera.main.gameObject.GetComponent<CameraPositions>().Dynamic = this.transform.position + new Vector3(0.2f, 0, -10);
+            Camera.main.gameObject.GetComponent<CameraControl>().DynamicOrtho = 0.25f;
+            Camera.main.gameObject.GetComponent<CameraControl>().Dynamic = this.transform.position + new Vector3(0.2f, 0, -10);
         }
 
         if (Input.GetKeyDown(KeyCode.A)) { TestStatUpdate(); }
@@ -218,14 +216,6 @@ public class CreatureScript : MonoBehaviour {
         return newStat;
     }
 
-    int UpgradeStat()
-    {
-
-
-
-        return 0;
-    }
-
     void UpdateSaturation()
     {
         this.GetComponentInChildren<SpriteRenderer>().material.SetFloat("_SaturationAmt", happiness / 100);
@@ -255,7 +245,6 @@ public class CreatureScript : MonoBehaviour {
 
         if ((Vector2)this.transform.position != targetPoint)
         {
-            Debug.Log("TryingToMove");
             //Debug.Log(this.transform.name + " is moving to " + targetPoint);
             if (targetPoint.x > this.transform.position.x)
             {
@@ -289,7 +278,7 @@ public class CreatureScript : MonoBehaviour {
         }
     }
 
-    public void IncreaseHappiness(float amt, string fruit, string statToIncrease)
+    public void EatFruit(float amt, string fruit, string majorStatToIncrease, string minorStatToIncrease)
     {
         if(fruit == hatedFruit) { return; }
 
@@ -302,13 +291,64 @@ public class CreatureScript : MonoBehaviour {
 
         if(happiness > 100) { happiness = 100; }
 
-        switch (statToIncrease)
+        switch (majorStatToIncrease)
+        {
+            case "Intelligence":
+                Intelligence.upgradePoints += 2;
+                if(Intelligence.upgradePoints > 2)
+                {
+                    Intelligence.upgradePoints -= 3;
+                    Intelligence.level++;
+                }
+                break;
+
+            case "Agility":
+                Agility.upgradePoints += 2;
+                if (Agility.upgradePoints > 2)
+                {
+                    Agility.upgradePoints -= 3;
+                    Agility.level++;
+                }
+                break;
+
+            case "Strength":
+                Strength.upgradePoints += 2;
+                if (Strength.upgradePoints > 2)
+                {
+                    Strength.upgradePoints -= 3;
+                    Strength.level++;
+                }
+                break;
+
+            case "Style":
+                Style.upgradePoints += 2;
+                if (Style.upgradePoints > 2)
+                {
+                    Style.upgradePoints -= 3;
+                    Style.level++;
+                }
+                break;
+
+            case "Stamina":
+                Stamina.upgradePoints += 2;
+                if (Stamina.upgradePoints > 2)
+                {
+                    Stamina.upgradePoints = 0;
+                    Stamina.level++;
+                }
+                break;
+
+            default:
+                break;
+        }
+
+        switch (minorStatToIncrease)
         {
             case "Intelligence":
                 Intelligence.upgradePoints++;
-                if(Intelligence.upgradePoints > 2)
+                if (Intelligence.upgradePoints > 2)
                 {
-                    Intelligence.upgradePoints = 0;
+                    Intelligence.upgradePoints -= 3;
                     Intelligence.level++;
                 }
                 break;
@@ -317,7 +357,7 @@ public class CreatureScript : MonoBehaviour {
                 Agility.upgradePoints++;
                 if (Agility.upgradePoints > 2)
                 {
-                    Agility.upgradePoints = 0;
+                    Agility.upgradePoints -= 3;
                     Agility.level++;
                 }
                 break;
@@ -326,7 +366,7 @@ public class CreatureScript : MonoBehaviour {
                 Strength.upgradePoints++;
                 if (Strength.upgradePoints > 2)
                 {
-                    Strength.upgradePoints = 0;
+                    Strength.upgradePoints -= 3;
                     Strength.level++;
                 }
                 break;
@@ -335,7 +375,7 @@ public class CreatureScript : MonoBehaviour {
                 Style.upgradePoints++;
                 if (Style.upgradePoints > 2)
                 {
-                    Style.upgradePoints = 0;
+                    Style.upgradePoints -= 3;
                     Style.level++;
                 }
                 break;
@@ -344,7 +384,7 @@ public class CreatureScript : MonoBehaviour {
                 Stamina.upgradePoints++;
                 if (Stamina.upgradePoints > 2)
                 {
-                    Stamina.upgradePoints = 0;
+                    Stamina.upgradePoints -= 3;
                     Stamina.level++;
                 }
                 break;
@@ -471,16 +511,18 @@ public class CreatureScript : MonoBehaviour {
         if (IS.inventoryPanel.activeSelf) { return; }
 
         SM.statsPanel.SetActive(!SM.statsPanel.activeSelf);
-        Camera.main.gameObject.GetComponent<CameraPositions>().LockCamera = SM.statsPanel.activeSelf;
+        Camera.main.gameObject.GetComponent<CameraControl>().LockCamera = SM.statsPanel.activeSelf;
         SM.targetCreature = this.gameObject;
         UpdateStatUI();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+
         if(collision.gameObject.tag == "wall")
         {
-            targetPoint = this.transform.position;
+            Debug.Log("Touched Wall");
+            targetPoint = (Vector2)this.transform.position + ((Vector2)this.transform.position - targetPoint);
         }
     }
 }

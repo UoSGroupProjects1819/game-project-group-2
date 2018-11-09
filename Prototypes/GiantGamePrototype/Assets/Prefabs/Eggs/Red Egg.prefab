@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 114948644328120774}
   m_Layer: 11
   m_Name: Red Egg
-  m_TagString: Interactable
+  m_TagString: Egg
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -160,12 +160,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69aa8c25962cf324da80e5f71486e3c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  eggType: 
   creatureToSpawn: {fileID: 1729181058423880, guid: f1aff7752e2cb074882e3896ee80921c,
     type: 2}
   spawnDelay: 10
   WS: {fileID: 0}
   eggSprites:
   - {fileID: 21300004, guid: 3cdd026ca22db114d966ce82bbf36bfa, type: 3}
+  - {fileID: 21300000, guid: f20a5186714fede478cfa4e1b3bfd0e2, type: 3}
+  - {fileID: 21300002, guid: f20a5186714fede478cfa4e1b3bfd0e2, type: 3}
+  - {fileID: 21300004, guid: f20a5186714fede478cfa4e1b3bfd0e2, type: 3}
+  - {fileID: 21300006, guid: f20a5186714fede478cfa4e1b3bfd0e2, type: 3}
 --- !u!212 &212931518911313110
 SpriteRenderer:
   m_ObjectHideFlags: 1

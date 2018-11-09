@@ -2,19 +2,19 @@ fileFormatVersion: 2
 guid: c8537f81f13ad34499b37e9ee5864eee
 TextureImporter:
   fileIDToRecycleName:
-    21300000: GreenTree3
-    21300002: BlueTree3
-    21300004: TealTree3
+    21300000: Tree Green 3
+    21300002: Tree Blue 3
+    21300004: Tree Teal 3
     21300006: tree's_game_ready_3
     21300008: tree's_game_ready_4
-    21300010: GreenTree2
-    21300012: BlueTree2
-    21300014: TealTree2
+    21300010: Tree Green 2
+    21300012: Tree Blue 2
+    21300014: Tree Teal 2
     21300016: tree's_game_ready_8
     21300018: tree's_game_ready_9
-    21300020: GreenTree1
-    21300022: BlueTree1
-    21300024: TealTree1
+    21300020: Tree Green 1
+    21300022: Tree Blue 1
+    21300024: Tree Teal 1
     21300026: tree's_game_ready_13
     21300028: tree's_game_ready_14
   externalObjects: {}
@@ -132,7 +132,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: GreenTree3
+      name: Tree Green 3
       rect:
         serializedVersion: 2
         x: 0
@@ -152,15 +152,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BlueTree3
+      name: Tree Blue 3
       rect:
         serializedVersion: 2
-        x: 597
+        x: 600
         y: 1203
         width: 600
         height: 601
       alignment: 9
-      pivot: {x: 0.38230714, y: 0.19450757}
+      pivot: {x: 0.38607636, y: 0.19513458}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -172,7 +172,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TealTree3
+      name: Tree Teal 3
       rect:
         serializedVersion: 2
         x: 1200
@@ -192,7 +192,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GreenTree2
+      name: Tree Green 2
       rect:
         serializedVersion: 2
         x: 0
@@ -212,7 +212,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BlueTree2
+      name: Tree Blue 2
       rect:
         serializedVersion: 2
         x: 600
@@ -232,7 +232,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TealTree2
+      name: Tree Teal 2
       rect:
         serializedVersion: 2
         x: 1200
@@ -252,7 +252,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GreenTree1
+      name: Tree Green 1
       rect:
         serializedVersion: 2
         x: 0
@@ -272,7 +272,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BlueTree1
+      name: Tree Blue 1
       rect:
         serializedVersion: 2
         x: 600
@@ -292,7 +292,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TealTree1
+      name: Tree Teal 1
       rect:
         serializedVersion: 2
         x: 1200

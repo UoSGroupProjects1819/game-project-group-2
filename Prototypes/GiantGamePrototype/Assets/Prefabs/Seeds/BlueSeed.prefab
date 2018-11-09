@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 114581083961236440}
   m_Layer: 11
   m_Name: BlueSeed
-  m_TagString: Interactable
+  m_TagString: Seed
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -86,7 +86,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -101,7 +101,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.0029425323, y: 0.12}
@@ -128,10 +128,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 661169b6d76e9884f9032575a4a5b9ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  seedType: 
   treeToSpawn: {fileID: 1577774115809660, guid: 69b6971990d7c794584a95737457a1f1,
     type: 2}
   spawnDelay: 3
   WS: {fileID: 0}
+  readyToSpawn: 0
 --- !u!212 &212931518911313110
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -166,7 +168,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 8
+  m_SortingOrder: 5
   m_Sprite: {fileID: 21300010, guid: 2f8528dee33d7fa47a0bb0cbd3caaf85, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

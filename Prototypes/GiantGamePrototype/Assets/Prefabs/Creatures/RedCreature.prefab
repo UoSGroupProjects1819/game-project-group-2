@@ -160,7 +160,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1729181058423880}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.73229444, y: 0.6629236, z: -0.029296875}
+  m_LocalPosition: {x: 1.5171235, y: 0.49813282, z: -0.029296875}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4803389288101208}
@@ -291,7 +291,7 @@ MonoBehaviour:
   star: {fileID: 1921820288615234, guid: 5c2f9dc26825e5b438ff0e64d4ee5a31, type: 2}
   face: {fileID: 212009323840516628}
   happiness: 100
-  happinessLossSpeed: 5
+  happinessLossSpeed: 1
   happinessLevels:
   - name: Sad
     sprite: {fileID: 21300008, guid: e0676e5a9f064644cae84cf681d3f463, type: 3}
@@ -427,8 +427,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1894438229
+  m_SortingLayer: 2
   m_SortingOrder: 7
   m_Sprite: {fileID: 21300002, guid: b995c35f63ab6634c96671e6342444be, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -473,8 +473,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1894438229
+  m_SortingLayer: 2
   m_SortingOrder: 7
   m_Sprite: {fileID: 21300004, guid: b995c35f63ab6634c96671e6342444be, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -519,8 +519,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1894438229
+  m_SortingLayer: 2
   m_SortingOrder: 6
   m_Sprite: {fileID: 21300000, guid: b995c35f63ab6634c96671e6342444be, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

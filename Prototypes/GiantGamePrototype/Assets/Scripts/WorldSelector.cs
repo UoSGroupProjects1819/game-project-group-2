@@ -40,14 +40,13 @@ public class WorldSelector : MonoBehaviour {
     public void SelectIsland(int id)
     {
         if(islands.Length < id + 1) { return; }
+        if (islands[id] == SelectedIsland) { return; }
 
-        foreach (var item in islands)
-        {
-            item.SetActive(false);
-        }
+        Camera.main.GetComponent<CameraControl>().SetWorldOffset(islands[id].transform.position.x);
+        GiantScript.Instance.gameObject.transform.position += islands[id].transform.position - SelectedIsland.transform.position;
+        GiantScript.Instance.targetPoint = GiantScript.Instance.transform.position;
 
         SelectedIsland = islands[id];
-        
-        islands[id].SetActive(true);
+       
     }
 }

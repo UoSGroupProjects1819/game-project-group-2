@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 114345702192826168}
   m_Layer: 11
   m_Name: BlueEgg
-  m_TagString: Interactable
+  m_TagString: Egg
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -160,16 +160,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69aa8c25962cf324da80e5f71486e3c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  eggType: 
   creatureToSpawn: {fileID: 1020344389139656, guid: c868d24800d71e04d97b9ed4cf19fc74,
     type: 2}
   spawnDelay: 10
   WS: {fileID: 0}
   eggSprites:
   - {fileID: 21300000, guid: 3cdd026ca22db114d966ce82bbf36bfa, type: 3}
-  - {fileID: 21300000, guid: d1770403d6789064fb955a2689c9ce31, type: 3}
-  - {fileID: 21300002, guid: d1770403d6789064fb955a2689c9ce31, type: 3}
-  - {fileID: 21300004, guid: d1770403d6789064fb955a2689c9ce31, type: 3}
-  - {fileID: 21300006, guid: d1770403d6789064fb955a2689c9ce31, type: 3}
+  - {fileID: 21300000, guid: b7b938440b74f584ba3350de672024f7, type: 3}
+  - {fileID: 21300002, guid: b7b938440b74f584ba3350de672024f7, type: 3}
+  - {fileID: 21300004, guid: b7b938440b74f584ba3350de672024f7, type: 3}
+  - {fileID: 21300006, guid: b7b938440b74f584ba3350de672024f7, type: 3}
 --- !u!212 &212331787059645094
 SpriteRenderer:
   m_ObjectHideFlags: 1

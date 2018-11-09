@@ -18,6 +18,9 @@ TagManager:
   - World
   - Meteor
   - Gift
+  - Egg
+  - Seed
+  - PlantPot
   layers:
   - Default
   - TransparentFX
@@ -54,4 +57,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Giant
+    uniqueID: 2175151901
+    locked: 0
+  - name: Creature
+    uniqueID: 1894438229
     locked: 0

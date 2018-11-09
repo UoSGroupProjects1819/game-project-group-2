@@ -61,8 +61,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\GiftScript.cs" />
-    <Compile Include="Assets\Scripts\CameraPositions.cs" />
+    <Compile Include="Assets\Scripts\CameraControl.cs" />
     <Compile Include="Assets\Scripts\CraftingIngredient.cs" />
     <Compile Include="Assets\Scripts\CraftingObject.cs" />
     <Compile Include="Assets\Scripts\CraftingOutcome.cs" />
@@ -72,6 +71,7 @@
     <Compile Include="Assets\Scripts\EggScript.cs" />
     <Compile Include="Assets\Scripts\FruitScript.cs" />
     <Compile Include="Assets\Scripts\GiantScript.cs" />
+    <Compile Include="Assets\Scripts\GiftScript.cs" />
     <Compile Include="Assets\Scripts\IngredientButton.cs" />
     <Compile Include="Assets\Scripts\InteractionGlowScript.cs" />
     <Compile Include="Assets\Scripts\InventoryButtonObject.cs" />
@@ -82,6 +82,7 @@
     <Compile Include="Assets\Scripts\menuScript.cs" />
     <Compile Include="Assets\Scripts\Meteor.cs" />
     <Compile Include="Assets\Scripts\parralax.cs" />
+    <Compile Include="Assets\Scripts\PlantPot.cs" />
     <Compile Include="Assets\Scripts\SeedScript.cs" />
     <Compile Include="Assets\Scripts\StatManager.cs" />
     <Compile Include="Assets\Scripts\TouchController.cs" />
@@ -350,6 +351,12 @@
     <Reference Include="Boo.Lang">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2018.2.10f1/Editor/Data/MonoBleedingEdge/lib/mono/unity/Boo.Lang.dll</HintPath>
     </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
+      <Project>{D4D63B45-F36E-7230-BF05-B88EF1B8F0AF}</Project>
+      <Name>Assembly-CSharp-firstpass</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

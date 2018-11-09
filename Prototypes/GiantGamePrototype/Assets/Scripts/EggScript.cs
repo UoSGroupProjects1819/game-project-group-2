@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class EggScript : MonoBehaviour {
 
+    public string eggType;
+
     public GameObject creatureToSpawn;
 
     public float spawnDelay;
@@ -21,7 +23,8 @@ public class EggScript : MonoBehaviour {
         WS = GameObject.FindGameObjectWithTag("World").GetComponent<WorldSelector>();
     }
 
-    void Update () {
+    void Update ()
+    {
         if (readyToSpawn)
         {
             spawnDelay -= Time.deltaTime;

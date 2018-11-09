@@ -2,9 +2,9 @@ fileFormatVersion: 2
 guid: 3cdd026ca22db114d966ce82bbf36bfa
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Blue Egg
-    21300002: Yellow Egg
-    21300004: Red Egg
+    21300000: Egg Blue
+    21300002: Egg Yellow
+    21300004: Egg Red
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -120,7 +120,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Blue Egg
+      name: Egg Blue
       rect:
         serializedVersion: 2
         x: 50
@@ -140,7 +140,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Yellow Egg
+      name: Egg Yellow
       rect:
         serializedVersion: 2
         x: 60
@@ -160,7 +160,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Red Egg
+      name: Egg Red
       rect:
         serializedVersion: 2
         x: 30

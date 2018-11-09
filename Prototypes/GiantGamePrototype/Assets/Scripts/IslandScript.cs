@@ -6,6 +6,11 @@ public class IslandScript : MonoBehaviour {
 
     public int islandID;
 
-    public int currentIslandPopulation;
-    public int maxIslandPopulation;
+    public int currentCreaturePopulation;
+    public int maxCreaturePopulation;
+
+    public int currentTreePopulation;
+    public int maxTreePopulation;
+
+    public GameObject[] plantPots;
 }

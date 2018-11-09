@@ -139,7 +139,8 @@ MonoBehaviour:
     name: Apple
     sprite: {fileID: 21300000, guid: 39882138c2ca8294783a350108d96fbd, type: 3}
     amt: 1
-  statToIncrease: Intelligence
+  majorStatToIncrease: Intelligence
+  minorStatToIncrease: Style
 --- !u!212 &212608102259218380
 SpriteRenderer:
   m_ObjectHideFlags: 1

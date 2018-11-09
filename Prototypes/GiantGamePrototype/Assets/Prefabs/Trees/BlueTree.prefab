@@ -67,6 +67,7 @@ GameObject:
   - component: {fileID: 50505903057451610}
   - component: {fileID: 61264348735492222}
   - component: {fileID: 114833552158754400}
+  - component: {fileID: 95819073538226116}
   m_Layer: 13
   m_Name: BlueTree
   m_TagString: Tree
@@ -173,7 +174,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -204,6 +205,24 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.457977, y: 1.1062055}
   m_EdgeRadius: 0
+--- !u!95 &95819073538226116
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1577774115809660}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fe2f4baf4882b0d44ba94461df93065f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &114833552158754400
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -221,7 +240,7 @@ MonoBehaviour:
   - {fileID: 21300022, guid: c8537f81f13ad34499b37e9ee5864eee, type: 3}
   - {fileID: 21300012, guid: c8537f81f13ad34499b37e9ee5864eee, type: 3}
   - {fileID: 21300002, guid: c8537f81f13ad34499b37e9ee5864eee, type: 3}
-  fruitToSpawn: {fileID: 1534438510011978, guid: 61290f267850d124091295f4d74995ce,
+  fruitToSpawn: {fileID: 1534438510011978, guid: 0d6b05b980310f8458ce6e1f2321723a,
     type: 2}
   fruitSpawns:
   - {fileID: 1151069187050372}
@@ -269,14 +288,14 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 4
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300022, guid: c8537f81f13ad34499b37e9ee5864eee, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.6666666, y: 1.3333334}
+  m_Size: {x: 2, y: 2.0044444}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0

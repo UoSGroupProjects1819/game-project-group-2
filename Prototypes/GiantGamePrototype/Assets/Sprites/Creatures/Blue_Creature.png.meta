@@ -2,9 +2,9 @@ fileFormatVersion: 2
 guid: 967052f4d048b7640b34e5794974e91d
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Blue Body
-    21300002: Blue Face
-    21300004: Blue Horns
+    21300000: Creature Blue Body
+    21300002: Creature Blue Face
+    21300004: Creature Blue Horns
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -120,7 +120,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Blue Body
+      name: Creature Blue Body
       rect:
         serializedVersion: 2
         x: 1336
@@ -128,7 +128,7 @@ TextureImporter:
         width: 309
         height: 319
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -140,7 +140,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Blue Face
+      name: Creature Blue Face
       rect:
         serializedVersion: 2
         x: 1205
@@ -148,7 +148,7 @@ TextureImporter:
         width: 170
         height: 154
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -160,7 +160,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Blue Horns
+      name: Creature Blue Horns
       rect:
         serializedVersion: 2
         x: 1513
@@ -168,7 +168,7 @@ TextureImporter:
         width: 240
         height: 123
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

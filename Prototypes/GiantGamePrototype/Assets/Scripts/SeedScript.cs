@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class SeedScript : MonoBehaviour {
 
+    public string seedType;
+
     public GameObject treeToSpawn;
 
     public float spawnDelay;
 
     public WorldSelector WS;
 
-    bool readyToSpawn;
+    public bool readyToSpawn;
 
     private void Start()
     {
@@ -24,17 +26,9 @@ public class SeedScript : MonoBehaviour {
             spawnDelay -= Time.deltaTime;
             if (spawnDelay <= 0)
             {
-                Instantiate(treeToSpawn, this.transform.position, Quaternion.identity, WS.SelectedIsland.transform);
+                Instantiate(treeToSpawn, this.transform.position, Quaternion.identity, this.transform.parent);
                 Destroy(this.gameObject);
             }
-        }
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == "Ground")
-        {
-            readyToSpawn = true;
         }
     }
 }

@@ -4,12 +4,12 @@ TextureImporter:
   fileIDToRecycleName:
     21300000: DefaultTree
     21300002: Tree_Angular_Master_0
-    21300004: Tall Seed
+    21300004: Seed Tall
     21300006: Blue Tree
     21300008: Tall Tree
-    21300010: Blue Seed
-    21300012: Teal Seed
-    21300014: Default Seed
+    21300010: Seed Blue
+    21300012: Seed Teal
+    21300014: Seed Green
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -125,7 +125,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Tall Seed
+      name: Seed Tall
       rect:
         serializedVersion: 2
         x: 1562
@@ -145,7 +145,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Blue Seed
+      name: Seed Blue
       rect:
         serializedVersion: 2
         x: 1026
@@ -153,7 +153,7 @@ TextureImporter:
         width: 150
         height: 150
       alignment: 9
-      pivot: {x: 0.5081535, y: 0.07195933}
+      pivot: {x: 0.5270117, y: 0.25361007}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -165,7 +165,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Teal Seed
+      name: Seed Teal
       rect:
         serializedVersion: 2
         x: 639
@@ -173,7 +173,7 @@ TextureImporter:
         width: 150
         height: 150
       alignment: 9
-      pivot: {x: 0.4592342, y: 0.063805886}
+      pivot: {x: 0.48960328, y: 0.36168748}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -185,7 +185,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Default Seed
+      name: Seed Green
       rect:
         serializedVersion: 2
         x: 130
@@ -193,7 +193,7 @@ TextureImporter:
         width: 150
         height: 150
       alignment: 9
-      pivot: {x: 0.47146404, y: 0.051576156}
+      pivot: {x: 0.48470846, y: 0.27866125}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

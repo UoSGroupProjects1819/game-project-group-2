@@ -16,6 +16,7 @@ public class JsonTrees
     public float[] growTimers;
     public float[] timeToGrows;
     public int[] worldIds;
+    public int[] potIds;
 }
 
 public class TreeManager : MonoBehaviour {
@@ -35,7 +36,7 @@ public class TreeManager : MonoBehaviour {
     {
         Instance = this;
         LoadTrees();
-        StartCoroutine(AutoSaveTrees());
+        //StartCoroutine(AutoSaveTrees());
     }
 
     void LoadTrees()
@@ -53,8 +54,14 @@ public class TreeManager : MonoBehaviour {
 
             for (int i = 0; i < jsonTrees.types.Length; i++)
             {
-                GameObject newTree = Instantiate(FindTree(jsonTrees.types[i]), new Vector3(Random.Range(spawnBounds.x, spawnBounds.y), 0.5f, 0), Quaternion.identity, WorldSelector.Instance.islands[jsonTrees.worldIds[i]].transform);
+                GameObject newTree = Instantiate(
+                    FindTree(jsonTrees.types[i]),
+                    WorldSelector.Instance.islands[jsonTrees.worldIds[i]].GetComponent<IslandScript>().plantPots[jsonTrees.potIds[i]].transform.position,
+                    Quaternion.identity, 
+                    WorldSelector.Instance.islands[jsonTrees.worldIds[i]].GetComponent<IslandScript>().plantPots[jsonTrees.potIds[i]].transform
+                    );
                 TreesInWorld.Add(newTree);
+                WorldSelector.Instance.islands[jsonTrees.worldIds[i]].GetComponent<IslandScript>().currentTreePopulation++;
                 TreeScript TS = newTree.GetComponent<TreeScript>();
                 TS.growTimer = jsonTrees.growTimers[i];
                 TS.timeToGrow = jsonTrees.timeToGrows[i];
@@ -85,7 +92,8 @@ public class TreeManager : MonoBehaviour {
                 types = new string[TreesInWorld.Count],
                 growTimers = new float[TreesInWorld.Count],
                 timeToGrows = new float[TreesInWorld.Count],
-                worldIds = new int[TreesInWorld.Count]
+                worldIds = new int[TreesInWorld.Count],
+                potIds = new int[TreesInWorld.Count]
             };
 
             int i = 0;
@@ -95,7 +103,8 @@ public class TreeManager : MonoBehaviour {
                 jsonTrees.types[i] = TS.treeType;
                 jsonTrees.growTimers[i] = TS.growTimer;
                 jsonTrees.timeToGrows[i] = TS.timeToGrow;
-                jsonTrees.worldIds[i] = tree.transform.parent.GetComponent<IslandScript>().islandID;
+                jsonTrees.worldIds[i] = tree.transform.parent.GetComponentInParent<IslandScript>().islandID;
+                jsonTrees.potIds[i] = tree.transform.GetComponentInParent<PlantPot>().potID;
                 i++;
             }
 

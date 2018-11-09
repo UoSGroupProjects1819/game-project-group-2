@@ -2,11 +2,11 @@ fileFormatVersion: 2
 guid: e0676e5a9f064644cae84cf681d3f463
 TextureImporter:
   fileIDToRecycleName:
-    21300000: VeryHappy
-    21300002: Happy
-    21300004: Neutral
-    21300006: Sad
-    21300008: Angry
+    21300000: Mood VeryHappy
+    21300002: Mood Happy
+    21300004: Mood Neutral
+    21300006: Mood Sad
+    21300008: Mood Angry
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -122,7 +122,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: VeryHappy
+      name: Mood VeryHappy
       rect:
         serializedVersion: 2
         x: 102
@@ -142,7 +142,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Happy
+      name: Mood Happy
       rect:
         serializedVersion: 2
         x: 592
@@ -162,7 +162,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Neutral
+      name: Mood Neutral
       rect:
         serializedVersion: 2
         x: 1082
@@ -182,7 +182,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sad
+      name: Mood Sad
       rect:
         serializedVersion: 2
         x: 102
@@ -202,7 +202,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Angry
+      name: Mood Angry
       rect:
         serializedVersion: 2
         x: 592
