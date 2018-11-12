@@ -50,7 +50,7 @@ public class Meteor : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log(collision.tag);
+        //Debug.Log(collision.tag);
         if(collision.gameObject.tag == "TappableArea")
         {
             canTap = true;

@@ -110,7 +110,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.3962264, g: 0.3962264, b: 0.3962264, a: 1}
+  m_Color: {r: 0, g: 0.39215687, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -231,6 +231,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   childImage: {fileID: 114463960022950130}
   childAmtCounter: {fileID: 114124954333674202}
+  thisIngredient:
+    name: 
+    amt: 0
 --- !u!222 &222571032709365668
 CanvasRenderer:
   m_ObjectHideFlags: 1

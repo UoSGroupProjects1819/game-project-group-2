@@ -325,6 +325,17 @@ public class CreatureManager : MonoBehaviour {
         }
     }
 
+    public void ResetSave()
+    {
+        string filePath = Application.persistentDataPath + fileName;
+        //string filePath = fileName;
+
+        if (File.Exists(filePath))
+        {
+            File.Delete(filePath);
+        }
+    }
+
     IEnumerator AutoSaveCreatures()
     {
         while (true)

@@ -22,6 +22,7 @@ public class StatManager : MonoBehaviour {
 
     [Space(10)]
     public GameObject statsPanel;
+    public Text nameText;
     public Image happinessImage;
     public GameObject breedNote;
     public Transform StarPanel;

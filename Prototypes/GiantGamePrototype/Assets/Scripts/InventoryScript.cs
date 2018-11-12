@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 #region InventoryClasses
 
@@ -261,6 +262,20 @@ public class InventoryScript : MonoBehaviour
         }
     }
 
+    public void ResetSave()
+    {
+        string filePath = Application.persistentDataPath + fileName;
+        //string filePath = fileName;
+
+        if (File.Exists(filePath))
+        {
+            File.Delete(filePath);
+            TreeManager.Instance.ResetSave();
+            CreatureManager.Instance.ResetSave();
+            SceneManager.LoadScene(0);
+        }
+    }
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.P))
@@ -318,6 +333,7 @@ public class InventoryScript : MonoBehaviour
             {
                 return ingredient;
             }
+            //Debug.Log(ingredientToFind + " is not " + ingredient.name);
         }
 
         Debug.Log("Couldnt find Ingredient");

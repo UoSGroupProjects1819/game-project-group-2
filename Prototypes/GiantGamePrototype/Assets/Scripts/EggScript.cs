@@ -25,8 +25,10 @@ public class EggScript : MonoBehaviour {
 
     void Update ()
     {
+
         if (readyToSpawn)
         {
+            this.transform.eulerAngles = Vector3.zero;
             spawnDelay -= Time.deltaTime;
 
             spriteChangeTimer -= Time.deltaTime;
@@ -44,6 +46,14 @@ public class EggScript : MonoBehaviour {
             }
         }
 	}
+
+    public void SpeedUpHatch()
+    {
+        float speedupAmt = spawnDelay * 0.1f;
+        spawnDelay -= speedupAmt;
+        spriteChangeTimer -= speedupAmt;
+        this.GetComponent<Animator>().SetTrigger("Tapped");
+    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {

@@ -168,7 +168,10 @@ public class GiantScript : MonoBehaviour {
 
     public void GoToPot(GameObject pot)
     {
-        if(pot.GetComponent<PlantPot>().treeInPot != null) { return; }
+        if(pot.GetComponent<PlantPot>().treeInPot != null || currentHolding == null) { return; }
+
+
+        if(currentHolding.GetComponent<SeedScript>() == null) { return; }
 
         targetPoint = pot.transform.position;
         targetObject = pot;
@@ -187,13 +190,15 @@ public class GiantScript : MonoBehaviour {
             currentHolding.transform.eulerAngles = Vector3.zero;
             pot.GetComponent<PlantPot>().treeInPot = currentHolding;
             currentHolding.GetComponent<SeedScript>().readyToSpawn = true;
+            currentHolding.GetComponentInChildren<SpriteRenderer>().sortingOrder = 2;
+            targetObject = null;
 
             holding = false;
             currentHolding = null;
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
         if(collision.gameObject == targetObject)
         {

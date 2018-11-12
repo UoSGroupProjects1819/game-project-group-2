@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 50848885859290356}
   - component: {fileID: 60994589229153726}
   - component: {fileID: 114345702192826168}
+  - component: {fileID: 95487667899582586}
   m_Layer: 11
   m_Name: BlueEgg
   m_TagString: Egg
@@ -149,6 +150,24 @@ PolygonCollider2D:
       - {x: 0.053749997, y: -0.1575}
       - {x: 0.07625, y: -0.14125}
       - {x: 0.098749995, y: -0.11625}
+--- !u!95 &95487667899582586
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1138276342761574}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 24d290152c52599488dc15d1fb61273b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &114345702192826168
 MonoBehaviour:
   m_ObjectHideFlags: 1

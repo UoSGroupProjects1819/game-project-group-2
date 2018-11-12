@@ -81,9 +81,7 @@ MonoBehaviour:
   IS: {fileID: 0}
   thisEgg:
     name: 
-    sprite: {fileID: 0}
     amt: 0
-    objectToSpawn: {fileID: 0}
 --- !u!114 &114402794882004984
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -156,7 +154,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.3962264, g: 0.3962264, b: 0.3962264, a: 1}
+  m_Color: {r: 0, g: 0.39215687, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:

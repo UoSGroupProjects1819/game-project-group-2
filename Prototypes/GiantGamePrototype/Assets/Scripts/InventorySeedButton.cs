@@ -33,6 +33,7 @@ public class InventorySeedButton : MonoBehaviour {
 
     public void CraftingClick()
     {
+        Debug.Log(thisSeed.name);
         IS.SetCraftingObject(thisSeed);
     }
 

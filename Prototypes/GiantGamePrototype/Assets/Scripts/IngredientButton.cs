@@ -8,14 +8,14 @@ public class IngredientButton : MonoBehaviour {
     public Image childImage;
     public Text childAmtCounter;
 
-    IngredientInInventory thisIngredient;
+    public IngredientInInventory thisIngredient;
 
     InventoryScript IS;
 
     public void SetUpButton(IngredientInInventory newIngredient)
     {
         IS = InventoryScript.Instance;
-        Debug.Log(IS.name);
+        Debug.Log(newIngredient.name);
         thisIngredient = newIngredient;
         childImage.sprite = IS.FindIngredient(thisIngredient.name).sprite;
         childAmtCounter.text = "x" + thisIngredient.amt;

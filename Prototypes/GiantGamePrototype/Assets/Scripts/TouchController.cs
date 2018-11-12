@@ -115,7 +115,7 @@ public class TouchController : MonoBehaviour {
 
     void SingleTap(Vector2 touchPos)
     {
-        Debug.Log("Single Tap");
+        //Debug.Log("Single Tap");
         RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(touchPos), Vector2.zero);
 
         if(hit == false) { return; }
@@ -153,6 +153,11 @@ public class TouchController : MonoBehaviour {
         if (hit.transform.tag == "PlantPot")
         {
             GiantScript.Instance.GoToPot(hit.transform.gameObject);
+        }
+        else
+        if (hit.transform.tag == "Egg")
+        {
+            hit.transform.GetComponent<EggScript>().SpeedUpHatch();
         }
         else
         {

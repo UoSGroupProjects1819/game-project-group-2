@@ -8,7 +8,8 @@ public class CreatureScript : MonoBehaviour {
 
     #region Variables
 
-    public string name;
+
+    public string creatureName;
     public string type;
 
     Rigidbody2D RB;
@@ -29,6 +30,7 @@ public class CreatureScript : MonoBehaviour {
 
     public float speed;
     public float speedMultiplier = 1;
+    public Vector2 movementBoundary;
 
     public GameObject targetFruit;
 
@@ -274,6 +276,11 @@ public class CreatureScript : MonoBehaviour {
                 RB.velocity = Vector2.zero;
                 waitTime = Random.Range(minWaitTime, maxWaitTime);
                 targetPoint = new Vector2(Random.Range(this.transform.position.x - maxWalkDistance, this.transform.position.x + maxWalkDistance), this.transform.position.y);
+                if ((targetPoint.x - this.transform.parent.position.x) < movementBoundary.x || (targetPoint.x - this.transform.parent.position.x) > movementBoundary.y)
+                {
+                    Debug.Log("would have hit wall so redirected " + (targetPoint.x - this.transform.parent.position.x));
+                    targetPoint = (Vector2)this.transform.position + ((Vector2)this.transform.position - targetPoint);
+                }
             }
         }
     }
@@ -401,6 +408,8 @@ public class CreatureScript : MonoBehaviour {
     private void UpdateStatUI()
     {
         if(SM.targetCreature == null || SM.targetCreature != this.gameObject) { return; }
+
+        SM.nameText.text = this.creatureName;
 
         int i = 1;
         foreach (Transform item in SM.intelligenceUpgradeMeter)
