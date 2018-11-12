@@ -1,0 +1,4535 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Group Project - general</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <style>
+        /* === GENERAL === */
+
+body {
+    font-family: "Whitney", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+img {
+    object-fit: contain;
+}
+
+.pre {
+    font-family: "Consolas", "Courier New", Courier, Monospace;
+    white-space: pre-wrap;
+}
+
+.pre--multiline {
+    margin-top: 4px;
+    padding: 8px;
+    border: 2px solid;
+    border-radius: 5px;    
+}
+
+.pre--inline {
+    padding: 2px;
+    border-radius: 3px;
+}
+
+.emoji {
+    width: 24px;
+    height: 24px;
+    margin: 0 1px;
+    vertical-align: middle;
+}
+
+.emoji--small {
+    width: 16px;
+    height: 16px;
+}
+
+.emoji--large {
+    width: 32px;
+    height: 32px;
+}
+
+.mention {
+    font-weight: 600;
+}
+
+/* === INFO === */
+
+.info {
+    display: flex;
+    max-width: 100%;
+    margin: 0 5px 10px 5px;    
+}
+
+.info__guild-icon-container {
+    flex: 0;
+}
+
+.info__guild-icon {
+    max-width: 88px;
+    max-height: 88px;
+}
+
+.info__metadata {
+    flex: 1;
+    margin-left: 10px;
+}
+
+.info__guild-name {
+    font-size: 1.4em;
+}
+
+.info__channel-name {
+    font-size: 1.2em;
+}
+
+.info__channel-topic {
+    margin-top: 2px;
+}
+
+.info__channel-message-count {
+    margin-top: 2px;
+}
+
+.info__channel-date-range {
+    margin-top: 2px;
+}
+
+/* === CHATLOG === */
+
+.chatlog {
+    max-width: 100%;
+}
+
+.chatlog__message-group {
+    display: flex;
+    margin: 0 10px;
+    padding: 15px 0;
+    border-top: 1px solid;
+}
+
+.chatlog__author-avatar-container {
+    flex: 0;
+    width: 40px;
+    height: 40px;
+}
+
+.chatlog__author-avatar {
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+}
+
+.chatlog__messages {
+    flex: 1;
+    min-width: 50%;
+    margin-left: 20px;
+}
+
+.chatlog__author-name {
+    font-size: 1em;
+}
+
+.chatlog__timestamp {
+    margin-left: 5px;
+    font-size: .75em;
+}
+
+.chatlog__content {
+    padding-top: 5px;
+    font-size: .9375em;
+    word-wrap: break-word;
+}
+
+.chatlog__edited-timestamp {
+    margin-left: 5px;
+    font-size: .8em;
+}
+
+.chatlog__attachment {
+    margin: 5px 0;
+}
+
+.chatlog__attachment-thumbnail {
+    max-width: 50%;
+    max-height: 500px;
+    border-radius: 3px;
+}
+
+.chatlog__embed {
+    display: flex;
+    max-width: 520px;
+    margin-top: 5px;
+}
+
+.chatlog__embed-color-pill {
+    flex-shrink: 0;
+    width: 4px;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+
+.chatlog__embed-content-container {
+    display: flex;
+    flex-direction: column;
+    padding: 8px 10px;
+    border: 1px solid;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+.chatlog__embed-content {
+    width: 100%;
+    display: flex;
+}
+
+.chatlog__embed-text {
+    flex: 1;
+}
+
+.chatlog__embed-author {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.chatlog__embed-author-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 9px;
+    border-radius: 50%;
+}
+
+.chatlog__embed-author-name {
+    font-size: .875em;
+    font-weight: 600;
+}
+
+.chatlog__embed-title {
+    margin-bottom: 4px;
+    font-size: .875em;
+    font-weight: 600;
+}
+
+.chatlog__embed-description {
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.chatlog__embed-fields {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.chatlog__embed-field {
+    flex: 0;
+    min-width: 100%;
+    max-width: 506px;
+    padding-top: 10px;
+}
+
+.chatlog__embed-field--inline {
+    flex: 1;
+    flex-basis: auto;
+    min-width: 150px;
+}
+
+.chatlog__embed-field-name {
+    margin-bottom: 4px;
+    font-size: .875em;
+    font-weight: 600;
+}
+
+.chatlog__embed-field-value {
+    font-size: .875em;
+    font-weight: 500;
+}
+
+.chatlog__embed-thumbnail {
+    flex: 0;
+    margin-left: 20px;
+    max-width: 80px;
+    max-height: 80px;
+    border-radius: 3px;
+}
+
+.chatlog__embed-image-container {
+    margin-top: 10px;
+}
+
+.chatlog__embed-image {    
+    max-width: 500px;
+    max-height: 400px;
+    border-radius: 3px;
+}
+
+.chatlog__embed-footer {
+    margin-top: 10px;
+}
+
+.chatlog__embed-footer-icon {
+    margin-right: 4px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    vertical-align: middle;
+}
+
+.chatlog__embed-footer-text {
+    font-weight: 600;
+    font-size: .75em;
+}
+
+.chatlog__reactions {
+    display: flex;    
+}
+
+.chatlog__reaction {
+    margin: 6px 2px 2px 2px;
+    padding: 2px 6px 2px 2px;
+    border-radius: 3px;
+}
+
+.chatlog__reaction-emoji {
+    margin-left: 3px;
+    vertical-align: middle;
+}
+
+.chatlog__reaction-count {
+    font-size: .875em;
+    vertical-align: middle;
+}
+/* === GENERAL === */
+
+body {
+    background-color: #ffffff;
+    color: #737f8d;
+}
+
+a {
+    color: #00b0f4;
+}
+
+.pre {
+    background-color: #f9f9f9;
+}
+
+.pre--multiline {
+    border-color: #f3f3f3;
+    color: #657b83;
+}
+
+.mention {
+    background-color: #f1f3fb;
+    color: #7289da;
+}
+
+/* === INFO === */
+
+.info__guild-name {
+    color: #2f3136;
+}
+
+.info__channel-name {
+    color: #2f3136;
+}
+
+.info__channel-topic {
+    color: #2f3136;
+}
+
+/* === CHATLOG === */
+
+.chatlog__message-group {
+    border-color: #eceeef;
+}
+
+.chatlog__author-name {
+    color: #2f3136;
+}
+
+.chatlog__timestamp {
+    color: #99aab5;
+}
+
+.chatlog__edited-timestamp {
+    color: #99aab5;
+}
+
+.chatlog__embed-content-container {
+    background-color: #f9f9f94d;
+    border-color: #cccccc4d;
+}
+
+.chatlog__embed-author-name {
+    color: #4f545c;
+}
+
+.chatlog__embed-author-name-link {
+    color: #4f545c;
+}
+
+.chatlog__embed-title {
+    color: #4f545c;
+}
+
+.chatlog__embed-description {
+    color: #737f8d;
+}
+
+.chatlog__embed-field-name {
+    color: #36393e;
+}
+
+.chatlog__embed-field-value {
+    color: #737f8d;
+}
+
+.chatlog__embed-footer {
+    color: #4f535b99;
+}
+
+.chatlog__reaction {
+    background-color: #4f545c0f;
+}
+
+.chatlog__reaction-count {
+    color: #99aab5;
+}
+    </style>
+</head>
+<body>
+    
+<div class="info">
+    <div class="info__guild-icon-container">
+        <img class="info__guild-icon" src="https://cdn.discordapp.com/embed/avatars/0.png" />
+    </div>
+    <div class="info__metadata">
+        <div class="info__guild-name">Group Project</div>
+        <div class="info__channel-name">general</div>
+        
+
+        <div class="info__channel-message-count">275 messages</div>
+        
+            <div class="info__channel-date-range">
+                    Between 05-Nov-18 12:00 AM and 12-Nov-18 12:00 AM
+            </div>
+    </div>
+</div>
+
+<div class="chatlog">
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/368474843462762497/7e23bad3de2b70f1b9413910ff526c12.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="GeorgeWJ#2855">GeorgeWJ</span>
+                <span class="chatlog__timestamp">05-Nov-18 09:36 AM</span>
+
+                        <div class="chatlog__content">
+                            I might be late but I am on my way in. On the bus now.
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/260871590122618880/734b8bba50866012ce75f9386e1e9f0f.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="GetWonked#3501">GetWonked</span>
+                <span class="chatlog__timestamp">05-Nov-18 09:36 AM</span>
+
+                        <div class="chatlog__content">
+                            No worries thanks for letting us know
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/368474843462762497/7e23bad3de2b70f1b9413910ff526c12.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="GeorgeWJ#2855">GeorgeWJ</span>
+                <span class="chatlog__timestamp">05-Nov-18 12:01 PM</span>
+
+                        <div class="chatlog__content">
+                            
+
+                        </div>
+
+                        <div class="chatlog__attachment">
+                            <a href="https://cdn.discordapp.com/attachments/493808790173515780/508974195468795924/20181105_115908.jpg">
+                                
+                                    <img class="chatlog__attachment-thumbnail" src="https://cdn.discordapp.com/attachments/493808790173515780/508974195468795924/20181105_115908.jpg" />
+                            </a>
+                        </div>
+                        <div class="chatlog__attachment">
+                            <a href="https://cdn.discordapp.com/attachments/493808790173515780/508974196139753472/20181105_115902.jpg">
+                                
+                                    <img class="chatlog__attachment-thumbnail" src="https://cdn.discordapp.com/attachments/493808790173515780/508974196139753472/20181105_115902.jpg" />
+                            </a>
+                        </div>
+                        <div class="chatlog__attachment">
+                            <a href="https://cdn.discordapp.com/attachments/493808790173515780/508974196790132756/20181105_115854.jpg">
+                                
+                                    <img class="chatlog__attachment-thumbnail" src="https://cdn.discordapp.com/attachments/493808790173515780/508974196790132756/20181105_115854.jpg" />
+                            </a>
+                        </div>
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/289072337121443853/6afa51eed2fe19f63e843e31ad572118.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="McLaren7718#0753">McLaren7718</span>
+                <span class="chatlog__timestamp">05-Nov-18 01:10 PM</span>
+
+                        <div class="chatlog__content">
+                            Deck management game, Rob suggested which I will look at &quot;Azul&quot;. Best selling game this year.
+
+                        </div>
+
+                        <div class="chatlog__attachment">
+                            <a href="https://cdn.discordapp.com/attachments/493808790173515780/508991510843228160/IMG_20181105_130714.jpg">
+                                
+                                    <img class="chatlog__attachment-thumbnail" src="https://cdn.discordapp.com/attachments/493808790173515780/508991510843228160/IMG_20181105_130714.jpg" />
+                            </a>
+                        </div>
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/203569300861091841/373c49fe747b088a13d902eddd125166.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Elliot#1234">Elliot</span>
+                <span class="chatlog__timestamp">05-Nov-18 03:58 PM</span>
+
+                        <div class="chatlog__content">
+                            
+
+                        </div>
+
+                        <div class="chatlog__attachment">
+                            <a href="https://cdn.discordapp.com/attachments/493808790173515780/509033684209238017/Psychograph.docx">
+                                
+                                    Attachment: Psychograph.docx (38.5 KB)
+                            </a>
+                        </div>
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/289072337121443853/6afa51eed2fe19f63e843e31ad572118.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="McLaren7718#0753">McLaren7718</span>
+                <span class="chatlog__timestamp">05-Nov-18 03:59 PM</span>
+
+                        <div class="chatlog__content">
+                            <span class="mention" title="Elliot#1234">@Elliot</span>  Is there an APK for the current game you showed today?
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/203569300861091841/373c49fe747b088a13d902eddd125166.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Elliot#1234">Elliot</span>
+                <span class="chatlog__timestamp">05-Nov-18 04:01 PM</span>
+
+                        <div class="chatlog__content">
+                            i will upload it now
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            
+
+                        </div>
+
+                        <div class="chatlog__attachment">
+                            <a href="https://cdn.discordapp.com/attachments/493808790173515780/509034997760655400/Gaia_1-11-18.apk">
+                                
+                                    Attachment: Gaia_1-11-18.apk (13.8 MB)
+                            </a>
+                        </div>
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/289072337121443853/6afa51eed2fe19f63e843e31ad572118.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="McLaren7718#0753">McLaren7718</span>
+                <span class="chatlog__timestamp">05-Nov-18 04:05 PM</span>
+
+                        <div class="chatlog__content">
+                            Thankyou
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/260871590122618880/734b8bba50866012ce75f9386e1e9f0f.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="GetWonked#3501">GetWonked</span>
+                <span class="chatlog__timestamp">05-Nov-18 04:09 PM</span>
+
+                        <div class="chatlog__content">
+                            Can you all check your tasks on Jira please before I begin the sprint
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            If anything needs changing let me know
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            Will upload that APK to twitter too
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/289072337121443853/6afa51eed2fe19f63e843e31ad572118.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="McLaren7718#0753">McLaren7718</span>
+                <span class="chatlog__timestamp">05-Nov-18 04:14 PM</span>
+
+                        <div class="chatlog__content">
+                            <span class="mention" title="GetWonked#3501">@GetWonked</span> No don&#39;t upload the APK to the public.
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/260871590122618880/734b8bba50866012ce75f9386e1e9f0f.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="GetWonked#3501">GetWonked</span>
+                <span class="chatlog__timestamp">05-Nov-18 04:14 PM</span>
+
+                        <div class="chatlog__content">
+                            Why not?
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/289072337121443853/6afa51eed2fe19f63e843e31ad572118.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="McLaren7718#0753">McLaren7718</span>
+                <span class="chatlog__timestamp">05-Nov-18 04:15 PM</span>
+
+                        <div class="chatlog__content">
+                            We have no legal protection. Could do another screen capture, but definitely don&#39;t upload the APK.
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/260871590122618880/734b8bba50866012ce75f9386e1e9f0f.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="GetWonked#3501">GetWonked</span>
+                <span class="chatlog__timestamp">05-Nov-18 04:15 PM</span>
+
+                        <div class="chatlog__content">
+                            My bad, i thought the APK was video
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/203569300861091841/373c49fe747b088a13d902eddd125166.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Elliot#1234">Elliot</span>
+                <span class="chatlog__timestamp">05-Nov-18 04:15 PM</span>
+
+                        <div class="chatlog__content">
+                            i agree
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            oh
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/260871590122618880/734b8bba50866012ce75f9386e1e9f0f.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="GetWonked#3501">GetWonked</span>
+                <span class="chatlog__timestamp">05-Nov-18 04:16 PM</span>
+
+                        <div class="chatlog__content">
+                            I thought it was video demo
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/289072337121443853/6afa51eed2fe19f63e843e31ad572118.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="McLaren7718#0753">McLaren7718</span>
+                <span class="chatlog__timestamp">05-Nov-18 04:16 PM</span>
+
+                        <div class="chatlog__content">
+                            No it&#39;s the app for Android, no worries.
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/260871590122618880/734b8bba50866012ce75f9386e1e9f0f.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="GetWonked#3501">GetWonked</span>
+                <span class="chatlog__timestamp">05-Nov-18 04:16 PM</span>
+
+                        <div class="chatlog__content">
+                            Dont have android sorry
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/368474843462762497/7e23bad3de2b70f1b9413910ff526c12.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="GeorgeWJ#2855">GeorgeWJ</span>
+                <span class="chatlog__timestamp">05-Nov-18 04:16 PM</span>
+
+                        <div class="chatlog__content">
+                            We&#39;ll capture some gameplay footage later on to post
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/289072337121443853/6afa51eed2fe19f63e843e31ad572118.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="McLaren7718#0753">McLaren7718</span>
+                <span class="chatlog__timestamp">05-Nov-18 04:16 PM</span>
+
+                        <div class="chatlog__content">
+                            You could link my twitter to the page. It&#39;s  @mackers7718
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/260871590122618880/734b8bba50866012ce75f9386e1e9f0f.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="GetWonked#3501">GetWonked</span>
+                <span class="chatlog__timestamp">05-Nov-18 04:22 PM</span>
+
+                        <div class="chatlog__content">
+                            Did you just make one?
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            Just done it
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            Can you guys have a look at this and if there is anything you would like me to add feel free to message me and I will include it
+
+                                <span class="chatlog__edited-timestamp" title="05-Nov-18 06:06 PM">(edited)</span>
+                        </div>
+
+                        <div class="chatlog__attachment">
+                            <a href="https://cdn.discordapp.com/attachments/493808790173515780/509040025971982336/05_11_2018.docx">
+                                
+                                    Attachment: 05_11_2018.docx (679.5 KB)
+                            </a>
+                        </div>
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/260871590122618880/734b8bba50866012ce75f9386e1e9f0f.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="GetWonked#3501">GetWonked</span>
+                <span class="chatlog__timestamp">05-Nov-18 06:33 PM</span>
+
+                        <div class="chatlog__content">
+                            The tasks are up
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/289072337121443853/6afa51eed2fe19f63e843e31ad572118.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="McLaren7718#0753">McLaren7718</span>
+                <span class="chatlog__timestamp">05-Nov-18 06:41 PM</span>
+
+                        <div class="chatlog__content">
+                            Thankyou
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/368474843462762497/7e23bad3de2b70f1b9413910ff526c12.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="GeorgeWJ#2855">GeorgeWJ</span>
+                <span class="chatlog__timestamp">05-Nov-18 10:17 PM</span>
+
+                        <div class="chatlog__content">
+                            I tired Pots, Picket Fences and Dirt Mounds. What do you guys think?
+
+                        </div>
+
+                        <div class="chatlog__attachment">
+                            <a href="https://cdn.discordapp.com/attachments/493808790173515780/509129110639870004/Planting_Space_sprites.png">
+                                
+                                    <img class="chatlog__attachment-thumbnail" src="https://cdn.discordapp.com/attachments/493808790173515780/509129110639870004/Planting_Space_sprites.png" />
+                            </a>
+                        </div>
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/289072337121443853/6afa51eed2fe19f63e843e31ad572118.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="McLaren7718#0753">McLaren7718</span>
+                <span class="chatlog__timestamp">05-Nov-18 10:41 PM</span>
+
+                        <div class="chatlog__content">
+                            Really like them, didn&#39;t think of the Picket fences.
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/368474843462762497/7e23bad3de2b70f1b9413910ff526c12.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="GeorgeWJ#2855">GeorgeWJ</span>
+                <span class="chatlog__timestamp">05-Nov-18 10:50 PM</span>
+
+                        <div class="chatlog__content">
+                            McCarthy brought up the suggestion in the meeting, so I gave it a shot
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            Also, those minutes are incredibly detailed
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/260871590122618880/734b8bba50866012ce75f9386e1e9f0f.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="GetWonked#3501">GetWonked</span>
+                <span class="chatlog__timestamp">05-Nov-18 11:41 PM</span>
+
+                        <div class="chatlog__content">
+                            I really like plain pot, red and blue pot and then white fence. But what does Sally like?
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/368474843462762497/7e23bad3de2b70f1b9413910ff526c12.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="GeorgeWJ#2855">GeorgeWJ</span>
+                <span class="chatlog__timestamp">05-Nov-18 11:59 PM</span>
+
+                        <div class="chatlog__content">
+                            I&#39;m thinking the flowery pot? Maybe the orange and blue? Or the pink picket fence
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/260871590122618880/734b8bba50866012ce75f9386e1e9f0f.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="GetWonked#3501">GetWonked</span>
+                <span class="chatlog__timestamp">06-Nov-18 01:32 AM</span>
+
+                        <div class="chatlog__content">
+                            The orange and blue is my favourite one
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/368474843462762497/7e23bad3de2b70f1b9413910ff526c12.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="GeorgeWJ#2855">GeorgeWJ</span>
+                <span class="chatlog__timestamp">06-Nov-18 08:42 AM</span>
+
+                        <div class="chatlog__content">
+                            But are you Sally...? &#128514;
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            In all seriousness, I think Sally would like both, but maybe she&#39;d like the blue one better if it had sunflowers on it like her psychograph says. The yellow on Orange wouldn&#39;t work well, so it would have to be blue. Further more, it&#39;s closer in hue to both Green and Purple which are Sally&#39;s favourite colours. Also, colour psychology suggests that blue has a calming effect.
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/368474843462762497/7e23bad3de2b70f1b9413910ff526c12.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="GeorgeWJ#2855">GeorgeWJ</span>
+                <span class="chatlog__timestamp">06-Nov-18 09:52 AM</span>
+
+                        <div class="chatlog__content">
+                            <span class="mention" title="McLaren7718#0753">@McLaren7718</span> you coming to Uni to do the board game research?
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/289072337121443853/6afa51eed2fe19f63e843e31ad572118.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="McLaren7718#0753">McLaren7718</span>
+                <span class="chatlog__timestamp">06-Nov-18 10:01 AM</span>
+
+                        <div class="chatlog__content">
+                            Yeah I&#39;m currently in the library doing the first half of the task. Can meet up with you at 10:30 to play the board game. So I can finish off writing it after.
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/368474843462762497/7e23bad3de2b70f1b9413910ff526c12.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="GeorgeWJ#2855">GeorgeWJ</span>
+                <span class="chatlog__timestamp">06-Nov-18 10:24 AM</span>
+
+                        <div class="chatlog__content">
+                            Okay
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/260871590122618880/734b8bba50866012ce75f9386e1e9f0f.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="GetWonked#3501">GetWonked</span>
+                <span class="chatlog__timestamp">06-Nov-18 05:52 PM</span>
+
+                        <div class="chatlog__content">
+                            For the egg hatching, how is this looking?
+
+                        </div>
+
+                        <div class="chatlog__attachment">
+                            <a href="https://cdn.discordapp.com/attachments/493808790173515780/509424859957297154/unknown.png">
+                                
+                                    <img class="chatlog__attachment-thumbnail" src="https://cdn.discordapp.com/attachments/493808790173515780/509424859957297154/unknown.png" />
+                            </a>
+                        </div>
+
+
+                        <div class="chatlog__content">
+                            And we would have the creature inside of the egg with its body being shown
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/368474843462762497/7e23bad3de2b70f1b9413910ff526c12.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="GeorgeWJ#2855">GeorgeWJ</span>
+                <span class="chatlog__timestamp">06-Nov-18 07:44 PM</span>
+
+                        <div class="chatlog__content">
+                            I like it a lot, it&#39;s like a reveal
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/260871590122618880/734b8bba50866012ce75f9386e1e9f0f.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="GetWonked#3501">GetWonked</span>
+                <span class="chatlog__timestamp">06-Nov-18 07:45 PM</span>
+
+                        <div class="chatlog__content">
+                            And we can just change the hue/saturation for this egg to use them for all
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/260871590122618880/734b8bba50866012ce75f9386e1e9f0f.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="GetWonked#3501">GetWonked</span>
+                <span class="chatlog__timestamp">06-Nov-18 11:29 PM</span>
+
+                        <div class="chatlog__content">
+                            Hey guys, should we meet up at 12 tomorrow for our weekly game jam?
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/289072337121443853/6afa51eed2fe19f63e843e31ad572118.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="McLaren7718#0753">McLaren7718</span>
+                <span class="chatlog__timestamp">06-Nov-18 11:30 PM</span>
+
+                        <div class="chatlog__content">
+                            That is fine with me
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/203569300861091841/373c49fe747b088a13d902eddd125166.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Elliot#1234">Elliot</span>
+                <span class="chatlog__timestamp">06-Nov-18 11:31 PM</span>
+
+                        <div class="chatlog__content">
+                            good for me
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/368474843462762497/7e23bad3de2b70f1b9413910ff526c12.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="GeorgeWJ#2855">GeorgeWJ</span>
+                <span class="chatlog__timestamp">07-Nov-18 12:40 AM</span>
+
+                        <div class="chatlog__content">
+                            Yeah, that&#39;s fine with me
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/203569300861091841/373c49fe747b088a13d902eddd125166.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Elliot#1234">Elliot</span>
+                <span class="chatlog__timestamp">07-Nov-18 11:59 AM</span>
+
+                        <div class="chatlog__content">
+                            Hi guys I&#39;m going to be about 20 minutes late to the jam
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/260871590122618880/734b8bba50866012ce75f9386e1e9f0f.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="GetWonked#3501">GetWonked</span>
+                <span class="chatlog__timestamp">07-Nov-18 12:01 PM</span>
+
+                        <div class="chatlog__content">
+                            No problem. Me and Tom are just walking past the college now
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/368474843462762497/7e23bad3de2b70f1b9413910ff526c12.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="GeorgeWJ#2855">GeorgeWJ</span>
+                <span class="chatlog__timestamp">08-Nov-18 09:36 AM</span>
+
+                        <div class="chatlog__content">
+                            Hey, is it cool if I miss the IWIC session today? I&#39;ve nearly finished my proposal and I still have a bunch of group work to finish in preparation for implementation tomorrow. Everyone okay with that?
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/203569300861091841/373c49fe747b088a13d902eddd125166.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Elliot#1234">Elliot</span>
+                <span class="chatlog__timestamp">08-Nov-18 09:39 AM</span>
+
+                        <div class="chatlog__content">
+                            Honestly I was thinking about doing the same
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/368474843462762497/7e23bad3de2b70f1b9413910ff526c12.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="GeorgeWJ#2855">GeorgeWJ</span>
+                <span class="chatlog__timestamp">08-Nov-18 09:40 AM</span>
+
+                        <div class="chatlog__content">
+                            With deadlines coming up, I guess it can&#39;t be helped. We could always email for the slides afterwards?
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/203569300861091841/373c49fe747b088a13d902eddd125166.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Elliot#1234">Elliot</span>
+                <span class="chatlog__timestamp">08-Nov-18 09:40 AM</span>
+
+                        <div class="chatlog__content">
+                            Yeh
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/289072337121443853/6afa51eed2fe19f63e843e31ad572118.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="McLaren7718#0753">McLaren7718</span>
+                <span class="chatlog__timestamp">08-Nov-18 09:40 AM</span>
+
+                        <div class="chatlog__content">
+                            So was I as we all have a ton of group work. Plus proposals to finish off.
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/260871590122618880/734b8bba50866012ce75f9386e1e9f0f.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="GetWonked#3501">GetWonked</span>
+                <span class="chatlog__timestamp">08-Nov-18 10:02 AM</span>
+
+                        <div class="chatlog__content">
+                            So is no one going in today?
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/203569300861091841/373c49fe747b088a13d902eddd125166.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Elliot#1234">Elliot</span>
+                <span class="chatlog__timestamp">08-Nov-18 11:28 AM</span>
+
+                        <div class="chatlog__content">
+                            I guess not
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/260871590122618880/734b8bba50866012ce75f9386e1e9f0f.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="GetWonked#3501">GetWonked</span>
+                <span class="chatlog__timestamp">08-Nov-18 11:29 AM</span>
+
+                        <div class="chatlog__content">
+                            Thats fair enough, proposal is due tomorrow
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/368474843462762497/7e23bad3de2b70f1b9413910ff526c12.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="GeorgeWJ#2855">GeorgeWJ</span>
+                <span class="chatlog__timestamp">08-Nov-18 03:11 PM</span>
+
+                        <div class="chatlog__content">
+                            Update. I did actually go in the end, and I did a SWOT chart for our team (Strengths/Weaknesses/Opportunities/Threats)
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            
+
+                        </div>
+
+                        <div class="chatlog__attachment">
+                            <a href="https://cdn.discordapp.com/attachments/493808790173515780/510109146884866058/20181108_122659.jpg">
+                                
+                                    <img class="chatlog__attachment-thumbnail" src="https://cdn.discordapp.com/attachments/493808790173515780/510109146884866058/20181108_122659.jpg" />
+                            </a>
+                        </div>
+
+
+                        <div class="chatlog__content">
+                            It might not be super clear due to the reflective surface, but I&#39;ll write up a paper version.
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            Also, I got a hand out about digital marketing. I requested the power point presentation to be emailed too, so that should happen soon.
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/289072337121443853/6afa51eed2fe19f63e843e31ad572118.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="McLaren7718#0753">McLaren7718</span>
+                <span class="chatlog__timestamp">09-Nov-18 10:37 AM</span>
+
+                        <div class="chatlog__content">
+                            Message from Heather regarding the showcase.
+
+                        </div>
+
+                        <div class="chatlog__attachment">
+                            <a href="https://cdn.discordapp.com/attachments/493808790173515780/510402614509174784/Screenshot_20181109-103656.jpg">
+                                
+                                    <img class="chatlog__attachment-thumbnail" src="https://cdn.discordapp.com/attachments/493808790173515780/510402614509174784/Screenshot_20181109-103656.jpg" />
+                            </a>
+                        </div>
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/203569300861091841/373c49fe747b088a13d902eddd125166.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Elliot#1234">Elliot</span>
+                <span class="chatlog__timestamp">09-Nov-18 04:52 PM</span>
+
+                        <div class="chatlog__content">
+                            Thanks for posting that.<br />Do we want to go there tonight? not sure if it will be beneficial
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            also which plant pot did we decide to go with in the end
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            actually as we have 3 plant pots, should i put all 3 in, we can then ask people what their favourite is tomorrow
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/368474843462762497/7e23bad3de2b70f1b9413910ff526c12.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="GeorgeWJ#2855">GeorgeWJ</span>
+                <span class="chatlog__timestamp">09-Nov-18 05:14 PM</span>
+
+                        <div class="chatlog__content">
+                            That might be best
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            I won&#39;t be available tonight but I&#39;ll be in at 8 tomorrow
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/203569300861091841/373c49fe747b088a13d902eddd125166.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Elliot#1234">Elliot</span>
+                <span class="chatlog__timestamp">09-Nov-18 05:17 PM</span>
+
+                        <div class="chatlog__content">
+                            thats ok, i woke up a couple of hours ago because of the allnighter to do the proposal so i should be good to work on the game for alot of tonight, i&#39;ll get it as polished as i can to make sure tomorrow goes as smoothly as possible
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/289072337121443853/6afa51eed2fe19f63e843e31ad572118.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="McLaren7718#0753">McLaren7718</span>
+                <span class="chatlog__timestamp">09-Nov-18 05:17 PM</span>
+
+                        <div class="chatlog__content">
+                            I think it will be fine to set up tomorrow morning still. I can&#39;t go tonight a I have work 6-10. I like the idea of asking the players. I&#39;m planning to have all my remaining tasks completed by tomorrow morning. Due to having the showcase tommorrow and want them done before Sunday. Obviously the gameplay footage for the presentation and that task will be done later on Saturday.
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/368474843462762497/7e23bad3de2b70f1b9413910ff526c12.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="GeorgeWJ#2855">GeorgeWJ</span>
+                <span class="chatlog__timestamp">09-Nov-18 05:21 PM</span>
+
+                        <div class="chatlog__content">
+                            I only have the contest assets and presentation to do, so my stuff doesn&#39;t affect tomorrow. Also, the stickers arrived!
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/289072337121443853/6afa51eed2fe19f63e843e31ad572118.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="McLaren7718#0753">McLaren7718</span>
+                <span class="chatlog__timestamp">09-Nov-18 05:36 PM</span>
+
+                        <div class="chatlog__content">
+                            That is great to hear.
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/368474843462762497/7e23bad3de2b70f1b9413910ff526c12.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="GeorgeWJ#2855">GeorgeWJ</span>
+                <span class="chatlog__timestamp">09-Nov-18 11:17 PM</span>
+
+                        <div class="chatlog__content">
+                            So what time are we meeting tomorrow?
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/203569300861091841/373c49fe747b088a13d902eddd125166.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Elliot#1234">Elliot</span>
+                <span class="chatlog__timestamp">09-Nov-18 11:19 PM</span>
+
+                        <div class="chatlog__content">
+                            i was planning to get there at 8
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/368474843462762497/7e23bad3de2b70f1b9413910ff526c12.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="GeorgeWJ#2855">GeorgeWJ</span>
+                <span class="chatlog__timestamp">09-Nov-18 11:19 PM</span>
+
+                        <div class="chatlog__content">
+                            Okay, I&#39;ll be there for 8 too
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/203569300861091841/373c49fe747b088a13d902eddd125166.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Elliot#1234">Elliot</span>
+                <span class="chatlog__timestamp">09-Nov-18 11:19 PM</span>
+
+                        <div class="chatlog__content">
+                            how many stickers did you get in the end?
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/368474843462762497/7e23bad3de2b70f1b9413910ff526c12.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="GeorgeWJ#2855">GeorgeWJ</span>
+                <span class="chatlog__timestamp">09-Nov-18 11:19 PM</span>
+
+                        <div class="chatlog__content">
+                            96 I think
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/203569300861091841/373c49fe747b088a13d902eddd125166.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Elliot#1234">Elliot</span>
+                <span class="chatlog__timestamp">09-Nov-18 11:19 PM</span>
+
+                        <div class="chatlog__content">
+                            nice
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/368474843462762497/7e23bad3de2b70f1b9413910ff526c12.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="GeorgeWJ#2855">GeorgeWJ</span>
+                <span class="chatlog__timestamp">09-Nov-18 11:20 PM</span>
+
+                        <div class="chatlog__content">
+                            How&#39;s the game coming along?
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/203569300861091841/373c49fe747b088a13d902eddd125166.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Elliot#1234">Elliot</span>
+                <span class="chatlog__timestamp">09-Nov-18 11:20 PM</span>
+
+                        <div class="chatlog__content">
+                            really well i think
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/368474843462762497/7e23bad3de2b70f1b9413910ff526c12.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="GeorgeWJ#2855">GeorgeWJ</span>
+                <span class="chatlog__timestamp">09-Nov-18 11:20 PM</span>
+
+                        <div class="chatlog__content">
+                            Neat ☺
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/203569300861091841/373c49fe747b088a13d902eddd125166.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Elliot#1234">Elliot</span>
+                <span class="chatlog__timestamp">09-Nov-18 11:20 PM</span>
+
+                        <div class="chatlog__content">
+                            ive added all of the features i wanted to add by tomorrow so now im just adding little quality of life tweaks and bug fixes
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/368474843462762497/7e23bad3de2b70f1b9413910ff526c12.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="GeorgeWJ#2855">GeorgeWJ</span>
+                <span class="chatlog__timestamp">09-Nov-18 11:21 PM</span>
+
+                        <div class="chatlog__content">
+                            Good stuff. I can&#39;t wait to see it in action!
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/203569300861091841/373c49fe747b088a13d902eddd125166.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Elliot#1234">Elliot</span>
+                <span class="chatlog__timestamp">09-Nov-18 11:22 PM</span>
+
+                        <div class="chatlog__content">
+                            the only thing i have done differently than we planned is the dragging of the seeds, i wasnt sure exactly how to do it and the more i looked into it the more i felt like it was going to take longer than it should so i  did a simpler version where the giant will take the egg to the pot because thats just an adaptation of what we had already. i will attempt the dragging mechanic on sunday to get all of my tasks done thought
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/368474843462762497/7e23bad3de2b70f1b9413910ff526c12.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="GeorgeWJ#2855">GeorgeWJ</span>
+                <span class="chatlog__timestamp">09-Nov-18 11:23 PM</span>
+
+                        <div class="chatlog__content">
+                            Well to be honest, having the giant act for the player is charming and may actually be the most suitable solution
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            Depending on reactions, we may keep it
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            Any chance you could upload an updated apk?
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/203569300861091841/373c49fe747b088a13d902eddd125166.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Elliot#1234">Elliot</span>
+                <span class="chatlog__timestamp">09-Nov-18 11:24 PM</span>
+
+                        <div class="chatlog__content">
+                            yes, i&#39;ll make one now
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/368474843462762497/7e23bad3de2b70f1b9413910ff526c12.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="GeorgeWJ#2855">GeorgeWJ</span>
+                <span class="chatlog__timestamp">09-Nov-18 11:25 PM</span>
+
+                        <div class="chatlog__content">
+                            Thank You!
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/203569300861091841/373c49fe747b088a13d902eddd125166.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Elliot#1234">Elliot</span>
+                <span class="chatlog__timestamp">09-Nov-18 11:34 PM</span>
+
+                        <div class="chatlog__content">
+                            let me know if you find any bugs so i can fix them before tomorrow
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            
+
+                        </div>
+
+                        <div class="chatlog__attachment">
+                            <a href="https://cdn.discordapp.com/attachments/493808790173515780/510598138827112471/Gaia_09-11-18.apk">
+                                
+                                    Attachment: Gaia_09-11-18.apk (16.6 MB)
+                            </a>
+                        </div>
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/368474843462762497/7e23bad3de2b70f1b9413910ff526c12.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="GeorgeWJ#2855">GeorgeWJ</span>
+                <span class="chatlog__timestamp">09-Nov-18 11:46 PM</span>
+
+                        <div class="chatlog__content">
+                            So creatures still keep getting caught on the far right edge of the island
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/289072337121443853/6afa51eed2fe19f63e843e31ad572118.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="McLaren7718#0753">McLaren7718</span>
+                <span class="chatlog__timestamp">09-Nov-18 11:46 PM</span>
+
+                        <div class="chatlog__content">
+                            I will be there for 8 too.
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/368474843462762497/7e23bad3de2b70f1b9413910ff526c12.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="GeorgeWJ#2855">GeorgeWJ</span>
+                <span class="chatlog__timestamp">09-Nov-18 11:46 PM</span>
+
+                        <div class="chatlog__content">
+                            Quick and dirty solution, could we just put a trigger there that pushes them back?
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/203569300861091841/373c49fe747b088a13d902eddd125166.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Elliot#1234">Elliot</span>
+                <span class="chatlog__timestamp">09-Nov-18 11:46 PM</span>
+
+                        <div class="chatlog__content">
+                            i have that there
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            im not show how they keep getting stuck
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            right now when they get stuck they are meant to turn the other way and walk for a bit
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            i dont know why they wont do it
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/368474843462762497/7e23bad3de2b70f1b9413910ff526c12.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="GeorgeWJ#2855">GeorgeWJ</span>
+                <span class="chatlog__timestamp">09-Nov-18 11:47 PM</span>
+
+                        <div class="chatlog__content">
+                            Maybe have a trigger there that waits x seconds before forcing them to move -1, y,z?
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            It&#39;s not an intelligent solution in terms of AI but it should give that illusion to the player
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/203569300861091841/373c49fe747b088a13d902eddd125166.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Elliot#1234">Elliot</span>
+                <span class="chatlog__timestamp">09-Nov-18 11:51 PM</span>
+
+                        <div class="chatlog__content">
+                            i&#39;ll take a look again
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/368474843462762497/7e23bad3de2b70f1b9413910ff526c12.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="GeorgeWJ#2855">GeorgeWJ</span>
+                <span class="chatlog__timestamp">09-Nov-18 11:51 PM</span>
+
+                        <div class="chatlog__content">
+                            If not, I&#39;ll give it a go
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/203569300861091841/373c49fe747b088a13d902eddd125166.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Elliot#1234">Elliot</span>
+                <span class="chatlog__timestamp">09-Nov-18 11:51 PM</span>
+
+                        <div class="chatlog__content">
+                            what did you think of the plant pots and that system
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            all good there?
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/368474843462762497/7e23bad3de2b70f1b9413910ff526c12.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="GeorgeWJ#2855">GeorgeWJ</span>
+                <span class="chatlog__timestamp">09-Nov-18 11:51 PM</span>
+
+                        <div class="chatlog__content">
+                            I like it. It&#39;s a little awkward if the giant is already over the plant pot
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            But it works and it works well
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/203569300861091841/373c49fe747b088a13d902eddd125166.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Elliot#1234">Elliot</span>
+                <span class="chatlog__timestamp">09-Nov-18 11:52 PM</span>
+
+                        <div class="chatlog__content">
+                            i noticed that right before i sent it
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            im fixing it now
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/368474843462762497/7e23bad3de2b70f1b9413910ff526c12.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="GeorgeWJ#2855">GeorgeWJ</span>
+                <span class="chatlog__timestamp">09-Nov-18 11:52 PM</span>
+
+                        <div class="chatlog__content">
+                            Awesome
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/203569300861091841/373c49fe747b088a13d902eddd125166.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Elliot#1234">Elliot</span>
+                <span class="chatlog__timestamp">09-Nov-18 11:56 PM</span>
+
+                        <div class="chatlog__content">
+                            i found a way to blur the background when youre zoomed in
+
+                        </div>
+
+                        <div class="chatlog__attachment">
+                            <a href="https://cdn.discordapp.com/attachments/493808790173515780/510603605657649167/2018-11-09_23-50-11.mp4">
+                                
+                                    <img class="chatlog__attachment-thumbnail" src="https://cdn.discordapp.com/attachments/493808790173515780/510603605657649167/2018-11-09_23-50-11.mp4" />
+                            </a>
+                        </div>
+
+
+                        <div class="chatlog__content">
+                            it looks good, but it has a massive hit on performance
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            the tablets chris gave us really struggle with it
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/368474843462762497/7e23bad3de2b70f1b9413910ff526c12.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="GeorgeWJ#2855">GeorgeWJ</span>
+                <span class="chatlog__timestamp">09-Nov-18 11:57 PM</span>
+
+                        <div class="chatlog__content">
+                            Okay, well is there a way to reduce how extreme it&#39;s blurred? Or is it the process itself?
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/203569300861091841/373c49fe747b088a13d902eddd125166.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Elliot#1234">Elliot</span>
+                <span class="chatlog__timestamp">09-Nov-18 11:58 PM</span>
+
+                        <div class="chatlog__content">
+                            there is
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            that was the best performance i could get without having weird artifacts like this
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            
+
+                        </div>
+
+                        <div class="chatlog__attachment">
+                            <a href="https://cdn.discordapp.com/attachments/493808790173515780/510604197784453122/unknown.png">
+                                
+                                    <img class="chatlog__attachment-thumbnail" src="https://cdn.discordapp.com/attachments/493808790173515780/510604197784453122/unknown.png" />
+                            </a>
+                        </div>
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/368474843462762497/7e23bad3de2b70f1b9413910ff526c12.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="GeorgeWJ#2855">GeorgeWJ</span>
+                <span class="chatlog__timestamp">10-Nov-18 12:01 AM</span>
+
+                        <div class="chatlog__content">
+                            Maybe let&#39;s just disable it for now
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/203569300861091841/373c49fe747b088a13d902eddd125166.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Elliot#1234">Elliot</span>
+                <span class="chatlog__timestamp">10-Nov-18 12:01 AM</span>
+
+                        <div class="chatlog__content">
+                            yeh thats what i was thinking
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/368474843462762497/7e23bad3de2b70f1b9413910ff526c12.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="GeorgeWJ#2855">GeorgeWJ</span>
+                <span class="chatlog__timestamp">10-Nov-18 12:01 AM</span>
+
+                        <div class="chatlog__content">
+                            
+
+                        </div>
+
+                        <div class="chatlog__attachment">
+                            <a href="https://cdn.discordapp.com/attachments/493808790173515780/510605005284311080/JPEG_20181110_000151.jpg">
+                                
+                                    <img class="chatlog__attachment-thumbnail" src="https://cdn.discordapp.com/attachments/493808790173515780/510605005284311080/JPEG_20181110_000151.jpg" />
+                            </a>
+                        </div>
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/203569300861091841/373c49fe747b088a13d902eddd125166.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Elliot#1234">Elliot</span>
+                <span class="chatlog__timestamp">10-Nov-18 12:02 AM</span>
+
+                        <div class="chatlog__content">
+                            they look good
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/368474843462762497/7e23bad3de2b70f1b9413910ff526c12.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="GeorgeWJ#2855">GeorgeWJ</span>
+                <span class="chatlog__timestamp">10-Nov-18 12:03 AM</span>
+
+                        <div class="chatlog__content">
+                            They&#39;re pretty sweet
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            Is there anything you need me to do to help prep the game for tomorrow?
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/203569300861091841/373c49fe747b088a13d902eddd125166.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Elliot#1234">Elliot</span>
+                <span class="chatlog__timestamp">10-Nov-18 12:08 AM</span>
+
+                        <div class="chatlog__content">
+                            not that i can think of, everything im doing now is just bug fixes and im nearly done with that and theres no new assets needed.
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            everything should be good by tomorrow
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/368474843462762497/7e23bad3de2b70f1b9413910ff526c12.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="GeorgeWJ#2855">GeorgeWJ</span>
+                <span class="chatlog__timestamp">10-Nov-18 12:09 AM</span>
+
+                        <div class="chatlog__content">
+                            I&#39;m so nervous but excited to finally show what we&#39;ve been working so hard on
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/203569300861091841/373c49fe747b088a13d902eddd125166.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Elliot#1234">Elliot</span>
+                <span class="chatlog__timestamp">10-Nov-18 12:11 AM</span>
+
+                        <div class="chatlog__content">
+                            i know, but we&#39;ve worked hard and prepared for it so it should go great
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            also something that would be good is to have a bunch of questions you know you want to ask before hand so that we can get the most helpful feedback possible
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            im really bad at getting feedback that isnt about bugs because that seems to be all that people notice
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/368474843462762497/7e23bad3de2b70f1b9413910ff526c12.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="GeorgeWJ#2855">GeorgeWJ</span>
+                <span class="chatlog__timestamp">10-Nov-18 12:14 AM</span>
+
+                        <div class="chatlog__content">
+                            McCarthy was designing questionnaires, right?
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/289072337121443853/6afa51eed2fe19f63e843e31ad572118.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="McLaren7718#0753">McLaren7718</span>
+                <span class="chatlog__timestamp">10-Nov-18 12:14 AM</span>
+
+                        <div class="chatlog__content">
+                            Yeah that was one of his tasks
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/368474843462762497/7e23bad3de2b70f1b9413910ff526c12.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="GeorgeWJ#2855">GeorgeWJ</span>
+                <span class="chatlog__timestamp">10-Nov-18 12:15 AM</span>
+
+                        <div class="chatlog__content">
+                            <span class="mention" title="GetWonked#3501">@GetWonked</span> I know it&#39;s late, but have you done this yet?
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/260871590122618880/734b8bba50866012ce75f9386e1e9f0f.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="GetWonked#3501">GetWonked</span>
+                <span class="chatlog__timestamp">10-Nov-18 12:16 AM</span>
+
+                        <div class="chatlog__content">
+                            At work. Will do it when I get home
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/368474843462762497/7e23bad3de2b70f1b9413910ff526c12.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="GeorgeWJ#2855">GeorgeWJ</span>
+                <span class="chatlog__timestamp">10-Nov-18 12:16 AM</span>
+
+                        <div class="chatlog__content">
+                            Okay, no problem
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            Once I get in to Uni, I&#39;ll print them off. Or, we could maybe have a notepad for written feedback?
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/203569300861091841/373c49fe747b088a13d902eddd125166.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Elliot#1234">Elliot</span>
+                <span class="chatlog__timestamp">10-Nov-18 12:17 AM</span>
+
+                        <div class="chatlog__content">
+                            how good are the printers at uni?
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/368474843462762497/7e23bad3de2b70f1b9413910ff526c12.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="GeorgeWJ#2855">GeorgeWJ</span>
+                <span class="chatlog__timestamp">10-Nov-18 12:18 AM</span>
+
+                        <div class="chatlog__content">
+                            Decent enough. The waterfront ones are great
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/203569300861091841/373c49fe747b088a13d902eddd125166.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Elliot#1234">Elliot</span>
+                <span class="chatlog__timestamp">10-Nov-18 12:18 AM</span>
+
+                        <div class="chatlog__content">
+                            should we print off a couple of a3 bits of artwork to make our table look a bit more eye catching?
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/368474843462762497/7e23bad3de2b70f1b9413910ff526c12.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="GeorgeWJ#2855">GeorgeWJ</span>
+                <span class="chatlog__timestamp">10-Nov-18 12:18 AM</span>
+
+                        <div class="chatlog__content">
+                            Definitely. That&#39;s a good idea.
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            We can use some of the concept art
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/289072337121443853/6afa51eed2fe19f63e843e31ad572118.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="McLaren7718#0753">McLaren7718</span>
+                <span class="chatlog__timestamp">10-Nov-18 12:19 AM</span>
+
+                        <div class="chatlog__content">
+                            We can stick them on the front of the desk hanging down, like a table cloth.
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/203569300861091841/373c49fe747b088a13d902eddd125166.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Elliot#1234">Elliot</span>
+                <span class="chatlog__timestamp">10-Nov-18 12:28 AM</span>
+
+                        <div class="chatlog__content">
+                            i added a little animation for when you tap an egg, let me know what you think
+
+                        </div>
+
+                        <div class="chatlog__attachment">
+                            <a href="https://cdn.discordapp.com/attachments/493808790173515780/510611577427197972/2018-11-10_00-27-06.mp4">
+                                
+                                    <img class="chatlog__attachment-thumbnail" src="https://cdn.discordapp.com/attachments/493808790173515780/510611577427197972/2018-11-10_00-27-06.mp4" />
+                            </a>
+                        </div>
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/289072337121443853/6afa51eed2fe19f63e843e31ad572118.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="McLaren7718#0753">McLaren7718</span>
+                <span class="chatlog__timestamp">10-Nov-18 12:31 AM</span>
+
+                        <div class="chatlog__content">
+                            Makes the egg have so much more character and will build suspense for the player.
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/368474843462762497/7e23bad3de2b70f1b9413910ff526c12.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="GeorgeWJ#2855">GeorgeWJ</span>
+                <span class="chatlog__timestamp">10-Nov-18 12:32 AM</span>
+
+                        <div class="chatlog__content">
+                            That&#39;s brilliant. It&#39;s strong visual feedback
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/260871590122618880/734b8bba50866012ce75f9386e1e9f0f.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="GetWonked#3501">GetWonked</span>
+                <span class="chatlog__timestamp">10-Nov-18 02:15 AM</span>
+
+                        <div class="chatlog__content">
+                            Working on the questionnaires now guys
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/289072337121443853/6afa51eed2fe19f63e843e31ad572118.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="McLaren7718#0753">McLaren7718</span>
+                <span class="chatlog__timestamp">10-Nov-18 02:39 AM</span>
+
+                        <div class="chatlog__content">
+                            Here is the watering can and water droplets.
+
+                        </div>
+
+                        <div class="chatlog__attachment">
+                            <a href="https://cdn.discordapp.com/attachments/493808790173515780/510644764090302484/water_can_01.png">
+                                
+                                    <img class="chatlog__attachment-thumbnail" src="https://cdn.discordapp.com/attachments/493808790173515780/510644764090302484/water_can_01.png" />
+                            </a>
+                        </div>
+                        <div class="chatlog__attachment">
+                            <a href="https://cdn.discordapp.com/attachments/493808790173515780/510644764090302487/water_droplets_animation.png">
+                                
+                                    <img class="chatlog__attachment-thumbnail" src="https://cdn.discordapp.com/attachments/493808790173515780/510644764090302487/water_droplets_animation.png" />
+                            </a>
+                        </div>
+                        <div class="chatlog__attachment">
+                            <a href="https://cdn.discordapp.com/attachments/493808790173515780/510644764614459426/water_drop.png">
+                                
+                                    <img class="chatlog__attachment-thumbnail" src="https://cdn.discordapp.com/attachments/493808790173515780/510644764614459426/water_drop.png" />
+                            </a>
+                        </div>
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/260871590122618880/734b8bba50866012ce75f9386e1e9f0f.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="GetWonked#3501">GetWonked</span>
+                <span class="chatlog__timestamp">10-Nov-18 02:47 AM</span>
+
+                        <div class="chatlog__content">
+                            I really like them, the watering can definitely fits in with the art style of the game
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            
+
+                        </div>
+
+                        <div class="chatlog__attachment">
+                            <a href="https://cdn.discordapp.com/attachments/493808790173515780/510646636410568724/unknown.png">
+                                
+                                    <img class="chatlog__attachment-thumbnail" src="https://cdn.discordapp.com/attachments/493808790173515780/510646636410568724/unknown.png" />
+                            </a>
+                        </div>
+
+
+                        <div class="chatlog__content">
+                            Here is what I have at the moment
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            Any suggestions or criticism
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/203569300861091841/373c49fe747b088a13d902eddd125166.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Elliot#1234">Elliot</span>
+                <span class="chatlog__timestamp">10-Nov-18 03:00 AM</span>
+
+                        <div class="chatlog__content">
+                            i dont really think it matters but i always think of good to be at the right of the scale
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            like 1 - 5
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/260871590122618880/734b8bba50866012ce75f9386e1e9f0f.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="GetWonked#3501">GetWonked</span>
+                <span class="chatlog__timestamp">10-Nov-18 03:18 AM</span>
+
+                        <div class="chatlog__content">
+                            I flipped everything
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            It goes 1-5 now
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/203569300861091841/373c49fe747b088a13d902eddd125166.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Elliot#1234">Elliot</span>
+                <span class="chatlog__timestamp">10-Nov-18 03:19 AM</span>
+
+                        <div class="chatlog__content">
+                            nice
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/260871590122618880/734b8bba50866012ce75f9386e1e9f0f.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="GetWonked#3501">GetWonked</span>
+                <span class="chatlog__timestamp">10-Nov-18 03:20 AM</span>
+
+                        <div class="chatlog__content">
+                            But are the questions appropiate
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/203569300861091841/373c49fe747b088a13d902eddd125166.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Elliot#1234">Elliot</span>
+                <span class="chatlog__timestamp">10-Nov-18 03:33 AM</span>
+
+                        <div class="chatlog__content">
+                            yeh i think the questions are good maybe have a box at the end for comments so that they can write a little about why they rated it as they did
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/260871590122618880/734b8bba50866012ce75f9386e1e9f0f.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="GetWonked#3501">GetWonked</span>
+                <span class="chatlog__timestamp">10-Nov-18 03:33 AM</span>
+
+                        <div class="chatlog__content">
+                            Thats what I am doing now &#128515;
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/203569300861091841/373c49fe747b088a13d902eddd125166.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Elliot#1234">Elliot</span>
+                <span class="chatlog__timestamp">10-Nov-18 03:33 AM</span>
+
+                        <div class="chatlog__content">
+                            great
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/260871590122618880/734b8bba50866012ce75f9386e1e9f0f.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="GetWonked#3501">GetWonked</span>
+                <span class="chatlog__timestamp">10-Nov-18 03:34 AM</span>
+
+                        <div class="chatlog__content">
+                            
+
+                        </div>
+
+                        <div class="chatlog__attachment">
+                            <a href="https://cdn.discordapp.com/attachments/493808790173515780/510658380470288385/unknown.png">
+                                
+                                    <img class="chatlog__attachment-thumbnail" src="https://cdn.discordapp.com/attachments/493808790173515780/510658380470288385/unknown.png" />
+                            </a>
+                        </div>
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/203569300861091841/373c49fe747b088a13d902eddd125166.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Elliot#1234">Elliot</span>
+                <span class="chatlog__timestamp">10-Nov-18 03:37 AM</span>
+
+                        <div class="chatlog__content">
+                            maybe replace &quot;our game&quot; with &quot;gaia&quot; i think it would look more professional and the more times we say Gaia the more likely they will be to remember it
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            im done with the prototype now, ill upload it so that you can test it before we go there. im gonna get a few hours of sleep now before we meet up
+
+                        </div>
+
+                        <div class="chatlog__attachment">
+                            <a href="https://cdn.discordapp.com/attachments/493808790173515780/510659845406457856/Gaia_10-11-18.apk">
+                                
+                                    Attachment: Gaia_10-11-18.apk (16.6 MB)
+                            </a>
+                        </div>
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/260871590122618880/734b8bba50866012ce75f9386e1e9f0f.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="GetWonked#3501">GetWonked</span>
+                <span class="chatlog__timestamp">10-Nov-18 03:45 AM</span>
+
+                        <div class="chatlog__content">
+                            
+
+                        </div>
+
+                        <div class="chatlog__attachment">
+                            <a href="https://cdn.discordapp.com/attachments/493808790173515780/510661136664756272/Questionaire.docx">
+                                
+                                    Attachment: Questionaire.docx (338.8 KB)
+                            </a>
+                        </div>
+
+
+                        <div class="chatlog__content">
+                            Okay, I&#39;ve now edited the questionaire
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/203569300861091841/373c49fe747b088a13d902eddd125166.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Elliot#1234">Elliot</span>
+                <span class="chatlog__timestamp">10-Nov-18 03:46 AM</span>
+
+                        <div class="chatlog__content">
+                            That looks good
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/260871590122618880/734b8bba50866012ce75f9386e1e9f0f.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="GetWonked#3501">GetWonked</span>
+                <span class="chatlog__timestamp">10-Nov-18 03:47 AM</span>
+
+                        <div class="chatlog__content">
+                            Thank man. I was going to plug out Twitter at the bottom but then I remembered that won’t take the form home. We will be keeping it &#128514;&#128514;
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/203569300861091841/373c49fe747b088a13d902eddd125166.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Elliot#1234">Elliot</span>
+                <span class="chatlog__timestamp">10-Nov-18 03:48 AM</span>
+
+                        <div class="chatlog__content">
+                            <img class="emoji emoji--large" title=":HahaKeK:" src="https://cdn.discordapp.com/emojis/503768775628292098.png" />
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            I like that we can do this
+
+                        </div>
+
+                        <div class="chatlog__attachment">
+                            <a href="https://cdn.discordapp.com/attachments/493808790173515780/510662763383881738/IMG_20181110_035107.jpg">
+                                
+                                    <img class="chatlog__attachment-thumbnail" src="https://cdn.discordapp.com/attachments/493808790173515780/510662763383881738/IMG_20181110_035107.jpg" />
+                            </a>
+                        </div>
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/289072337121443853/6afa51eed2fe19f63e843e31ad572118.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="McLaren7718#0753">McLaren7718</span>
+                <span class="chatlog__timestamp">10-Nov-18 07:49 AM</span>
+
+                        <div class="chatlog__content">
+                            Where are we meeting, anyone already there.
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/203569300861091841/373c49fe747b088a13d902eddd125166.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Elliot#1234">Elliot</span>
+                <span class="chatlog__timestamp">10-Nov-18 07:50 AM</span>
+
+                        <div class="chatlog__content">
+                            I&#39;m by the atrium car park
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            Meet at the waterfront building
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            Are you here?
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/289072337121443853/6afa51eed2fe19f63e843e31ad572118.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="McLaren7718#0753">McLaren7718</span>
+                <span class="chatlog__timestamp">10-Nov-18 07:56 AM</span>
+
+                        <div class="chatlog__content">
+                            Yeah im inside
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/368474843462762497/7e23bad3de2b70f1b9413910ff526c12.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="GeorgeWJ#2855">GeorgeWJ</span>
+                <span class="chatlog__timestamp">10-Nov-18 08:08 AM</span>
+
+                        <div class="chatlog__content">
+                            I&#39;m nearly there, bus was late. Should be with you very soon
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            So where are you guys?
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/203569300861091841/373c49fe747b088a13d902eddd125166.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Elliot#1234">Elliot</span>
+                <span class="chatlog__timestamp">10-Nov-18 08:23 AM</span>
+
+                        <div class="chatlog__content">
+                            Just past the stairs
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            Right as you enter
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/368474843462762497/7e23bad3de2b70f1b9413910ff526c12.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="GeorgeWJ#2855">GeorgeWJ</span>
+                <span class="chatlog__timestamp">10-Nov-18 08:38 AM</span>
+
+                        <div class="chatlog__content">
+                            So the library isn&#39;t open yet ☹
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/203569300861091841/373c49fe747b088a13d902eddd125166.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Elliot#1234">Elliot</span>
+                <span class="chatlog__timestamp">10-Nov-18 08:41 AM</span>
+
+                        <div class="chatlog__content">
+                            Oh no
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/368474843462762497/7e23bad3de2b70f1b9413910ff526c12.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="GeorgeWJ#2855">GeorgeWJ</span>
+                <span class="chatlog__timestamp">10-Nov-18 11:51 PM</span>
+
+                        <div class="chatlog__content">
+                            New Logo
+
+                        </div>
+
+                        <div class="chatlog__attachment">
+                            <a href="https://cdn.discordapp.com/attachments/493808790173515780/510964664381997056/blankGames_logo.png">
+                                
+                                    <img class="chatlog__attachment-thumbnail" src="https://cdn.discordapp.com/attachments/493808790173515780/510964664381997056/blankGames_logo.png" />
+                            </a>
+                        </div>
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/289072337121443853/6afa51eed2fe19f63e843e31ad572118.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="McLaren7718#0753">McLaren7718</span>
+                <span class="chatlog__timestamp">11-Nov-18 12:06 AM</span>
+
+                        <div class="chatlog__content">
+                            Oh no. Thought you guys were joking about changing it. In my opinion just seems really confusing for previous tweets after showcasing. For example like Taylor&#39;s tweet for our game calling us T21Studios. And our email is still t21studios@gmail.com, which is what people such as Heather and Game Anglia have.  Plus don&#39;t like the logo and no one gonna really get it either, just looks unfinished like it hasn&#39;t loaded (obviously it&#39;s because it&#39;s blank.) I feel the previous name and logo was much better. Plus the Twitter handle is confusing with the under scores.
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            Plus know there is no contact email on the Twitter page. Feel like you should of discussed it with me and Tom as well. As I overheard you and Elliot mentioning the name, but thought you were only brainstorming as you didn&#39;t mention it to me or Tom.
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/368474843462762497/7e23bad3de2b70f1b9413910ff526c12.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="GeorgeWJ#2855">GeorgeWJ</span>
+                <span class="chatlog__timestamp">11-Nov-18 12:12 AM</span>
+
+                        <div class="chatlog__content">
+                            Honestly, it&#39;s all up for discussion so feel free to throw out ideas too! It&#39;s because in the previous IWIC session, the woman from Red Cactus Media said to not do anything &#39;Tea&#39; related and to avoid using &#39;Studios&#39; -- Which unfortunately we already did. Of course, nothing is set in stone yet, and although we&#39;ve had a successful day, the earlier everything is set up, the better.
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            Also, I guess Elliot and I misunderstood you, we thought you too were serious about the name change, but this is all easy to clear up
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/289072337121443853/6afa51eed2fe19f63e843e31ad572118.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="McLaren7718#0753">McLaren7718</span>
+                <span class="chatlog__timestamp">11-Nov-18 12:15 AM</span>
+
+                        <div class="chatlog__content">
+                            Yeah I know we can always change the Twitter name. Just means having to keep changing our contact email as well. Which the longer we keep changing the more damage it will do. For example Game Anglia and Heather have our T21 studios email for contact. Which is now gonna become a big pain if we decide to definitely change the name.
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/368474843462762497/7e23bad3de2b70f1b9413910ff526c12.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="GeorgeWJ#2855">GeorgeWJ</span>
+                <span class="chatlog__timestamp">11-Nov-18 12:19 AM</span>
+
+                        <div class="chatlog__content">
+                            II&#39;m not sure how it will be a big pain, as it can be updated rather easily? More over, as I previously mentioned, by doing this all now, it stops us having to do it later when it WILL cause issues. &#39;Blank&#39; doesn&#39;t have to be used, but going from the market research presented and personal recommendation during the IWIC session taken in to account, now is probably the best time to decide on an image to move forward with. (Also, this doesn&#39;t actually affect the game itself, only publicity etc for further development past the module)
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/289072337121443853/6afa51eed2fe19f63e843e31ad572118.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="McLaren7718#0753">McLaren7718</span>
+                <span class="chatlog__timestamp">11-Nov-18 12:22 AM</span>
+
+                        <div class="chatlog__content">
+                            I definitely agree doing it early is the best way forward. But next time we need to ensure all group members know what is going on. As I don&#39;t know about Tom, but I didn&#39;t even know we were gonna change the name. Until you posted the new logo and I checked Twitter.
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/368474843462762497/7e23bad3de2b70f1b9413910ff526c12.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="GeorgeWJ#2855">GeorgeWJ</span>
+                <span class="chatlog__timestamp">11-Nov-18 12:25 AM</span>
+
+                        <div class="chatlog__content">
+                            McCarthy is aware though not set on the name, but it&#39;s acting as a placeholder for the moment. What we could do is actually just change it back to how it was and see if anything happens over the next week to see how big of an impact Game Anglia had on our online presence. If things remain as they are, we&#39;ll definitely change it. Is that a cool middle ground?
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/289072337121443853/6afa51eed2fe19f63e843e31ad572118.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="McLaren7718#0753">McLaren7718</span>
+                <span class="chatlog__timestamp">11-Nov-18 12:27 AM</span>
+
+                        <div class="chatlog__content">
+                            I&#39;m all up for changing the name after receiving the feedback from what you previously said. Plus agree that would be in the wholes groups best interest going forward. My only issue was not being informed of the  planned change before it happened and asked for my opinion.
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/203569300861091841/373c49fe747b088a13d902eddd125166.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Elliot#1234">Elliot</span>
+                <span class="chatlog__timestamp">11-Nov-18 12:28 AM</span>
+
+                        <div class="chatlog__content">
+                            I&#39;m just gonna put it out there, I really like blank games, I don&#39;t really know about the point you made about people not getting it, people also wouldn&#39;t get T21, people will get blank games more because T21 is like an inside joke. Also George I like the style of that logo but twitter uses round profile pictures so the text will actually be cut out of the picture, maybe put it in the centre?
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/368474843462762497/7e23bad3de2b70f1b9413910ff526c12.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="GeorgeWJ#2855">GeorgeWJ</span>
+                <span class="chatlog__timestamp">11-Nov-18 12:30 AM</span>
+
+                        <div class="chatlog__content">
+                            I can change that format. Also, we were discussing it openly with you around, but I guess we should have been more clear, so I apologise for mixing things up prematurely.
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            So, should we keep T21 for a week or just tweak it all now?
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/203569300861091841/373c49fe747b088a13d902eddd125166.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Elliot#1234">Elliot</span>
+                <span class="chatlog__timestamp">11-Nov-18 12:32 AM</span>
+
+                        <div class="chatlog__content">
+                            Also the email thing isn&#39;t a problem, we can get a new one, the only person with our old one is Heather
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/289072337121443853/6afa51eed2fe19f63e843e31ad572118.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="McLaren7718#0753">McLaren7718</span>
+                <span class="chatlog__timestamp">11-Nov-18 12:33 AM</span>
+
+                        <div class="chatlog__content">
+                            That&#39;s is fine, just shocked me a bit. I like the name, just think it would be hard to market the brand. Obviously it&#39;s early and I&#39;m sure we can all come up with a creative design surrounding it.
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/368474843462762497/7e23bad3de2b70f1b9413910ff526c12.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="GeorgeWJ#2855">GeorgeWJ</span>
+                <span class="chatlog__timestamp">11-Nov-18 12:34 AM</span>
+
+                        <div class="chatlog__content">
+                            While we&#39;re on the topic of Game Anglia, I&#39;ll also get thee feedback compiled so we can put it in the presentation and create an informed development plan based around the requested tweaks and features
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/289072337121443853/6afa51eed2fe19f63e843e31ad572118.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="McLaren7718#0753">McLaren7718</span>
+                <span class="chatlog__timestamp">11-Nov-18 12:36 AM</span>
+
+                        <div class="chatlog__content">
+                            I&#39;ll also complete the screen capture of gameplay tommorrow. Now we have the latest .APK version.
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/368474843462762497/7e23bad3de2b70f1b9413910ff526c12.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="GeorgeWJ#2855">GeorgeWJ</span>
+                <span class="chatlog__timestamp">11-Nov-18 12:40 AM</span>
+
+                        <div class="chatlog__content">
+                            Awesome
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/203569300861091841/373c49fe747b088a13d902eddd125166.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Elliot#1234">Elliot</span>
+                <span class="chatlog__timestamp">11-Nov-18 12:45 AM</span>
+
+                        <div class="chatlog__content">
+                            I&#39;ve been looking up videos of a maze berlin
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            It looks so good
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            I definitly want to go
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/368474843462762497/7e23bad3de2b70f1b9413910ff526c12.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="GeorgeWJ#2855">GeorgeWJ</span>
+                <span class="chatlog__timestamp">11-Nov-18 12:50 AM</span>
+
+                        <div class="chatlog__content">
+                            Oh? Is I still haven&#39;t looked
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/260871590122618880/734b8bba50866012ce75f9386e1e9f0f.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="GetWonked#3501">GetWonked</span>
+                <span class="chatlog__timestamp">11-Nov-18 06:19 PM</span>
+
+                        <div class="chatlog__content">
+                            This is the mean (average) score that players gave us in our feedback from yesterday at the Game Anglia showcase
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            
+
+                        </div>
+
+                        <div class="chatlog__attachment">
+                            <a href="https://cdn.discordapp.com/attachments/493808790173515780/511243585811775520/unknown.png">
+                                
+                                    <img class="chatlog__attachment-thumbnail" src="https://cdn.discordapp.com/attachments/493808790173515780/511243585811775520/unknown.png" />
+                            </a>
+                        </div>
+
+
+                        <div class="chatlog__content">
+                            I will not be reading all the comments and  and creating a word document on them
+
+                                <span class="chatlog__edited-timestamp" title="11-Nov-18 06:20 PM">(edited)</span>
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            I am also going to edit the table and have a key containing all the qustions
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            So Rob knows what they were
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/368474843462762497/7e23bad3de2b70f1b9413910ff526c12.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="GeorgeWJ#2855">GeorgeWJ</span>
+                <span class="chatlog__timestamp">11-Nov-18 06:23 PM</span>
+
+                        <div class="chatlog__content">
+                            Okay. Also bear in mind that most children didn&#39;t fill out forms
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/260871590122618880/734b8bba50866012ce75f9386e1e9f0f.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="GetWonked#3501">GetWonked</span>
+                <span class="chatlog__timestamp">11-Nov-18 06:23 PM</span>
+
+                        <div class="chatlog__content">
+                            I know, but I cant write about it if I have no proof
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            But that will be explained in the presentation
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/368474843462762497/7e23bad3de2b70f1b9413910ff526c12.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="GeorgeWJ#2855">GeorgeWJ</span>
+                <span class="chatlog__timestamp">11-Nov-18 06:24 PM</span>
+
+                        <div class="chatlog__content">
+                            Yeah, I have some of what the kids requested anyway.
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/260871590122618880/734b8bba50866012ce75f9386e1e9f0f.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="GetWonked#3501">GetWonked</span>
+                <span class="chatlog__timestamp">11-Nov-18 06:24 PM</span>
+
+                        <div class="chatlog__content">
+                            But for the spreadsheet I cant do anything
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            
+
+                        </div>
+
+                        <div class="chatlog__attachment">
+                            <a href="https://cdn.discordapp.com/attachments/493808790173515780/511244890647035904/unknown.png">
+                                
+                                    <img class="chatlog__attachment-thumbnail" src="https://cdn.discordapp.com/attachments/493808790173515780/511244890647035904/unknown.png" />
+                            </a>
+                        </div>
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/368474843462762497/7e23bad3de2b70f1b9413910ff526c12.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="GeorgeWJ#2855">GeorgeWJ</span>
+                <span class="chatlog__timestamp">11-Nov-18 06:24 PM</span>
+
+                        <div class="chatlog__content">
+                            That&#39;s fine, you&#39;re right. We&#39;ll add some of the comments to the presentation anyway later
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/260871590122618880/734b8bba50866012ce75f9386e1e9f0f.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="GetWonked#3501">GetWonked</span>
+                <span class="chatlog__timestamp">11-Nov-18 06:24 PM</span>
+
+                        <div class="chatlog__content">
+                            Nice
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/368474843462762497/7e23bad3de2b70f1b9413910ff526c12.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="GeorgeWJ#2855">GeorgeWJ</span>
+                <span class="chatlog__timestamp">11-Nov-18 06:29 PM</span>
+
+                        <div class="chatlog__content">
+                            Had to keep dragging screen up. Maybe reduce the bottom section of the Island or cap camera movement to focus on action
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            Giant keeps getting in the way of the creatures, layer iissues
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            Sorry, just writing the feedback we got
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            For the presentation lol
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/260871590122618880/734b8bba50866012ce75f9386e1e9f0f.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="GetWonked#3501">GetWonked</span>
+                <span class="chatlog__timestamp">11-Nov-18 06:30 PM</span>
+
+                        <div class="chatlog__content">
+                            So i can add it into the word document
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/368474843462762497/7e23bad3de2b70f1b9413910ff526c12.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="GeorgeWJ#2855">GeorgeWJ</span>
+                <span class="chatlog__timestamp">11-Nov-18 06:30 PM</span>
+
+                        <div class="chatlog__content">
+                            Accidentally open inventory frequently when trying to look at Creature STATs
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            Could remedy by disabling
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            Inventory while on creatures
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            Maybe have a mutually beneficial relationship between creatures and giant, maybe creatures stop giant from getting sick, or have the giant interact with the creatures more (pet them, dance with them etc)
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            Players felt frustrated when trying to feed individual creatures because creatures kept racing to the fruit
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            Requested tree upgrades to produce more fruit and upgrade creatures faster.
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            Players enjoyed levelling up the creatures, but wanted it to be clearly celebrated. Particle effects and music should assist in improving this feature.
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            Animate the creatures chewing
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            Children wanted to customise the Giant and to receive gifts from the creatures (feature wasn&#39;t implemented in game yet, but is going to happen)
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            Players wanted creatures to physically grow
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            Maybe the behaviour of creatures should change depending on the highest STAT
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            Fruit kept falling and being hidden behind plant pots
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            Set up minigames to improve STATs as well as using fruit - Could tie into more interaction. Maybe brushing the creature could level up style for example?
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            Players enjoyed the creation of spaces by planting different trees and letting pets to thrive on the island. Gives it much more &#39;unique&#39; and &#39;personal&#39; feeling.
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            Maybe go further into customising the island itself by adding more plant pots, environmental details and stickers etc?
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            Want an easy way to destroy the treees
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            Now we can separate this into bug reports and actual feedback
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/203569300861091841/373c49fe747b088a13d902eddd125166.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Elliot#1234">Elliot</span>
+                <span class="chatlog__timestamp">11-Nov-18 06:48 PM</span>
+
+                        <div class="chatlog__content">
+                            the people i talked to also said they would like a creature to evolve when leveling up
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/368474843462762497/7e23bad3de2b70f1b9413910ff526c12.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="GeorgeWJ#2855">GeorgeWJ</span>
+                <span class="chatlog__timestamp">11-Nov-18 06:56 PM</span>
+
+                        <div class="chatlog__content">
+                            Cool, so we could manipulate their physical attributes, like longer horns for strength etc
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/368474843462762497/7e23bad3de2b70f1b9413910ff526c12.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="GeorgeWJ#2855">GeorgeWJ</span>
+                <span class="chatlog__timestamp">11-Nov-18 09:35 PM</span>
+
+                        <div class="chatlog__content">
+                            
+
+                        </div>
+
+                        <div class="chatlog__attachment">
+                            <a href="https://cdn.discordapp.com/attachments/493808790173515780/511292809949741056/Screenshot_20181111-211356.png">
+                                
+                                    <img class="chatlog__attachment-thumbnail" src="https://cdn.discordapp.com/attachments/493808790173515780/511292809949741056/Screenshot_20181111-211356.png" />
+                            </a>
+                        </div>
+                        <div class="chatlog__attachment">
+                            <a href="https://cdn.discordapp.com/attachments/493808790173515780/511292809949741057/Screenshot_20181111-212806.png">
+                                
+                                    <img class="chatlog__attachment-thumbnail" src="https://cdn.discordapp.com/attachments/493808790173515780/511292809949741057/Screenshot_20181111-212806.png" />
+                            </a>
+                        </div>
+                        <div class="chatlog__attachment">
+                            <a href="https://cdn.discordapp.com/attachments/493808790173515780/511292810675224586/Screenshot_20181111-212039.png">
+                                
+                                    <img class="chatlog__attachment-thumbnail" src="https://cdn.discordapp.com/attachments/493808790173515780/511292810675224586/Screenshot_20181111-212039.png" />
+                            </a>
+                        </div>
+                        <div class="chatlog__attachment">
+                            <a href="https://cdn.discordapp.com/attachments/493808790173515780/511292810675224587/Screenshot_20181111-212341.png">
+                                
+                                    <img class="chatlog__attachment-thumbnail" src="https://cdn.discordapp.com/attachments/493808790173515780/511292810675224587/Screenshot_20181111-212341.png" />
+                            </a>
+                        </div>
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/203569300861091841/373c49fe747b088a13d902eddd125166.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Elliot#1234">Elliot</span>
+                <span class="chatlog__timestamp">11-Nov-18 09:35 PM</span>
+
+                        <div class="chatlog__content">
+                            ?
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/368474843462762497/7e23bad3de2b70f1b9413910ff526c12.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="GeorgeWJ#2855">GeorgeWJ</span>
+                <span class="chatlog__timestamp">11-Nov-18 09:36 PM</span>
+
+                        <div class="chatlog__content">
+                            Just grabbing screen shots
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/203569300861091841/373c49fe747b088a13d902eddd125166.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Elliot#1234">Elliot</span>
+                <span class="chatlog__timestamp">11-Nov-18 09:37 PM</span>
+
+                        <div class="chatlog__content">
+                            Is that an old build or did you actually get a creature with abcde stats?
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/260871590122618880/734b8bba50866012ce75f9386e1e9f0f.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="GetWonked#3501">GetWonked</span>
+                <span class="chatlog__timestamp">11-Nov-18 09:37 PM</span>
+
+                        <div class="chatlog__content">
+                            Hey guys all the feedback from Anglia is up on GitHub now
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/368474843462762497/7e23bad3de2b70f1b9413910ff526c12.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="GeorgeWJ#2855">GeorgeWJ</span>
+                <span class="chatlog__timestamp">11-Nov-18 09:37 PM</span>
+
+                        <div class="chatlog__content">
+                            I actually got a creature with ABCDE stats lol
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/203569300861091841/373c49fe747b088a13d902eddd125166.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Elliot#1234">Elliot</span>
+                <span class="chatlog__timestamp">11-Nov-18 09:37 PM</span>
+
+                        <div class="chatlog__content">
+                            Wow
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            The chances of that
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/260871590122618880/734b8bba50866012ce75f9386e1e9f0f.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="GetWonked#3501">GetWonked</span>
+                <span class="chatlog__timestamp">11-Nov-18 09:37 PM</span>
+
+                        <div class="chatlog__content">
+                            There is an excel sheet with the first 5 questions and then a word document with the last 3 questions on that
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/368474843462762497/7e23bad3de2b70f1b9413910ff526c12.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="GeorgeWJ#2855">GeorgeWJ</span>
+                <span class="chatlog__timestamp">11-Nov-18 09:38 PM</span>
+
+                        <div class="chatlog__content">
+                            I thought it was a bug at first but no, I spawned more and was just lucky.
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/289072337121443853/6afa51eed2fe19f63e843e31ad572118.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="McLaren7718#0753">McLaren7718</span>
+                <span class="chatlog__timestamp">11-Nov-18 09:38 PM</span>
+
+                        <div class="chatlog__content">
+                            <span class="mention" title="Elliot#1234">@Elliot</span>  After screen recording the game. I&#39;ve noticed when the creatures are unhappy and you feed them back up to peak happiness. The colour changes back to bright, however the happiness face still shows angry and doesn&#39;t update.
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/368474843462762497/7e23bad3de2b70f1b9413910ff526c12.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="GeorgeWJ#2855">GeorgeWJ</span>
+                <span class="chatlog__timestamp">11-Nov-18 09:38 PM</span>
+
+                        <div class="chatlog__content">
+                            Good work McCarthy
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/260871590122618880/734b8bba50866012ce75f9386e1e9f0f.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="GetWonked#3501">GetWonked</span>
+                <span class="chatlog__timestamp">11-Nov-18 09:38 PM</span>
+
+                        <div class="chatlog__content">
+                            We will use the feedback from the the questionnaires and put the comments in the presentation
+
+                                <span class="chatlog__edited-timestamp" title="11-Nov-18 09:40 PM">(edited)</span>
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/203569300861091841/373c49fe747b088a13d902eddd125166.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Elliot#1234">Elliot</span>
+                <span class="chatlog__timestamp">11-Nov-18 09:39 PM</span>
+
+                        <div class="chatlog__content">
+                            <span class="mention" title="McLaren7718#0753">@McLaren7718</span> OK ill take a look at that
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/260871590122618880/734b8bba50866012ce75f9386e1e9f0f.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="GetWonked#3501">GetWonked</span>
+                <span class="chatlog__timestamp">11-Nov-18 09:42 PM</span>
+
+                        <div class="chatlog__content">
+                            Do you want me to write about marketing again in the presentation, or do you think they wont want that
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/368474843462762497/7e23bad3de2b70f1b9413910ff526c12.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="GeorgeWJ#2855">GeorgeWJ</span>
+                <span class="chatlog__timestamp">11-Nov-18 09:48 PM</span>
+
+                        <div class="chatlog__content">
+                            <span class="mention" title="Elliot#1234">@Elliot</span> what are the chances of a meteor arriving?
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            Also, if I tap the meteor rapidly I get multiple gifts
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            
+
+                        </div>
+
+                        <div class="chatlog__attachment">
+                            <a href="https://cdn.discordapp.com/attachments/493808790173515780/511296823567319041/Screenshot_20181111-215049.png">
+                                
+                                    <img class="chatlog__attachment-thumbnail" src="https://cdn.discordapp.com/attachments/493808790173515780/511296823567319041/Screenshot_20181111-215049.png" />
+                            </a>
+                        </div>
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/203569300861091841/373c49fe747b088a13d902eddd125166.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Elliot#1234">Elliot</span>
+                <span class="chatlog__timestamp">11-Nov-18 09:53 PM</span>
+
+                        <div class="chatlog__content">
+                            I havnt added a way to make one spawn mid game, I didn&#39;t know how often you wanted it spawning or of it was based of the player doing something so I didn&#39;t do that. And I can already think of why the multiple gift thing might be happening so I&#39;ll fix that tomorrow
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/368474843462762497/7e23bad3de2b70f1b9413910ff526c12.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="GeorgeWJ#2855">GeorgeWJ</span>
+                <span class="chatlog__timestamp">11-Nov-18 09:53 PM</span>
+
+                        <div class="chatlog__content">
+                            Awesome. I&#39;ll say that it spaw
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/203569300861091841/373c49fe747b088a13d902eddd125166.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Elliot#1234">Elliot</span>
+                <span class="chatlog__timestamp">11-Nov-18 09:54 PM</span>
+
+                        <div class="chatlog__content">
+                            Right now the only way to see the meteor right now is to reset or close and reopen the game
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/368474843462762497/7e23bad3de2b70f1b9413910ff526c12.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="GeorgeWJ#2855">GeorgeWJ</span>
+                <span class="chatlog__timestamp">11-Nov-18 09:55 PM</span>
+
+                        <div class="chatlog__content">
+                            spawns at least one between 4 and 8 minutes, and gradually increase the range. It&#39;ll be tweaked though
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/289072337121443853/6afa51eed2fe19f63e843e31ad572118.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="McLaren7718#0753">McLaren7718</span>
+                <span class="chatlog__timestamp">11-Nov-18 09:55 PM</span>
+
+                        <div class="chatlog__content">
+                            Hi guys, can you please have a look  at the gameplay footage I have recorded and edited. For example if I have missed out showing off any features we now have. <a href="https://drive.google.com/file/d/1YOdZblg4MFJWf9VQQe0KR9YwHcbORE4r/view?usp=sharing">https://drive.google.com/file/d/1YOdZblg4MFJWf9VQQe0KR9YwHcbORE4r/view?usp=sharing</a>
+
+                        </div>
+
+
+                        <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(79,84,92,255)"></div>
+                            <div class="chatlog__embed-content-container">
+                                <div class="chatlog__embed-content">
+                                    <div class="chatlog__embed-text">
+
+                                            <div class="chatlog__embed-title">
+                                                    <a class="chatlog__embed-title-link" href="https://drive.google.com/file/d/1YOdZblg4MFJWf9VQQe0KR9YwHcbORE4r/view?usp=sharing">game<i>play</i>record_04.mp4</a>
+                                            </div>
+
+
+                                    </div>
+
+                                </div>    
+
+
+                            </div>
+                        </div>
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/203569300861091841/373c49fe747b088a13d902eddd125166.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Elliot#1234">Elliot</span>
+                <span class="chatlog__timestamp">11-Nov-18 09:56 PM</span>
+
+                        <div class="chatlog__content">
+                            
+
+                        </div>
+
+                        <div class="chatlog__attachment">
+                            <a href="https://cdn.discordapp.com/attachments/493808790173515780/511298111789072384/Screenshot_20181111-215553.jpg">
+                                
+                                    <img class="chatlog__attachment-thumbnail" src="https://cdn.discordapp.com/attachments/493808790173515780/511298111789072384/Screenshot_20181111-215553.jpg" />
+                            </a>
+                        </div>
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/260871590122618880/734b8bba50866012ce75f9386e1e9f0f.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="GetWonked#3501">GetWonked</span>
+                <span class="chatlog__timestamp">11-Nov-18 09:56 PM</span>
+
+                        <div class="chatlog__content">
+                            
+
+                        </div>
+
+                        <div class="chatlog__attachment">
+                            <a href="https://cdn.discordapp.com/attachments/493808790173515780/511298125214908446/feedback.pptx">
+                                
+                                    Attachment: feedback.pptx (38.6 KB)
+                            </a>
+                        </div>
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/203569300861091841/373c49fe747b088a13d902eddd125166.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Elliot#1234">Elliot</span>
+                <span class="chatlog__timestamp">11-Nov-18 09:56 PM</span>
+
+                        <div class="chatlog__content">
+                            I dont think I can watch the video
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/289072337121443853/6afa51eed2fe19f63e843e31ad572118.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="McLaren7718#0753">McLaren7718</span>
+                <span class="chatlog__timestamp">11-Nov-18 09:57 PM</span>
+
+                        <div class="chatlog__content">
+                            You might have to download it, as Tom said it works for him.
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/260871590122618880/734b8bba50866012ce75f9386e1e9f0f.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="GetWonked#3501">GetWonked</span>
+                <span class="chatlog__timestamp">11-Nov-18 09:58 PM</span>
+
+                        <div class="chatlog__content">
+                            It is working for me
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/203569300861091841/373c49fe747b088a13d902eddd125166.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Elliot#1234">Elliot</span>
+                <span class="chatlog__timestamp">11-Nov-18 09:58 PM</span>
+
+                        <div class="chatlog__content">
+                            Oh maybe
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/203569300861091841/373c49fe747b088a13d902eddd125166.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Elliot#1234">Elliot</span>
+                <span class="chatlog__timestamp">11-Nov-18 10:02 PM</span>
+
+                        <div class="chatlog__content">
+                            <span class="mention" title="McLaren7718#0753">@McLaren7718</span> check you&#39;re on the latest build, in the latest one I uploaded the giant doesn&#39;t show behind the pots and fruit
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/289072337121443853/6afa51eed2fe19f63e843e31ad572118.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="McLaren7718#0753">McLaren7718</span>
+                <span class="chatlog__timestamp">11-Nov-18 10:07 PM</span>
+
+                        <div class="chatlog__content">
+                            Can you post it in the chat please
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/203569300861091841/373c49fe747b088a13d902eddd125166.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Elliot#1234">Elliot</span>
+                <span class="chatlog__timestamp">11-Nov-18 10:09 PM</span>
+
+                        <div class="chatlog__content">
+                            I sent it at 3:39am yesterday
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            I&#39;d send it again but I&#39;m on my phone and don&#39;t have it on here
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/289072337121443853/6afa51eed2fe19f63e843e31ad572118.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="McLaren7718#0753">McLaren7718</span>
+                <span class="chatlog__timestamp">11-Nov-18 10:11 PM</span>
+
+                        <div class="chatlog__content">
+                            <span class="mention" title="Elliot#1234">@Elliot</span>  No need I found it thanks.
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            <span class="mention" title="Elliot#1234">@Elliot</span>  Are you ok to meet at 9am tomorrow before the pitch?
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/203569300861091841/373c49fe747b088a13d902eddd125166.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Elliot#1234">Elliot</span>
+                <span class="chatlog__timestamp">11-Nov-18 10:12 PM</span>
+
+                        <div class="chatlog__content">
+                            Yes
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/289072337121443853/6afa51eed2fe19f63e843e31ad572118.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="McLaren7718#0753">McLaren7718</span>
+                <span class="chatlog__timestamp">11-Nov-18 11:21 PM</span>
+
+                        <div class="chatlog__content">
+                            <span class="mention" title="GeorgeWJ#2855">@GeorgeWJ</span> YouTube link for gameplay <a href="https://youtu.be/9MlsOUIg0Yo">https://youtu.be/9MlsOUIg0Yo</a>
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            Updated link <a href="https://youtu.be/clCCnU6iQ5M">https://youtu.be/clCCnU6iQ5M</a>
+
+                        </div>
+
+
+                        <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,1)"></div>
+                            <div class="chatlog__embed-content-container">
+                                <div class="chatlog__embed-content">
+                                    <div class="chatlog__embed-text">
+                                            <div class="chatlog__embed-author">
+
+                                                    <span class="chatlog__embed-author-name">
+                                                            <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/channel/UCmEAzfSPwHxl_cFtdo8B4Tg">Thomas McLaren</a>
+                                                    </span>
+                                            </div>
+
+                                            <div class="chatlog__embed-title">
+                                                    <a class="chatlog__embed-title-link" href="https://youtu.be/clCCnU6iQ5M">game play record 04</a>
+                                            </div>
+
+
+                                    </div>
+
+                                        <div class="chatlog__embed-thumbnail-container">
+                                            <a class="chatlog__embed-thumbnail-link" href="https://i.ytimg.com/vi/clCCnU6iQ5M/maxresdefault.jpg">
+                                                <img class="chatlog__embed-thumbnail" src="https://i.ytimg.com/vi/clCCnU6iQ5M/maxresdefault.jpg" />
+                                            </a>
+                                        </div>
+                                </div>    
+
+
+                            </div>
+                        </div>
+
+            </div>
+        </div>
+</div>
+
+</body>
+</html>
