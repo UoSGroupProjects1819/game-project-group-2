@@ -14,13 +14,13 @@ public class InventorySeedButton : MonoBehaviour {
 
     private void Start()
     {
+        IS = InventoryScript.Instance;
 
     }
 
     public void SetUpButton(SeedInInventory newSeed)
     {
         IS = InventoryScript.Instance;
-
         thisSeed = newSeed;
         childImage.sprite = IS.FindSeed(thisSeed.name).sprite;
         childAmtCounter.text = "x" + thisSeed.amt;
@@ -35,6 +35,16 @@ public class InventorySeedButton : MonoBehaviour {
     {
         Debug.Log(thisSeed.name);
         IS.SetCraftingObject(thisSeed);
+    }
+
+    public void StartSeedDrag()
+    {
+        Debug.Log("SpawningNewSeed");
+        IslandScript island = WorldSelector.Instance.SelectedIsland.GetComponent<IslandScript>();
+        if (island.currentTreePopulation >= island.maxTreePopulation) { return; }
+        GameObject NewSeed = Instantiate(IS.FindSeed(thisSeed.name).objectToSpawn);
+        TouchController.Instance.seedBeingDragged = NewSeed;
+        IS.inventoryPanel.SetActive(false);
     }
 
     public void SpawnSeed()

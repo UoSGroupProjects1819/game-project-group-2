@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 50466838486723704}
   - component: {fileID: 61580516030854780}
   - component: {fileID: 114665770400740054}
-  m_Layer: 11
+  m_Layer: 12
   m_Name: DefaultSeed
   m_TagString: Seed
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4292787309740090}
   - component: {fileID: 212931518911313110}
-  m_Layer: 11
+  m_Layer: 12
   m_Name: Seed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -128,7 +128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 661169b6d76e9884f9032575a4a5b9ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  seedType: 
+  seedType: Green Seed
   treeToSpawn: {fileID: 1162589537759388, guid: 7a529a06042bd1a45ab3710731586880,
     type: 2}
   spawnDelay: 3

@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class GiantScript : MonoBehaviour {
 
+    #region variables
+
+
     public static GiantScript Instance;
 
     public Transform seedHolder;
@@ -30,6 +33,8 @@ public class GiantScript : MonoBehaviour {
 
     public LayerMask GiantLayer;
     public LayerMask WorldLayer;
+
+    #endregion
 
     private void Awake()
     {
@@ -110,13 +115,20 @@ public class GiantScript : MonoBehaviour {
 
     public void GiantTapped()
     {
-        if (IS.inventoryPanel.activeSelf) { return; }
+        if (IS.inventoryPanel.activeSelf)
+        {
+            IS.inventoryPanel.SetActive(false);
+        }
+        else
+        {
+            IS.inventoryPanel.SetActive(true);
+            //IS.HUDPanel.SetActive(false);
+            //IS.UpdateEggUI(IS.EggUI);
+            IS.UpdateSeedButtons();
+            targetPoint = this.transform.position;
+        }
 
-        IS.inventoryPanel.SetActive(true);
-        IS.HUDPanel.SetActive(false);
-        IS.UpdateEggUI(IS.EggUI);
-        IS.UpdateSeedUI(IS.SeedUI);
-        targetPoint = this.transform.position;
+        
     }
 
     public void WorldTapped(Vector2 tapPos)

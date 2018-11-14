@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 50466838486723704}
   - component: {fileID: 61621452276006284}
   - component: {fileID: 114581083961236440}
-  m_Layer: 11
+  m_Layer: 12
   m_Name: TealSeed
   m_TagString: Seed
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4292787309740090}
   - component: {fileID: 212931518911313110}
-  m_Layer: 11
+  m_Layer: 12
   m_Name: Seed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -128,7 +128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 661169b6d76e9884f9032575a4a5b9ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  seedType: 
+  seedType: Teal Seed
   treeToSpawn: {fileID: 1577774115809660, guid: 21f2bf3a11a98114c98307adc36ee55a,
     type: 2}
   spawnDelay: 3

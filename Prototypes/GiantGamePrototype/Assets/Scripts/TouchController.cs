@@ -7,6 +7,9 @@ public class TouchController : MonoBehaviour {
     public static TouchController Instance;
 
     public LayerMask layersToTouch;
+    public LayerMask layersExcludingSeed;
+
+    float timeSinceTouch;
 
     bool canTap = true;
 
@@ -18,6 +21,8 @@ public class TouchController : MonoBehaviour {
 
     Vector2 startTouchPos = new Vector2(0, 0);
 
+    public GameObject seedBeingDragged;
+
     private void Awake()
     {
         Instance = this;
@@ -25,6 +30,17 @@ public class TouchController : MonoBehaviour {
 
     void Update ()
     {
+        timeSinceTouch += Time.deltaTime;
+
+        if(timeSinceTouch > 30)
+        {
+            GiantScript.Instance.gameObject.GetComponent<InteractionGlowScript>().glow = true;
+        }
+        else
+        {
+            GiantScript.Instance.gameObject.GetComponent<InteractionGlowScript>().glow = false;
+        }
+
         GetTouch();
 	}
 
@@ -44,7 +60,7 @@ public class TouchController : MonoBehaviour {
         if (Touches.Length == 1)
         {
             //Debug.Log(Touches[0].phase.ToString());
-
+            timeSinceTouch = 0;
             if (canTap == true)
             {
                 if (Touches[0].phase == TouchPhase.Began)
@@ -62,6 +78,7 @@ public class TouchController : MonoBehaviour {
                 else if(Touches[0].phase == TouchPhase.Ended)
                 {
                     SingleTap(Touches[0].position);
+
                 }
             }
             else
@@ -70,12 +87,18 @@ public class TouchController : MonoBehaviour {
                 {
                     TouchDrag(Touches[0].position);
                 }
+
+                if (Touches[0].phase == TouchPhase.Ended)
+                {
+                    ReleaseDrag(Touches[0].position);
+                }
             }
 
             lastSingleTouchPoint = Touches[0].position;
         }
         else if(Touches.Length == 2)
         {
+            timeSinceTouch = 0;
             canTap = false;
             Vector2 touch0, touch1;
             touch0 = Input.GetTouch(0).position;
@@ -108,9 +131,43 @@ public class TouchController : MonoBehaviour {
         Camera.main.GetComponent<CameraControl>().ScreenPinch(dragAmt, pinchAmt);
     }
 
+    void ReleaseDrag(Vector2 touchPos)
+    {
+        if (seedBeingDragged != null)
+        {
+            RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(touchPos), Vector2.zero, 100 , layersExcludingSeed);
+            if (hit && hit.transform.tag == "PlantPot")
+            {
+                seedBeingDragged.GetComponent<SeedScript>().ReleaseDrag(touchPos, hit.transform.gameObject);
+                seedBeingDragged = null;
+            }
+            else
+            {
+                Destroy(seedBeingDragged);
+                seedBeingDragged = null;
+                InventoryScript.Instance.inventoryPanel.SetActive(true);
+                Debug.Log("Dropped seed on " + hit.transform.name);
+            }
+            
+        }
+    }
+
     void TouchDrag(Vector2 touchPos)
     {
-        Camera.main.GetComponent<CameraControl>().ScreenDrag(touchPos);
+        if (seedBeingDragged != null)
+        {
+            RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(touchPos), Vector2.zero);
+            if(hit)
+            {
+                seedBeingDragged.GetComponent<SeedScript>().Dragging(hit.point);
+            }
+            
+        }
+        else
+        {
+            Camera.main.GetComponent<CameraControl>().ScreenDrag(touchPos);
+        }
+        
     }
 
     void SingleTap(Vector2 touchPos)
@@ -134,11 +191,11 @@ public class TouchController : MonoBehaviour {
         {
             hit.transform.gameObject.GetComponent<TreeScript>().Touched();
         }
-        else
+        /*else
         if (hit.transform.tag == "TappableArea")
         {
             GiantScript.Instance.WorldTapped(hit.point);
-        }
+        }*/
         else
         if (hit.transform.tag == "Meteor")
         {

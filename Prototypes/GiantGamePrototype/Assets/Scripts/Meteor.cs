@@ -8,8 +8,9 @@ public class Meteor : MonoBehaviour {
     public Vector2 EndPoint;
     public float speed;
     float randomRotation;
+    float destroyTimer = 10;
 
-    public GameObject GiftToSpawn;
+    public GameObject[] GiftsToSpawn;
 
     public bool canTap;
 
@@ -29,15 +30,21 @@ public class Meteor : MonoBehaviour {
             Destroy(this.gameObject);
             //this.transform.position = StartPoint;
         }
+
+        destroyTimer -= Time.deltaTime;
+        if(destroyTimer <= 0)
+        {
+            Destroy(this.gameObject);
+        }
 	}
 
     public void Tapped()
     {
         if(!canTap) { return; }
         this.GetComponent<TrailRenderer>().enabled = false;
-        Instantiate(GiftToSpawn, this.transform.position, Quaternion.identity);
+        Instantiate(GiftsToSpawn[Random.Range(0,GiftsToSpawn.Length-1)], this.transform.position, Quaternion.identity);
         this.GetComponent<Rigidbody2D>().angularVelocity = 0;
-
+        this.GetComponent<CircleCollider2D>().enabled = false;
         foreach (Transform piece in this.transform)
         {
             piece.GetComponent<Rigidbody2D>().simulated = true;

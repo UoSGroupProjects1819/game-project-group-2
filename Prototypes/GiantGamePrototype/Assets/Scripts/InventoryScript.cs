@@ -119,6 +119,7 @@ public class InventoryScript : MonoBehaviour
 
     public GameObject EggUI;
     public GameObject SeedUI;
+    public GameObject[] SeedButtons;
 
     string fileName = @"/Inventory.json";
 
@@ -291,6 +292,7 @@ public class InventoryScript : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R))
         {
             PlayerPrefs.SetInt("FirstOpen", 0);
+            ResetSave();
         }
     }
 
@@ -384,6 +386,26 @@ public class InventoryScript : MonoBehaviour
             GameObject newButton = Instantiate(inventrorySeedButton, seedButtonPanel.transform);
             newButton.GetComponent<InventorySeedButton>().SetUpButton(seed);
         }
+    }
+
+    public void UpdateSeedButtons()
+    {
+        foreach (GameObject item in SeedButtons)
+        {
+            item.GetComponent<InventorySeedButton>().childAmtCounter.text = "x" + FindSeedInInventory(item.GetComponent<InventorySeedButton>().thisSeed.name).amt.ToString();
+        }
+    }
+
+    SeedInInventory FindSeedInInventory(string seedName)
+    {
+        foreach (var item in inventory.seeds)
+        {
+            if(item.name == seedName)
+            {
+                return item;
+            }
+        }
+        return null;
     }
 
     public void UpdateIngredientsUI(GameObject ingredientButtonPanel)
