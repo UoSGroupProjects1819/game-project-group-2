@@ -22,6 +22,7 @@ public class TouchController : MonoBehaviour {
     Vector2 startTouchPos = new Vector2(0, 0);
 
     public GameObject seedBeingDragged;
+    public GameObject fruitBeingDragged;
 
     private void Awake()
     {
@@ -127,7 +128,12 @@ public class TouchController : MonoBehaviour {
     void Pinch(Vector2 dragAmt, float pinchAmt)
     {
         Debug.Log("Pinching");
-
+        if (StatManager.Instance.statsPanel.activeSelf)
+        {
+            StatManager.Instance.statsPanel.SetActive(!StatManager.Instance.statsPanel.activeSelf);
+            Camera.main.gameObject.GetComponent<CameraControl>().LockCamera = StatManager.Instance.statsPanel.activeSelf;
+            StatManager.Instance.targetCreature.GetComponent<CreatureScript>().UpdateStatUI();
+        }
         Camera.main.GetComponent<CameraControl>().ScreenPinch(dragAmt, pinchAmt);
     }
 
@@ -157,14 +163,21 @@ public class TouchController : MonoBehaviour {
         if (seedBeingDragged != null)
         {
             RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(touchPos), Vector2.zero);
-            if(hit)
+            if (hit)
             {
                 seedBeingDragged.GetComponent<SeedScript>().Dragging(hit.point);
             }
-            
+
         }
         else
         {
+            if (StatManager.Instance.statsPanel.activeSelf)
+            {
+                StatManager.Instance.statsPanel.SetActive(!StatManager.Instance.statsPanel.activeSelf);
+                Camera.main.gameObject.GetComponent<CameraControl>().LockCamera = StatManager.Instance.statsPanel.activeSelf;
+                StatManager.Instance.targetCreature.GetComponent<CreatureScript>().UpdateStatUI();
+            }
+
             Camera.main.GetComponent<CameraControl>().ScreenDrag(touchPos);
         }
         

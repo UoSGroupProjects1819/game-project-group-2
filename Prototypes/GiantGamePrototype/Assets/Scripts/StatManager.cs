@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class StatManager : MonoBehaviour {
 
+    public static StatManager Instance;
+
     [System.Serializable]
     public struct StatRank
     {
@@ -45,6 +47,11 @@ public class StatManager : MonoBehaviour {
     public Text strengthLevel;
     public Text styleLevel;
     public Text staminaLevel;
+
+    private void Start()
+    {
+        Instance = this;
+    }
 
     public StatRank FindRank(string rankLetter)
     {

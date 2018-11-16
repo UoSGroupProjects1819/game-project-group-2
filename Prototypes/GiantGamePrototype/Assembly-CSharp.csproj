@@ -71,6 +71,7 @@
     <Compile Include="Assets\Scripts\CreatureScript.cs" />
     <Compile Include="Assets\Scripts\DayNightCycle.cs" />
     <Compile Include="Assets\Scripts\EggScript.cs" />
+    <Compile Include="Assets\Scripts\FruitButtonScript.cs" />
     <Compile Include="Assets\Scripts\FruitScript.cs" />
     <Compile Include="Assets\Scripts\GiantScript.cs" />
     <Compile Include="Assets\Scripts\GiftScript.cs" />

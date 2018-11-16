@@ -405,7 +405,7 @@ public class CreatureScript : MonoBehaviour {
         UpdateSaturation();
     }
 
-    private void UpdateStatUI()
+    public void UpdateStatUI()
     {
         if(SM.targetCreature == null || SM.targetCreature != this.gameObject) { return; }
 
