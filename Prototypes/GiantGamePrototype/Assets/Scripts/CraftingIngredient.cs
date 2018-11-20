@@ -13,7 +13,7 @@ public class CraftingIngredient : MonoBehaviour {
     {
         if (ingredient.name != null && ingredient.name != "")
         {
-            this.GetComponent<Image>().sprite = InventoryScript.Instance.FindIngredient(ingredient.name).sprite;
+            //this.GetComponent<Image>().sprite = InventoryScript.Instance.FindIngredient(ingredient.name).sprite;
         }
         else
         {

@@ -31,11 +31,11 @@ public class InventorySeedButton : MonoBehaviour {
         }
     }
 
-    public void CraftingClick()
+    /*public void CraftingClick()
     {
         Debug.Log(thisSeed.name);
         IS.SetCraftingObject(thisSeed);
-    }
+    }*/
 
     public void StartSeedDrag()
     {

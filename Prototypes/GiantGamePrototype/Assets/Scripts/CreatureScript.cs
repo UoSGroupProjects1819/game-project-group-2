@@ -45,6 +45,8 @@ public class CreatureScript : MonoBehaviour {
     public float happinessLossSpeed;
     Image happinessImage;
 
+    public GameObject creatureToBreedWith;
+
     [System.Serializable]
     public struct HappinessLevel
     {
@@ -67,7 +69,7 @@ public class CreatureScript : MonoBehaviour {
 
 
     public List<HappinessLevel> happinessLevels;
-    HappinessLevel currentHappinessLevel;
+    public HappinessLevel currentHappinessLevel;
 
     [Space(10)]
     [Header("Stats")]
@@ -85,6 +87,10 @@ public class CreatureScript : MonoBehaviour {
     Image StaminaImage;
 
     bool generateStats = true;
+    public bool waitingForBreed;
+    private bool breeding;
+
+    public GameObject EggToSpawn;
 
     #endregion
 
@@ -239,7 +245,7 @@ public class CreatureScript : MonoBehaviour {
             waitTime = 0;
         }
 
-        if (waitTime > 0)
+        if (waitTime > 0 && !breeding)
         {
             waitTime -= Time.deltaTime;
             return;
@@ -272,6 +278,25 @@ public class CreatureScript : MonoBehaviour {
 
             if (distanceToTarget < 0.05f)
             {
+                if (breeding)
+                {
+                    if (creatureToBreedWith != null)
+                    {
+                        if (Vector2.Distance(creatureToBreedWith.transform.position, creatureToBreedWith.GetComponent<CreatureScript>().targetPoint) < 0.05f)
+                        {
+                            FinishBreed();
+                        }
+                        else
+                        {
+                            return;
+                        }
+                    }
+                    else
+                    {
+                        return;
+                    }
+                }
+
                 this.transform.position = new Vector2(targetPoint.x, this.transform.position.y);
                 RB.velocity = Vector2.zero;
                 waitTime = Random.Range(minWaitTime, maxWaitTime);
@@ -520,9 +545,50 @@ public class CreatureScript : MonoBehaviour {
         if (IS.inventoryPanel.activeSelf) { return; }
 
         SM.statsPanel.SetActive(!SM.statsPanel.activeSelf);
-        Camera.main.gameObject.GetComponent<CameraControl>().LockCamera = SM.statsPanel.activeSelf;
+        InventoryScript.Instance.UpdateFruitButtons(this.transform.GetComponentInParent<IslandScript>().islandID);
+        if (SM.statsPanel.activeSelf)
+        {
+            Camera.main.gameObject.GetComponent<CameraControl>().currentCameraPosition = CameraControl.CameraPositions.Dynamic;
+        }
+        else
+        {
+            Camera.main.gameObject.GetComponent<CameraControl>().currentCameraPosition = CameraControl.CameraPositions.TouchControl;
+        }
+
         SM.targetCreature = this.gameObject;
         UpdateStatUI();
+    }
+
+    public void StartBreed()
+    {
+        Camera.main.gameObject.GetComponent<CameraControl>().currentCameraPosition = CameraControl.CameraPositions.IslandView;
+        // able to breed glow
+        waitingForBreed = true;
+        TouchController.Instance.targetCreature = this.gameObject;
+    }
+
+    public void Breed(GameObject newCreature)
+    {
+        Camera.main.gameObject.GetComponent<CameraControl>().currentCameraPosition = CameraControl.CameraPositions.TouchControl;
+        creatureToBreedWith = newCreature;
+        Vector2 newTargetPos = (this.transform.position + creatureToBreedWith.transform.position) / 2;
+        Debug.Log(newTargetPos);
+        targetPoint = newTargetPos;
+        breeding = true;
+        creatureToBreedWith.GetComponent<CreatureScript>().targetPoint = newTargetPos;
+        creatureToBreedWith.GetComponent<CreatureScript>().breeding = true;
+        Debug.Log("breeding");
+
+        // spawn egg between them
+    }
+
+    public void FinishBreed()
+    {
+        breeding = false;
+        creatureToBreedWith.GetComponent<CreatureScript>().breeding = false;
+        creatureToBreedWith = null;
+        Instantiate(EggToSpawn, this.transform.position, Quaternion.identity, this.transform.parent);
+        TouchController.Instance.targetCreature = null;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

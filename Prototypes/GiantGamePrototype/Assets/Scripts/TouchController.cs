@@ -8,6 +8,7 @@ public class TouchController : MonoBehaviour {
 
     public LayerMask layersToTouch;
     public LayerMask layersExcludingSeed;
+    public LayerMask layersExcludingFruit;
 
     float timeSinceTouch;
 
@@ -23,6 +24,7 @@ public class TouchController : MonoBehaviour {
 
     public GameObject seedBeingDragged;
     public GameObject fruitBeingDragged;
+    public GameObject targetCreature;
 
     private void Awake()
     {
@@ -131,7 +133,7 @@ public class TouchController : MonoBehaviour {
         if (StatManager.Instance.statsPanel.activeSelf)
         {
             StatManager.Instance.statsPanel.SetActive(!StatManager.Instance.statsPanel.activeSelf);
-            Camera.main.gameObject.GetComponent<CameraControl>().LockCamera = StatManager.Instance.statsPanel.activeSelf;
+            Camera.main.gameObject.GetComponent<CameraControl>().currentCameraPosition = CameraControl.CameraPositions.TouchControl;
             StatManager.Instance.targetCreature.GetComponent<CreatureScript>().UpdateStatUI();
         }
         Camera.main.GetComponent<CameraControl>().ScreenPinch(dragAmt, pinchAmt);
@@ -156,6 +158,25 @@ public class TouchController : MonoBehaviour {
             }
             
         }
+        else
+        if (fruitBeingDragged != null)
+        {
+            RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(touchPos), Vector2.zero, 100, layersExcludingFruit);
+            if (!hit) { return; }
+            if (hit.transform.tag == "Creature")
+            {
+                fruitBeingDragged.GetComponent<FruitScript>().ReleaseDrag(touchPos, hit.transform.gameObject);
+                fruitBeingDragged = null;
+            }   
+            else
+            {
+                Destroy(fruitBeingDragged);
+                fruitBeingDragged = null;
+                InventoryScript.Instance.inventoryPanel.SetActive(true);
+                //Debug.Log("Dropped fruit on " + hit.transform.name + " with layer " + hit.transform.gameObject.layer);
+            }
+
+        }
     }
 
     void TouchDrag(Vector2 touchPos)
@@ -170,17 +191,25 @@ public class TouchController : MonoBehaviour {
 
         }
         else
+        if (fruitBeingDragged != null)
+        {
+            RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(touchPos), Vector2.zero);
+            if (hit)
+            {
+                fruitBeingDragged.GetComponent<FruitScript>().Dragging(hit.point);
+            }
+        }
+        else
         {
             if (StatManager.Instance.statsPanel.activeSelf)
             {
                 StatManager.Instance.statsPanel.SetActive(!StatManager.Instance.statsPanel.activeSelf);
-                Camera.main.gameObject.GetComponent<CameraControl>().LockCamera = StatManager.Instance.statsPanel.activeSelf;
+                Camera.main.gameObject.GetComponent<CameraControl>().currentCameraPosition = CameraControl.CameraPositions.TouchControl;
                 StatManager.Instance.targetCreature.GetComponent<CreatureScript>().UpdateStatUI();
             }
 
             Camera.main.GetComponent<CameraControl>().ScreenDrag(touchPos);
         }
-        
     }
 
     void SingleTap(Vector2 touchPos)
@@ -197,14 +226,27 @@ public class TouchController : MonoBehaviour {
         else
         if (hit.transform.tag == "Creature")
         {
-            hit.transform.GetComponent<CreatureScript>().Touched();
+            if (targetCreature != null && targetCreature.GetComponent<CreatureScript>().waitingForBreed)
+            {
+                if (targetCreature != hit.transform.gameObject)
+                {
+                    if (targetCreature.GetComponent<CreatureScript>().currentHappinessLevel.canBreed)
+                    {
+                        targetCreature.GetComponent<CreatureScript>().Breed(hit.transform.gameObject);
+                    }
+                }
+            }
+            else
+            {
+                hit.transform.GetComponent<CreatureScript>().Touched();
+            }
         }
-        else
+        /*else
         if (hit.transform.tag == "Tree")
         {
             hit.transform.gameObject.GetComponent<TreeScript>().Touched();
         }
-        /*else
+        else
         if (hit.transform.tag == "TappableArea")
         {
             GiantScript.Instance.WorldTapped(hit.point);

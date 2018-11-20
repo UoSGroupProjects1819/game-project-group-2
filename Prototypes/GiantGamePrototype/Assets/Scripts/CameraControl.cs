@@ -9,11 +9,23 @@ public class CameraControl : MonoBehaviour {
     [HideInInspector]
     public float worldPositionOffset;
 
+    public enum CameraPositions
+    {
+        TouchControl,
+        IslandView,
+        Dynamic
+    }
+
+    public CameraPositions currentCameraPosition;
+
     public float speed;
     [Space(10)]
-    public bool LockCamera = false;
     public Vector3 Dynamic;
     public float DynamicOrtho;
+    [Space(10)]
+    public Vector3 IslandViewPos;
+    public float IslandViewOrtho;
+
     Vector3 targetPos;
     float targetSize;
 
@@ -46,16 +58,22 @@ public class CameraControl : MonoBehaviour {
 
     private void LateUpdate()
     {
-        if (LockCamera)
+        switch (currentCameraPosition)
         {
-            ControlledMoveCamera();
-        }
-        else
-        {
-            if (!touchedSinceLock)
-            {
-                ResetCameraPosition();
-            }
+            case CameraPositions.TouchControl:
+                if (!touchedSinceLock)
+                {
+                    ResetCameraPosition();
+                }
+                break;
+
+            case CameraPositions.IslandView:
+                MoveToIslandView();
+                break;
+
+            case CameraPositions.Dynamic:
+                DynamicMoveCamera();
+                break;
         }
     }
 
@@ -92,7 +110,7 @@ public class CameraControl : MonoBehaviour {
 
     public void ScreenDrag(Vector2 touchPos)
     {
-        if (LockCamera) { return; }
+        if (currentCameraPosition == CameraPositions.Dynamic || currentCameraPosition == CameraPositions.IslandView) { return; }
 
         if (InventoryScript.Instance.inventoryPanel.activeSelf) { return; }
 
@@ -117,9 +135,16 @@ public class CameraControl : MonoBehaviour {
         thisCamera.orthographicSize = Mathf.Lerp(thisCamera.orthographicSize, lastFreeCameraOrtho, Time.deltaTime * speed);
     }
 
-    public void ControlledMoveCamera ()
+    public void MoveToIslandView()
     {
-        this.transform.position = Vector3.MoveTowards(transform.position, Dynamic, Time.deltaTime * speed * 2.5f);
+        this.transform.position = Vector3.MoveTowards(transform.position, IslandViewPos + WorldSelector.Instance.SelectedIsland.transform.position, Time.deltaTime * speed * 1f);
+        thisCamera.orthographicSize = Mathf.Lerp(thisCamera.orthographicSize, IslandViewOrtho, Time.deltaTime * speed);
+        touchedSinceLock = false;
+    }
+
+    public void DynamicMoveCamera ()
+    {
+        this.transform.position = Vector3.MoveTowards(transform.position, Dynamic, Time.deltaTime * speed * 1f);
         thisCamera.orthographicSize = Mathf.Lerp(thisCamera.orthographicSize, DynamicOrtho, Time.deltaTime * speed);
         touchedSinceLock = false;
     }

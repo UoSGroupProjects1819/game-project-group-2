@@ -29,10 +29,10 @@ public class InventoryEggButton : MonoBehaviour {
         }
     }
 
-    public void CraftingClick()
+    /*public void CraftingClick()
     {
         IS.SetCraftingObject(thisEgg);
-    }
+    }*/
 
     public void SpawnEgg()
     {

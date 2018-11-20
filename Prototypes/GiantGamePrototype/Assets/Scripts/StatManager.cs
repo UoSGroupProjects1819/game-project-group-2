@@ -68,4 +68,10 @@ public class StatManager : MonoBehaviour {
         return new StatRank();
     } 
 
+    public void BreedButton()
+    {
+        targetCreature.GetComponent<CreatureScript>().StartBreed();
+        statsPanel.SetActive(false);
+    }
+
 }

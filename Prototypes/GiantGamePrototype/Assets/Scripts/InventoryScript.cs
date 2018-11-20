@@ -37,7 +37,7 @@ public class Fruit
 {
     public string name;
     public Sprite sprite;
-    public int amt;
+    public GameObject objectToSpawn;
 }
 
 
@@ -62,13 +62,25 @@ public class IngredientInInventory
     public int amt;
 }
 
+[System.Serializable]
+public class FruitInInventory
+{
+    public string name;
+    public int amt;
+}
+
+[System.Serializable]
+public class IslandStorage
+{
+    public List<FruitInInventory> fruitInStorage;
+}
 
 [System.Serializable]
 public class Inventory
 {
     public List<EggInInventory> eggs;
     public List<SeedInInventory> seeds;
-    public List<IngredientInInventory> ingredients;
+    public List<IslandStorage> islands;
     //public List<Fruit> fruit;
 }
 
@@ -82,8 +94,14 @@ public class JsonInventory
     public string[] seeds;
     public int[] seedAmts;
 
-    public string[] ingredients;
-    public int[] ingredientAmts;
+    public string[] fruits0;
+    public int[] fruitAmts0;
+
+    public string[] fruits1;
+    public int[] fruitAmts1;
+
+    public string[] fruits2;
+    public int[] fruitAmts2;
 }
 
 #endregion
@@ -105,6 +123,9 @@ public class InventoryScript : MonoBehaviour
     public Seed[] seeds;
 
     [SerializeField]
+    public Fruit[] fruits;
+
+    [SerializeField]
     public Ingredient[] ingredients;
 
     [Space(10)]
@@ -120,6 +141,7 @@ public class InventoryScript : MonoBehaviour
     public GameObject EggUI;
     public GameObject SeedUI;
     public GameObject[] SeedButtons;
+    public GameObject[] FruitButtons;
 
     string fileName = @"/Inventory.json";
 
@@ -172,8 +194,12 @@ public class InventoryScript : MonoBehaviour
                 eggAmts = new int[inventory.eggs.Count],
                 seeds = new string[inventory.seeds.Count],
                 seedAmts = new int[inventory.seeds.Count],
-                ingredients = new string[inventory.ingredients.Count],
-                ingredientAmts = new int[inventory.ingredients.Count],
+                fruits0 = new string[inventory.islands[0].fruitInStorage.Count],
+                fruitAmts0 = new int[inventory.islands[0].fruitInStorage.Count],
+                fruits1 = new string[inventory.islands[1].fruitInStorage.Count],
+                fruitAmts1 = new int[inventory.islands[1].fruitInStorage.Count],
+                fruits2 = new string[inventory.islands[2].fruitInStorage.Count],
+                fruitAmts2 = new int[inventory.islands[2].fruitInStorage.Count]
             };
 
             for (int i = 0; i < jsonInventory.eggs.Length; i++)
@@ -188,10 +214,22 @@ public class InventoryScript : MonoBehaviour
                 jsonInventory.seedAmts[i] = inventory.seeds[i].amt;
             }
 
-            for (int i = 0; i < jsonInventory.ingredients.Length; i++)
+            for (int i = 0; i < inventory.islands[0].fruitInStorage.Count; i++)
             {
-                jsonInventory.ingredients[i] = inventory.ingredients[i].name;
-                jsonInventory.ingredientAmts[i] = inventory.ingredients[i].amt;
+                jsonInventory.fruits0[i] = inventory.islands[0].fruitInStorage[i].name;
+                jsonInventory.fruitAmts0[i] = inventory.islands[0].fruitInStorage[i].amt;
+            }
+
+            for (int i = 0; i < inventory.islands[1].fruitInStorage.Count; i++)
+            {
+                jsonInventory.fruits1[i] = inventory.islands[1].fruitInStorage[i].name;
+                jsonInventory.fruitAmts1[i] = inventory.islands[1].fruitInStorage[i].amt;
+            }
+
+            for (int i = 0; i < inventory.islands[2].fruitInStorage.Count; i++)
+            {
+                jsonInventory.fruits2[i] = inventory.islands[2].fruitInStorage[i].name;
+                jsonInventory.fruitAmts2[i] = inventory.islands[2].fruitInStorage[i].amt;
             }
 
             string dataAsJson = JsonUtility.ToJson(jsonInventory);
@@ -221,7 +259,7 @@ public class InventoryScript : MonoBehaviour
             Inventory newInventory = new Inventory() {
                 eggs = new List<EggInInventory>(),
                 seeds = new List<SeedInInventory>(),
-                ingredients = new List<IngredientInInventory>()
+                islands = new List<IslandStorage>()
             };
 
             for (int i = 0; i < jsonInventory.eggs.Length; i++)
@@ -243,15 +281,47 @@ public class InventoryScript : MonoBehaviour
                 newInventory.seeds.Add(newSeed);
             }
 
-            for (int i = 0; i < jsonInventory.ingredients.Length; i++)
+
+            IslandStorage newStorage = new IslandStorage() {
+                fruitInStorage = new List<FruitInInventory>()
+            };
+            for (int i = 0; i < jsonInventory.fruits0.Length; i++)
             {
-                IngredientInInventory newIngredient = new IngredientInInventory()
-                {
-                    name = jsonInventory.ingredients[i],
-                    amt = jsonInventory.ingredientAmts[i]
-                };
-                newInventory.ingredients.Add(newIngredient);
+                FruitInInventory newFruitInInventory = new FruitInInventory();
+                newFruitInInventory.name = jsonInventory.fruits0[i];
+                newFruitInInventory.amt = jsonInventory.fruitAmts0[i];
+                newStorage.fruitInStorage.Add(newFruitInInventory);
+                Debug.Log("Added fruit");
             }
+            newInventory.islands.Add(newStorage);
+
+            newStorage = new IslandStorage()
+            {
+                fruitInStorage = new List<FruitInInventory>()
+            };
+            for (int i = 0; i < jsonInventory.fruits1.Length; i++)
+            {
+                FruitInInventory newFruitInInventory = new FruitInInventory();
+                newFruitInInventory.name = jsonInventory.fruits1[i];
+                newFruitInInventory.amt = jsonInventory.fruitAmts1[i];
+                newStorage.fruitInStorage.Add(newFruitInInventory);
+                Debug.Log("Added fruit");
+            }
+            newInventory.islands.Add(newStorage);
+
+            newStorage = new IslandStorage()
+            {
+                fruitInStorage = new List<FruitInInventory>()
+            };
+            for (int i = 0; i < jsonInventory.fruits0.Length; i++)
+            {
+                FruitInInventory newFruitInInventory = new FruitInInventory();
+                newFruitInInventory.name = jsonInventory.fruits2[i];
+                newFruitInInventory.amt = jsonInventory.fruitAmts2[i];
+                newStorage.fruitInStorage.Add(newFruitInInventory);
+                Debug.Log("Added fruit");
+            }
+            newInventory.islands.Add(newStorage);
 
             inventory = newInventory;
 
@@ -327,18 +397,19 @@ public class InventoryScript : MonoBehaviour
         return null;
     }
 
-    public Ingredient FindIngredient(string ingredientToFind)
+    public Fruit FindFruit(string fruitToFind)
     {
-        foreach (Ingredient ingredient in ingredients)
+        foreach (Fruit fruit in fruits)
         {
-            if (ingredient.name == ingredientToFind)
+            if (fruit.name == fruitToFind)
             {
-                return ingredient;
+                Debug.Log("Found fruit: " + fruit.name);
+                return fruit;
             }
-            //Debug.Log(ingredientToFind + " is not " + ingredient.name);
         }
 
-        Debug.Log("Couldnt find Ingredient");
+
+        Debug.Log("Couldnt find fruit");
 
         return null;
     }
@@ -388,6 +459,14 @@ public class InventoryScript : MonoBehaviour
         }
     }
 
+    public void UpdateFruitButtons(int islandID)
+    {
+        foreach (GameObject item in FruitButtons)
+        {
+            item.GetComponent<FruitButtonScript>().childAmtCounter.text = "x" + FindFruitInInventory(item.GetComponent<FruitButtonScript>().fruitType, islandID).amt.ToString();
+        }
+    }
+
     public void UpdateSeedButtons()
     {
         foreach (GameObject item in SeedButtons)
@@ -396,7 +475,7 @@ public class InventoryScript : MonoBehaviour
         }
     }
 
-    SeedInInventory FindSeedInInventory(string seedName)
+    public SeedInInventory FindSeedInInventory(string seedName)
     {
         foreach (var item in inventory.seeds)
         {
@@ -408,39 +487,17 @@ public class InventoryScript : MonoBehaviour
         return null;
     }
 
-    public void UpdateIngredientsUI(GameObject ingredientButtonPanel)
+    public FruitInInventory FindFruitInInventory(string fruitType, int islandID)
     {
-        foreach (Transform item in ingredientButtonPanel.transform)
+        foreach (var item in inventory.islands[islandID].fruitInStorage)
         {
-            Destroy(item.gameObject);
-        }
-
-        foreach (IngredientInInventory ingredient in inventory.ingredients)
-        {
-            GameObject newButton = Instantiate(ingredientButton, ingredientButtonPanel.transform);
-            newButton.GetComponent<IngredientButton>().SetUpButton(ingredient);
-        }
-    }
-
-    public CraftingObject craftingObject;
-    public CraftingIngredient craftingIngredient;
-    public CraftingOutcome craftingOutcome;
-
-    public void UpdateIngredient(Ingredient ingredient)
-    {
-        for (int i = 0; i < inventory.ingredients.Count; i++)
-        {
-            IngredientInInventory ingredientToEdit = new IngredientInInventory();
-            if (inventory.ingredients[i].name == ingredient.name)
+            if (item.name == fruitType)
             {
-                ingredientToEdit = inventory.ingredients[i];
-
-                ingredientToEdit.amt -= 1;
-                inventory.ingredients.RemoveAt(i);
-                inventory.ingredients.Insert(i, ingredientToEdit);
-                break;
+                return item;
             }
         }
+        Debug.Log("Couldnt find fruit " + fruitType);
+        return null;
     }
 
     public void AddSeed(SeedInInventory seed)
@@ -642,22 +699,100 @@ public class InventoryScript : MonoBehaviour
         SaveInventory();
     }
 
-    /*public void RemoveFruit(Fruit fruit)
+    public void RemoveFruit(FruitInInventory fruit)
     {
-        for (int i = 0; i < inventory.fruit.Count; i++)
+        for (int i = 0; i < inventory.islands.Count; i++)
         {
-            Fruit fruitToEdit = new Fruit();
-            if (inventory.fruit[i].name == fruit.name)
+            for (int j = 0; j < inventory.islands[i].fruitInStorage.Count; j++)
             {
-                fruitToEdit = inventory.fruit[i];
+                FruitInInventory fruitToEdit = new FruitInInventory();
+                if (inventory.islands[i].fruitInStorage[j].name == fruit.name)
+                {
+                    fruitToEdit = inventory.islands[i].fruitInStorage[j];
 
-                fruitToEdit.amt -= 1;
-                inventory.fruit.RemoveAt(i);
-                inventory.fruit.Insert(i, fruitToEdit);
+                    fruitToEdit.amt -= 1;
+                    inventory.islands[i].fruitInStorage.RemoveAt(i);
+                    inventory.islands[i].fruitInStorage.Insert(i, fruitToEdit);
+                    break;
+                }
+            }
+        }
+    }
+
+    public void RemoveFruit(string fruitName, int islandID)
+    {
+        for (int i = 0; i < inventory.islands.Count; i++)
+        {
+            FruitInInventory fruitToEdit = new FruitInInventory();
+            for (int j = 0; j < inventory.islands[i].fruitInStorage.Count; j++)
+            {
+                if (inventory.islands[i].fruitInStorage[j].name == fruitName)
+                {
+                    fruitToEdit = inventory.islands[i].fruitInStorage[j];
+
+                    fruitToEdit.amt -= 1;
+                    inventory.islands[i].fruitInStorage.RemoveAt(j);
+                    inventory.islands[i].fruitInStorage.Insert(j, fruitToEdit);
+                    break;
+                }
+
+            }
+        }
+
+        SaveInventory();
+    }
+
+    /* Old crafting code, will stay for a while incase crafting returns
+    public Ingredient FindIngredient(string ingredientToFind)
+    {
+        foreach (Ingredient ingredient in ingredients)
+        {
+            if (ingredient.name == ingredientToFind)
+            {
+                return ingredient;
+            }
+            //Debug.Log(ingredientToFind + " is not " + ingredient.name);
+        }
+
+        Debug.Log("Couldnt find Ingredient");
+
+        return null;
+    }
+
+    public void UpdateIngredientsUI(GameObject ingredientButtonPanel)
+    {
+        foreach (Transform item in ingredientButtonPanel.transform)
+        {
+            Destroy(item.gameObject);
+        }
+
+        foreach (IngredientInInventory ingredient in inventory.ingredients)
+        {
+            GameObject newButton = Instantiate(ingredientButton, ingredientButtonPanel.transform);
+            newButton.GetComponent<IngredientButton>().SetUpButton(ingredient);
+        }
+    }
+
+    public CraftingObject craftingObject;
+    public CraftingIngredient craftingIngredient;
+    public CraftingOutcome craftingOutcome;
+
+    public void UpdateIngredient(Ingredient ingredient)
+    {
+        for (int i = 0; i < inventory.ingredients.Count; i++)
+        {
+            IngredientInInventory ingredientToEdit = new IngredientInInventory();
+            if (inventory.ingredients[i].name == ingredient.name)
+            {
+                ingredientToEdit = inventory.ingredients[i];
+
+                ingredientToEdit.amt -= 1;
+                inventory.ingredients.RemoveAt(i);
+                inventory.ingredients.Insert(i, ingredientToEdit);
                 break;
             }
         }
-    }*/
+    }
 
     public void RemoveIngredient(IngredientInInventory ingredient)
     {
@@ -698,5 +833,5 @@ public class InventoryScript : MonoBehaviour
         craftingIngredient.ingredient = newIngredient;
         craftingIngredient.SetSprite();
         craftingOutcome.GetOutcome();
-    }
+    }*/
 }

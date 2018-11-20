@@ -697,6 +697,96 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 105961350}
   m_CullTransparentMesh: 0
+--- !u!1 &107325705
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 107325706}
+  - component: {fileID: 107325708}
+  - component: {fileID: 107325707}
+  - component: {fileID: 107325709}
+  m_Layer: 5
+  m_Name: FruitCounter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &107325706
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 107325705}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.0000119, y: 1.0000119, z: 1.0000119}
+  m_Children: []
+  m_Father: {fileID: 1363374868}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 75, y: 75}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &107325707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 107325705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 1
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: x10
+--- !u!222 &107325708
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 107325705}
+  m_CullTransparentMesh: 0
+--- !u!114 &107325709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 107325705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -900027084, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 2, y: 2}
+  m_UseGraphicAlpha: 1
 --- !u!1 &131136764
 GameObject:
   m_ObjectHideFlags: 0
@@ -2562,6 +2652,96 @@ MonoBehaviour:
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0
   m_ChildControlHeight: 0
+--- !u!1 &424556192
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 424556193}
+  - component: {fileID: 424556195}
+  - component: {fileID: 424556194}
+  - component: {fileID: 424556196}
+  m_Layer: 5
+  m_Name: FruitCounter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &424556193
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 424556192}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2067857041}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 75, y: 75}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &424556194
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 424556192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 1
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: x10
+--- !u!222 &424556195
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 424556192}
+  m_CullTransparentMesh: 0
+--- !u!114 &424556196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 424556192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -900027084, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 2, y: 2}
+  m_UseGraphicAlpha: 1
 --- !u!1 &427517516
 GameObject:
   m_ObjectHideFlags: 0
@@ -2812,11 +2992,16 @@ MonoBehaviour:
   layersExcludingSeed:
     serializedVersion: 2
     m_Bits: 2092855
+  layersExcludingFruit:
+    serializedVersion: 2
+    m_Bits: 2064183
   touchesLastFrame: 0
   lastSingleTouchPoint: {x: 0, y: 0}
   lastDoubleTouchPoint: {x: 0, y: 0}
   lastPinchDistance: 0
   seedBeingDragged: {fileID: 0}
+  fruitBeingDragged: {fileID: 0}
+  targetCreature: {fileID: 0}
 --- !u!4 &447108492
 Transform:
   m_ObjectHideFlags: 0
@@ -3656,7 +3841,8 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.99998444, y: 0.99998444, z: 0.99998444}
-  m_Children: []
+  m_Children:
+  - {fileID: 935284463}
   m_Father: {fileID: 1039282589}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3680,7 +3866,18 @@ MonoBehaviour:
   - eventID: 2
     callback:
       m_PersistentCalls:
-        m_Calls: []
+        m_Calls:
+        - m_Target: {fileID: 623674505}
+          m_MethodName: StartFruitDrag
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   delegates: []
@@ -3770,6 +3967,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 330797300e39fce42bb9082006238f44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  childImage: {fileID: 623674503}
+  childAmtCounter: {fileID: 935284464}
+  fruitType: Plum
 --- !u!1 &674301619
 GameObject:
   m_ObjectHideFlags: 0
@@ -4056,6 +4256,7 @@ GameObject:
   - component: {fileID: 745956743}
   - component: {fileID: 745956745}
   - component: {fileID: 745956744}
+  - component: {fileID: 745956746}
   m_Layer: 5
   m_Name: Text (1)
   m_TagString: Untagged
@@ -4079,7 +4280,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0.0000051945, y: 314.20004}
-  m_SizeDelta: {x: 427.1, y: 44.7}
+  m_SizeDelta: {x: 427.1, y: 115.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &745956744
 MonoBehaviour:
@@ -4121,6 +4322,148 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 745956742}
   m_CullTransparentMesh: 0
+--- !u!114 &745956746
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 745956742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 745956744}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1780828697}
+        m_MethodName: BreedButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!1 &748114759
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 748114760}
+  - component: {fileID: 748114762}
+  - component: {fileID: 748114761}
+  - component: {fileID: 748114763}
+  m_Layer: 5
+  m_Name: FruitCounter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &748114760
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 748114759}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.000011, y: 1.000011, z: 1.000011}
+  m_Children: []
+  m_Father: {fileID: 973700559}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 75, y: 75}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &748114761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 748114759}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 1
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: x10
+--- !u!222 &748114762
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 748114759}
+  m_CullTransparentMesh: 0
+--- !u!114 &748114763
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 748114759}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -900027084, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 2, y: 2}
+  m_UseGraphicAlpha: 1
 --- !u!1 &751074996
 GameObject:
   m_ObjectHideFlags: 0
@@ -5321,6 +5664,96 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 1000
   m_TargetDisplay: 0
+--- !u!1 &935284462
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 935284463}
+  - component: {fileID: 935284465}
+  - component: {fileID: 935284464}
+  - component: {fileID: 935284466}
+  m_Layer: 5
+  m_Name: FruitCounter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &935284463
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 935284462}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.00002, y: 1.00002, z: 1.00002}
+  m_Children: []
+  m_Father: {fileID: 623674500}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 75, y: 75}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &935284464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 935284462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 1
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: x10
+--- !u!222 &935284465
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 935284462}
+  m_CullTransparentMesh: 0
+--- !u!114 &935284466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 935284462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -900027084, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 2, y: 2}
+  m_UseGraphicAlpha: 1
 --- !u!1 &950608206
 GameObject:
   m_ObjectHideFlags: 0
@@ -5472,7 +5905,8 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.99999344, y: 0.99999344, z: 0.99999344}
-  m_Children: []
+  m_Children:
+  - {fileID: 748114760}
   m_Father: {fileID: 1039282589}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5496,7 +5930,18 @@ MonoBehaviour:
   - eventID: 2
     callback:
       m_PersistentCalls:
-        m_Calls: []
+        m_Calls:
+        - m_Target: {fileID: 973700564}
+          m_MethodName: StartFruitDrag
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   delegates: []
@@ -5586,6 +6031,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 330797300e39fce42bb9082006238f44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  childImage: {fileID: 973700562}
+  childAmtCounter: {fileID: 748114761}
+  fruitType: Pear
 --- !u!1 &997077298
 GameObject:
   m_ObjectHideFlags: 0
@@ -7121,7 +7569,8 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.99999255, y: 0.99999255, z: 0.99999255}
-  m_Children: []
+  m_Children:
+  - {fileID: 107325706}
   m_Father: {fileID: 1039282589}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7145,7 +7594,18 @@ MonoBehaviour:
   - eventID: 2
     callback:
       m_PersistentCalls:
-        m_Calls: []
+        m_Calls:
+        - m_Target: {fileID: 1363374873}
+          m_MethodName: StartFruitDrag
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   delegates: []
@@ -7235,6 +7695,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 330797300e39fce42bb9082006238f44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  childImage: {fileID: 1363374871}
+  childAmtCounter: {fileID: 107325707}
+  fruitType: Orange
 --- !u!1 &1367028627
 GameObject:
   m_ObjectHideFlags: 0
@@ -7372,6 +7835,146 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1385199515
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4471941029037678, guid: 89d7b4f4b15c2f24187291256fa82f6a, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 16.615181
+      objectReference: {fileID: 0}
+    - target: {fileID: 4471941029037678, guid: 89d7b4f4b15c2f24187291256fa82f6a, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0.43112844
+      objectReference: {fileID: 0}
+    - target: {fileID: 4471941029037678, guid: 89d7b4f4b15c2f24187291256fa82f6a, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -0.03710938
+      objectReference: {fileID: 0}
+    - target: {fileID: 4471941029037678, guid: 89d7b4f4b15c2f24187291256fa82f6a, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4471941029037678, guid: 89d7b4f4b15c2f24187291256fa82f6a, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4471941029037678, guid: 89d7b4f4b15c2f24187291256fa82f6a, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4471941029037678, guid: 89d7b4f4b15c2f24187291256fa82f6a, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4471941029037678, guid: 89d7b4f4b15c2f24187291256fa82f6a, type: 2}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 1793280673653000, guid: 89d7b4f4b15c2f24187291256fa82f6a, type: 2}
+      propertyPath: m_Name
+      value: BlueGift (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1793280673653000, guid: 89d7b4f4b15c2f24187291256fa82f6a, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 89d7b4f4b15c2f24187291256fa82f6a, type: 2}
+  m_IsPrefabAsset: 0
+--- !u!1 &1388874901
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1388874902}
+  - component: {fileID: 1388874904}
+  - component: {fileID: 1388874903}
+  - component: {fileID: 1388874905}
+  m_Layer: 5
+  m_Name: FruitCounter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1388874902
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1388874901}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.00002, y: 1.00002, z: 1.00002}
+  m_Children: []
+  m_Father: {fileID: 2010522689}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 75, y: 75}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1388874903
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1388874901}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 1
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: x10
+--- !u!222 &1388874904
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1388874901}
+  m_CullTransparentMesh: 0
+--- !u!114 &1388874905
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1388874901}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -900027084, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 2, y: 2}
+  m_UseGraphicAlpha: 1
 --- !u!1 &1403495494
 GameObject:
   m_ObjectHideFlags: 0
@@ -9130,6 +9733,27 @@ MonoBehaviour:
     sprite: {fileID: 21300012, guid: 2f8528dee33d7fa47a0bb0cbd3caaf85, type: 3}
     objectToSpawn: {fileID: 1532342973861800, guid: 0c97241be839d7b439df7d2464cdbb90,
       type: 2}
+  fruits:
+  - name: Apple
+    sprite: {fileID: 21300000, guid: 39882138c2ca8294783a350108d96fbd, type: 3}
+    objectToSpawn: {fileID: 1534438510011978, guid: 61290f267850d124091295f4d74995ce,
+      type: 2}
+  - name: Orange
+    sprite: {fileID: 21300004, guid: 39882138c2ca8294783a350108d96fbd, type: 3}
+    objectToSpawn: {fileID: 1534438510011978, guid: afab6415df52d404d82cec6e2f4f4944,
+      type: 2}
+  - name: Pear
+    sprite: {fileID: 21300002, guid: 39882138c2ca8294783a350108d96fbd, type: 3}
+    objectToSpawn: {fileID: 1534438510011978, guid: 0d6b05b980310f8458ce6e1f2321723a,
+      type: 2}
+  - name: Lemon
+    sprite: {fileID: 21300006, guid: 39882138c2ca8294783a350108d96fbd, type: 3}
+    objectToSpawn: {fileID: 1534438510011978, guid: c8d5bc6b153929e438f17b8ae788f90e,
+      type: 2}
+  - name: Plum
+    sprite: {fileID: 21300008, guid: 39882138c2ca8294783a350108d96fbd, type: 3}
+    objectToSpawn: {fileID: 1534438510011978, guid: 33552b6bee747ac47acdd03e7a6c2983,
+      type: 2}
   ingredients:
   - name: Blue Gift
     sprite: {fileID: 21300008, guid: b13b19fdd5bd0a7429ce58a5a83dd1f4, type: 3}
@@ -9162,13 +9786,40 @@ MonoBehaviour:
       amt: 10
     - name: Purple Seed
       amt: 10
-    ingredients:
-    - name: Blue Gift
-      amt: 10
-    - name: Red Gift
-      amt: 10
-    - name: Yellow Gift
-      amt: 10
+    islands:
+    - fruitInStorage:
+      - name: Apple
+        amt: 10
+      - name: Pear
+        amt: 10
+      - name: Orange
+        amt: 10
+      - name: Lemon
+        amt: 10
+      - name: Plum
+        amt: 10
+    - fruitInStorage:
+      - name: Apple
+        amt: 10
+      - name: Pear
+        amt: 10
+      - name: Orange
+        amt: 10
+      - name: Lemon
+        amt: 10
+      - name: Plum
+        amt: 10
+    - fruitInStorage:
+      - name: Apple
+        amt: 10
+      - name: Pear
+        amt: 10
+      - name: Orange
+        amt: 10
+      - name: Lemon
+        amt: 10
+      - name: Plum
+        amt: 10
   inventroryEggButton: {fileID: 1785040775366124, guid: e4d8f3b223b79ad438641e704a301226,
     type: 2}
   inventrorySeedButton: {fileID: 1785040775366124, guid: 43b5be05cabf79f4ba9475d1c390989c,
@@ -9183,9 +9834,12 @@ MonoBehaviour:
   - {fileID: 1768852058}
   - {fileID: 1893886934}
   - {fileID: 1915216747}
-  craftingObject: {fileID: 2074634765}
-  craftingIngredient: {fileID: 543474027}
-  craftingOutcome: {fileID: 1901922887}
+  FruitButtons:
+  - {fileID: 2067857040}
+  - {fileID: 973700558}
+  - {fileID: 1363374867}
+  - {fileID: 2010522688}
+  - {fileID: 623674499}
 --- !u!4 &1646647242
 Transform:
   m_ObjectHideFlags: 0
@@ -9366,10 +10020,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   worldPositionOffset: 0
+  currentCameraPosition: 0
   speed: 2
-  LockCamera: 0
   Dynamic: {x: 0, y: 0, z: 0}
   DynamicOrtho: 0
+  IslandViewPos: {x: 0, y: 2, z: -10}
+  IslandViewOrtho: 2.3
   zoomSpeed: 2
   minCameraOrtho: 0.3
   maxCameraOrtho: 5
@@ -10424,10 +11080,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9030a7bc1987b0a4aaf46f8dfaa35fa7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IS: {fileID: 1646647241}
-  craftingObject: {fileID: 2074634765}
-  craftingIngredient: {fileID: 543474027}
-  blankSprite: {fileID: 21300000, guid: 03dcec50a3b23244e9bab6467aec45df, type: 3}
 --- !u!114 &1901922888
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10968,7 +11620,8 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.99998444, y: 0.99998444, z: 0.99998444}
-  m_Children: []
+  m_Children:
+  - {fileID: 1388874902}
   m_Father: {fileID: 1039282589}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -10992,7 +11645,18 @@ MonoBehaviour:
   - eventID: 2
     callback:
       m_PersistentCalls:
-        m_Calls: []
+        m_Calls:
+        - m_Target: {fileID: 2010522694}
+          m_MethodName: StartFruitDrag
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   delegates: []
@@ -11082,6 +11746,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 330797300e39fce42bb9082006238f44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  childImage: {fileID: 2010522692}
+  childAmtCounter: {fileID: 1388874903}
+  fruitType: Lemon
 --- !u!1 &2011371226
 GameObject:
   m_ObjectHideFlags: 0
@@ -11358,7 +12025,8 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.99999344, y: 0.99999344, z: 0.99999344}
-  m_Children: []
+  m_Children:
+  - {fileID: 424556193}
   m_Father: {fileID: 1039282589}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -11382,7 +12050,18 @@ MonoBehaviour:
   - eventID: 2
     callback:
       m_PersistentCalls:
-        m_Calls: []
+        m_Calls:
+        - m_Target: {fileID: 2067857046}
+          m_MethodName: StartFruitDrag
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   delegates: []
@@ -11472,6 +12151,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 330797300e39fce42bb9082006238f44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  childImage: {fileID: 2067857044}
+  childAmtCounter: {fileID: 424556194}
+  fruitType: Apple
 --- !u!1 &2069853531
 GameObject:
   m_ObjectHideFlags: 0

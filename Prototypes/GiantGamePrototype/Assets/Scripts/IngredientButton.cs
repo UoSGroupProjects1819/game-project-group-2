@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class IngredientButton : MonoBehaviour {
 
-    public Image childImage;
+    /*public Image childImage;
     public Text childAmtCounter;
 
     public IngredientInInventory thisIngredient;
@@ -29,5 +29,5 @@ public class IngredientButton : MonoBehaviour {
     public void CraftingClick()
     {
         IS.SetCraftingIngredient(thisIngredient);
-    }
+    }*/
 }

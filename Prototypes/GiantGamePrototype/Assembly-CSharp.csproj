@@ -63,6 +63,7 @@
   <ItemGroup>
     <Compile Include="Assets\BlurCamera.cs" />
     <Compile Include="Assets\MeteorSpawner.cs" />
+    <Compile Include="Assets\Rotate.cs" />
     <Compile Include="Assets\Scripts\CameraControl.cs" />
     <Compile Include="Assets\Scripts\CraftingIngredient.cs" />
     <Compile Include="Assets\Scripts\CraftingObject.cs" />
@@ -101,10 +102,10 @@
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Masking.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Mobile.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF Overlay.shader" />
-    <None Include="Assets\Materials\InteractableShader.shader" />
+    <None Include="Assets\Prefabs\Creatures\Materials\InteractableShader.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Surface.cginc" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader" />
-    <None Include="Assets\Materials\DesaturateShader.shader" />
+    <None Include="Assets\Prefabs\Creatures\Materials\DesaturateShader.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF.shader" />

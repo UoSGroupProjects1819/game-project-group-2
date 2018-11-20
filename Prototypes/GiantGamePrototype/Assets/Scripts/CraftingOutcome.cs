@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class CraftingOutcome : MonoBehaviour {
 
-    public InventoryScript IS;
+    /*public InventoryScript IS;
 
     public CraftingObject craftingObject;
     public CraftingIngredient craftingIngredient;
@@ -75,4 +75,5 @@ public class CraftingOutcome : MonoBehaviour {
 
         ResetCraftingTable();
     }
+    */
 }
