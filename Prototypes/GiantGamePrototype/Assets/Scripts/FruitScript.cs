@@ -11,21 +11,39 @@ public class FruitScript : MonoBehaviour {
     public string minorStatToIncrease;
 
     public GameObject targetCreature;
+    public bool beingEaten;
+    public float timeToEat;
+    private float spriteChangeTimer;
+    private int currentsprite;
+    public Sprite[] eggSprites;
 
-    /*private void OnTriggerEnter2D(Collider2D collision)
+    private void Update()
     {
-        if (collision.tag == "Creature" && collision.gameObject.GetComponent<CreatureScript>().targetFruit == this.gameObject)
+        if (beingEaten)
         {
-            collision.gameObject.GetComponent<CreatureScript>().EatFruit(10, thisFruit.name, majorStatToIncrease, minorStatToIncrease);
-            collision.gameObject.GetComponent<CreatureScript>().targetFruit = null;
-            Destroy(this.gameObject);
+            this.transform.eulerAngles = Vector3.zero;
+            timeToEat -= Time.deltaTime;
+
+            spriteChangeTimer -= Time.deltaTime;
+            if (spriteChangeTimer <= 0 && currentsprite < eggSprites.Length)
+            {
+                spriteChangeTimer = timeToEat / eggSprites.Length + 1;
+                this.GetComponentInChildren<SpriteRenderer>().sprite = eggSprites[currentsprite];
+                currentsprite++;
+            }
+
+            if (timeToEat <= 0)
+            {
+                targetCreature.GetComponent<CreatureScript>().eating = false;
+                Destroy(this.gameObject);
+            }
         }
-    }*/
+    }
 
     public void Dragging(Vector2 dragPos)
     {
         this.transform.position = new Vector3(dragPos.x, dragPos.y, 0);
-        this.GetComponentInChildren<SpriteRenderer>().sortingOrder = targetCreature.GetComponentInChildren<SpriteRenderer>().sortingOrder + 1;
+        this.GetComponentInChildren<SpriteRenderer>().sortingOrder = targetCreature.GetComponentInChildren<SpriteRenderer>().sortingOrder + 2;
         this.GetComponentInChildren<SpriteRenderer>().sortingLayerID = targetCreature.GetComponentInChildren<SpriteRenderer>().sortingLayerID;
     }
 
@@ -35,8 +53,11 @@ public class FruitScript : MonoBehaviour {
         {
             InventoryScript.Instance.RemoveFruit(fruitType, targetCreature.GetComponentInParent<IslandScript>().islandID);
             targetCreature.GetComponent<CreatureScript>().EatFruit(10, fruitType, majorStatToIncrease, minorStatToIncrease);
+            targetCreature.GetComponent<CreatureScript>().eating = true;
             this.transform.parent = targetCreature.transform;
+            this.transform.localPosition = new Vector2(0, -0.1f);
             InventoryScript.Instance.UpdateFruitButtons(WorldSelector.Instance.SelectedIsland.GetComponent<IslandScript>().islandID);
+            beingEaten = true;
             Debug.Log("Fed creature");
             //this.transform.localPosition = Vector2.zero;
         }

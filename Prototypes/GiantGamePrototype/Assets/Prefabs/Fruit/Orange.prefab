@@ -86,6 +86,15 @@ MonoBehaviour:
   majorStatToIncrease: Strength
   minorStatToIncrease: Intelligence
   targetCreature: {fileID: 0}
+  beingEaten: 0
+  timeToEat: 5
+  eggSprites:
+  - {fileID: 21300000, guid: b8ab56ceeb5f64e47b504a5aee19d925, type: 3}
+  - {fileID: 21300002, guid: b8ab56ceeb5f64e47b504a5aee19d925, type: 3}
+  - {fileID: 21300016, guid: b8ab56ceeb5f64e47b504a5aee19d925, type: 3}
+  - {fileID: 21300006, guid: 340629b6d2abab8409bc3cc525c948d8, type: 3}
+  - {fileID: 21300004, guid: b8ab56ceeb5f64e47b504a5aee19d925, type: 3}
+  - {fileID: 21300018, guid: b8ab56ceeb5f64e47b504a5aee19d925, type: 3}
 --- !u!212 &212608102259218380
 SpriteRenderer:
   m_ObjectHideFlags: 1

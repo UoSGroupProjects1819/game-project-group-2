@@ -91,6 +91,7 @@ public class CreatureScript : MonoBehaviour {
     private bool breeding;
 
     public GameObject EggToSpawn;
+    public bool eating;
 
     #endregion
 
@@ -239,6 +240,8 @@ public class CreatureScript : MonoBehaviour {
 
     void Movement()
     {
+        if (eating) { RB.velocity = Vector3.zero; return; }
+
         if(targetFruit != null)
         {
             targetPoint = targetFruit.transform.position;

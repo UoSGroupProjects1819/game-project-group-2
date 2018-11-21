@@ -61,9 +61,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\BlurCamera.cs" />
-    <Compile Include="Assets\MeteorSpawner.cs" />
-    <Compile Include="Assets\Rotate.cs" />
+    <Compile Include="Assets\Scripts\BlurCamera.cs" />
     <Compile Include="Assets\Scripts\CameraControl.cs" />
     <Compile Include="Assets\Scripts\CraftingIngredient.cs" />
     <Compile Include="Assets\Scripts\CraftingObject.cs" />
@@ -85,8 +83,10 @@
     <Compile Include="Assets\Scripts\IslandScript.cs" />
     <Compile Include="Assets\Scripts\menuScript.cs" />
     <Compile Include="Assets\Scripts\Meteor.cs" />
+    <Compile Include="Assets\Scripts\MeteorSpawner.cs" />
     <Compile Include="Assets\Scripts\parralax.cs" />
     <Compile Include="Assets\Scripts\PlantPot.cs" />
+    <Compile Include="Assets\Scripts\Rotate.cs" />
     <Compile Include="Assets\Scripts\SeedScript.cs" />
     <Compile Include="Assets\Scripts\StatManager.cs" />
     <Compile Include="Assets\Scripts\TouchController.cs" />

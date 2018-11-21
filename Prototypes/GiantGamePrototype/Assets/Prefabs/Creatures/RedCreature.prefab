@@ -293,6 +293,7 @@ MonoBehaviour:
   face: {fileID: 212009323840516628}
   happiness: 100
   happinessLossSpeed: 1
+  creatureToBreedWith: {fileID: 0}
   happinessLevels:
   - name: Sad
     sprite: {fileID: 21300008, guid: e0676e5a9f064644cae84cf681d3f463, type: 3}
@@ -323,6 +324,13 @@ MonoBehaviour:
     faceSprite: {fileID: 21300002, guid: b995c35f63ab6634c96671e6342444be, type: 3}
     speedMultiplier: 1
     amt: 40
+    canBreed: 0
+  currentHappinessLevel:
+    name: 
+    sprite: {fileID: 0}
+    faceSprite: {fileID: 0}
+    speedMultiplier: 0
+    amt: 0
     canBreed: 0
   Intelligence:
     amt: 0
@@ -380,6 +388,8 @@ MonoBehaviour:
       chance: 0
     upgradePoints: 0
   Stars: 1
+  waitingForBreed: 0
+  EggToSpawn: {fileID: 1532342973861800, guid: a6e33581ebac803448cf114985c25fd1, type: 2}
 --- !u!114 &114556119952347776
 MonoBehaviour:
   m_ObjectHideFlags: 1
