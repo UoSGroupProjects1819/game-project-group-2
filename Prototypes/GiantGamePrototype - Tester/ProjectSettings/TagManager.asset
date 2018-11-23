@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Giant
+  - Interactable
+  - Ground
+  - Creature
+  - wall
+  - Tree
+  - Inventory
+  - HUD
+  - StatManager
+  - fruit
+  - TappableArea
+  - World
+  - Meteor
+  - Gift
+  - Egg
+  - Seed
+  - PlantPot
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - PostProcessing
+  - Creature
+  - Giant
+  - Egg
+  - Seed
+  - Tree
+  - Ingredient
+  - Fruit
+  - CollideWithFloor
+  - TappableArea
+  - Gifts
+  - Meteor
+  - Blurred
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Giant
+    uniqueID: 2175151901
+    locked: 0
+  - name: Creature
+    uniqueID: 1894438229
+    locked: 0
