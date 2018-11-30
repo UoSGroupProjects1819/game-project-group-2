@@ -56,8 +56,7 @@ public class TitleScreenObjects : MonoBehaviour {
 
     public void OnClickIsland1()
     {
-
-        PlayerPrefs.GetInt("IslandSelect", 0);
+        
         PlayerPrefs.SetInt("IslandSelect", 0);
 
         SceneManager.LoadScene("Prototype");
@@ -66,8 +65,7 @@ public class TitleScreenObjects : MonoBehaviour {
 
     public void OnClickIsland2()
     {
-
-        PlayerPrefs.GetInt("IslandSelect", 0);
+        
         PlayerPrefs.SetInt("IslandSelect", 1);
 
         SceneManager.LoadScene("Prototype");
@@ -76,8 +74,7 @@ public class TitleScreenObjects : MonoBehaviour {
 
     public void OnClickIsland3()
     {
-
-        PlayerPrefs.GetInt("IslandSelect", 0);
+        
         PlayerPrefs.SetInt("IslandSelect", 2);
 
         SceneManager.LoadScene("Prototype");
