@@ -10,34 +10,34 @@ public class GiftScript : MonoBehaviour {
     public GameObject GiftImage;
     public GameObject ItemPreview;
 
-    InventoryScript IS;
+    InventoryManager IM;
 
     int AmtGiven;
     int TypeGiven;
 
     private void Start()
     {
-        IS = InventoryScript.Instance;
+        IM = InventoryManager.Instance;
     }
 
     public void Touched()
     {
         AmtGiven = Random.Range(2, 4);
-        TypeGiven = Random.Range(0, IS.seeds.Length);
+        TypeGiven = Random.Range(0, IM.seeds.Length);
 
         giftCanvas.SetActive(true);
         for (int i = 0; i < AmtGiven; i++)
         {
-            IS.AddSeed(IS.seeds[TypeGiven].name);
+            IM.AddSeed(IM.seeds[TypeGiven].name);
         }
 
-        IslandScript island = WorldSelector.Instance.SelectedIsland.GetComponent<IslandScript>();
+        IslandScript island = WorldManager.Instance.SelectedIsland.GetComponent<IslandScript>();
         if (island.currentCreaturePopulation < island.maxCreaturePopulation)
         {
-            GameObject newEgg = Instantiate(IS.eggs[Random.Range(0, IS.eggs.Length)].objectToSpawn, this.transform.position, Quaternion.identity);
+            GameObject newEgg = Instantiate(IM.eggs[Random.Range(0, IM.eggs.Length)].objectToSpawn, this.transform.position, Quaternion.identity);
         }
 
-        ItemPreview.GetComponent<Image>().sprite = IS.seeds[TypeGiven].sprite;
+        ItemPreview.GetComponent<Image>().sprite = IM.seeds[TypeGiven].sprite;
         ItemPreview.GetComponentInChildren<Text>().text = "x" + AmtGiven;
 
         this.GetComponent<Animator>().SetTrigger("Open");

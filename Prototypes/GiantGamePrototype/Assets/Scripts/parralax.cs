@@ -30,7 +30,7 @@ public class parralax : MonoBehaviour
 
     }
 
-    // Update is called once per frame
+    // Update IM called once per frame
     void Update()
     {
         float orthoRange = maxOrthoSize - minOrthoSize;
@@ -39,6 +39,8 @@ public class parralax : MonoBehaviour
         float sizeRange = maxSize - minSize;
 
         float newSize = minSize + (sizeRange * orthoPercent);
+
+        newSize = Mathf.Clamp(newSize, minSize, maxSize);
 
         this.transform.localScale = new Vector3(newSize, newSize, 1);
 

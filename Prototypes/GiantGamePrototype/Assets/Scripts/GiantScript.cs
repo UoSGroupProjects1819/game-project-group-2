@@ -5,8 +5,6 @@ using UnityEngine;
 public class GiantScript : MonoBehaviour {
 
     #region variables
-
-
     public static GiantScript Instance;
 
     public Transform seedHolder;
@@ -22,12 +20,12 @@ public class GiantScript : MonoBehaviour {
     public float speed;
 
 
-    GameObject targetObject;
+    public GameObject targetObject;
 
     Rigidbody2D RB;
     StatManager SM;
-    InventoryScript IS;
-    WorldSelector WS;
+    InventoryManager IM;
+    WorldManager WM;
 
     public GameObject HUD;
 
@@ -46,11 +44,11 @@ public class GiantScript : MonoBehaviour {
         targetPoint = this.transform.position;
         RB = this.GetComponent<Rigidbody2D>();
         SM = GameObject.FindGameObjectWithTag("StatManager").GetComponent<StatManager>();
-        IS = InventoryScript.Instance;
-        WS = GameObject.FindGameObjectWithTag("World").GetComponent<WorldSelector>();
+        IM = InventoryManager.Instance;
+        WM = GameObject.FindGameObjectWithTag("World").GetComponent<WorldManager>();
     }
 
-    void LateUpdate ()
+    void LateUpdate()
     {
         if (holding)
         {
@@ -115,42 +113,42 @@ public class GiantScript : MonoBehaviour {
 
     public void GiantTapped()
     {
-        if (IS.inventoryPanel.activeSelf)
+        if (IM.inventoryPanel.activeSelf)
         {
-            IS.inventoryPanel.SetActive(false);
+            IM.inventoryPanel.SetActive(false);
         }
         else
         {
-            IS.inventoryPanel.SetActive(true);
-            //IS.HUDPanel.SetActive(false);
-            //IS.UpdateEggUI(IS.EggUI);
-            IS.UpdateSeedButtons();
+            IM.inventoryPanel.SetActive(true);
+            //IM.HUDPanel.SetActive(false);
+            //IM.UpdateEggUI(IM.EggUI);
+            IM.UpdateSeedButtons();
             targetPoint = this.transform.position;
         }
 
-        
+
     }
 
     public void WorldTapped(Vector2 tapPos)
     {
-        if (IS.inventoryPanel.activeSelf) { return; }
+        if (IM.inventoryPanel.activeSelf) { return; }
 
         targetPoint = tapPos;
-        
+
     }
 
     public void SetCurrentHolding(GameObject newHolding)
     {
         Destroy(currentHolding);
-        currentHolding = Instantiate(newHolding, seedHolder.position, seedHolder.rotation, WS.SelectedIsland.transform);
+        currentHolding = Instantiate(newHolding, seedHolder.position, seedHolder.rotation, WM.SelectedIsland.transform);
 
         holding = true;
     }
 
     public void SetCurrentHolding(GameObject newHolding, string type)
     {
-        
-        currentHolding = Instantiate(newHolding, seedHolder.position, seedHolder.rotation, WS.SelectedIsland.transform);
+
+        currentHolding = Instantiate(newHolding, seedHolder.position, seedHolder.rotation, WM.SelectedIsland.transform);
 
         if (currentHolding.tag == "Seed")
         {
@@ -170,8 +168,8 @@ public class GiantScript : MonoBehaviour {
         if (currentHolding == null) { return; }
         if (currentHolding.tag == "Egg")
         {
-            IS.RemoveEgg(currentHolding.GetComponent<EggScript>().eggType);
-            WorldSelector.Instance.SelectedIsland.GetComponent<IslandScript>().currentCreaturePopulation++;
+            IM.RemoveEgg(currentHolding.GetComponent<EggScript>().eggType);
+            WorldManager.Instance.SelectedIsland.GetComponent<IslandScript>().currentCreaturePopulation++;
         }
 
         holding = false;
@@ -180,10 +178,10 @@ public class GiantScript : MonoBehaviour {
 
     public void GoToPot(GameObject pot)
     {
-        if(pot.GetComponent<PlantPot>().treeInPot != null || currentHolding == null) { return; }
+        if (pot.GetComponent<PlantPot>().treeInPot != null || currentHolding == null) { return; }
 
 
-        if(currentHolding.GetComponent<SeedScript>() == null) { return; }
+        if (currentHolding.GetComponent<SeedScript>() == null) { return; }
 
         targetPoint = pot.transform.position;
         targetObject = pot;
@@ -194,8 +192,8 @@ public class GiantScript : MonoBehaviour {
         if (currentHolding == null) { return; }
         if (currentHolding.tag == "Seed")
         {
-            IS.RemoveSeed(currentHolding.GetComponent<SeedScript>().seedType);
-            WorldSelector.Instance.SelectedIsland.GetComponent<IslandScript>().currentTreePopulation++;
+            IM.RemoveSeed(currentHolding.GetComponent<SeedScript>().seedType);
+            WorldManager.Instance.SelectedIsland.GetComponent<IslandScript>().currentTreePopulation++;
 
             currentHolding.transform.parent = pot.transform;
             currentHolding.transform.localPosition = Vector3.zero;
@@ -210,6 +208,14 @@ public class GiantScript : MonoBehaviour {
         }
     }
 
+    void CollectFruit(TreeScript tree)
+    {
+        IM.AddFruit(tree.currentFruit.GetComponent<FruitScript>().fruitType, WM.SelectedIsland.GetComponent<IslandScript>().islandID);
+        Destroy(tree.currentFruit);
+        tree.currentFruit = null;
+        targetObject = null;
+    }
+
     private void OnTriggerStay2D(Collider2D collision)
     {
         if(collision.gameObject == targetObject)
@@ -218,6 +224,11 @@ public class GiantScript : MonoBehaviour {
             if(collision.tag == "PlantPot")
             {
                 PlaceSeedInPot(collision.gameObject);
+            }
+
+            if(collision.tag == "Tree")
+            {
+                CollectFruit(collision.gameObject.GetComponent<TreeScript>());
             }
         }
     }
