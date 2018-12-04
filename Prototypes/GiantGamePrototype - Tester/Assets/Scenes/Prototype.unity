@@ -1398,10 +1398,6 @@ Prefab:
       propertyPath: m_LocalScale.y
       value: 0.996
       objectReference: {fileID: 0}
-    - target: {fileID: 1035141499206142, guid: 4eb29db0331ab564386f288a5dddf7bd, type: 2}
-      propertyPath: m_Layer
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_IsPrefabParent: 0
@@ -5753,6 +5749,7 @@ MonoBehaviour:
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0
   m_ChildControlHeight: 0
+<<<<<<< HEAD
 --- !u!1 &919195465
 GameObject:
   m_ObjectHideFlags: 0
@@ -5835,6 +5832,8 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+=======
+>>>>>>> parent of de498b8... Cloud Animation
 --- !u!1 &920137224
 GameObject:
   m_ObjectHideFlags: 0
