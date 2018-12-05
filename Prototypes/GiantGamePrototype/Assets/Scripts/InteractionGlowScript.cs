@@ -24,7 +24,7 @@ public class InteractionGlowScript : MonoBehaviour {
 		
 	}
 	
-	// Update IM called once per frame
+	// Update is called once per frame
 	void Update ()
     {
         if (glow)

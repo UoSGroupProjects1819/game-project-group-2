@@ -13,7 +13,6 @@ public class CameraControl : MonoBehaviour {
     {
         TouchControl,
         IslandView,
-        IslandSelect,
         Dynamic
     }
 
@@ -26,9 +25,6 @@ public class CameraControl : MonoBehaviour {
     [Space(10)]
     public Vector3 IslandViewPos;
     public float IslandViewOrtho;
-    [Space(10)]
-    public Vector3 IslandSelectPos;
-    public float IslandSelectOrtho;
 
     Vector3 targetPos;
     float targetSize;
@@ -75,10 +71,6 @@ public class CameraControl : MonoBehaviour {
                 MoveToIslandView();
                 break;
 
-            case CameraPositions.IslandSelect:
-                MoveToIslandSelect();
-                break;
-
             case CameraPositions.Dynamic:
                 DynamicMoveCamera();
                 break;
@@ -95,7 +87,7 @@ public class CameraControl : MonoBehaviour {
 
     public void ScreenPinch(Vector2 dragAmt, float pinchAmt)
     {
-        if (InventoryManager.Instance.inventoryPanel.activeSelf) { return; }
+        if (InventoryScript.Instance.inventoryPanel.activeSelf) { return; }
 
         if (TC.touchesLastFrame == 2)
         {
@@ -110,9 +102,9 @@ public class CameraControl : MonoBehaviour {
         else
         {
             touchedSinceLock = true;
-            //Vector2 touch0, touch1;
-            //touch0 = Input.GetTouch(0).position;
-            //touch1 = Input.GetTouch(1).position;
+            Vector2 touch0, touch1;
+            touch0 = Input.GetTouch(0).position;
+            touch1 = Input.GetTouch(1).position;
         }
     }
 
@@ -120,7 +112,7 @@ public class CameraControl : MonoBehaviour {
     {
         if (currentCameraPosition == CameraPositions.Dynamic || currentCameraPosition == CameraPositions.IslandView) { return; }
 
-        if (InventoryManager.Instance.inventoryPanel.activeSelf) { return; }
+        if (InventoryScript.Instance.inventoryPanel.activeSelf) { return; }
 
         if (TC.touchesLastFrame == 1)
         {
@@ -145,15 +137,8 @@ public class CameraControl : MonoBehaviour {
 
     public void MoveToIslandView()
     {
-        this.transform.position = Vector3.MoveTowards(transform.position, IslandViewPos + WorldManager.Instance.SelectedIsland.transform.position, Time.deltaTime * speed * 1f);
+        this.transform.position = Vector3.MoveTowards(transform.position, IslandViewPos + WorldSelector.Instance.SelectedIsland.transform.position, Time.deltaTime * speed * 1f);
         thisCamera.orthographicSize = Mathf.Lerp(thisCamera.orthographicSize, IslandViewOrtho, Time.deltaTime * speed);
-        touchedSinceLock = false;
-    }
-
-    public void MoveToIslandSelect()
-    {
-        this.transform.position = Vector3.MoveTowards(transform.position, IslandSelectPos + WorldManager.Instance.SelectedIsland.transform.position, Time.deltaTime * speed * 1f);
-        thisCamera.orthographicSize = Mathf.Lerp(thisCamera.orthographicSize, IslandSelectOrtho, Time.deltaTime * speed);
         touchedSinceLock = false;
     }
 

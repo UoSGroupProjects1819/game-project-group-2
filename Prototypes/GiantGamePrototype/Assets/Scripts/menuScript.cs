@@ -13,9 +13,4 @@ public class menuScript : MonoBehaviour {
     {
         menuToClose.SetActive(false);
     }
-
-    public void QuitGame()
-    {
-        Application.Quit();
-    }
 }

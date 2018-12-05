@@ -11,7 +11,7 @@ public class DayNightCycle : MonoBehaviour {
 		
 	}
 	
-	// Update IM called once per frame
+	// Update is called once per frame
 	void Update () {
         this.transform.eulerAngles += new Vector3(0,0, (360 / -speed) * Time.deltaTime);
 	}

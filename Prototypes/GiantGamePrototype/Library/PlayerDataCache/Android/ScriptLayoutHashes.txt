@@ -1,10 +1,9 @@
 Android
 PlayerPath?
-C:/GitHub/game-project-group-2/Prototypes/GiantGamePrototype/Builds/Gaia 21-11-18.apk
+C:/GitHub/game-project-group-2/Prototypes/GiantGamePrototype/Builds/Gaia 10-11-18.apk
 SceneListBegin?
 Assets/Scenes/Prototype.unity
 SceneListEnd?
-f2511aa161bbfa2536e741e9b1250ec4 Assembly-CSharp.dll:.FruitButtonScript
 c422dd62785a6d0afa870fbd111886ce Unity.TextMeshPro.dll:TMPro.TMP_SelectionCaret
 7b803eb2910e9b4cd5e521ae07b9f7d6 Unity.TextMeshPro.dll:TMPro.TMP_Dropdown
 42c6d4740f8c8c5b548f28639031cadc Assembly-CSharp-firstpass.dll:UnityStandardAssets.ImageEffects.TiltShift
@@ -20,7 +19,7 @@ c7dd12c15208b0447e101f80038706df UnityEngine.Timeline.dll:UnityEngine.Timeline.A
 0ddb2c46096a1e59e0dce07886ce4769 UnityEngine.Timeline.dll:UnityEngine.Timeline.GroupTrack
 0ddb2c46096a1e59e0dce07886ce4769 UnityEngine.Timeline.dll:UnityEngine.Timeline.PlayableTrack
 64f3a13c1277a7f1324321d93d0ec13b UnityEngine.Timeline.dll:UnityEngine.Timeline.TimelineAsset
-f65fc3ea8a7aa9fcc4f306353c070e27 Assembly-CSharp.dll:.TouchController
+4a9e46d6499094545fc9c60ca2037f10 Assembly-CSharp.dll:.TouchController
 51c7f2da0e648ac14d16777ffbf26e8e Assembly-CSharp-firstpass.dll:UnityStandardAssets.ImageEffects.ImageEffectBase
 d4bb4b82edd6583fb3ed02ce19889d5f Assembly-CSharp-firstpass.dll:UnityStandardAssets.ImageEffects.BlurOptimized
 f6637497451c9a030c421de4a1ad5cdb Unity.TextMeshPro.dll:TMPro.TMP_ScrollbarEventHandler
@@ -115,7 +114,6 @@ c7dd12c15208b0447e101f80038706df UnityEngine.Timeline.dll:UnityEngine.Timeline.A
 2cc60cb54d5fec79d78d055e2309273c Assembly-CSharp-firstpass.dll:UnityStandardAssets.ImageEffects.Blur
 c0ee09bdcbfa3641ba25318cb89d047b Assembly-CSharp-firstpass.dll:UnityStandardAssets.ImageEffects.MotionBlur
 66b3109aa5921cf800bec17926c6adba Unity.TextMeshPro.dll:TMPro.TMP_SubMeshUI
-fef331d11a2a05cdc2043487c477a015 Assembly-CSharp.dll:.MeteorSpawner
 201273fb4f889724fb090164b7d6c657 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkAnimator
 486cd95c82d8305219c352c06b776e1f UnityEngine.Networking.dll:UnityEngine.Networking.NetworkBehaviour
 0f27c39183b9eb95eba0a228bea28273 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkDiscovery
@@ -131,12 +129,12 @@ da21fc3f8056b1f91c3dd09c7bf4f90a UnityEngine.Networking.dll:UnityEngine.Networki
 fc061f3ae8a876c0687e86378d4a447c UnityEngine.Networking.dll:UnityEngine.Networking.NetworkTransformChild
 7ca56e063bd071986fff4f513cc4f477 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkTransformVisualizer
 e70adf7d789392656ae13a2ea603dfe0 Assembly-CSharp-firstpass.dll:UnityStandardAssets.ImageEffects.Bloom
-80a48f2e0a4275f0a8e15e099972a202 Assembly-CSharp.dll:.InventoryScript
+630fba59d8519a652da956da22a56c68 Assembly-CSharp.dll:.InventoryScript
 0a006f3734181ba8b26758f0866152c0 UnityEngine.SpatialTracking.dll:UnityEngine.SpatialTracking.TrackedPoseDriver
 6893169c34f2bd6e21624eac3f65cee9 Assembly-CSharp-firstpass.dll:UnityStandardAssets.ImageEffects.ScreenSpaceAmbientObscurance
-c9bfdc484231e42d79a3861dfc3465f8 Assembly-CSharp.dll:.FruitScript
+dda55bc71a53e51799ffd66278a363d1 Assembly-CSharp.dll:.FruitScript
 2608953bc34e7c7c595cd961da60b217 Assembly-CSharp.dll:.WorldSelector
-7e82b74e04e1635e5e9ecb8d012cca33 Assembly-CSharp.dll:.CreatureScript
+cc355026f03ea9c8b21021f5c73dc9fc Assembly-CSharp.dll:.CreatureScript
 382b8ef512fa8d6108723a01b57af65b UnityEngine.Analytics.dll:UnityEngine.Analytics.AnalyticsEventTracker
 d22c788799ee45d8676254eccf20e8b8 UnityEngine.Analytics.dll:UnityEngine.Analytics.AnalyticsTracker
 956fab0d81ac024391879df455178eca Assembly-CSharp-firstpass.dll:UnityStandardAssets.ImageEffects.BloomOptimized
@@ -145,10 +143,9 @@ d75dc834c5dec688db75a55a1724c90f UnityEngine.HoloLens.dll:UnityEngine.Audio.Audi
 e1ea12ca952c81d81a9a21fdf34446ed UnityEngine.HoloLens.dll:UnityEngine.EventSystems.HoloLensInputModule
 98d69a140ec0084cde3b6a5e09aea295 UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.SpatialMappingCollider
 dfd33ff9ae3ce8d7ca1f22b475ec2387 UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.SpatialMappingRenderer
-fd205de9632818ae317dfcc22ae48f6e Assembly-CSharp.dll:.BlurCamera
 96f3ea9f23b6f08e60710ebb4af49174 Unity.TextMeshPro.dll:TMPro.TMP_SpriteAsset
 92711e1502c82e906a82651bbb45dd1b Assembly-CSharp.dll:.EggScript
-486cd95c82d8305219c352c06b776e1f Assembly-CSharp.dll:.IngredientButton
+66c341d970fc4f76c43e6572f7cea180 Assembly-CSharp.dll:.IngredientButton
 20c4845a5418d30b87449ae83a493ac2 Assembly-CSharp.dll:.parralax
 182e416670915c50a548c38c642db0d8 Vuforia.UnityExtensions.dll:Vuforia.AnchorBehaviour
 f35860350df72508419d9f9fcd288594 Vuforia.UnityExtensions.dll:Vuforia.AnchorInputListenerBehaviour
@@ -220,14 +217,13 @@ b372d525221f282028754a47d33f667e Assembly-CSharp.dll:.TreeManager
 f16835701e71dd5d6fb1fed4b7aff1d8 Unity.TextMeshPro.dll:TMPro.TMP_Asset
 f5c6c8dc1d2620313012c1f25775215c Assembly-CSharp-firstpass.dll:UnityStandardAssets.ImageEffects.SunShafts
 b77ba8297c6b61a0dc8847f15b8d01d9 Assembly-CSharp.dll:.SeedScript
-d682f750c3750cec7f8b69d4f1e1a462 Assembly-CSharp.dll:.CameraControl
+9454be9b9c078ef025bc34ba66257736 Assembly-CSharp.dll:.CameraControl
 1827d5101bce4e14ce638499f1432513 Assembly-CSharp-firstpass.dll:UnityStandardAssets.ImageEffects.ScreenOverlay
 486cd95c82d8305219c352c06b776e1f Unity.TextMeshPro.dll:TMPro.TMP_SpriteAnimator
 41bbdec28937828b3acf07f93e1068e8 Assembly-CSharp.dll:.InteractionGlowScript
 a354e45c9a7ffb18fa69d61dcd55a2aa Assembly-CSharp.dll:.GiantScript
 98a6852fb2e252525cbb713143ddd380 Assembly-CSharp-firstpass.dll:UnityStandardAssets.ImageEffects.DepthOfField
 eaf0bcdb10d442a4029d615f41d09957 Unity.TextMeshPro.dll:TMPro.TextContainer
-cecf74a4a014467f492fa5579fb4b397 Facebook.Unity.Settings.dll:Facebook.Unity.Settings.FacebookSettings
 486cd95c82d8305219c352c06b776e1f Assembly-CSharp-firstpass.dll:UnityStandardAssets.ImageEffects.PostEffectsHelper
 f9cfd8d5300b5bcccc91b7b91391d934 Assembly-CSharp-firstpass.dll:UnityStandardAssets.ImageEffects.ScreenSpaceAmbientOcclusion
 201273fb4f889724fb090164b7d6c657 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkAnimator
@@ -277,15 +273,14 @@ ae0fa6aaa5e980f190fd2479500fab1a Assembly-CSharp-firstpass.dll:UnityStandardAsse
 3c20ea07238bc3e1825ab43c6842e9fb Assembly-CSharp.dll:.StatManager
 806055d398aa23f6f7f08f3cf50a6f1b Assembly-CSharp-firstpass.dll:UnityStandardAssets.ImageEffects.CameraMotionBlur
 0a006f3734181ba8b26758f0866152c0 UnityEngine.SpatialTracking.dll:UnityEngine.SpatialTracking.TrackedPoseDriver
-486cd95c82d8305219c352c06b776e1f Assembly-CSharp.dll:.CraftingOutcome
+c1f1ab8567ea0a89c291b74870a93d69 Assembly-CSharp.dll:.CraftingOutcome
 45050513bdfd4fb0744eabd07611a811 Assembly-CSharp.dll:.InventoryButtonObject
 e04611b8715e6833d2bd7010fc6be10b Unity.TextMeshPro.dll:TMPro.TMP_StyleSheet
-036b77b9d02783253aab143d5287c72b Assembly-CSharp.dll:.Rotate
 bd57674768d88af20344e9f680801c2d Assembly-CSharp-firstpass.dll:UnityStandardAssets.ImageEffects.DepthOfFieldDeprecated
 486cd95c82d8305219c352c06b776e1f Assembly-CSharp.dll:.menuScript
 df03e2ffa8b3251f71a6c2235d50c66b Assembly-CSharp-firstpass.dll:UnityStandardAssets.ImageEffects.Fisheye
 79295e59933b63899bfef359a664cbb0 Assembly-CSharp.dll:.TreeScript
-f99b79c0c54f27c730e29c929f0342ca Assembly-CSharp.dll:.GiftScript
+61568c94a2ec0e12815167169e010603 Assembly-CSharp.dll:.GiftScript
 2f9af06a78208a67db480e9bfed4a076 Unity.TextMeshPro.dll:TMPro.TextMeshPro
 9318334b30e9f195f573b2ce00154b95 Unity.TextMeshPro.dll:TMPro.TMP_ColorGradient
 486cd95c82d8305219c352c06b776e1f Assembly-CSharp-firstpass.dll:UnityStandardAssets.ImageEffects.PostEffectsBase
@@ -326,7 +321,7 @@ c8a41ce4eea7677f6dd2aa0e422a2f04 Vuforia.UnityExtensions.dll:Vuforia.VuMarkBehav
 c31ff9acb65f7a15b5c6fd77c3314d83 Vuforia.UnityExtensions.dll:Vuforia.WireframeBehaviour
 486cd95c82d8305219c352c06b776e1f Vuforia.UnityExtensions.dll:Vuforia.WireframeTrackableEventHandler
 985c690377822f41654d5f68210987d9 Assembly-CSharp-firstpass.dll:UnityStandardAssets.ImageEffects.ColorCorrectionLookup
-14a26311fa9c3539d71b1a9856e0f331 Assembly-CSharp.dll:.Meteor
+5ce72f6e1e7e6b274a35e4e8a9178f85 Assembly-CSharp.dll:.Meteor
 f59ca19b2477a0f8545617e6a1dec4b4 Assembly-CSharp-firstpass.dll:UnityStandardAssets.ImageEffects.Tonemapping
 cb99fdd593f64f727877782985bb2db5 Assembly-CSharp.dll:.InventoryEggButton
 74e9e4f4d3454fa2dd1bca10309c2ae2 Assembly-CSharp.dll:.CraftingObject
@@ -363,3 +358,4 @@ aa5e3523afd7fd907d3f99da4b777fdc Vuforia.UnityExtensions.dll:Vuforia.VuforiaConf
 c8a41ce4eea7677f6dd2aa0e422a2f04 Vuforia.UnityExtensions.dll:Vuforia.VuMarkBehaviour
 c31ff9acb65f7a15b5c6fd77c3314d83 Vuforia.UnityExtensions.dll:Vuforia.WireframeBehaviour
 486cd95c82d8305219c352c06b776e1f Vuforia.UnityExtensions.dll:Vuforia.WireframeTrackableEventHandler
+fd205de9632818ae317dfcc22ae48f6e Assembly-CSharp.dll:.BlurCamera

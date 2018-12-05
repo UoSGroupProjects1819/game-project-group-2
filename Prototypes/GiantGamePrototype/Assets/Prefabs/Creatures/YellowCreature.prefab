@@ -84,7 +84,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1020344389139656}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.1052368, y: 0.40812278, z: -0.029296875}
+  m_LocalPosition: {x: 18.750591, y: 0.4663474, z: -0.029296875}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4229627853911974}
@@ -98,7 +98,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1095584232817232}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.043, y: 0, z: -0.01}
+  m_LocalPosition: {x: -0.043, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4229627853911974}
@@ -126,7 +126,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1920355991739228}
   m_LocalRotation: {x: -0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: 0.164, z: -0.01}
+  m_LocalPosition: {x: -0, y: 0.164, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4229627853911974}
@@ -189,7 +189,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   creatureName: Yellow Creature
-  type: Yellow
+  type: Yellow Creature
   maxWaitTime: 2
   minWaitTime: 4
   maxWalkDistance: 1
@@ -199,10 +199,8 @@ MonoBehaviour:
   speedMultiplier: 1
   movementBoundary: {x: -4.3, y: 4.3}
   targetFruit: {fileID: 0}
-  targetFruitSpawnPos: {x: 0, y: 0}
   star: {fileID: 1921820288615234, guid: 5c2f9dc26825e5b438ff0e64d4ee5a31, type: 2}
   face: {fileID: 212009323840516628, guid: f1aff7752e2cb074882e3896ee80921c, type: 2}
-  arms: {fileID: 212376540106584258}
   happiness: 100
   happinessLossSpeed: 1
   creatureToBreedWith: {fileID: 0}
@@ -301,7 +299,7 @@ MonoBehaviour:
     upgradePoints: 0
   Stars: 1
   waitingForBreed: 0
-  eating: 0
+  EggToSpawn: {fileID: 1532342973861800, guid: 1e90e4b7f51cbe449b23459d991fcee3, type: 2}
 --- !u!212 &212183549563668554
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -336,7 +334,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1894438229
   m_SortingLayer: 2
-  m_SortingOrder: 1
+  m_SortingOrder: 4
   m_Sprite: {fileID: 21300000, guid: e8fcc90beb4d0974f980991ec149c77c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -382,7 +380,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1894438229
   m_SortingLayer: 2
-  m_SortingOrder: 1
+  m_SortingOrder: 5
   m_Sprite: {fileID: 21300002, guid: e8fcc90beb4d0974f980991ec149c77c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -428,7 +426,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1894438229
   m_SortingLayer: 2
-  m_SortingOrder: 1
+  m_SortingOrder: 5
   m_Sprite: {fileID: 21300004, guid: e8fcc90beb4d0974f980991ec149c77c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

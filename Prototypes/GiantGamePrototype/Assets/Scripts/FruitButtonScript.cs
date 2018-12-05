@@ -8,28 +8,21 @@ public class FruitButtonScript : MonoBehaviour
     public Image childImage;
     public Text childAmtCounter;
 
-    InventoryManager IM;
+    InventoryScript IS;
 
     public string fruitType;
 
     private void Start()
     {
-        IM = InventoryManager.Instance;
+        IS = InventoryScript.Instance;
     }
 
     public void StartFruitDrag()
     {
-        if(IM.FindFruitInInventory(fruitType, WorldManager.Instance.SelectedIsland.GetComponent<IslandScript>().islandID).amt <= 0) { return; }
+        if(IS.FindFruitInInventory(fruitType, WorldSelector.Instance.SelectedIsland.GetComponent<IslandScript>().islandID).amt <= 0) { return; }
         Debug.Log("SpawningNewFruit");
-
-
-        RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position), Vector2.zero);
-
-        GameObject newFruit = Instantiate(IM.FindFruit(fruitType).objectToSpawn, hit.point, Quaternion.identity);
+        GameObject newFruit = Instantiate(IS.FindFruit(fruitType).objectToSpawn);
         newFruit.GetComponent<FruitScript>().targetCreature = StatManager.Instance.targetCreature;
-
-        StatManager.Instance.targetCreature.GetComponent<CreatureScript>().targetFruit = newFruit;
-        StatManager.Instance.targetCreature.GetComponent<CreatureScript>().targetFruitSpawnPos = (Vector2)newFruit.transform.position;
         TouchController.Instance.fruitBeingDragged = newFruit;
     }
 }

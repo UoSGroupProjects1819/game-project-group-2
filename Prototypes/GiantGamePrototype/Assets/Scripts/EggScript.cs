@@ -12,7 +12,7 @@ public class EggScript : MonoBehaviour {
     float spriteChangeTimer = 0;
     int currentsprite = 0;
 
-    public WorldManager WM;
+    public WorldSelector WS;
 
     public Sprite[] eggSprites;
 
@@ -20,7 +20,7 @@ public class EggScript : MonoBehaviour {
 
     private void Start()
     {
-        WM = GameObject.FindGameObjectWithTag("World").GetComponent<WorldManager>();
+        WS = GameObject.FindGameObjectWithTag("World").GetComponent<WorldSelector>();
     }
 
     void Update ()
@@ -41,8 +41,7 @@ public class EggScript : MonoBehaviour {
 
             if (spawnDelay <= 0)
             {
-                Instantiate(creatureToSpawn, new Vector3(transform.position.x, transform.position.y, CreatureManager.Instance.nextSpawnDepth), Quaternion.identity, WM.SelectedIsland.transform);
-                CreatureManager.Instance.nextSpawnDepth += 0.01f;
+                Instantiate(creatureToSpawn, this.transform.position, Quaternion.identity, WS.SelectedIsland.transform);
                 Destroy(this.gameObject);
             }
         }

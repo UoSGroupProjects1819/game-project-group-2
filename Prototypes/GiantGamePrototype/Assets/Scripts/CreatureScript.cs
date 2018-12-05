@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
-using UnityEngine.Analytics;
 using UnityEngine.UI;
 
 public class CreatureScript : MonoBehaviour {
@@ -14,7 +13,7 @@ public class CreatureScript : MonoBehaviour {
     public string type;
 
     Rigidbody2D RB;
-    InventoryManager IM;
+    InventoryScript IS;
     StatManager SM;
     CreatureManager CM;
 
@@ -33,16 +32,12 @@ public class CreatureScript : MonoBehaviour {
     public float speedMultiplier = 1;
     public Vector2 movementBoundary;
 
-    [HideInInspector]
     public GameObject targetFruit;
-    [HideInInspector]
-    public Vector2 targetFruitSpawnPos;
 
     Transform starPanel;
     public GameObject star;
 
     public SpriteRenderer face;
-    public SpriteRenderer arms;
 
     [Space(10)]
     [Header("Happiness")]
@@ -95,15 +90,15 @@ public class CreatureScript : MonoBehaviour {
     public bool waitingForBreed;
     private bool breeding;
 
+    public GameObject EggToSpawn;
     public bool eating;
-    Vector3 armsDefaultPos;
 
     #endregion
 
     void Start ()
     {
         //SortHappniessLevels();
-        IM = InventoryManager.Instance;
+        IS = InventoryScript.Instance;
         RB = this.GetComponent<Rigidbody2D>();
         SM = GameObject.FindGameObjectWithTag("StatManager").GetComponent<StatManager>();
         CM = CreatureManager.Instance;
@@ -128,8 +123,6 @@ public class CreatureScript : MonoBehaviour {
             CreatureManager.Instance.SaveCreatures();
         }
 
-        armsDefaultPos = arms.transform.localPosition;
-
         SetHappinessLevel();
         UpdateSaturation();
         UpdateStatUI();
@@ -140,7 +133,7 @@ public class CreatureScript : MonoBehaviour {
         }
 
 
-        targetPoint = new Vector3(Random.Range(this.transform.position.x - maxWalkDistance, this.transform.position.x + maxWalkDistance), this.transform.position.y, this.transform.position.z);
+        targetPoint = new Vector2(Random.Range(this.transform.position.x - maxWalkDistance, this.transform.position.x + maxWalkDistance), this.transform.position.y);
     }
 
     public void SetUpCreature(string newName, float newHappiness, int newStars, SavedIntelligence intelligence, SavedAgility agility, SavedStrength strength, SavedStyle style, SavedStamina stamina)
@@ -190,7 +183,6 @@ public class CreatureScript : MonoBehaviour {
     {
         ReduceHappiness();
         Movement();
-        ReachForFruit();
 
         if (SM.statsPanel.activeSelf && SM.targetCreature == this.gameObject)
         {
@@ -199,29 +191,6 @@ public class CreatureScript : MonoBehaviour {
         }
 
         if (Input.GetKeyDown(KeyCode.A)) { TestStatUpdate(); }
-    }
-
-    void ReachForFruit()
-    {
-        if (targetFruit == null) {
-            arms.transform.localPosition = armsDefaultPos;
-            return;
-        }
-
-        float distanceToButton = Vector2.Distance(targetFruitSpawnPos, this.transform.position);
-        float distanceToFruit = Vector2.Distance(targetFruit.transform.position, this.transform.position);
-        distanceToFruit = Mathf.Clamp(distanceToFruit, 0, distanceToButton);
-        //Debug.Log(distanceToFruit + " " + distanceToButton);
-        Vector3 newPos = ((targetFruit.transform.position - this.transform.position).normalized * (distanceToFruit - distanceToButton)) / 5;
-        if (this.transform.localScale.x < 0)
-        {
-            newPos = new Vector3(-newPos.x, -newPos.y, -0.005f);
-        }
-        else
-        {
-            newPos = new Vector3(newPos.x, -newPos.y, -0.005f);
-        }
-        arms.transform.localPosition = armsDefaultPos + newPos;
     }
 
     Stat GetRandomStat(Image imageToSet)
@@ -272,7 +241,13 @@ public class CreatureScript : MonoBehaviour {
     void Movement()
     {
         if (eating) { RB.velocity = Vector3.zero; return; }
-        if (SM.targetCreature == this.gameObject) { return; }
+
+        if(targetFruit != null)
+        {
+            targetPoint = targetFruit.transform.position;
+            waitTime = 0;
+        }
+
         if (waitTime > 0 && !breeding)
         {
             waitTime -= Time.deltaTime;
@@ -281,17 +256,17 @@ public class CreatureScript : MonoBehaviour {
 
         if ((Vector2)this.transform.position != targetPoint)
         {
-            //Debug.Log(this.transform.name + " IM moving to " + targetPoint);
+            //Debug.Log(this.transform.name + " is moving to " + targetPoint);
             if (targetPoint.x > this.transform.position.x)
             {
                 RB.velocity = new Vector2(speed * speedMultiplier, 0);
-                transform.localScale = new Vector3(1, 1, 1);
+                transform.localScale = new Vector2(1, 1);
             }
             else
             if (targetPoint.x < this.transform.position.x)
             {
                 RB.velocity = new Vector2(-speed * speedMultiplier, 0);
-                transform.localScale = new Vector3(-1, 1, 1);
+                transform.localScale = new Vector2(-1, 1);
             }
             else
             {
@@ -325,7 +300,7 @@ public class CreatureScript : MonoBehaviour {
                     }
                 }
 
-                this.transform.position = new Vector3(targetPoint.x, this.transform.position.y, this.transform.position.z);
+                this.transform.position = new Vector2(targetPoint.x, this.transform.position.y);
                 RB.velocity = Vector2.zero;
                 waitTime = Random.Range(minWaitTime, maxWaitTime);
                 targetPoint = new Vector2(Random.Range(this.transform.position.x - maxWalkDistance, this.transform.position.x + maxWalkDistance), this.transform.position.y);
@@ -339,7 +314,7 @@ public class CreatureScript : MonoBehaviour {
     }
 
     public void EatFruit(float amt, string fruit, string majorStatToIncrease, string minorStatToIncrease)
-    { 
+    {
         if(fruit == hatedFruit) { return; }
 
         if (fruit == preferedFruit)
@@ -570,11 +545,10 @@ public class CreatureScript : MonoBehaviour {
 
     public void Touched()
     {
-        if (IM.inventoryPanel.activeSelf) { return; }
+        if (IS.inventoryPanel.activeSelf) { return; }
 
-        IM.HUDPanel.SetActive(false);
         SM.statsPanel.SetActive(!SM.statsPanel.activeSelf);
-        InventoryManager.Instance.UpdateFruitButtons(this.transform.GetComponentInParent<IslandScript>().islandID);
+        InventoryScript.Instance.UpdateFruitButtons(this.transform.GetComponentInParent<IslandScript>().islandID);
         if (SM.statsPanel.activeSelf)
         {
             Camera.main.gameObject.GetComponent<CameraControl>().currentCameraPosition = CameraControl.CameraPositions.Dynamic;
@@ -584,11 +558,6 @@ public class CreatureScript : MonoBehaviour {
             Camera.main.gameObject.GetComponent<CameraControl>().currentCameraPosition = CameraControl.CameraPositions.TouchControl;
         }
 
-        Debug.Log(Analytics.CustomEvent("CreatureTapped", new Dictionary<string, object>
-        {
-            { "Happiness", happiness }
-        }));
-        
         SM.targetCreature = this.gameObject;
         UpdateStatUI();
     }
@@ -612,16 +581,16 @@ public class CreatureScript : MonoBehaviour {
         creatureToBreedWith.GetComponent<CreatureScript>().targetPoint = newTargetPos;
         creatureToBreedWith.GetComponent<CreatureScript>().breeding = true;
         Debug.Log("breeding");
+
+        // spawn egg between them
     }
 
     public void FinishBreed()
     {
-        GameObject eggToSpawn = CM.GetBreedingResult(this.type, creatureToBreedWith.GetComponent<CreatureScript>().type);
-        Instantiate(eggToSpawn, this.transform.position, Quaternion.identity, this.transform.parent);
-
         breeding = false;
         creatureToBreedWith.GetComponent<CreatureScript>().breeding = false;
         creatureToBreedWith = null;
+        Instantiate(EggToSpawn, this.transform.position, Quaternion.identity, this.transform.parent);
         TouchController.Instance.targetCreature = null;
     }
 
