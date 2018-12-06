@@ -10,13 +10,13 @@ public class SeedScript : MonoBehaviour {
 
     public float spawnDelay;
 
-    public WorldSelector WS;
+    public WorldManager WM;
 
     public bool readyToSpawn;
 
     private void Start()
     {
-        WS = GameObject.FindGameObjectWithTag("World").GetComponent<WorldSelector>();
+        WM = GameObject.FindGameObjectWithTag("World").GetComponent<WorldManager>();
     }
 
     void Update()
@@ -44,19 +44,19 @@ public class SeedScript : MonoBehaviour {
         if (PotToSpawnIn.GetComponent<PlantPot>() != null && PotToSpawnIn.GetComponent<PlantPot>().treeInPot == null)
         {
             Debug.Log("Dropped Seed In Pot");
-            InventoryScript.Instance.RemoveSeed(seedType);
-            WorldSelector.Instance.SelectedIsland.GetComponent<IslandScript>().currentTreePopulation++;
-            InventoryScript.Instance.UpdateSeedButtons();
+            InventoryManager.Instance.RemoveSeed(seedType);
+            WorldManager.Instance.SelectedIsland.GetComponent<IslandScript>().currentTreePopulation++;
+            InventoryManager.Instance.UpdateSeedButtons();
             this.transform.parent = PotToSpawnIn.transform;
             this.transform.localPosition = Vector2.zero;
             this.GetComponentInChildren<SpriteRenderer>().sortingOrder = PotToSpawnIn.GetComponentInChildren<SpriteRenderer>().sortingOrder - 1;
             readyToSpawn = true;
-            InventoryScript.Instance.inventoryPanel.SetActive(true);
+            InventoryManager.Instance.inventoryPanel.SetActive(true);
         }
         else
         {
             Debug.Log("Dropped seed but no pot");
-            InventoryScript.Instance.inventoryPanel.SetActive(true);
+            InventoryManager.Instance.inventoryPanel.SetActive(true);
             Destroy(this.gameObject);
         }
     }

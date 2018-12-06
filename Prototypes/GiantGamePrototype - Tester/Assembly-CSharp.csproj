@@ -90,7 +90,6 @@
     <Compile Include="Assets\Scripts\Rotate.cs" />
     <Compile Include="Assets\Scripts\SeedScript.cs" />
     <Compile Include="Assets\Scripts\StatManager.cs" />
-    <Compile Include="Assets\Scripts\TitleScreenObjects.cs" />
     <Compile Include="Assets\Scripts\TouchController.cs" />
     <Compile Include="Assets\Scripts\TreeManager.cs" />
     <Compile Include="Assets\Scripts\TreeScript.cs" />

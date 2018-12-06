@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FruitScript : MonoBehaviour {
 
-    public bool readyToDrop;
+    public bool readyToPick;
     public string fruitType;
 
     public string majorStatToIncrease;
@@ -51,12 +51,13 @@ public class FruitScript : MonoBehaviour {
     {
         if (creatureToFeed != null && creatureToFeed == targetCreature)
         {
-            InventoryScript.Instance.RemoveFruit(fruitType, targetCreature.GetComponentInParent<IslandScript>().islandID);
+            InventoryManager.Instance.RemoveFruit(fruitType, targetCreature.GetComponentInParent<IslandScript>().islandID);
             targetCreature.GetComponent<CreatureScript>().EatFruit(10, fruitType, majorStatToIncrease, minorStatToIncrease);
             targetCreature.GetComponent<CreatureScript>().eating = true;
             this.transform.parent = targetCreature.transform;
             this.transform.localPosition = new Vector2(0, -0.1f);
-            InventoryScript.Instance.UpdateFruitButtons(WorldSelector.Instance.SelectedIsland.GetComponent<IslandScript>().islandID);
+            creatureToFeed.GetComponent<CreatureScript>().targetFruit = null;
+            InventoryManager.Instance.UpdateFruitButtons(WorldManager.Instance.SelectedIsland.GetComponent<IslandScript>().islandID);
             beingEaten = true;
             Debug.Log("Fed creature");
             //this.transform.localPosition = Vector2.zero;
@@ -64,7 +65,7 @@ public class FruitScript : MonoBehaviour {
         else
         {
             Debug.Log("Dropped fruit but no creature");
-            InventoryScript.Instance.inventoryPanel.SetActive(true);
+            InventoryManager.Instance.inventoryPanel.SetActive(true);
             Destroy(this.gameObject);
         }
     }

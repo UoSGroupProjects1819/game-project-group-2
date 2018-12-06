@@ -21,7 +21,7 @@ public class TreeScript : MonoBehaviour {
 
     public GameObject currentFruit;
 
-    InventoryScript IS;
+    InventoryManager IM;
 
     public LayerMask thisLayer;
 
@@ -30,7 +30,7 @@ public class TreeScript : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
-        IS = InventoryScript.Instance;
+        IM = InventoryManager.Instance;
 
         if (!loadedFromSave)
         {
@@ -51,7 +51,7 @@ public class TreeScript : MonoBehaviour {
         }
     }
 	
-	// Update is called once per frame
+	// Update IM called once per frame
 	void Update ()
     {
         StartTreeLife();
@@ -81,11 +81,12 @@ public class TreeScript : MonoBehaviour {
 
     public void Touched()
     {
-        if (IS.inventoryPanel.activeSelf) { return; }
+        if (IM.inventoryPanel.activeSelf) { return; }
         
-        if (currentFruit.GetComponent<FruitScript>().readyToDrop)
+        if (currentFruit.GetComponent<FruitScript>().readyToPick)
         {
-            DropFruit();
+            GiantScript.Instance.targetPoint = this.transform.position;
+            GiantScript.Instance.targetObject = this.gameObject;
         }
     }
 
@@ -127,11 +128,11 @@ public class TreeScript : MonoBehaviour {
             growTimer = 0;
         }
 
-        if (!currentFruit.GetComponent<FruitScript>().readyToDrop)
+        if (!currentFruit.GetComponent<FruitScript>().readyToPick)
         {
             if(growTimer > timeToGrow)
             {
-                currentFruit.GetComponent<FruitScript>().readyToDrop = true;
+                currentFruit.GetComponent<FruitScript>().readyToPick = true;
                 currentFruit.transform.localScale = new Vector2(1, 1);
                 return;
             }
