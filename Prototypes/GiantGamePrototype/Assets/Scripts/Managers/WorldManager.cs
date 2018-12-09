@@ -49,14 +49,17 @@ public class WorldManager : MonoBehaviour {
     public void SelectIsland(int id)
     {
         if(islands.Length < id + 1) { return; }
-        if (islands[id] == SelectedIsland) { return; }
+        //if (islands[id] == SelectedIsland) { return; }
 
         Camera.main.GetComponent<CameraControl>().SetWorldOffset(islands[id].transform.position.x);
         GiantScript.Instance.gameObject.transform.position += islands[id].transform.position - SelectedIsland.transform.position;
         GiantScript.Instance.targetPoint = GiantScript.Instance.transform.position;
 
         SelectedIsland = islands[id];
-       
+        //Camera.main.orthographicSize = CC.maxCameraOrtho;
+        CC.currentCameraPosition = CameraControl.CameraPositions.TouchControl;
+        selecting = false;
+
     }
 
     public void ResetCurrentIsland()

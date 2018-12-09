@@ -118,11 +118,9 @@ public class CreatureScript : MonoBehaviour {
         starPanel = SM.StarPanel;
         happinessImage = SM.happinessImage;
 
-        debug.Log("Spawn small pet");
+        Debug.Log("Spawn small pet");
         size = 0.5f;
         gameObject.transform.localScale = new Vector2(size, size);
-
-        StartCoroutine(GrowPet());
 
         if (generateStats)
         { 
@@ -198,7 +196,7 @@ public class CreatureScript : MonoBehaviour {
         ReduceHappiness();
         Movement();
         ReachForFruit();
-
+        GrowPet();
         if (SM.statsPanel.activeSelf && SM.targetCreature == this.gameObject)
         {
             Camera.main.gameObject.GetComponent<CameraControl>().DynamicOrtho = 0.25f;
@@ -605,7 +603,7 @@ public class CreatureScript : MonoBehaviour {
         Camera.main.gameObject.GetComponent<CameraControl>().currentCameraPosition = CameraControl.CameraPositions.IslandView;
         // able to breed glow
         waitingForBreed = true;
-        TouchController.Instance.targetCreature = this.gameObject;
+        TouchManager.Instance.targetCreature = this.gameObject;
     }
 
     public void Breed(GameObject newCreature)
@@ -629,7 +627,7 @@ public class CreatureScript : MonoBehaviour {
         breeding = false;
         creatureToBreedWith.GetComponent<CreatureScript>().breeding = false;
         creatureToBreedWith = null;
-        TouchController.Instance.targetCreature = null;
+        TouchManager.Instance.targetCreature = null;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -642,15 +640,19 @@ public class CreatureScript : MonoBehaviour {
         }
     }
 
-    IEnumerator GrowPet()
+    void GrowPet()
     {
-
-        size += .01f;
-        yield return new WaitForSecondsRealtime(.5f);
-
-        if (size <= 2)
+        if (size < 2)
         {
-            StartCoroutine(GrowPet());
+            size += Time.deltaTime * 0.01f;
+            if(transform.localScale.x < 0)
+            {
+                transform.localScale = new Vector3(-size, size, size);
+            }
+            else
+            {
+                transform.localScale = new Vector3(size, size, size);
+            }
         }
     }
 }

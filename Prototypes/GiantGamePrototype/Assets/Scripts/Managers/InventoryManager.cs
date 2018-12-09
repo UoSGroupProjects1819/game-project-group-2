@@ -78,6 +78,7 @@ public class IslandStorage
 [System.Serializable]
 public class Inventory
 {
+    public int currency;
     public List<EggInInventory> eggs;
     public List<SeedInInventory> seeds;
     public List<IslandStorage> islands;
@@ -88,6 +89,8 @@ public class Inventory
 [System.Serializable]
 public class JsonInventory
 {
+    public int currencyAmt;
+
     public string[] eggs;
     public int[] eggAmts;
 
@@ -142,6 +145,7 @@ public class InventoryManager : MonoBehaviour
     public GameObject SeedUI;
     public GameObject[] SeedButtons;
     public GameObject[] FruitButtons;
+    public GameObject currencyUI;
 
     string fileName = @"/Inventory.json";
 
@@ -153,13 +157,12 @@ public class InventoryManager : MonoBehaviour
     private void Start()
     {
         LoadInventory();
-        //StartCoroutine(AutoSaveInventory());
+        StartCoroutine(AutoSaveInventory());
 
         if(PlayerPrefs.GetInt("FirstOpen") == 0)
         {
             FirstOpen();
         }
-
     }
 
     void FirstOpen()
@@ -201,6 +204,8 @@ public class InventoryManager : MonoBehaviour
                 fruits2 = new string[inventory.islands[2].fruitInStorage.Count],
                 fruitAmts2 = new int[inventory.islands[2].fruitInStorage.Count]
             };
+
+            jsonInventory.currencyAmt = inventory.currency;
 
             for (int i = 0; i < jsonInventory.eggs.Length; i++)
             {
@@ -261,6 +266,9 @@ public class InventoryManager : MonoBehaviour
                 seeds = new List<SeedInInventory>(),
                 islands = new List<IslandStorage>()
             };
+
+            newInventory.currency = jsonInventory.currencyAmt;
+            currencyUI.GetComponent<Text>().text = newInventory.currency.ToString();
 
             for (int i = 0; i < jsonInventory.eggs.Length; i++)
             {
@@ -364,6 +372,17 @@ public class InventoryManager : MonoBehaviour
             PlayerPrefs.SetInt("FirstOpen", 0);
             ResetSave();
         }
+
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            AddCurrency(10);
+        }
+    }
+
+    public void AddCurrency(int amt)
+    {
+        inventory.currency += amt;
+        currencyUI.GetComponent<Text>().text = inventory.currency.ToString();
     }
 
     public Egg FindEgg(string eggToFind)

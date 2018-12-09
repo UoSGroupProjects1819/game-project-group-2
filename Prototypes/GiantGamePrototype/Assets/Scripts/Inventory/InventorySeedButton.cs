@@ -43,7 +43,7 @@ public class InventorySeedButton : MonoBehaviour {
         IslandScript island = WorldManager.Instance.SelectedIsland.GetComponent<IslandScript>();
         if (island.currentTreePopulation >= island.maxTreePopulation) { return; }
         GameObject NewSeed = Instantiate(IM.FindSeed(thisSeed.name).objectToSpawn);
-        TouchController.Instance.seedBeingDragged = NewSeed;
+        TouchManager.Instance.seedBeingDragged = NewSeed;
         IM.inventoryPanel.SetActive(false);
     }
 

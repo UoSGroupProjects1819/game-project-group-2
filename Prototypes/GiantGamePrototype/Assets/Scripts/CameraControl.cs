@@ -49,7 +49,7 @@ public class CameraControl : MonoBehaviour {
 
     bool touchedSinceLock;
 
-    TouchController TC;
+    TouchManager TM;
 
     // Use this for initialization
     void Start ()
@@ -57,7 +57,7 @@ public class CameraControl : MonoBehaviour {
         thisCamera = this.GetComponent<Camera>();
         lastFreeCameraOrtho = thisCamera.orthographicSize;
         lastFreeCameraPosition = this.transform.position;
-        TC = TouchController.Instance;
+        TM = TouchManager.Instance;
     }
 
     private void LateUpdate()
@@ -65,7 +65,7 @@ public class CameraControl : MonoBehaviour {
         switch (currentCameraPosition)
         {
             case CameraPositions.TouchControl:
-                if (!touchedSinceLock)
+                if (!touchedSinceLock && !WorldManager.Instance.selecting)
                 {
                     ResetCameraPosition();
                 }
@@ -96,8 +96,9 @@ public class CameraControl : MonoBehaviour {
     public void ScreenPinch(Vector2 dragAmt, float pinchAmt)
     {
         if (InventoryManager.Instance.inventoryPanel.activeSelf) { return; }
+        if (WorldManager.Instance.selecting) { return; }
 
-        if (TC.touchesLastFrame == 2)
+        if (TM.touchesLastFrame == 2)
         {
             float zoomAmt = pinchAmt / thisCamera.fieldOfView;
 
@@ -122,14 +123,20 @@ public class CameraControl : MonoBehaviour {
 
         if (InventoryManager.Instance.inventoryPanel.activeSelf) { return; }
 
-        if (TC.touchesLastFrame == 1)
+        if (TM.touchesLastFrame == 1)
         {
-            Vector2 panAmt = TC.lastSingleTouchPoint - touchPos;
+            Vector2 panAmt = TM.lastSingleTouchPoint - touchPos;
 
             this.transform.position += new Vector3(panAmt.x, panAmt.y, 0) * panSpeed * thisCamera.orthographicSize;
-            this.transform.position = new Vector3(Mathf.Clamp(this.transform.position.x, minPanBound.x + worldPositionOffset, maxPanBound.x + worldPositionOffset), Mathf.Clamp(this.transform.position.y, minPanBound.y, maxPanBound.y), this.transform.position.z);
-
-            TC.lastSingleTouchPoint = touchPos;
+            if (WorldManager.Instance.selecting)
+            {
+                this.transform.position = new Vector3(this.transform.position.x, Mathf.Clamp(this.transform.position.y, 1, 1), this.transform.position.z);
+            }
+            else
+            {
+                this.transform.position = new Vector3(Mathf.Clamp(this.transform.position.x, minPanBound.x + worldPositionOffset, maxPanBound.x + worldPositionOffset), Mathf.Clamp(this.transform.position.y, minPanBound.y, maxPanBound.y), this.transform.position.z);
+            }
+            TM.lastSingleTouchPoint = touchPos;
 
             touchedSinceLock = true;
             lastFreeCameraOrtho = thisCamera.orthographicSize;
@@ -139,6 +146,7 @@ public class CameraControl : MonoBehaviour {
 
     public void ResetCameraPosition()
     {
+        Debug.Log("Resetting");
         this.transform.position = Vector3.MoveTowards(transform.position, lastFreeCameraPosition, Time.deltaTime * speed);
         thisCamera.orthographicSize = Mathf.Lerp(thisCamera.orthographicSize, lastFreeCameraOrtho, Time.deltaTime * speed);
     }
@@ -152,7 +160,7 @@ public class CameraControl : MonoBehaviour {
 
     public void MoveToIslandSelect()
     {
-        this.transform.position = Vector3.MoveTowards(transform.position, IslandSelectPos + WorldManager.Instance.SelectedIsland.transform.position, Time.deltaTime * speed * 1f);
+        //this.transform.position = Vector3.MoveTowards(transform.position, IslandSelectPos + WorldManager.Instance.SelectedIsland.transform.position, Time.deltaTime * speed * 1f);
         thisCamera.orthographicSize = Mathf.Lerp(thisCamera.orthographicSize, IslandSelectOrtho, Time.deltaTime * speed);
         touchedSinceLock = false;
     }

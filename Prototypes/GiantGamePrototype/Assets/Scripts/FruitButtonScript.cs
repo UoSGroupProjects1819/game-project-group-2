@@ -30,6 +30,6 @@ public class FruitButtonScript : MonoBehaviour
 
         StatManager.Instance.targetCreature.GetComponent<CreatureScript>().targetFruit = newFruit;
         StatManager.Instance.targetCreature.GetComponent<CreatureScript>().targetFruitSpawnPos = (Vector2)newFruit.transform.position;
-        TouchController.Instance.fruitBeingDragged = newFruit;
+        TouchManager.Instance.fruitBeingDragged = newFruit;
     }
 }
