@@ -1,6 +1,6 @@
 Android
 PlayerPath?
-C:/GitHub/game-project-group-2/Prototypes/GiantGamePrototype/Builds/Gaia 06-12-18.apk
+C:/GitHub/game-project-group-2/Prototypes/GiantGamePrototype/Builds/Gaia 10-12-18.apk
 SceneListBegin?
 Assets/Scenes/title.unity
 Assets/Scenes/Prototype.unity

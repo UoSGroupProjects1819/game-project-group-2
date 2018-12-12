@@ -611,6 +611,7 @@ public class CreatureScript : MonoBehaviour {
         Camera.main.gameObject.GetComponent<CameraControl>().currentCameraPosition = CameraControl.CameraPositions.TouchControl;
         creatureToBreedWith = newCreature;
         Vector2 newTargetPos = (this.transform.position + creatureToBreedWith.transform.position) / 2;
+        StatManager.Instance.targetCreature = null;
         Debug.Log(newTargetPos);
         targetPoint = newTargetPos;
         breeding = true;

@@ -3664,7 +3664,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Intelligence
+  m_Text: Sweetness
 --- !u!222 &489332308
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4244,7 +4244,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Agility
+  m_Text: Silliness
 --- !u!222 &605408157
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7310,7 +7310,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Strength
+  m_Text: 'Sports
+
+'
 --- !u!222 &1045153447
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -10742,7 +10744,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Stamina
+  m_Text: Smarts
 --- !u!222 &1534260690
 CanvasRenderer:
   m_ObjectHideFlags: 0

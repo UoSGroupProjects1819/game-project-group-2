@@ -266,6 +266,7 @@ public class TouchManager : MonoBehaviour {
                 StatManager.Instance.statsPanel.SetActive(!StatManager.Instance.statsPanel.activeSelf);
                 Camera.main.gameObject.GetComponent<CameraControl>().currentCameraPosition = CameraControl.CameraPositions.TouchControl;
                 StatManager.Instance.targetCreature.GetComponent<CreatureScript>().UpdateStatUI();
+                StatManager.Instance.targetCreature = null;
             }
 
             Camera.main.GetComponent<CameraControl>().ScreenDrag(touchPos);
