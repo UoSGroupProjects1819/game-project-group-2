@@ -223,7 +223,7 @@ public class TouchManager : MonoBehaviour {
         {
             RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(touchPos), Vector2.zero, 100, layersExcludingFruit);
             if (!hit) { return; }
-            if (hit.transform.tag == "Creature")
+            if (hit.transform.tag == "Creature" && hit.transform.GetComponent<CreatureScript>().eating == false)
             {
                 fruitBeingDragged.GetComponent<FruitScript>().ReleaseDrag(touchPos, hit.transform.gameObject);
                 fruitBeingDragged = null;

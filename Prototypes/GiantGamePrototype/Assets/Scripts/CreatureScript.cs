@@ -148,13 +148,14 @@ public class CreatureScript : MonoBehaviour {
         targetPoint = new Vector3(Random.Range(this.transform.position.x - maxWalkDistance, this.transform.position.x + maxWalkDistance), this.transform.position.y, this.transform.position.z);
     }
 
-    public void SetUpCreature(string newName, float newHappiness, int newStars, SavedIntelligence intelligence, SavedAgility agility, SavedStrength strength, SavedStyle style, SavedStamina stamina)
+    public void SetUpCreature(string newName, float newHappiness, float newSize, int newStars, SavedIntelligence intelligence, SavedAgility agility, SavedStrength strength, SavedStyle style, SavedStamina stamina)
     {
         generateStats = false;
         SM = GameObject.FindGameObjectWithTag("StatManager").GetComponent<StatManager>();
 
         name = newName;
         happiness = newHappiness;
+        size = newSize;
         Stars = newStars;
         Intelligence.amt = intelligence.score;
         Intelligence.level = intelligence.level;

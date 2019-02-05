@@ -70,6 +70,7 @@ public class JsonCreature
     public string name;
     public string type;
     public float happiness;
+    public float size;
     public SavedIntelligence savedIntellegence;
     public SavedAgility savedAgility;
     public SavedStrength savedStrength;
@@ -83,6 +84,7 @@ public class JsonCreatures
     public string[] types;
     public int[] worldIds;
     public float[] happiness;
+    public float[] sizes;
     public int[] stars;
 
     public string[] intelligenceRank;
@@ -248,6 +250,7 @@ public class CreatureManager : MonoBehaviour {
                 newCreature.GetComponent<CreatureScript>().SetUpCreature(
                     jsonCreatures.names[i], 
                     jsonCreatures.happiness[i], 
+                    jsonCreatures.sizes[i], 
                     jsonCreatures.stars[i],
                     intelligence, 
                     agility,
@@ -283,6 +286,7 @@ public class CreatureManager : MonoBehaviour {
                 types = new string[creaturesInWorld.Count],
                 worldIds = new int[creaturesInWorld.Count],
                 happiness = new float[creaturesInWorld.Count],
+                sizes = new float[creaturesInWorld.Count],
                 stars = new int[creaturesInWorld.Count],
                 intelligenceRank = new string[creaturesInWorld.Count],
                 intelligenceLevel = new int[creaturesInWorld.Count],
@@ -316,6 +320,7 @@ public class CreatureManager : MonoBehaviour {
 
                 jsonCreatures.names[i] = CS.name;
                 jsonCreatures.happiness[i] = CS.happiness;
+                jsonCreatures.sizes[i] = CS.size;
                 jsonCreatures.types[i] = CS.type;
                 jsonCreatures.worldIds[i] = creature.transform.parent.GetComponent<IslandScript>().islandID;
                 jsonCreatures.stars[i] = CS.Stars;
