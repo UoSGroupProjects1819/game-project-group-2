@@ -21,7 +21,7 @@ public class CameraControl : MonoBehaviour {
 
     public float speed;
     [Space(10)]
-    public Vector3 Dynamic;
+    public Vector3 DynamicPosition;
     public float DynamicOrtho;
     [Space(10)]
     public Vector3 IslandViewPos;
@@ -167,7 +167,7 @@ public class CameraControl : MonoBehaviour {
 
     public void DynamicMoveCamera ()
     {
-        this.transform.position = Vector3.MoveTowards(transform.position, Dynamic, Time.deltaTime * speed * 1f);
+        this.transform.position = Vector3.MoveTowards(transform.position, DynamicPosition, Time.deltaTime * speed * 1f);
         thisCamera.orthographicSize = Mathf.Lerp(thisCamera.orthographicSize, DynamicOrtho, Time.deltaTime * speed);
         touchedSinceLock = false;
     }

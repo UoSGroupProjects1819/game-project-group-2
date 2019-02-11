@@ -201,7 +201,7 @@ public class CreatureScript : MonoBehaviour {
         if (SM.statsPanel.activeSelf && SM.targetCreature == this.gameObject)
         {
             Camera.main.gameObject.GetComponent<CameraControl>().DynamicOrtho = 0.25f;
-            Camera.main.gameObject.GetComponent<CameraControl>().Dynamic = this.transform.position + new Vector3(0.2f, 0, -10);
+            Camera.main.gameObject.GetComponent<CameraControl>().DynamicPosition = this.transform.position + new Vector3(0.2f, 0, -10);
         }
 
         if (Input.GetKeyDown(KeyCode.A)) { TestStatUpdate(); }
