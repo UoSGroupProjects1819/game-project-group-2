@@ -61,8 +61,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\BulletinBoardScript.cs" />
     <Compile Include="Assets\Scripts\AdvertManager.cs" />
+    <Compile Include="Assets\Scripts\BulletinBoardScript.cs" />
     <Compile Include="Assets\Scripts\CameraControl.cs" />
     <Compile Include="Assets\Scripts\CreatureScript.cs" />
     <Compile Include="Assets\Scripts\DayNightCycle.cs" />
@@ -77,6 +77,7 @@
     <Compile Include="Assets\Scripts\IslandScript.cs" />
     <Compile Include="Assets\Scripts\Managers\CreatureManager.cs" />
     <Compile Include="Assets\Scripts\Managers\InventoryManager.cs" />
+    <Compile Include="Assets\Scripts\Managers\QuestManager.cs" />
     <Compile Include="Assets\Scripts\Managers\StatManager.cs" />
     <Compile Include="Assets\Scripts\Managers\TouchManager.cs" />
     <Compile Include="Assets\Scripts\Managers\TreeManager.cs" />
@@ -92,6 +93,7 @@
     <Compile Include="Assets\Scripts\Old\InventoryEggButton.cs" />
     <Compile Include="Assets\Scripts\parralax.cs" />
     <Compile Include="Assets\Scripts\PlantPot.cs" />
+    <Compile Include="Assets\Scripts\QuestScript.cs" />
     <Compile Include="Assets\Scripts\Rotate.cs" />
     <Compile Include="Assets\Scripts\SeedScript.cs" />
     <Compile Include="Assets\Scripts\TitleScreenObjects.cs" />
