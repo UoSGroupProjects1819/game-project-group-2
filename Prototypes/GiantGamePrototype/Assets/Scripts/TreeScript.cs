@@ -19,7 +19,7 @@ public class TreeScript : MonoBehaviour {
 
     public float growTimer;
 
-    public GameObject currentFruit;
+    public List<GameObject> currentFruit = new List<GameObject>();
 
     InventoryManager IM;
 
@@ -82,14 +82,54 @@ public class TreeScript : MonoBehaviour {
     public void Touched()
     {
         if (IM.inventoryPanel.activeSelf) { return; }
-        
-        if (currentFruit.GetComponent<FruitScript>().readyToPick)
+
+        foreach (var fruit in currentFruit)
         {
-            GiantScript.Instance.targetPoint = this.transform.position;
-            GiantScript.Instance.targetObject = this.gameObject;
+            if (fruit.GetComponent<FruitScript>().readyToPick)
+            {
+                GiantScript.Instance.targetPoint = this.transform.position;
+                GiantScript.Instance.targetObject = this.gameObject;
+            }
         }
     }
 
+    void GrowFruit()
+    {
+        if (!canSpawnFruit) { return; }
+
+        Debug.Log(currentFruit);
+
+        if (currentFruit.Count == 0)
+        {
+            for (int i = 0; i < this.GetComponentInParent<PlantPot>().potLevel + 1; i++)
+            {
+                currentFruit.Add(Instantiate(fruitToSpawn, fruitSpawns[i].transform.position, Quaternion.identity, this.transform));
+                growTimer = 0;
+            }
+        }
+
+        if (!currentFruit[0].GetComponent<FruitScript>().readyToPick)
+        {
+            if (growTimer > timeToGrow)
+            {
+                foreach (var fruit in currentFruit)
+                {
+                    fruit.GetComponent<FruitScript>().readyToPick = true;
+                    fruit.transform.localScale = new Vector2(1, 1);
+                }
+                return;
+            }
+
+            growTimer += Time.deltaTime;
+
+            foreach (var fruit in currentFruit)
+            {
+                fruit.transform.localScale = new Vector2(1, 1) * ((1 / timeToGrow) * growTimer);
+            }
+        }
+    }
+
+    /* Old Code
     void DropFruit()
     {
         GameObject closestCreature = null;
@@ -116,31 +156,7 @@ public class TreeScript : MonoBehaviour {
             currentFruit.GetComponent<Rigidbody2D>().gravityScale = 1;
             currentFruit.GetComponent<CircleCollider2D>().enabled = true;
         }
-    }
+    }*/
 
-    void GrowFruit()
-    {
-        if (!canSpawnFruit) { return; }
 
-        if(currentFruit == null)
-        {
-            currentFruit = Instantiate(fruitToSpawn, fruitSpawns[Random.Range(0, fruitSpawns.Length)].transform.position, Quaternion.identity, this.transform);
-            growTimer = 0;
-        }
-
-        if (!currentFruit.GetComponent<FruitScript>().readyToPick)
-        {
-            if(growTimer > timeToGrow)
-            {
-                currentFruit.GetComponent<FruitScript>().readyToPick = true;
-                currentFruit.transform.localScale = new Vector2(1, 1);
-                return;
-            }
-
-            growTimer += Time.deltaTime;
-
-            currentFruit.transform.localScale = new Vector2(1, 1) * ((1 / timeToGrow) * growTimer);
-
-        }
-    }
 }

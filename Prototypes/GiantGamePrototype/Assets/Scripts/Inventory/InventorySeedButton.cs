@@ -41,7 +41,6 @@ public class InventorySeedButton : MonoBehaviour {
     {
         Debug.Log("SpawningNewSeed");
         IslandScript island = WorldManager.Instance.SelectedIsland.GetComponent<IslandScript>();
-        if (island.currentTreePopulation >= island.maxTreePopulation) { return; }
         GameObject NewSeed = Instantiate(IM.FindSeed(thisSeed.name).objectToSpawn);
         TouchManager.Instance.seedBeingDragged = NewSeed;
         IM.inventoryPanel.SetActive(false);
@@ -58,7 +57,6 @@ public class InventorySeedButton : MonoBehaviour {
         }
 
         IslandScript island = WorldManager.Instance.SelectedIsland.GetComponent<IslandScript>();
-        if (island.currentTreePopulation >= island.maxTreePopulation) { return; }
 
         Giant.GetComponent<GiantScript>().SetCurrentHolding(IM.FindSeed(thisSeed.name).objectToSpawn, this.thisSeed.name);
         

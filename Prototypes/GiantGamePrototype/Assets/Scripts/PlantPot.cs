@@ -6,16 +6,28 @@ public class PlantPot : MonoBehaviour {
 
     public int potID;
 
+    public int potLevel;
+
     public GameObject treeInPot;
 
+    public Sprite[] PotLevelSprites;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update IM called once per frame
-	void Update () {
-		
-	}
+    void Start()
+    {
+        this.GetComponentInChildren<SpriteRenderer>().sprite = PotLevelSprites[potLevel];
+    }
+
+    public void CheckSprite()
+    {
+        if (this.GetComponentInChildren<SpriteRenderer>().sprite != PotLevelSprites[potLevel])
+        {
+            this.GetComponentInChildren<SpriteRenderer>().sprite = PotLevelSprites[potLevel];
+        }
+    }
+
+    public void UpgradePot()
+    {
+        potLevel++;
+        this.GetComponentInChildren<SpriteRenderer>().sprite = PotLevelSprites[potLevel];
+    }
 }

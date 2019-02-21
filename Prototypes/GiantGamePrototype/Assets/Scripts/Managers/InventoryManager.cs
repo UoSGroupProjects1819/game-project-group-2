@@ -40,6 +40,20 @@ public class Fruit
     public GameObject objectToSpawn;
 }
 
+[System.Serializable]
+public class Chest
+{
+    public string name;
+    public Sprite sprite;
+    public ChestItem[] PossibleItems;
+}
+
+[System.Serializable]
+public class ChestItem
+{
+    public string name;
+    public float weight;
+}
 
 [System.Serializable]
 public class EggInInventory
@@ -70,6 +84,13 @@ public class FruitInInventory
 }
 
 [System.Serializable]
+public class ChestInInventory
+{
+    public string name;
+    public int amt;
+}
+
+[System.Serializable]
 public class IslandStorage
 {
     public List<FruitInInventory> fruitInStorage;
@@ -82,6 +103,7 @@ public class Inventory
     public List<EggInInventory> eggs;
     public List<SeedInInventory> seeds;
     public List<IslandStorage> islands;
+    public List<ChestInInventory> chests;
     //public List<Fruit> fruit;
 }
 
@@ -130,6 +152,9 @@ public class InventoryManager : MonoBehaviour
 
     [SerializeField]
     public Ingredient[] ingredients;
+
+    [SerializeField]
+    public Chest[] chests;
 
     [Space(10)]
 

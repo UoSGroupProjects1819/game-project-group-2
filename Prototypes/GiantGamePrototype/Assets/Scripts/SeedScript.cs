@@ -41,23 +41,39 @@ public class SeedScript : MonoBehaviour {
 
     public void ReleaseDrag(Vector3 dragPos, GameObject PotToSpawnIn)
     {
-        if (PotToSpawnIn.GetComponent<PlantPot>() != null && PotToSpawnIn.GetComponent<PlantPot>().treeInPot == null)
+        if (PotToSpawnIn.GetComponent<PlantPot>() != null)
         {
-            Debug.Log("Dropped Seed In Pot");
-            InventoryManager.Instance.RemoveSeed(seedType);
-            WorldManager.Instance.SelectedIsland.GetComponent<IslandScript>().currentTreePopulation++;
-            InventoryManager.Instance.UpdateSeedButtons();
-            this.transform.parent = PotToSpawnIn.transform;
-            this.transform.localPosition = Vector2.zero;
-            this.GetComponentInChildren<SpriteRenderer>().sortingOrder = PotToSpawnIn.GetComponentInChildren<SpriteRenderer>().sortingOrder - 1;
-            readyToSpawn = true;
-            InventoryManager.Instance.inventoryPanel.SetActive(true);
-        }
-        else
-        {
-            Debug.Log("Dropped seed but no pot");
-            InventoryManager.Instance.inventoryPanel.SetActive(true);
-            Destroy(this.gameObject);
+            if (PotToSpawnIn.GetComponent<PlantPot>().treeInPot == null)
+            {
+                Debug.Log("Dropped Seed In Pot");
+                InventoryManager.Instance.RemoveSeed(seedType);
+                WorldManager.Instance.SelectedIsland.GetComponent<IslandScript>().currentTreePopulation++;
+                InventoryManager.Instance.UpdateSeedButtons();
+                PotToSpawnIn.GetComponent<PlantPot>().treeInPot = this.gameObject;
+                this.transform.parent = PotToSpawnIn.transform;
+                this.transform.localPosition = Vector2.zero;
+                this.GetComponentInChildren<SpriteRenderer>().sortingOrder = PotToSpawnIn.GetComponentInChildren<SpriteRenderer>().sortingOrder - 1;
+                readyToSpawn = true;
+                InventoryManager.Instance.inventoryPanel.SetActive(true);
+            }
+            else
+            {
+                if (PotToSpawnIn.GetComponent<PlantPot>().potLevel < 2)
+                {
+                    Debug.Log("Dropped Seed In Pot for upgrade");
+                    InventoryManager.Instance.RemoveSeed(seedType);
+                    InventoryManager.Instance.UpdateSeedButtons();
+                    PotToSpawnIn.GetComponent<PlantPot>().UpgradePot();
+                    InventoryManager.Instance.inventoryPanel.SetActive(true);
+                    Destroy(this.gameObject);
+                }
+                else
+                {
+                    Debug.Log("Dropped seed but no pot");
+                    InventoryManager.Instance.inventoryPanel.SetActive(true);
+                    Destroy(this.gameObject);
+                }
+            }
         }
     }
 }

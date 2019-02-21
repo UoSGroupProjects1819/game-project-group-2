@@ -210,9 +210,15 @@ public class GiantScript : MonoBehaviour {
 
     void CollectFruit(TreeScript tree)
     {
-        IM.AddFruit(tree.currentFruit.GetComponent<FruitScript>().fruitType, WM.SelectedIsland.GetComponent<IslandScript>().islandID);
-        Destroy(tree.currentFruit);
-        tree.currentFruit = null;
+        for (int i = 0; i < tree.currentFruit.Count; i++)
+        {
+            IM.AddFruit(tree.currentFruit[i].GetComponent<FruitScript>().fruitType, WM.SelectedIsland.GetComponent<IslandScript>().islandID);
+            Destroy(tree.currentFruit[i]);
+            
+        }
+
+        tree.currentFruit.Clear();
+
         targetObject = null;
     }
 

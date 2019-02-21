@@ -628,8 +628,9 @@ public class CreatureScript : MonoBehaviour {
 
         breeding = false;
         creatureToBreedWith.GetComponent<CreatureScript>().breeding = false;
-        creatureToBreedWith = null;
         TouchManager.Instance.targetCreature = null;
+        Destroy(creatureToBreedWith.gameObject);
+        Destroy(this.gameObject);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

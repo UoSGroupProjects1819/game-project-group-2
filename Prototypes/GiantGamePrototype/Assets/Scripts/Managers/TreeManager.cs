@@ -17,6 +17,7 @@ public class JsonTrees
     public float[] timeToGrows;
     public int[] worldIds;
     public int[] potIds;
+    public int[] potLvls;
 }
 
 public class TreeManager : MonoBehaviour {
@@ -65,6 +66,9 @@ public class TreeManager : MonoBehaviour {
                 TreeScript TS = newTree.GetComponent<TreeScript>();
                 TS.growTimer = jsonTrees.growTimers[i];
                 TS.timeToGrow = jsonTrees.timeToGrows[i];
+                TS.GetComponentInParent<PlantPot>().treeInPot = TS.gameObject;
+                TS.GetComponentInParent<PlantPot>().potLevel = jsonTrees.potLvls[i];
+                TS.GetComponentInParent<PlantPot>().CheckSprite();
                 TS.loadedFromSave = true;
             }
 
@@ -83,7 +87,7 @@ public class TreeManager : MonoBehaviour {
         string filePath = Application.persistentDataPath + fileName;
         //string filePath = fileName;
 
-        //Debug.Log(filePath);
+        Debug.Log(filePath);
 
         if (File.Exists(filePath))
         {
@@ -93,7 +97,8 @@ public class TreeManager : MonoBehaviour {
                 growTimers = new float[TreesInWorld.Count],
                 timeToGrows = new float[TreesInWorld.Count],
                 worldIds = new int[TreesInWorld.Count],
-                potIds = new int[TreesInWorld.Count]
+                potIds = new int[TreesInWorld.Count],
+                potLvls = new int[TreesInWorld.Count]
             };
 
             int i = 0;
@@ -105,6 +110,7 @@ public class TreeManager : MonoBehaviour {
                 jsonTrees.timeToGrows[i] = TS.timeToGrow;
                 jsonTrees.worldIds[i] = tree.transform.parent.GetComponentInParent<IslandScript>().islandID;
                 jsonTrees.potIds[i] = tree.transform.GetComponentInParent<PlantPot>().potID;
+                jsonTrees.potLvls[i] = tree.transform.GetComponentInParent<PlantPot>().potLevel;
                 i++;
             }
 
