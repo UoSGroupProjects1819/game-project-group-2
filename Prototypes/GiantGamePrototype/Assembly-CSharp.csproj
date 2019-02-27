@@ -61,10 +61,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\ChestScript.cs" />
     <Compile Include="Assets\Scripts\AdvertManager.cs" />
     <Compile Include="Assets\Scripts\BulletinBoardScript.cs" />
     <Compile Include="Assets\Scripts\CameraControl.cs" />
-    <Compile Include="Assets\Scripts\ChestScript.cs" />
     <Compile Include="Assets\Scripts\CreatureScript.cs" />
     <Compile Include="Assets\Scripts\DayNightCycle.cs" />
     <Compile Include="Assets\Scripts\EggScript.cs" />
