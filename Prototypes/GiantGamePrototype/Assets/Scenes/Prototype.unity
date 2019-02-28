@@ -4239,11 +4239,11 @@ MonoBehaviour:
   breedingResults:
   - creature1: Blue
     creature2: Red
-    EggToSpawn: {fileID: 1138276342761574, guid: 8349d9a1f903a6542a93747045a4e156,
+    EggToSpawn: {fileID: 1532342973861800, guid: 1e90e4b7f51cbe449b23459d991fcee3,
       type: 3}
   - creature1: Blue
     creature2: Yellow
-    EggToSpawn: {fileID: 1138276342761574, guid: 8349d9a1f903a6542a93747045a4e156,
+    EggToSpawn: {fileID: 1532342973861800, guid: a6e33581ebac803448cf114985c25fd1,
       type: 3}
   - creature1: Blue
     creature2: Blue
@@ -4255,7 +4255,7 @@ MonoBehaviour:
       type: 3}
   - creature1: Red
     creature2: Yellow
-    EggToSpawn: {fileID: 1532342973861800, guid: a6e33581ebac803448cf114985c25fd1,
+    EggToSpawn: {fileID: 1138276342761574, guid: 8349d9a1f903a6542a93747045a4e156,
       type: 3}
   - creature1: Yellow
     creature2: Yellow
@@ -4613,7 +4613,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &495300894
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5305,7 +5305,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &545074810
 RectTransform:
   m_ObjectHideFlags: 0
@@ -17595,12 +17595,12 @@ PrefabInstance:
     - target: {fileID: 5404551495904558442, guid: cabb47c1035dd0e4b82c6f03ae1f3843,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 17.265
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5404551495904558442, guid: cabb47c1035dd0e4b82c6f03ae1f3843,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -24.931
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5404551495904558442, guid: cabb47c1035dd0e4b82c6f03ae1f3843,
         type: 3}
@@ -17620,7 +17620,7 @@ PrefabInstance:
     - target: {fileID: 5404551495904558442, guid: cabb47c1035dd0e4b82c6f03ae1f3843,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5404551495904558442, guid: cabb47c1035dd0e4b82c6f03ae1f3843,
         type: 3}
@@ -17630,7 +17630,7 @@ PrefabInstance:
     - target: {fileID: 5404551495904558442, guid: cabb47c1035dd0e4b82c6f03ae1f3843,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5404551495904558442, guid: cabb47c1035dd0e4b82c6f03ae1f3843,
         type: 3}
