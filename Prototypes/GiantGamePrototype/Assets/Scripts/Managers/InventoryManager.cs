@@ -4,6 +4,7 @@ using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 #region InventoryClasses
 
@@ -52,6 +53,7 @@ public class Chest
 public class ChestItem
 {
     public string name;
+    public int amount;
     public float weight;
 }
 
@@ -119,6 +121,9 @@ public class JsonInventory
     public string[] seeds;
     public int[] seedAmts;
 
+    public string[] chests;
+    public int[] chestAmts;
+
     public string[] fruits0;
     public int[] fruitAmts0;
 
@@ -183,7 +188,7 @@ public class InventoryManager : MonoBehaviour
     {
         LoadInventory();
         StartCoroutine(AutoSaveInventory());
-
+        UpdateChestUI();
         if(PlayerPrefs.GetInt("FirstOpen") == 0)
         {
             FirstOpen();
@@ -222,6 +227,8 @@ public class InventoryManager : MonoBehaviour
                 eggAmts = new int[inventory.eggs.Count],
                 seeds = new string[inventory.seeds.Count],
                 seedAmts = new int[inventory.seeds.Count],
+                chests = new string[inventory.chests.Count],
+                chestAmts = new int[inventory.chests.Count],
                 fruits0 = new string[inventory.islands[0].fruitInStorage.Count],
                 fruitAmts0 = new int[inventory.islands[0].fruitInStorage.Count],
                 fruits1 = new string[inventory.islands[1].fruitInStorage.Count],
@@ -242,6 +249,12 @@ public class InventoryManager : MonoBehaviour
             {
                 jsonInventory.seeds[i] = inventory.seeds[i].name;
                 jsonInventory.seedAmts[i] = inventory.seeds[i].amt;
+            }
+
+            for (int i = 0; i < jsonInventory.chests.Length; i++)
+            {
+                jsonInventory.chests[i] = inventory.chests[i].name;
+                jsonInventory.chestAmts[i] = inventory.chests[i].amt;
             }
 
             for (int i = 0; i < inventory.islands[0].fruitInStorage.Count; i++)
@@ -289,7 +302,8 @@ public class InventoryManager : MonoBehaviour
             Inventory newInventory = new Inventory() {
                 eggs = new List<EggInInventory>(),
                 seeds = new List<SeedInInventory>(),
-                islands = new List<IslandStorage>()
+                islands = new List<IslandStorage>(),
+                chests = new List<ChestInInventory>()
             };
 
             newInventory.currency = jsonInventory.currencyAmt;
@@ -314,6 +328,15 @@ public class InventoryManager : MonoBehaviour
                 newInventory.seeds.Add(newSeed);
             }
 
+            for (int i = 0; i < jsonInventory.chests.Length; i++)
+            {
+                ChestInInventory newChest = new ChestInInventory()
+                {
+                    name = jsonInventory.chests[i],
+                    amt = jsonInventory.chestAmts[i]
+                };
+                newInventory.chests.Add(newChest);
+            }
 
             IslandStorage newStorage = new IslandStorage() {
                 fruitInStorage = new List<FruitInInventory>()
@@ -458,6 +481,21 @@ public class InventoryManager : MonoBehaviour
         return null;
     }
 
+    public Chest FindChest(string chestToFind)
+    {
+        foreach (Chest chest in chests)
+        {
+            if (chest.name == chestToFind)
+            {
+                return chest;
+            }
+        }
+
+        Debug.Log("Couldnt find egg");
+
+        return null;
+    }
+
     public void UpdateEggUI(GameObject eggButtonPanel)
     {
         foreach (Transform item in eggButtonPanel.transform)
@@ -542,6 +580,62 @@ public class InventoryManager : MonoBehaviour
         }
         Debug.Log("Couldnt find fruit " + fruitType);
         return null;
+    }
+
+    public ChestInInventory FindChestInInventory(string chestName)
+    {
+        foreach (var item in inventory.chests)
+        {
+            if (item.name == chestName)
+            {
+                return item;
+            }
+        }
+        Debug.Log("Couldnt find Chest " + chestName);
+        return null;
+    }
+
+    [Header("Chests")]
+    public GameObject ChestCounter;
+    public GameObject ChestSlider;
+    public GameObject NochestText;
+    public GameObject ChestPrefab;
+
+    public void UpdateChestUI()
+    {
+        if(inventory.chests.Count > 0)
+        {
+            
+
+            int chestAmt = 0;
+            foreach (var item in inventory.chests)
+            {
+                chestAmt += item.amt;
+            }
+            ChestCounter.GetComponentInChildren<TextMeshProUGUI>().text = chestAmt.ToString();
+            ChestCounter.SetActive(true);
+
+
+            NochestText.SetActive(false);
+            ChestSlider.SetActive(true);
+
+            for (int i = 0; i < ChestSlider.transform.childCount; i++)
+            {
+                Destroy(ChestSlider.transform.GetChild(i).gameObject);
+            }
+
+            foreach (var chest in inventory.chests)
+            {
+                GameObject newChest = Instantiate(ChestPrefab, ChestSlider.transform);
+                newChest.GetComponent<ChestButton>().SetUpChest(FindChest(chest.name), chest.amt);
+            }
+        }
+        else
+        {
+            ChestCounter.SetActive(false);
+            NochestText.SetActive(true);
+            ChestSlider.SetActive(false);
+        }
     }
 
     public void AddSeed(SeedInInventory seed)
@@ -675,6 +769,34 @@ public class InventoryManager : MonoBehaviour
         SaveInventory();
     }
 
+    public void AddChest(string chest)
+    {
+        bool isNewChest = true;
+        for (int i = 0; i < inventory.chests.Count; i++)
+        {
+            if (inventory.chests[i].name == chest)
+            {
+                isNewChest = false;
+                ChestInInventory chestToEdit = inventory.chests[i];
+                chestToEdit.amt += 1;
+                inventory.chests[i] = chestToEdit;
+                Debug.Log("Added");
+                break;
+            }
+        }
+
+        if (isNewChest)
+        {
+            ChestInInventory newChest = new ChestInInventory();
+            newChest.amt = 1;
+            newChest.name = chest;
+            inventory.chests.Add(newChest);
+            Debug.Log("Added");
+        }
+        UpdateChestUI();
+        SaveInventory();
+    }
+
     public void RemoveSeed(SeedInInventory seed)
     {
         for (int i = 0; i < inventory.seeds.Count; i++)
@@ -791,6 +913,32 @@ public class InventoryManager : MonoBehaviour
             }
         }
 
+        SaveInventory();
+    }
+
+    public void RemoveChest(string chest)
+    {
+        for (int i = 0; i < inventory.seeds.Count; i++)
+        {
+            ChestInInventory chestToEdit = new ChestInInventory();
+            if (inventory.chests[i].name == chest)
+            {
+                chestToEdit = inventory.chests[i];
+
+                chestToEdit.amt -= 1;
+                inventory.chests.RemoveAt(i);
+                if (chestToEdit.amt > 0)
+                {
+                    inventory.chests.Insert(i, chestToEdit);
+                }
+                Debug.Log("Removed chest: " + chest);
+                UpdateChestUI();
+                SaveInventory();
+                return;
+            }
+        }
+        Debug.Log("Couldn't remove chest: " + chest);
+        UpdateChestUI();
         SaveInventory();
     }
 

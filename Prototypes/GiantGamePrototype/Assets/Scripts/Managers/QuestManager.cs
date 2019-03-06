@@ -7,7 +7,7 @@ public class Quest
 {
     public string name;
     public Sprite questSprite;
-    public string minLevel;
+    public RequiredLevel[] minLevels;
     public float timeRequired;
     public string[] rewards;
 }
@@ -19,6 +19,12 @@ public class ActiveQuest
     public float elapsedTime;
 }
 
+[System.Serializable]
+public class RequiredLevel
+{
+    public string name;
+    public float amt;
+}
 
 public class QuestManager : MonoBehaviour
 {
@@ -49,6 +55,27 @@ public class QuestManager : MonoBehaviour
             quest.elapsedTime -= Time.deltaTime;
             if(quest.elapsedTime < 0)
             {
+                foreach (var reward in GetQuest(quest.name).rewards)
+                {
+                    Debug.Log("Trying to give the gift of a " + reward);
+                    if (InventoryManager.Instance.FindChest(reward) != null)
+                    {
+                        Debug.Log("Got This far");
+                        InventoryManager.Instance.AddChest(reward);
+                        InventoryManager.Instance.UpdateChestUI();
+                    }
+
+                    if (InventoryManager.Instance.FindSeed(reward) != null)
+                    {
+                        InventoryManager.Instance.AddSeed(reward);
+                    }
+
+                    if (InventoryManager.Instance.FindFruit(reward) != null)
+                    {
+                        InventoryManager.Instance.AddFruit(reward, WorldManager.Instance.SelectedIsland.GetComponent<IslandScript>().islandID);
+                    }
+                    Debug.Log("Gift given: " + reward);
+                }
                 activeQuests.Remove(quest);
                 UpdateQuests();
             }
@@ -66,7 +93,7 @@ public class QuestManager : MonoBehaviour
         {
             Quest currentQuest = GetQuest(quest.name);
             GameObject newQuest = Instantiate(questUIPrefab, questUIHolder);
-            newQuest.GetComponent<QuestScript>().SetupButton(currentQuest.name, currentQuest.questSprite, currentQuest.timeRequired);
+            newQuest.GetComponent<QuestScript>().SetupButton(currentQuest, quest.elapsedTime);
             newQuest.GetComponent<QuestScript>().DisableButton();
         }
 
@@ -74,7 +101,7 @@ public class QuestManager : MonoBehaviour
         {
             Quest currentQuest = GetQuest(quest);
             GameObject newQuest = Instantiate(questUIPrefab, questUIHolder);
-            newQuest.GetComponent<QuestScript>().SetupButton(currentQuest.name, currentQuest.questSprite, currentQuest.timeRequired);
+            newQuest.GetComponent<QuestScript>().SetupButton(currentQuest);
         }
     }
 

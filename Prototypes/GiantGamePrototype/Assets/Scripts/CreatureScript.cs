@@ -604,7 +604,7 @@ public class CreatureScript : MonoBehaviour {
         Camera.main.gameObject.GetComponent<CameraControl>().currentCameraPosition = CameraControl.CameraPositions.IslandView;
         // able to breed glow
         waitingForBreed = true;
-        TouchManager.Instance.targetCreature = this.gameObject;
+        TouchManager.Instance.targetSlime = this.gameObject;
     }
 
     public void Breed(GameObject newCreature)
@@ -628,7 +628,7 @@ public class CreatureScript : MonoBehaviour {
 
         breeding = false;
         creatureToBreedWith.GetComponent<CreatureScript>().breeding = false;
-        TouchManager.Instance.targetCreature = null;
+        TouchManager.Instance.targetSlime = null;
         Destroy(creatureToBreedWith.gameObject);
         Destroy(this.gameObject);
     }
