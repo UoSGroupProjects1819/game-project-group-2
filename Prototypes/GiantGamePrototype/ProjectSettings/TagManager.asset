@@ -21,6 +21,8 @@ TagManager:
   - Egg
   - Seed
   - PlantPot
+  - ChestOpenScreen
+  - ChestInventoryScreen
   layers:
   - Default
   - TransparentFX
