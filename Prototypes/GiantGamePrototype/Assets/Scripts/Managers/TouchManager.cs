@@ -181,6 +181,8 @@ public class TouchManager : MonoBehaviour {
 
     void Pinch(Vector2 dragAmt, float pinchAmt)
     {
+        if (TutorialManager.Instance.TutorialActive) { return; }
+
         Debug.Log("Pinching: drag " + dragAmt + ", Pinch " + pinchAmt);
         if (WorldManager.Instance.selecting) { return; }
 
@@ -209,6 +211,12 @@ public class TouchManager : MonoBehaviour {
 
     void ReleaseDrag(Vector2 touchPos)
     {
+        if (TutorialManager.Instance.TutorialActive)
+        {
+            TutorialManager.Instance.CurrentTutorialItemDragReleased(touchPos);
+            return;
+        }
+
         if (seedBeingDragged != null)
         {
             RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(touchPos), Vector2.zero, 100 , layersExcludingSeed);
@@ -249,6 +257,12 @@ public class TouchManager : MonoBehaviour {
 
     void TouchDrag(Vector2 touchPos)
     {
+        if (TutorialManager.Instance.TutorialActive)
+        {
+            TutorialManager.Instance.CurrentTutorialItemDrag(touchPos);
+            return;
+        }
+
         if (seedBeingDragged != null)
         {
             RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(touchPos), Vector2.zero);
@@ -306,6 +320,12 @@ public class TouchManager : MonoBehaviour {
     void SingleTap(Vector2 touchPos)
     {
         RaycastHit2D hit;
+
+        if (TutorialManager.Instance.TutorialActive)
+        {
+            TutorialManager.Instance.CurrentTutorialItemTapped(touchPos);
+            return;
+        }
 
         if (WorldManager.Instance.selecting)
         {
