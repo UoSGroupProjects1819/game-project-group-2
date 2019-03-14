@@ -55,7 +55,7 @@ public class FruitScript : MonoBehaviour {
             targetCreature.GetComponent<CreatureScript>().EatFruit(10, fruitType, majorStatToIncrease, minorStatToIncrease);
             targetCreature.GetComponent<CreatureScript>().eating = true;
             this.transform.parent = targetCreature.transform;
-            this.transform.localPosition = new Vector2(0, -0.1f);
+            this.transform.localPosition = new Vector2(0.05f, 0f);
             creatureToFeed.GetComponent<CreatureScript>().targetFruit = null;
             InventoryManager.Instance.UpdateFruitButtons(WorldManager.Instance.SelectedIsland.GetComponent<IslandScript>().islandID);
             beingEaten = true;

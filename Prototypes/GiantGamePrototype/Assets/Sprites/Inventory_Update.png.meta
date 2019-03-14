@@ -3,6 +3,7 @@ guid: c11cf8395f2e18a428df5bf6ffcdc677
 TextureImporter:
   fileIDToRecycleName:
     21300000: Inventory
+    21300002: WideButton
   externalObjects: {}
   serializedVersion: 9
   mipmaps:
@@ -126,13 +127,33 @@ TextureImporter:
         width: 650
         height: 250
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
       spriteID: df899598aed7f8849b4aab885df3642e
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WideButton
+      rect:
+        serializedVersion: 2
+        x: 111
+        y: 610
+        width: 232
+        height: 88
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 36a743afe3c810e45bc195d0e80122a8
       vertices: []
       indices: 
       edges: []

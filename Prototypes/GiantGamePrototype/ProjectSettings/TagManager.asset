@@ -23,6 +23,7 @@ TagManager:
   - PlantPot
   - ChestOpenScreen
   - ChestInventoryScreen
+  - BulletinBoard
   layers:
   - Default
   - TransparentFX
@@ -47,7 +48,7 @@ TagManager:
   - Blurred
   - WorldSelectCollider
   - Pot
-  - 
+  - BulletinBoard
   - 
   - 
   - 

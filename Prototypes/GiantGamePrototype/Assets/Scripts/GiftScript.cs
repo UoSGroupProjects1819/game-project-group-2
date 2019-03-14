@@ -12,6 +12,8 @@ public class GiftScript : MonoBehaviour {
 
     InventoryManager IM;
 
+    bool alreadyTapped = false;
+
     int AmtGiven;
     int TypeGiven;
 
@@ -22,6 +24,8 @@ public class GiftScript : MonoBehaviour {
 
     public void Touched()
     {
+        if (alreadyTapped) { return; }
+        alreadyTapped = true;
         AmtGiven = Random.Range(2, 4);
         TypeGiven = Random.Range(0, IM.seeds.Length);
 

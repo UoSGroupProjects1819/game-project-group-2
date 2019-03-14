@@ -53,14 +53,14 @@ public class QuestManager : MonoBehaviour
         foreach (var quest in activeQuests)
         {
             quest.elapsedTime -= Time.deltaTime;
-            if(quest.elapsedTime < 0)
+            if (quest.elapsedTime < 0)
             {
                 foreach (var reward in GetQuest(quest.name).rewards)
                 {
-                    Debug.Log("Trying to give the gift of a " + reward);
+                    //Debug.Log("Trying to give the gift of a " + reward);
                     if (InventoryManager.Instance.FindChest(reward) != null)
                     {
-                        Debug.Log("Got This far");
+                        //Debug.Log("Got This far");
                         InventoryManager.Instance.AddChest(reward);
                         InventoryManager.Instance.UpdateChestUI();
                     }
@@ -74,7 +74,7 @@ public class QuestManager : MonoBehaviour
                     {
                         InventoryManager.Instance.AddFruit(reward, WorldManager.Instance.SelectedIsland.GetComponent<IslandScript>().islandID);
                     }
-                    Debug.Log("Gift given: " + reward);
+                    //Debug.Log("Gift given: " + reward);
                 }
                 activeQuests.Remove(quest);
                 UpdateQuests();
@@ -84,13 +84,22 @@ public class QuestManager : MonoBehaviour
 
     private void UpdateQuests()
     {
+        List<string> names = new List<string>();
         foreach (Transform quest in questUIHolder)
         {
-            Destroy(quest.gameObject);
+            if (quest.gameObject.GetComponent<QuestScript>().timeLeft <= 1)
+            {
+                Destroy(quest.gameObject);
+            }
+            else
+            {
+                names.Add(quest.GetComponent<QuestScript>().thisQuest.name);
+            }
         }
 
         foreach (var quest in activeQuests)
         {
+            if (names.Contains(quest.name)) { continue; }
             Quest currentQuest = GetQuest(quest.name);
             GameObject newQuest = Instantiate(questUIPrefab, questUIHolder);
             newQuest.GetComponent<QuestScript>().SetupButton(currentQuest, quest.elapsedTime);
@@ -99,6 +108,12 @@ public class QuestManager : MonoBehaviour
 
         foreach (var quest in availableQuests)
         {
+            foreach (var var in names)
+            {
+                Debug.Log(var);
+            }
+            Debug.Log("questname Is " + quest);
+            if (names.Contains(quest)) { continue; }
             Quest currentQuest = GetQuest(quest);
             GameObject newQuest = Instantiate(questUIPrefab, questUIHolder);
             newQuest.GetComponent<QuestScript>().SetupButton(currentQuest);
@@ -109,7 +124,7 @@ public class QuestManager : MonoBehaviour
     {
         foreach (var quest in quests)
         {
-            if(quest.name == name)
+            if (quest.name == name)
             {
                 return quest;
             }

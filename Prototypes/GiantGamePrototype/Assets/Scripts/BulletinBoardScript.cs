@@ -8,9 +8,11 @@ public class BulletinBoardScript : MonoBehaviour
     public static BulletinBoardScript Instance;
 
     public bool inUse = false;
-    bool resetCamera = false;
 
     public GameObject ActivateButton;
+
+    public Transform SlimeHolder;
+    public GameObject CurrentSlime;
 
     private void Awake()
     {
@@ -26,20 +28,9 @@ public class BulletinBoardScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (inUse)
+        if (!inUse)
         {
-            Camera.main.GetComponent<CameraControl>().currentCameraPosition = CameraControl.CameraPositions.Dynamic;
-            Camera.main.GetComponent<CameraControl>().DynamicOrtho = 0.4f;
-            Camera.main.GetComponent<CameraControl>().DynamicPosition = this.transform.position + (Vector3.back * 10);
-            resetCamera = false;
-        }
-        else
-        {
-            if (!resetCamera)
-            {
-                Camera.main.GetComponent<CameraControl>().currentCameraPosition = CameraControl.CameraPositions.IslandView;
-                resetCamera = true;
-            }
+            ActivateButton.SetActive(true);
         }
     }
 
@@ -47,5 +38,8 @@ public class BulletinBoardScript : MonoBehaviour
     {
         ActivateButton.SetActive(false);
         inUse = true;
+        Camera.main.GetComponent<CameraControl>().currentCameraPosition = CameraControl.CameraPositions.Dynamic;
+        Camera.main.GetComponent<CameraControl>().DynamicOrtho = 0.6f;
+        Camera.main.GetComponent<CameraControl>().DynamicPosition = this.transform.position + (Vector3.back * 10) + (Vector3.up * 0.175f);
     }
 }

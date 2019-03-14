@@ -16,10 +16,14 @@ public class QuestScript : MonoBehaviour
     public TextMeshProUGUI questLevel2;
     public TextMeshProUGUI questLevel3;
 
-    Quest thisQuest;
+    [HideInInspector]
+    public Quest thisQuest;
+
+    public GameObject questingSlime;
 
     float questTime;
-    float timeLeft;
+
+    public float timeLeft;
 
     bool active;
 
@@ -29,6 +33,11 @@ public class QuestScript : MonoBehaviour
         {
             timer.GetComponent<TextMeshProUGUI>().text = GetTimeFromSeconds(timeLeft);
             timeLeft -= Time.deltaTime;
+
+            if(timeLeft < 0f)
+            {
+                questingSlime.SetActive(true);
+            }
         }   
     }
 
@@ -67,6 +76,7 @@ public class QuestScript : MonoBehaviour
 
     public void SetupButton(Quest quest)
     {
+        thisQuest = quest;
         questSprite.sprite = quest.questSprite;
         questText.text = quest.name;
         questTime = quest.timeRequired;
@@ -89,6 +99,7 @@ public class QuestScript : MonoBehaviour
 
     public void SetupButton(Quest quest, float elapsed)
     {
+        thisQuest = quest;
         questSprite.sprite = quest.questSprite;
         questText.text = quest.name;
         questTime = quest.timeRequired;
@@ -111,10 +122,16 @@ public class QuestScript : MonoBehaviour
 
     public void Pressed()
     {
+        if (!BulletinBoardScript.Instance.inUse) { return; }
+        if(BulletinBoardScript.Instance.CurrentSlime == null) { return; }
         DisableButton();
         ActiveQuest newQuest = new ActiveQuest { name = questText.text, elapsedTime = questTime };
         QuestManager.instance.activeQuests.Add(newQuest);
         QuestManager.instance.availableQuests.Remove(questText.text);
+        questingSlime = BulletinBoardScript.Instance.CurrentSlime;
+        BulletinBoardScript.Instance.CurrentSlime = null;
+        questingSlime.GetComponent<CreatureScript>().WaitingForQuest = false;
+        questingSlime.SetActive(false);
     }
 
     public void DisableButton()

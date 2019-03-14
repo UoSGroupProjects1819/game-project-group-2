@@ -18,6 +18,7 @@ public class CameraControl : MonoBehaviour {
     }
 
     public CameraPositions currentCameraPosition;
+    public CameraPositions LastCameraPosition;
 
     public float speed;
     [Space(10)]
@@ -46,6 +47,9 @@ public class CameraControl : MonoBehaviour {
     public float panSpeed;
     public Vector2 minPanBound;
     public Vector2 maxPanBound;
+
+    float autoZoomSpeed = 0;
+    float autoMoveSpeed = 0;
 
     bool touchedSinceLock;
 
@@ -83,6 +87,8 @@ public class CameraControl : MonoBehaviour {
                 DynamicMoveCamera();
                 break;
         }
+
+        LastCameraPosition = currentCameraPosition;
     }
 
     public void SetWorldOffset( float newOffset)
@@ -95,7 +101,7 @@ public class CameraControl : MonoBehaviour {
 
     public void ScreenPinch(Vector2 dragAmt, float pinchAmt)
     {
-        if (InventoryManager.Instance.inventoryPanel.activeSelf) { return; }
+        if (InventoryManager.Instance.inventoryPanel.activeSelf) { InventoryManager.Instance.inventoryPanel.SetActive(false); }
         if (WorldManager.Instance.selecting) { return; }
 
         if (TM.touchesLastFrame == 2)
@@ -121,11 +127,11 @@ public class CameraControl : MonoBehaviour {
     {
         if (currentCameraPosition == CameraPositions.Dynamic || currentCameraPosition == CameraPositions.IslandView) { return; }
 
-        if (InventoryManager.Instance.inventoryPanel.activeSelf) { return; }
+        if (InventoryManager.Instance.inventoryPanel.activeSelf) { InventoryManager.Instance.inventoryPanel.SetActive(false); }
 
         if (TM.touchesLastFrame == 1)
         {
-            Vector2 panAmt = TM.lastSingleTouchPoint - touchPos;
+            Vector2 panAmt = (((TM.lastSingleTouchPoint - touchPos) / Screen.width) * 900);
 
             this.transform.position += new Vector3(panAmt.x, panAmt.y, 0) * panSpeed * thisCamera.orthographicSize;
             if (WorldManager.Instance.selecting)
@@ -146,15 +152,27 @@ public class CameraControl : MonoBehaviour {
 
     public void ResetCameraPosition()
     {
-        Debug.Log("Resetting");
-        this.transform.position = Vector3.MoveTowards(transform.position, lastFreeCameraPosition, Time.deltaTime * speed);
-        thisCamera.orthographicSize = Mathf.Lerp(thisCamera.orthographicSize, lastFreeCameraOrtho, Time.deltaTime * speed);
+        //Debug.Log("Resetting");
+
+        if (currentCameraPosition != LastCameraPosition)
+        {
+            autoMoveSpeed = Vector3.Distance(this.transform.position, lastFreeCameraPosition);
+            autoZoomSpeed = Mathf.Abs(thisCamera.orthographicSize - lastFreeCameraOrtho);
+        }
+
+        this.transform.position = Vector3.MoveTowards(transform.position, lastFreeCameraPosition, Time.deltaTime * autoMoveSpeed);
+        thisCamera.orthographicSize = Mathf.Lerp(thisCamera.orthographicSize, lastFreeCameraOrtho, Time.deltaTime * autoZoomSpeed);
     }
 
     public void MoveToIslandView()
     {
-        this.transform.position = Vector3.MoveTowards(transform.position, IslandViewPos + WorldManager.Instance.SelectedIsland.transform.position, Time.deltaTime * speed * 1f);
-        thisCamera.orthographicSize = Mathf.Lerp(thisCamera.orthographicSize, IslandViewOrtho, Time.deltaTime * speed);
+        if(currentCameraPosition != LastCameraPosition)
+        {
+            autoMoveSpeed = Vector3.Distance(this.transform.position, IslandViewPos);
+            autoZoomSpeed = Mathf.Abs(thisCamera.orthographicSize - IslandViewOrtho);
+        }
+        this.transform.position = Vector3.MoveTowards(transform.position, IslandViewPos + WorldManager.Instance.SelectedIsland.transform.position, Time.deltaTime * autoMoveSpeed * 1f);
+        thisCamera.orthographicSize = Mathf.MoveTowards(thisCamera.orthographicSize, IslandViewOrtho, Time.deltaTime * autoZoomSpeed * 1f);
         touchedSinceLock = false;
     }
 
@@ -167,8 +185,13 @@ public class CameraControl : MonoBehaviour {
 
     public void DynamicMoveCamera ()
     {
-        this.transform.position = Vector3.MoveTowards(transform.position, DynamicPosition, Time.deltaTime * speed * 1f);
-        thisCamera.orthographicSize = Mathf.Lerp(thisCamera.orthographicSize, DynamicOrtho, Time.deltaTime * speed);
+        if (currentCameraPosition != LastCameraPosition)
+        {
+            autoMoveSpeed = Vector3.Distance(this.transform.position, DynamicPosition);
+            autoZoomSpeed = Mathf.Abs(this.GetComponent<Camera>().orthographicSize - DynamicOrtho);
+        }
+        this.transform.position = Vector3.MoveTowards(transform.position, DynamicPosition, Time.deltaTime * autoMoveSpeed * 1f);
+        thisCamera.orthographicSize = Mathf.MoveTowards(thisCamera.orthographicSize, DynamicOrtho, Time.deltaTime * autoZoomSpeed * 1f);
         touchedSinceLock = false;
     }
 }

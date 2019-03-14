@@ -41,6 +41,7 @@ public class Meteor : MonoBehaviour {
     public void Tapped()
     {
         if(!canTap) { return; }
+        canTap = false;
         this.GetComponent<TrailRenderer>().enabled = false;
         Instantiate(GiftsToSpawn[Random.Range(0,GiftsToSpawn.Length-1)], this.transform.position, Quaternion.identity);
         this.GetComponent<Rigidbody2D>().angularVelocity = 0;

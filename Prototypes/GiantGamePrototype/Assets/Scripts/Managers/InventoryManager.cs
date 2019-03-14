@@ -459,7 +459,7 @@ public class InventoryManager : MonoBehaviour
         }
 
 
-        Debug.Log("Couldnt find seed");
+        //Debug.Log("Couldnt find seed");
 
         return null;
     }
@@ -470,13 +470,13 @@ public class InventoryManager : MonoBehaviour
         {
             if (fruit.name == fruitToFind)
             {
-                Debug.Log("Found fruit: " + fruit.name);
+                //Debug.Log("Found fruit: " + fruit.name);
                 return fruit;
             }
         }
 
 
-        Debug.Log("Couldnt find fruit");
+        //Debug.Log("Couldnt find fruit");
 
         return null;
     }
@@ -491,7 +491,7 @@ public class InventoryManager : MonoBehaviour
             }
         }
 
-        Debug.Log("Couldnt find egg");
+        //Debug.Log("Couldnt find egg");
 
         return null;
     }
@@ -673,7 +673,7 @@ public class InventoryManager : MonoBehaviour
                 SeedInInventory seedToEdit = inventory.seeds[i];
                 seedToEdit.amt += 1;
                 inventory.seeds[i] = seedToEdit;
-                Debug.Log("Added");
+                //Debug.Log("Added");
                 break;
             }
         }
@@ -780,7 +780,7 @@ public class InventoryManager : MonoBehaviour
                 ChestInInventory chestToEdit = inventory.chests[i];
                 chestToEdit.amt += 1;
                 inventory.chests[i] = chestToEdit;
-                Debug.Log("Added");
+                //Debug.Log("Added");
                 break;
             }
         }

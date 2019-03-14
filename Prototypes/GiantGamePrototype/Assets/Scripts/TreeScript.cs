@@ -99,10 +99,13 @@ public class TreeScript : MonoBehaviour {
 
         Debug.Log(currentFruit);
 
+                //Debug.Log("Fruit1");
         if (currentFruit.Count == 0)
         {
+                //Debug.Log("Fruit2");
             for (int i = 0; i < this.GetComponentInParent<PlantPot>().potLevel + 1; i++)
             {
+                //Debug.Log("Fruit3");
                 currentFruit.Add(Instantiate(fruitToSpawn, fruitSpawns[i].transform.position, Quaternion.identity, this.transform));
                 growTimer = 0;
             }

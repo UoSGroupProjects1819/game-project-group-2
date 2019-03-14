@@ -203,7 +203,7 @@ public class CreatureManager : MonoBehaviour {
                     Quaternion.identity, WorldManager.Instance.islands[jsonCreatures.worldIds[i]].transform
                 );
 
-                nextSpawnDepth += 0.05f;
+                nextSpawnDepth -= 0.05f;
 
                 creaturesInWorld.Add(newCreature);
                 WorldManager.Instance.islands[jsonCreatures.worldIds[i]].GetComponent<IslandScript>().currentCreaturePopulation++;

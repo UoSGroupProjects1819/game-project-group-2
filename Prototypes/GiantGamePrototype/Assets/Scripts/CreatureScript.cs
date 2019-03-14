@@ -52,6 +52,8 @@ public class CreatureScript : MonoBehaviour {
 
     public GameObject creatureToBreedWith;
 
+    public bool WaitingForQuest;
+
     [System.Serializable]
     public struct HappinessLevel
     {
@@ -118,8 +120,8 @@ public class CreatureScript : MonoBehaviour {
         starPanel = SM.StarPanel;
         happinessImage = SM.happinessImage;
 
-        Debug.Log("Spawn small pet");
-        size = 0.5f;
+        //Debug.Log("Spawn small pet");
+        size = 0.9f;
         gameObject.transform.localScale = new Vector2(size, size);
 
         if (generateStats)
@@ -197,11 +199,11 @@ public class CreatureScript : MonoBehaviour {
         ReduceHappiness();
         Movement();
         ReachForFruit();
-        GrowPet();
+        GrowSlime();
         if (SM.statsPanel.activeSelf && SM.targetCreature == this.gameObject)
         {
-            Camera.main.gameObject.GetComponent<CameraControl>().DynamicOrtho = 0.25f;
-            Camera.main.gameObject.GetComponent<CameraControl>().DynamicPosition = this.transform.position + new Vector3(0.2f, 0, -10);
+            Camera.main.gameObject.GetComponent<CameraControl>().DynamicOrtho = 0.4f;
+            Camera.main.gameObject.GetComponent<CameraControl>().DynamicPosition = this.transform.position + new Vector3(0.15f, 0.1f, -10);
         }
 
         if (Input.GetKeyDown(KeyCode.A)) { TestStatUpdate(); }
@@ -277,8 +279,9 @@ public class CreatureScript : MonoBehaviour {
 
     void Movement()
     {
-        if (eating) { RB.velocity = Vector3.zero; return; }
-        if (SM.targetCreature == this.gameObject) { return; }
+        if (eating) { Vector3 newVel = RB.velocity; newVel.x = 0; RB.velocity = newVel; return; }
+        if (SM.targetCreature == this.gameObject) { Vector3 newVel = RB.velocity; newVel.x = 0; RB.velocity = newVel; return; }
+        if (WaitingForQuest) { RB.velocity = Vector3.zero; }
         if (waitTime > 0 && !breeding)
         {
             waitTime -= Time.deltaTime;
@@ -287,6 +290,8 @@ public class CreatureScript : MonoBehaviour {
 
         if ((Vector2)this.transform.position != targetPoint)
         {
+            if (WaitingForQuest) { RB.velocity = Vector3.zero; RB.constraints = RigidbodyConstraints2D.FreezeAll; } else { RB.constraints = RigidbodyConstraints2D.FreezeRotation; }
+            if(RB.velocity.y != 0) { return; }
             //Debug.Log(this.transform.name + " IM moving to " + targetPoint);
             if (targetPoint.x > this.transform.position.x)
             {
@@ -569,8 +574,8 @@ public class CreatureScript : MonoBehaviour {
         currentHappinessLevel = highestLevel;
 
         happinessImage.sprite = currentHappinessLevel.sprite;
-        SM.breedNote.SetActive(currentHappinessLevel.canBreed);
-        face.sprite = currentHappinessLevel.faceSprite;
+        SM.breedNote.SetActive(currentHappinessLevel.canBreed && CreatureManager.Instance.creaturesInWorld.Count > 1);
+        //face.sprite = currentHappinessLevel.faceSprite;
         speedMultiplier = currentHappinessLevel.speedMultiplier;
     }
 
@@ -584,10 +589,12 @@ public class CreatureScript : MonoBehaviour {
         if (SM.statsPanel.activeSelf)
         {
             Camera.main.gameObject.GetComponent<CameraControl>().currentCameraPosition = CameraControl.CameraPositions.Dynamic;
+            SM.targetCreature = this.gameObject;
         }
         else
         {
             Camera.main.gameObject.GetComponent<CameraControl>().currentCameraPosition = CameraControl.CameraPositions.TouchControl;
+            SM.targetCreature = null;
         }
 
         Debug.Log(Analytics.CustomEvent("CreatureTapped", new Dictionary<string, object>
@@ -595,13 +602,13 @@ public class CreatureScript : MonoBehaviour {
             { "Happiness", happiness }
         }));
         
-        SM.targetCreature = this.gameObject;
         UpdateStatUI();
     }
 
     public void StartBreed()
     {
         Camera.main.gameObject.GetComponent<CameraControl>().currentCameraPosition = CameraControl.CameraPositions.IslandView;
+        IM.HUDPanel.SetActive(true);
         // able to breed glow
         waitingForBreed = true;
         TouchManager.Instance.targetSlime = this.gameObject;
@@ -611,7 +618,7 @@ public class CreatureScript : MonoBehaviour {
     {
         Camera.main.gameObject.GetComponent<CameraControl>().currentCameraPosition = CameraControl.CameraPositions.TouchControl;
         creatureToBreedWith = newCreature;
-        Vector2 newTargetPos = (this.transform.position + creatureToBreedWith.transform.position) / 2;
+        Vector2 newTargetPos = (this.transform.position + creatureToBreedWith.transform.position) / 2; 
         StatManager.Instance.targetCreature = null;
         Debug.Log(newTargetPos);
         targetPoint = newTargetPos;
@@ -621,16 +628,26 @@ public class CreatureScript : MonoBehaviour {
         Debug.Log("breeding");
     }
 
+    public void CancelBreed()
+    {
+        Camera.main.gameObject.GetComponent<CameraControl>().currentCameraPosition = CameraControl.CameraPositions.TouchControl;
+        waitingForBreed = false;
+        TouchManager.Instance.targetSlime = null;
+    }
+
     public void FinishBreed()
     {
-        GameObject eggToSpawn = CM.GetBreedingResult(this.type, creatureToBreedWith.GetComponent<CreatureScript>().type);
-        Instantiate(eggToSpawn, this.transform.position, Quaternion.identity, this.transform.parent);
+        GameObject SlimeToSpawn = CM.GetBreedingResult(this.type, creatureToBreedWith.GetComponent<CreatureScript>().type);
+        Instantiate(SlimeToSpawn, this.transform.position, Quaternion.identity, this.transform.parent);
 
         breeding = false;
         creatureToBreedWith.GetComponent<CreatureScript>().breeding = false;
         TouchManager.Instance.targetSlime = null;
+        CreatureManager.Instance.creaturesInWorld.Remove(creatureToBreedWith);
         Destroy(creatureToBreedWith.gameObject);
+        CreatureManager.Instance.creaturesInWorld.Remove(this.gameObject);
         Destroy(this.gameObject);
+        CreatureManager.Instance.SaveCreatures();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -643,9 +660,9 @@ public class CreatureScript : MonoBehaviour {
         }
     }
 
-    void GrowPet()
+    void GrowSlime()
     {
-        if (size < 2)
+        if (size < 1.3f)
         {
             size += Time.deltaTime * 0.01f;
             if(transform.localScale.x < 0)

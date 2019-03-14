@@ -8,6 +8,7 @@ public class TouchManager : MonoBehaviour {
 
     public LayerMask layersToTouch;
     public LayerMask layersExcludingSeed;
+    public LayerMask layersExcludingCreature;
     public LayerMask layersExcludingFruit;
     public LayerMask WorldSelectLayers;
 
@@ -181,8 +182,6 @@ public class TouchManager : MonoBehaviour {
 
     void Pinch(Vector2 dragAmt, float pinchAmt)
     {
-        if (TutorialManager.Instance.TutorialActive) { return; }
-
         Debug.Log("Pinching: drag " + dragAmt + ", Pinch " + pinchAmt);
         if (WorldManager.Instance.selecting) { return; }
 
@@ -201,22 +200,22 @@ public class TouchManager : MonoBehaviour {
             InventoryManager.Instance.HUDPanel.SetActive(true);
         }
 
-        if (pinchAmt > 0)
+        if (targetSlime != null && targetSlime.GetComponent<CreatureScript>().waitingForBreed)
+        {
+            targetSlime.GetComponent<CreatureScript>().CancelBreed();
+        }
+
+        //world switching commented out for demonstration purposes
+        /*if (pinchAmt > 0)
         {
             WorldManager.Instance.CheckZoom();
-        }
+        }*/
 
         Camera.main.GetComponent<CameraControl>().ScreenPinch(dragAmt, pinchAmt);
     }
 
     void ReleaseDrag(Vector2 touchPos)
     {
-        if (TutorialManager.Instance.TutorialActive)
-        {
-            TutorialManager.Instance.CurrentTutorialItemDragReleased(touchPos);
-            return;
-        }
-
         if (seedBeingDragged != null)
         {
             RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(touchPos), Vector2.zero, 100 , layersExcludingSeed);
@@ -232,7 +231,6 @@ public class TouchManager : MonoBehaviour {
                 InventoryManager.Instance.inventoryPanel.SetActive(true);
                 Debug.Log("Dropped seed on " + hit.transform.name);
             }
-            
         }
         else
         if (fruitBeingDragged != null)
@@ -253,16 +251,30 @@ public class TouchManager : MonoBehaviour {
             }
 
         }
+        else
+        if (slimeBeingDragged != null)
+        {
+            RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(touchPos), Vector2.zero, 100, layersExcludingCreature);
+            if (!hit) { return; }
+            Debug.Log(hit.collider.name);
+            if(hit.collider.tag == "BulletinBoard")
+            {
+                hit.collider.gameObject.GetComponent<BulletinBoardScript>().CurrentSlime = slimeBeingDragged;
+                slimeBeingDragged.transform.position = (Vector2)hit.collider.gameObject.GetComponent<BulletinBoardScript>().SlimeHolder.position;
+                hit.collider.gameObject.GetComponent<BulletinBoardScript>().Pressed();
+                slimeBeingDragged.GetComponent<CreatureScript>().WaitingForQuest = true;
+                slimeBeingDragged = null;
+            }
+            else
+            {
+                slimeBeingDragged = null;
+                Camera.main.gameObject.GetComponent<CameraControl>().currentCameraPosition = CameraControl.CameraPositions.TouchControl;
+            }
+        }
     }
 
     void TouchDrag(Vector2 touchPos)
     {
-        if (TutorialManager.Instance.TutorialActive)
-        {
-            TutorialManager.Instance.CurrentTutorialItemDrag(touchPos);
-            return;
-        }
-
         if (seedBeingDragged != null)
         {
             RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(touchPos), Vector2.zero);
@@ -270,7 +282,6 @@ public class TouchManager : MonoBehaviour {
             {
                 seedBeingDragged.GetComponent<SeedScript>().Dragging(hit.point);
             }
-
         }
         else
         if (fruitBeingDragged != null)
@@ -281,12 +292,13 @@ public class TouchManager : MonoBehaviour {
                 fruitBeingDragged.GetComponent<FruitScript>().Dragging(hit.point);
             }
         }
+        else
         if(slimeBeingDragged != null)
         {
             RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(touchPos), Vector2.zero);
             if (hit)
             {
-                slimeBeingDragged.GetComponent<FruitScript>().Dragging(hit.point);
+                slimeBeingDragged.transform.position = hit.point;
             }
         }
         else
@@ -296,21 +308,33 @@ public class TouchManager : MonoBehaviour {
                 StatManager.Instance.statsPanel.SetActive(!StatManager.Instance.statsPanel.activeSelf);
                 Camera.main.gameObject.GetComponent<CameraControl>().currentCameraPosition = CameraControl.CameraPositions.TouchControl;
                 StatManager.Instance.targetCreature.GetComponent<CreatureScript>().UpdateStatUI();
-                StatManager.Instance.targetCreature = null;
+                StatManager.Instance.targetCreature = null;                
+            }
 
-                RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(touchPos), Vector2.zero);
-                if (hit && hit.collider.tag == "Creature")
+            RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(touchPos), Vector2.zero, 100, layersToTouch);
+            if (hit && hit.collider.tag == "Creature")
+            {
+
+                slimeBeingDragged = hit.collider.gameObject;
+                slimeBeingDragged.transform.position = hit.point;
+                Camera.main.gameObject.GetComponent<CameraControl>().currentCameraPosition = CameraControl.CameraPositions.IslandView;
+                if (BulletinBoardScript.Instance.CurrentSlime == hit.collider.gameObject)
                 {
-                    slimeBeingDragged = hit.collider.gameObject;
-                    slimeBeingDragged.GetComponent<FruitScript>().Dragging(hit.point);
+                    slimeBeingDragged.GetComponent<CreatureScript>().WaitingForQuest = false;
+                    BulletinBoardScript.Instance.CurrentSlime = null;
                 }
             }
 
-            if (BulletinBoardScript.Instance.inUse)
+            if (BulletinBoardScript.Instance.inUse && hit.collider.tag != "BulletinBoard")
             {
                 BulletinBoardScript.Instance.ActivateButton.SetActive(true);
                 Camera.main.gameObject.GetComponent<CameraControl>().currentCameraPosition = CameraControl.CameraPositions.TouchControl;
                 InventoryManager.Instance.HUDPanel.SetActive(true);
+            }
+
+            if (targetSlime != null && targetSlime.GetComponent<CreatureScript>().waitingForBreed)
+            {
+                targetSlime.GetComponent<CreatureScript>().CancelBreed();
             }
 
             Camera.main.GetComponent<CameraControl>().ScreenDrag(touchPos);
@@ -320,12 +344,6 @@ public class TouchManager : MonoBehaviour {
     void SingleTap(Vector2 touchPos)
     {
         RaycastHit2D hit;
-
-        if (TutorialManager.Instance.TutorialActive)
-        {
-            TutorialManager.Instance.CurrentTutorialItemTapped(touchPos);
-            return;
-        }
 
         if (WorldManager.Instance.selecting)
         {
@@ -340,6 +358,11 @@ public class TouchManager : MonoBehaviour {
         Debug.Log("we hit" + hit.transform.name);
         if(hit == false) { return; }
 
+        if (hit.transform.tag == "BulletinBoard")
+        {
+            hit.transform.gameObject.GetComponent<BulletinBoardScript>().Pressed();
+        }
+        else
         if (hit.transform.tag == "Giant")
         {
             hit.transform.gameObject.GetComponent<GiantScript>().GiantTapped();
@@ -354,6 +377,10 @@ public class TouchManager : MonoBehaviour {
                     if (targetSlime.GetComponent<CreatureScript>().currentHappinessLevel.canBreed)
                     {
                         targetSlime.GetComponent<CreatureScript>().Breed(hit.transform.gameObject);
+                    }
+                    else
+                    {
+                        targetSlime.GetComponent<CreatureScript>().CancelBreed();
                     }
                 }
             }
