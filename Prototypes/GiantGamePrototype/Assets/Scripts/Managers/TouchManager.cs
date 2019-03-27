@@ -422,7 +422,10 @@ public class TouchManager : MonoBehaviour {
         }
         else
         {
-
+            if(seedBeingDragged != null)
+            {
+                Destroy(seedBeingDragged);
+            }
         }
     }
 }

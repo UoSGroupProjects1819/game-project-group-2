@@ -347,6 +347,8 @@ public class CreatureScript : MonoBehaviour {
                 }
             }
         }
+
+        this.transform.localPosition = new Vector3(Mathf.Clamp(this.transform.localPosition.x, -4.8f, 4.8f), this.transform.localPosition.y, this.transform.localPosition.z);
     }
 
     public void EatFruit(float amt, string fruit, string majorStatToIncrease, string minorStatToIncrease)
