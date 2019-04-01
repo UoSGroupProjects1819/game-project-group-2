@@ -1360,6 +1360,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minSpawnTime: 5
   maxSpawnTime: 10
+  canSpawn: 0
   meteorPrefab: {fileID: 1510741970639386, guid: 43474e316595c5c48b383211e3dac219,
     type: 3}
   offsetPos: {x: 0, y: 0, z: 0}
@@ -18512,6 +18513,7 @@ MonoBehaviour:
     m_Bits: 4096
   - serializedVersion: 2
     m_Bits: 524288
+  timeBeforeFreezeMeteor: 2.2
 --- !u!1001 &1933460563
 PrefabInstance:
   m_ObjectHideFlags: 0

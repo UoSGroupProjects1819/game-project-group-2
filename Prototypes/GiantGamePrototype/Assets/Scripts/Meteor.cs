@@ -30,6 +30,7 @@ public class Meteor : MonoBehaviour {
             Destroy(this.gameObject);
             //this.transform.position = StartPoint;
         }
+        this.GetComponent<Rigidbody2D>().velocity = (EndPoint - (Vector2)this.transform.position).normalized * speed;
 
         destroyTimer -= Time.deltaTime;
         if(destroyTimer <= 0)

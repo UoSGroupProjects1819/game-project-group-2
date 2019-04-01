@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class MeteorSpawner : MonoBehaviour {
 
+    public static MeteorSpawner instance;
+
     public float minSpawnTime;
     public float maxSpawnTime;
+
+    public bool canSpawn = false;
 
     float spawnTimer;
 
@@ -13,15 +17,21 @@ public class MeteorSpawner : MonoBehaviour {
 
     public Vector3 offsetPos;
 
-	void Start () {
+    private void Awake()
+    {
+        instance = this;
+    }
+
+    void Start () {
         spawnTimer = Random.Range(minSpawnTime, maxSpawnTime);
 	}
 	
 	void Update () {
+        if (!canSpawn) { return; }
         spawnTimer -= Time.deltaTime;
         if(spawnTimer <= 0)
         {
-            Instantiate(meteorPrefab, this.transform.position, Quaternion.identity);
+            SpawnMeteor();
             spawnTimer = Random.Range(minSpawnTime, maxSpawnTime);
         }
 
@@ -30,4 +40,14 @@ public class MeteorSpawner : MonoBehaviour {
             this.transform.position = WorldManager.Instance.SelectedIsland.transform.position + offsetPos;
         }
 	}
+
+    public void SpawnMeteor()
+    {
+        Instantiate(meteorPrefab, this.transform.position, Quaternion.identity);
+    }
+
+    public void SpawnMeteor(out GameObject MeteorSpawned)
+    {
+        MeteorSpawned = Instantiate(meteorPrefab, this.transform.position, Quaternion.identity);
+    }
 }

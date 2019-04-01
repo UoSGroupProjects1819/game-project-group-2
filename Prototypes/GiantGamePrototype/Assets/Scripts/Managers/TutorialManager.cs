@@ -12,19 +12,68 @@ public class TutorialManager : MonoBehaviour
 
     public LayerMask[] layersForStages;
 
+    [Header ("Stage1")]
+    public float timeBeforeFreezeMeteor;
+    GameObject meteorFollowing;
+
     private void Awake()
     {
         Instance = this;
     }
 
-    /*void Update()
+    private void Start()
+    {
+        StartTutorialStage(0);
+    }
+
+    void Update()
     {
         if (!TutorialActive) { return; }
+        UpdateTutorialStage();
+    }
+
+    public void StartTutorialStage(int stageInt)
+    {
+        tutorialStage = stageInt;
+        switch (stageInt)
+        {
+            case 0:
+                //Meteor spawn
+                Debug.Log("Start Tutorial Stage 1");
+                MeteorSpawner.instance.SpawnMeteor(out meteorFollowing);
+                MeteorSpawner.instance.canSpawn = false;
+                break;
+
+            case 1:
+                Debug.Log("Start Tutorial Stage 2");
+                break;
+
+            case 2:
+                Debug.Log("Start Tutorial Stage 3");
+                break;
+
+            default:
+                TutorialActive = false;
+                break;
+        }
+
+    }
+
+    public void UpdateTutorialStage()
+    {
         switch (tutorialStage)
         {
             case 0:
-                //wait for giant tap
+                //Meteor spawn
                 Debug.Log("Tutorial Stage 1");
+                if(timeBeforeFreezeMeteor <= 0)
+                {
+                    meteorFollowing.GetComponent<Meteor>().speed = Mathf.MoveTowards(meteorFollowing.GetComponent<Meteor>().speed, 0, Time.deltaTime * 1f);
+                }
+                else
+                {
+                    timeBeforeFreezeMeteor -= Time.deltaTime;
+                }
                 break;
 
             case 1:
@@ -92,5 +141,5 @@ public class TutorialManager : MonoBehaviour
                 tutorialStage++;
                 break;
         }
-    }*/
+    }
 }
