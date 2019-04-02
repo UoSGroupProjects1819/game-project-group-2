@@ -74,12 +74,17 @@ public class TreeScript : MonoBehaviour {
 
             if (spawnDelay <= 0)
             {
+                if(TutorialManager.Instance.TutorialActive && TutorialManager.Instance.waitingForTree)
+                {
+                    TutorialManager.Instance.tutorialStage++;
+                    TutorialManager.Instance.StartTutorialStage(TutorialManager.Instance.tutorialStage);
+                }
                 canSpawnFruit = true;
             }
         }
     }
 
-    public void Touched()
+    public void Tapped()
     {
         if (IM.inventoryPanel.activeSelf) { return; }
 
@@ -97,16 +102,17 @@ public class TreeScript : MonoBehaviour {
     {
         if (!canSpawnFruit) { return; }
 
-        Debug.Log(currentFruit);
+        //Debug.Log(currentFruit);
 
-                //Debug.Log("Fruit1");
+                Debug.Log("Fruit1");
         if (currentFruit.Count == 0)
         {
-                //Debug.Log("Fruit2");
+                Debug.Log("Fruit2");
             for (int i = 0; i < this.GetComponentInParent<PlantPot>().potLevel + 1; i++)
             {
-                //Debug.Log("Fruit3");
+                Debug.Log("Fruit3");
                 currentFruit.Add(Instantiate(fruitToSpawn, fruitSpawns[i].transform.position, Quaternion.identity, this.transform));
+                Debug.Log("Fruit4");
                 growTimer = 0;
             }
         }

@@ -43,6 +43,7 @@ public class EggScript : MonoBehaviour {
             {
                 Instantiate(creatureToSpawn, new Vector3(transform.position.x, transform.position.y, CreatureManager.Instance.nextSpawnDepth), Quaternion.identity, WM.SelectedIsland.transform);
                 CreatureManager.Instance.nextSpawnDepth += 0.01f;
+                if (TutorialManager.Instance.TutorialActive && TutorialManager.Instance.waitingForEgg) { TutorialManager.Instance.tutorialStage++; TutorialManager.Instance.StartTutorialStage(TutorialManager.Instance.tutorialStage); }
                 Destroy(this.gameObject);
             }
         }

@@ -141,7 +141,8 @@ public class GiantScript : MonoBehaviour {
     {
         Destroy(currentHolding);
         currentHolding = Instantiate(newHolding, seedHolder.position, seedHolder.rotation, WM.SelectedIsland.transform);
-
+        currentHolding.GetComponentInChildren<SpriteRenderer>().sortingLayerName = "Giant";
+        Debug.Log(currentHolding.GetComponentInChildren<SpriteRenderer>().sortingLayerName);
         holding = true;
     }
 
@@ -159,7 +160,8 @@ public class GiantScript : MonoBehaviour {
         {
             currentHolding.GetComponent<EggScript>().eggType = type;
         }
-
+        currentHolding.GetComponentInChildren<SpriteRenderer>().sortingLayerName = "Giant";
+        Debug.Log(currentHolding.GetComponentInChildren<SpriteRenderer>().sortingLayerName);
         holding = true;
     }
 
@@ -178,19 +180,18 @@ public class GiantScript : MonoBehaviour {
 
     public void GoToPot(GameObject pot)
     {
-        if (pot.GetComponent<PlantPot>().treeInPot != null || currentHolding == null) { return; }
+        if (pot.GetComponent<PlantPot>().potLevel >= 2 || currentHolding == null) { return; }
 
 
         if (currentHolding.GetComponent<SeedScript>() == null) { return; }
-
+        
         targetPoint = pot.transform.position;
         targetObject = pot;
     }
 
     public void PlaceSeedInPot(GameObject pot)
     {
-        if (currentHolding == null) { return; }
-        if (currentHolding.tag == "Seed")
+        if (currentHolding.tag == "Seed" && pot.GetComponent<PlantPot>().treeInPot == null)
         {
             IM.RemoveSeed(currentHolding.GetComponent<SeedScript>().seedType);
             WorldManager.Instance.SelectedIsland.GetComponent<IslandScript>().currentTreePopulation++;
@@ -202,9 +203,30 @@ public class GiantScript : MonoBehaviour {
             currentHolding.GetComponent<SeedScript>().readyToSpawn = true;
             currentHolding.GetComponentInChildren<SpriteRenderer>().sortingOrder = 2;
             targetObject = null;
-
+            currentHolding.GetComponentInChildren<SpriteRenderer>().sortingLayerName = "Default";
+            Debug.Log(currentHolding.GetComponentInChildren<SpriteRenderer>().sortingLayerName);
             holding = false;
             currentHolding = null;
+        }
+        else
+        {
+            if (pot.GetComponent<PlantPot>().potLevel < 2)
+            {
+                Debug.Log("Dropped Seed In Pot for upgrade");
+                InventoryManager.Instance.RemoveSeed(currentHolding.GetComponent<SeedScript>().seedType);
+                InventoryManager.Instance.UpdateSeedButtons();
+                pot.GetComponent<PlantPot>().UpgradePot();
+                InventoryManager.Instance.inventoryPanel.SetActive(true);
+                Destroy(currentHolding);
+                currentHolding = null;
+            }
+            else
+            {
+                Debug.Log("Dropped seed but no pot");
+                InventoryManager.Instance.inventoryPanel.SetActive(true);
+                Destroy(currentHolding);
+                currentHolding = null;
+            }
         }
     }
 

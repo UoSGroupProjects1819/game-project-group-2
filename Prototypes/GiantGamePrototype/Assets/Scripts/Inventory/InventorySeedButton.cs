@@ -48,6 +48,7 @@ public class InventorySeedButton : MonoBehaviour {
 
     public void SpawnSeed()
     {
+        if(TutorialManager.Instance.TutorialActive && TutorialManager.Instance.waitingForSeed) { TutorialManager.Instance.tutorialStage++; }
         GameObject Giant = GameObject.FindGameObjectWithTag("Giant");
 
         if (Giant.GetComponent<GiantScript>().currentHolding != null)

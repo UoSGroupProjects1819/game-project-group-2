@@ -399,6 +399,7 @@ public class InventoryManager : MonoBehaviour
             File.Delete(filePath);
             TreeManager.Instance.ResetSave();
             CreatureManager.Instance.ResetSave();
+            PlayerPrefs.SetInt("PlayTutorial", 0);
             SceneManager.LoadScene(0);
         }
     }
