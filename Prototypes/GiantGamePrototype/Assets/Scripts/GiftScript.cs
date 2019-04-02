@@ -22,7 +22,7 @@ public class GiftScript : MonoBehaviour {
         IM = InventoryManager.Instance;
     }
 
-    public void Touched()
+    public void Tapped()
     {
         if (alreadyTapped) { return; }
         alreadyTapped = true;

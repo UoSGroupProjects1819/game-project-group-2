@@ -216,6 +216,12 @@ public class TouchManager : MonoBehaviour {
 
     void ReleaseDrag(Vector2 touchPos)
     {
+        if (TutorialManager.Instance.TutorialActive)
+        {
+            TutorialManager.Instance.CurrentTutorialItemDragReleased(touchPos);
+            return;
+        }
+
         if (seedBeingDragged != null)
         {
             RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(touchPos), Vector2.zero, 100 , layersExcludingSeed);
@@ -275,6 +281,12 @@ public class TouchManager : MonoBehaviour {
 
     void TouchDrag(Vector2 touchPos)
     {
+        if (TutorialManager.Instance.TutorialActive)
+        {
+            TutorialManager.Instance.CurrentTutorialItemDrag(touchPos);
+            return;
+        }
+
         if (seedBeingDragged != null)
         {
             RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(touchPos), Vector2.zero);
@@ -343,6 +355,12 @@ public class TouchManager : MonoBehaviour {
 
     void SingleTap(Vector2 touchPos)
     {
+        if (TutorialManager.Instance.TutorialActive)
+        {
+            TutorialManager.Instance.CurrentTutorialItemTapped(touchPos);
+            return;
+        }
+
         RaycastHit2D hit;
 
         if (WorldManager.Instance.selecting)
@@ -393,7 +411,7 @@ public class TouchManager : MonoBehaviour {
         if (hit.transform.tag == "Tree")
         {
             Debug.Log("TouchedTree");
-            hit.transform.gameObject.GetComponent<TreeScript>().Touched();
+            hit.transform.gameObject.GetComponent<TreeScript>().Tapped();
         }
         /*else
         if (hit.transform.tag == "TappableArea")
@@ -406,9 +424,14 @@ public class TouchManager : MonoBehaviour {
             hit.transform.GetComponent<Meteor>().Tapped();
         }
         else
+        if (hit.transform.tag == "Pot")
+        {
+            GiantScript.Instance.GoToPot(hit.transform.gameObject);
+        }
+        else
         if (hit.transform.tag == "Gift")
         {
-            hit.transform.GetComponent<GiftScript>().Touched();
+            hit.transform.GetComponent<GiftScript>().Tapped();
         }
         else
         if (hit.transform.tag == "PlantPot")
