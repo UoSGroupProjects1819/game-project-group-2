@@ -1,0 +1,6 @@
+Dragging slimes onto the quest board is really difficult
+
+Once you have dragged a slime onto a quest, you can no longer drag fruit to feed a slime
+
+When you zoom out if you have not clicked on a meteor, it stays on the screen floating next to the island
+
