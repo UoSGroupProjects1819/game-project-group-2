@@ -46,17 +46,17 @@ public class TouchManager : MonoBehaviour {
         {
             GiantScript.Instance.gameObject.GetComponent<InteractionGlowScript>().glow = false;
         }
-        //KeyboardControl();
+        KeyboardControl();
         GetTouch();
 	}
 
     //Keyboard controls that will be used for testing the app
     void KeyboardControl()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        /*if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             SingleTap(Input.mousePosition);
-        }
+        }*/
 
         if (Input.GetAxis("Mouse ScrollWheel") != 0)
         {
@@ -67,35 +67,35 @@ public class TouchManager : MonoBehaviour {
             touchesLastFrame = 0;
         }
 
-        if (Input.GetKey(KeyCode.UpArrow))
+        if (Input.GetKey(KeyCode.UpArrow)) 
         {
             touchesLastFrame = 1;
-            TouchDrag(lastSingleTouchPoint + new Vector2(0, -5));
-            lastSingleTouchPoint = lastSingleTouchPoint + new Vector2(0, -5);
+            TouchDrag(lastSingleTouchPoint + new Vector2(0, -10));
+            lastSingleTouchPoint = lastSingleTouchPoint + new Vector2(0, -10);
             touchesLastFrame = 0;
         }
 
         if (Input.GetKey(KeyCode.DownArrow))
         {
             touchesLastFrame = 1;
-            TouchDrag(lastSingleTouchPoint + new Vector2(0, 5));
-            lastSingleTouchPoint = lastSingleTouchPoint + new Vector2(0, 5);
+            TouchDrag(lastSingleTouchPoint + new Vector2(0, 10));
+            lastSingleTouchPoint = lastSingleTouchPoint + new Vector2(0, 10);
             touchesLastFrame = 0;
         }
 
         if (Input.GetKey(KeyCode.LeftArrow))
         {
             touchesLastFrame = 1;
-            TouchDrag(lastSingleTouchPoint + new Vector2(5,0));
-            lastSingleTouchPoint = lastSingleTouchPoint + new Vector2(5, 0);
+            TouchDrag(lastSingleTouchPoint + new Vector2(10, 0));
+            lastSingleTouchPoint = lastSingleTouchPoint + new Vector2(10, 0);
             touchesLastFrame = 0;
         }
 
         if (Input.GetKey(KeyCode.RightArrow))
         {
             touchesLastFrame = 1;
-            TouchDrag(lastSingleTouchPoint + new Vector2(-5, 0));
-            lastSingleTouchPoint = lastSingleTouchPoint + new Vector2(-5, 0);
+            TouchDrag(lastSingleTouchPoint + new Vector2(-10, 0));
+            lastSingleTouchPoint = lastSingleTouchPoint + new Vector2(-10, 0);
             touchesLastFrame = 0;
         }
     }
@@ -184,6 +184,11 @@ public class TouchManager : MonoBehaviour {
     {
         Debug.Log("Pinching: drag " + dragAmt + ", Pinch " + pinchAmt);
         if (WorldManager.Instance.selecting) { return; }
+
+        if (BulletinBoardScript.Instance.pickingSlime)
+        {
+            BulletinBoardScript.Instance.SetSlime(null);
+        }
 
         if (StatManager.Instance.statsPanel.activeSelf)
         {
@@ -281,6 +286,11 @@ public class TouchManager : MonoBehaviour {
 
     void TouchDrag(Vector2 touchPos)
     {
+        if (BulletinBoardScript.Instance.pickingSlime)
+        {
+            BulletinBoardScript.Instance.SetSlime(null);
+        }
+
         if (TutorialManager.Instance.TutorialActive)
         {
             TutorialManager.Instance.CurrentTutorialItemDrag(touchPos);
@@ -331,7 +341,7 @@ public class TouchManager : MonoBehaviour {
                 }
             }
 
-                RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(touchPos), Vector2.zero, 100, layersToTouch);
+            RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(touchPos), Vector2.zero, 100, layersToTouch);
             if (hit && hit.collider.tag == "Creature")
             {
 
@@ -384,6 +394,19 @@ public class TouchManager : MonoBehaviour {
         Debug.Log("we hit" + hit.transform.name);
         if(hit == false) { return; }
 
+        if (BulletinBoardScript.Instance.pickingSlime)
+        {
+            if(hit.transform.tag == "Creature")
+            {
+                BulletinBoardScript.Instance.SetSlime(hit.transform.gameObject);
+                return;
+            }
+            else
+            {
+                BulletinBoardScript.Instance.SetSlime(null);
+            }
+        }
+
         if (hit.transform.tag == "BulletinBoard")
         {
             hit.transform.gameObject.GetComponent<BulletinBoardScript>().Pressed();
@@ -421,11 +444,16 @@ public class TouchManager : MonoBehaviour {
             Debug.Log("TouchedTree");
             hit.transform.gameObject.GetComponent<TreeScript>().Tapped();
         }
-        /*else
+        else
         if (hit.transform.tag == "TappableArea")
         {
-            GiantScript.Instance.WorldTapped(hit.point);
-        }*/
+            if (BulletinBoardScript.Instance.inUse && hit.collider.tag != "BulletinBoard")
+            {
+                BulletinBoardScript.Instance.ActivateButton.SetActive(true);
+                Camera.main.gameObject.GetComponent<CameraControl>().currentCameraPosition = CameraControl.CameraPositions.TouchControl;
+                InventoryManager.Instance.HUDPanel.SetActive(true);
+            }
+        }
         else
         if (hit.transform.tag == "Meteor")
         {

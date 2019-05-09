@@ -599,10 +599,10 @@ public class CreatureScript : MonoBehaviour {
             SM.targetCreature = null;
         }
 
-        Debug.Log(Analytics.CustomEvent("CreatureTapped", new Dictionary<string, object>
+        /*Debug.Log(Analytics.CustomEvent("CreatureTapped", new Dictionary<string, object>
         {
             { "Happiness", happiness }
-        }));
+        }));*/
         
         UpdateStatUI();
     }

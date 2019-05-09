@@ -56,7 +56,7 @@ public class InventorySeedButton : MonoBehaviour {
             Destroy(Giant.GetComponent<GiantScript>().currentHolding);
             Giant.GetComponent<GiantScript>().currentHolding = null;
         }
-
+        Camera.main.gameObject.GetComponent<CameraControl>().currentCameraPosition = CameraControl.CameraPositions.IslandView;
         IslandScript island = WorldManager.Instance.SelectedIsland.GetComponent<IslandScript>();
 
         Giant.GetComponent<GiantScript>().SetCurrentHolding(IM.FindSeed(thisSeed.name).objectToSpawn, this.thisSeed.name);

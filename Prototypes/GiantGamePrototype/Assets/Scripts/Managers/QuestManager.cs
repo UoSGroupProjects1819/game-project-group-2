@@ -38,6 +38,7 @@ public class QuestManager : MonoBehaviour
     public Transform questUIHolder;
     public GameObject questUIPrefab;
 
+
     private void Awake()
     {
         instance = this;

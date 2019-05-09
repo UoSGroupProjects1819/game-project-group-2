@@ -14,6 +14,8 @@ public class BulletinBoardScript : MonoBehaviour
     public Transform SlimeHolder;
     public GameObject CurrentSlime;
 
+    public bool pickingSlime = false;
+
     private void Awake()
     {
         Instance = this;
@@ -41,5 +43,32 @@ public class BulletinBoardScript : MonoBehaviour
         Camera.main.GetComponent<CameraControl>().currentCameraPosition = CameraControl.CameraPositions.Dynamic;
         Camera.main.GetComponent<CameraControl>().DynamicOrtho = 0.6f;
         Camera.main.GetComponent<CameraControl>().DynamicPosition = this.transform.position + (Vector3.back * 10) + (Vector3.up * 0.175f);
+    }
+
+    public Image InstructionPanel;
+    public void ZoomForCreature()
+    {
+        pickingSlime = true;
+        ActivateButton.SetActive(false);
+        Camera.main.GetComponent<CameraControl>().currentCameraPosition = CameraControl.CameraPositions.IslandView;
+        InstructionPanel.gameObject.SetActive(true);
+        InstructionPanel.GetComponentInChildren<Text>().text = "Before you can start a quest, you have to pick a slime";
+    }
+
+    public void SetSlime(GameObject slime)
+    {
+        if (slime != null)
+        {
+            CurrentSlime = slime;
+            CurrentSlime.transform.position = (Vector2)SlimeHolder.position;
+            CurrentSlime.GetComponent<CreatureScript>().WaitingForQuest = true;
+        }
+        InstructionPanel.gameObject.SetActive(false);
+        ActivateButton.SetActive(false);
+        inUse = true;
+        Camera.main.GetComponent<CameraControl>().currentCameraPosition = CameraControl.CameraPositions.Dynamic;
+        Camera.main.GetComponent<CameraControl>().DynamicOrtho = 0.6f;
+        Camera.main.GetComponent<CameraControl>().DynamicPosition = this.transform.position + (Vector3.back * 10) + (Vector3.up * 0.175f);
+        pickingSlime = false;
     }
 }

@@ -108,6 +108,7 @@ public class TutorialManager : MonoBehaviour
             case 8:
                 Debug.Log("Start Tutorial Stage 9");
                 TutorialText.text = "You finished the tutorial\nYou can carry on collecting creatures and planting trees now";
+                MeteorSpawner.instance.canSpawn = true;
                 break;
 
             default:

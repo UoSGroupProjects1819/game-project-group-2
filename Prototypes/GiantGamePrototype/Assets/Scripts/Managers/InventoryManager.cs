@@ -422,10 +422,10 @@ public class InventoryManager : MonoBehaviour
             ResetSave();
         }
 
-        if (Input.GetKeyDown(KeyCode.C))
+        /*if (Input.GetKeyDown(KeyCode.C))
         {
             AddCurrency(10);
-        }
+        }*/
     }
 
     public void AddCurrency(int amt)

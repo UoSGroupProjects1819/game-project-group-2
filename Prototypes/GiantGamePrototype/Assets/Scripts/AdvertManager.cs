@@ -5,7 +5,7 @@ using UnityEngine.Advertisements;
 
 public class AdvertManager : MonoBehaviour {
 
-    public void ShowRewardedAd()
+    /*public void ShowRewardedAd()
     {
         if (Advertisement.IsReady("rewardedVideo"))
         {
@@ -31,5 +31,5 @@ public class AdvertManager : MonoBehaviour {
                 Debug.LogError("The ad failed to be shown.");
                 break;
         }
-    }
+    }*/
 }

@@ -123,7 +123,7 @@ public class QuestScript : MonoBehaviour
     public void Pressed()
     {
         if (!BulletinBoardScript.Instance.inUse) { return; }
-        if(BulletinBoardScript.Instance.CurrentSlime == null) { return; }
+        if(BulletinBoardScript.Instance.CurrentSlime == null) { BulletinBoardScript.Instance.ZoomForCreature(); return; }
         DisableButton();
         ActiveQuest newQuest = new ActiveQuest { name = questText.text, elapsedTime = questTime };
         QuestManager.instance.activeQuests.Add(newQuest);

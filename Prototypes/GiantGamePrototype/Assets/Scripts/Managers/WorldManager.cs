@@ -30,7 +30,7 @@ public class WorldManager : MonoBehaviour {
 
     void Update ()
     {
-        if (Input.GetKeyDown(KeyCode.Q))
+        /*if (Input.GetKeyDown(KeyCode.Q))
         {
             SelectIsland(0);
         }
@@ -43,7 +43,7 @@ public class WorldManager : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.E))
         {
             SelectIsland(2);
-        }
+        }*/
     }
 
     public void SelectIsland(int id)
