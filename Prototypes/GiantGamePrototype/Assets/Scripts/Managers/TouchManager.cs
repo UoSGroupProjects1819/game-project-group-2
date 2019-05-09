@@ -323,7 +323,15 @@ public class TouchManager : MonoBehaviour {
                 StatManager.Instance.targetCreature = null;                
             }
 
-            RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(touchPos), Vector2.zero, 100, layersToTouch);
+            if (StatManager.Instance.statsPanel.activeSelf)
+            { 
+                if (InventoryManager.Instance.inventoryPanel.activeSelf)
+                {
+                    Camera.main.gameObject.GetComponent<CameraControl>().currentCameraPosition = CameraControl.CameraPositions.TouchControl;
+                }
+            }
+
+                RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(touchPos), Vector2.zero, 100, layersToTouch);
             if (hit && hit.collider.tag == "Creature")
             {
 

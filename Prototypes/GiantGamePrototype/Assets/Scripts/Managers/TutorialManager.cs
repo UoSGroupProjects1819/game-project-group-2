@@ -89,6 +89,7 @@ public class TutorialManager : MonoBehaviour
             case 5:
                 Debug.Log("Start Tutorial Stage 6");
                 TutorialText.text = "You can plant the seed by tapping one of the pots";
+                Camera.main.gameObject.GetComponent<CameraControl>().currentCameraPosition = CameraControl.CameraPositions.IslandView;
                 waitingForSeed = false;
                 break;
 

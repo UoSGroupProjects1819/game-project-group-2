@@ -116,6 +116,7 @@ public class GiantScript : MonoBehaviour {
         if (IM.inventoryPanel.activeSelf)
         {
             IM.inventoryPanel.SetActive(false);
+            Camera.main.gameObject.GetComponent<CameraControl>().currentCameraPosition = CameraControl.CameraPositions.TouchControl;
         }
         else
         {
@@ -124,6 +125,9 @@ public class GiantScript : MonoBehaviour {
             //IM.UpdateEggUI(IM.EggUI);
             IM.UpdateSeedButtons();
             targetPoint = this.transform.position;
+            Camera.main.gameObject.GetComponent<CameraControl>().currentCameraPosition = CameraControl.CameraPositions.Dynamic;
+            Camera.main.gameObject.GetComponent<CameraControl>().DynamicPosition = this.transform.position + new Vector3(0, 2, -10);
+            Camera.main.gameObject.GetComponent<CameraControl>().DynamicOrtho = 1.5f;
         }
 
 
