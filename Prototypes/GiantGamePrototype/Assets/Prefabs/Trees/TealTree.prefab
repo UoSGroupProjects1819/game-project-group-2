@@ -193,8 +193,7 @@ MonoBehaviour:
   - {fileID: 21300024, guid: c8537f81f13ad34499b37e9ee5864eee, type: 3}
   - {fileID: 21300014, guid: c8537f81f13ad34499b37e9ee5864eee, type: 3}
   - {fileID: 21300004, guid: c8537f81f13ad34499b37e9ee5864eee, type: 3}
-  fruitToSpawn: {fileID: 1534438510011978, guid: c8d5bc6b153929e438f17b8ae788f90e,
-    type: 3}
+  fruitToSpawn: {fileID: 200, guid: 0d6b05b980310f8458ce6e1f2321723a, type: 3}
   fruitSpawns:
   - {fileID: 1038520632694162}
   - {fileID: 1449193800385874}
